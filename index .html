@@ -358,7 +358,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 /* ══════════════════════════════════════
    REVIEWS
 ══════════════════════════════════════ */
-.rsec{max-width:1200px;margin:0 auto;padding:70px 40px 0;}
+.rsec{max-width:1200px;margin:0 auto;padding:70px 40px 0; margin-bottom: 80px;}
 .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px;}
 .rc{background:#fff;border:1px solid #e8e0d0;padding:28px;transition:all .4s;position:relative;}
 .rc::before{content:'\275D';position:absolute;top:16px;right:20px;font-size:48px;color:var(--sand);line-height:1;}
@@ -454,13 +454,62 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .nl{display:none;}
   .hbg{display:flex;}
   .srow{grid-template-columns:1fr;}
-  .inc-solo .prem-card-inner{flex-direction:column;gap:24px;padding:26px 22px;}
-  .inc-solo .prem-head{flex-direction:row;align-items:center;gap:14px;margin-bottom:0;}
-  .inc-solo .prem-icon-wrap{margin-bottom:0;}
   .pl-meta{gap:16px;}
   .pl-t1{font-size:42px;}
   .hero-tags{gap:14px;}
+  .bfi-row{flex-direction:column;gap:0;}
 }
+
+/* ══════════════════════════════════════
+   BOOKING INQUIRY FORM
+══════════════════════════════════════ */
+.bfi{margin-bottom:16px;}
+.bfi-row{display:flex;gap:12px;}
+.bfi-half{flex:1;margin-bottom:16px;}
+.bfl{display:block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:7px;}
+.bfw{position:relative;display:flex;align-items:center;}
+.bfic{position:absolute;left:13px;font-size:15px;pointer-events:none;z-index:1;opacity:.6;}
+.bfinput{
+  width:100%;padding:11px 14px 11px 40px;
+  border:1.5px solid #e0d8c8;border-radius:4px;
+  font-family:'Jost',sans-serif;font-size:13.5px;color:var(--text);
+  background:#faf8f4;outline:none;
+  transition:border-color .25s,box-shadow .25s,background .25s;
+  -webkit-appearance:none;appearance:none;
+}
+.bfinput:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.12);background:#fff;}
+.bfinput::placeholder{color:#bbb;}
+.bfw-sel{position:relative;}
+.bfselect{cursor:pointer;padding-right:34px;}
+.bfsel-arrow{position:absolute;right:12px;font-size:18px;color:#aaa;pointer-events:none;line-height:1;}
+.bf-submit{
+  width:100%;margin-top:8px;
+  background:linear-gradient(135deg,var(--forest),var(--moss));
+  color:#fff;border:none;
+  padding:15px 24px;
+  font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all .35s;position:relative;overflow:hidden;
+}
+.bf-submit::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.12);transform:translateX(-110%) skewX(-15deg);
+  transition:transform .4s;
+}
+.bf-submit:hover::before{transform:translateX(110%) skewX(-15deg);}
+.bf-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,42,.28);}
+.bf-submit-arrow{display:inline-block;transition:transform .3s;}
+.bf-submit:hover .bf-submit-arrow{transform:translateX(4px);}
+.bf-success{
+  display:none;margin-top:14px;
+  background:rgba(45,90,61,.1);border:1px solid rgba(45,90,61,.25);border-radius:4px;
+  color:var(--moss);font-size:13px;font-weight:500;
+  padding:12px 16px;text-align:center;letter-spacing:.4px;
+  animation:fadeIn .4s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 
 /* ══════════════════════════════════════
    PACKAGES — 3 CATEGORY CARDS
@@ -531,8 +580,8 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="pl-orn-line"></div>
     </div>
 
-    <div class="pl-title-clip"><span class="pl-t1">Heritage &nbsp;<em>River</em></span></div>
-    <div class="pl-title-clip"><span class="pl-t2">Resort</span></div>
+    <div class="pl-title-clip"><span class="pl-t1">Book&nbsp;<em>myDandeli</em></span></div>
+    <div class="pl-title-clip"><span class="pl-t2">Resorts</span></div>
 
     <div class="pl-tagline">Where the wilderness breathes</div>
 
@@ -563,7 +612,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 
 <!-- ══ TOPBAR ══ -->
 <div class="topbar">
-  <div><a href="tel:8971352652">&#128222; +91 89713 52652</a>&nbsp;|&nbsp;<a href="mailto:info@dandelitourpackage.com">&#9993; info@dandelitourpackage.com</a></div>
+  <div><a href="tel:8971352652">&#128222; +91 96119 43766</a>&nbsp;|&nbsp;<a href="mailto:info@dandelitourpackage.com">&#9993; info@dandelitourpackage.com</a></div>
   <div class="tb-r">
     <div style="display:flex;gap:10px;"><a href="#" class="soc">f</a><a href="#" class="soc">in</a></div>
     <a href="https://api.whatsapp.com/send?phone=+919611943766" class="bnow">Book Now</a>
@@ -575,7 +624,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   <div class="logo"><span class="leaf">&#127807;</span><span>Dandeli Tour Package</span></div>
   <ul class="nl">
     <li><a href="#">Home</a></li>
-    <li><a href="#">About Us</a></li>
+    <li><a href="#aboutus">About Us</a></li>
     <li><a href="#" class="act">Our Stays &#9660;
       <div class="dd">
         <a href="#">Rain Forest Dandeli</a>
@@ -594,7 +643,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     </a></li>
     <li><a href="#">Things to Do</a></li>
     <li><a href="#">Sight Seeing</a></li>
-    <li><a href="#">Packages</a></li>
+    <li><a href="#packages">Packages</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
   <div class="hbg" onclick="tMob()"><span></span><span></span><span></span></div>
@@ -615,14 +664,14 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 <div class="hero-bar">
   <div class="hero-grain"></div>
   <div class="hero-rule-top"></div>
-  <div class="bc"><a href="#">Home</a><span class="bc-sep">/</span>Heritage River Resort</div>
+  <div class="bc"><a href="#">Home</a><span class="bc-sep">/</span>Book My Dandeli</div>
   <div class="hero-eyebrow">Dandeli &nbsp;&middot;&nbsp; Karnataka &nbsp;&middot;&nbsp; India</div>
-  <h1>Heritage <em>River Resort</em></h1>
+  <h1>Book <em>MyDandeli</em></h1>
   <div class="hero-tagline">Where the wilderness breathes</div>
   <div class="hdiv"><div class="hl"></div><div class="hd"></div><div class="hl"></div></div>
   <div class="hero-tags">
     <div class="hero-tag"><div class="hero-tag-dot"></div>Western Ghats</div>
-    <div class="hero-tag"><div class="hero-tag-dot"></div>4 Star Resort</div>
+    <div class="hero-tag"><div class="hero-tag-dot"></div>4 Star Ratings</div>
     <div class="hero-tag"><div class="hero-tag-dot"></div>River &amp; Forest</div>
   </div>
   <div class="hero-cta">
@@ -706,198 +755,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="si"><span class="sn" data-count="4">0</span><span class="sk">Star Rating</span></div>
     </div>
 
-    <!-- Big image -->
-    <div class="bimg rv">
-      <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="View">
-      <div class="bimg-cap">Surrounded by the lush Western Ghats</div>
-    </div>
-
-    <!-- Inclusions -->
-    <div class="tw rv">
-      <div class="sl">Dandeli Tour</div>
-      <h2 class="st">Package Inclusions</h2>
-      <div class="sd"></div>
-
-      <div class="inc-nav">
-        <button class="inc-pill a" onclick="sTb('all',this)">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          All Inclusions
-        </button>
-        <button class="inc-pill" onclick="sTb('meals',this)">
-          <svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
-          Dining
-        </button>
-        <button class="inc-pill" onclick="sTb('inhouse',this)">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Inhouse
-        </button>
-        <button class="inc-pill" onclick="sTb('activities',this)">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          Activities
-        </button>
-        <button class="inc-pill" onclick="sTb('sights',this)">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          Sightseeing
-        </button>
-      </div>
-
-      <!-- ALL -->
-      <div id="t-all" class="tp a">
-        <div class="inc-mosaic">
-          <div class="prem-card">
-            <div class="prem-card-inner">
-              <div class="prem-head">
-                <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
-                <div><span class="prem-count">3 per day</span><div class="prem-title">Dining</div></div>
-              </div>
-              <div class="prem-rule"></div>
-              <ul class="prem-items">
-                <li class="prem-item">Buffet Breakfast<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Buffet Lunch<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Evening Tea &amp; Coffee<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Buffet Dinner<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="prem-card">
-            <div class="prem-card-inner">
-              <div class="prem-head">
-                <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                <div><span class="prem-count">5 activities</span><div class="prem-title">Inhouse</div></div>
-              </div>
-              <div class="prem-rule"></div>
-              <ul class="prem-items">
-                <li class="prem-item">Swimming Pool<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Rain Dance<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Nature Walk<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Bird Watching<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Camp Fire<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="prem-card">
-            <div class="prem-card-inner">
-              <div class="prem-head">
-                <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                <div><span class="prem-count">4 adventures</span><div class="prem-title">Activities</div></div>
-              </div>
-              <div class="prem-rule"></div>
-              <ul class="prem-items">
-                <li class="prem-item">Kayaking<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Boating<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Jacuzzi Bath<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Zorbing<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="prem-card">
-            <div class="prem-card-inner">
-              <div class="prem-head">
-                <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                <div><span class="prem-count">4 destinations</span><div class="prem-title">Sightseeing</div></div>
-              </div>
-              <div class="prem-rule"></div>
-              <ul class="prem-items">
-                <li class="prem-item">Supa Dam<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Backwaters<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Disney Park<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Crocodile Park<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DINING SOLO -->
-      <div id="t-meals" class="tp inc-solo">
-        <div class="prem-card">
-          <div class="prem-card-inner">
-            <div class="prem-head">
-              <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
-              <span class="prem-count">Included &middot; 3 times daily</span>
-              <div class="prem-title">All Meals Included</div>
-              <div class="prem-rule" style="width:100%;margin-top:14px;"></div>
-            </div>
-            <div class="prem-body">
-              <ul class="prem-items">
-                <li class="prem-item">Buffet Breakfast<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Buffet Lunch<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Evening Tea &amp; Coffee<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Buffet Dinner<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- INHOUSE SOLO -->
-      <div id="t-inhouse" class="tp inc-solo">
-        <div class="prem-card">
-          <div class="prem-card-inner">
-            <div class="prem-head">
-              <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-              <span class="prem-count">Included &middot; 5 activities</span>
-              <div class="prem-title">Inhouse Activities</div>
-              <div class="prem-rule" style="width:100%;margin-top:14px;"></div>
-            </div>
-            <div class="prem-body">
-              <ul class="prem-items">
-                <li class="prem-item">Swimming Pool<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Rain Dance<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Nature Walk<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Bird Watching<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Camp Fire<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ACTIVITIES SOLO -->
-      <div id="t-activities" class="tp inc-solo">
-        <div class="prem-card">
-          <div class="prem-card-inner">
-            <div class="prem-head">
-              <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-              <span class="prem-count">Included &middot; 4 adventures</span>
-              <div class="prem-title">Outdoor Activities</div>
-              <div class="prem-rule" style="width:100%;margin-top:14px;"></div>
-            </div>
-            <div class="prem-body">
-              <ul class="prem-items">
-                <li class="prem-item">Kayaking<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Boating<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Jacuzzi Bath<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Zorbing<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SIGHTSEEING SOLO -->
-      <div id="t-sights" class="tp inc-solo">
-        <div class="prem-card">
-          <div class="prem-card-inner">
-            <div class="prem-head">
-              <div class="prem-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-              <span class="prem-count">Included &middot; 4 destinations</span>
-              <div class="prem-title">Sightseeing</div>
-              <div class="prem-rule" style="width:100%;margin-top:14px;"></div>
-            </div>
-            <div class="prem-body">
-              <ul class="prem-items">
-                <li class="prem-item">Supa Dam<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Backwaters<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Disney Park<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-                <li class="prem-item">Crocodile Park<span class="prem-item-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Important Info -->
     <div class="nb rv" style="margin-top:40px;">
       <h4>&#128203; Important Information</h4>
@@ -916,33 +773,111 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     </div>
   </div>
 
-  <!-- ══ SIDEBAR ══ -->
+  <!-- ══ SIDEBAR — BOOKING INQUIRY FORM ══ -->
   <div>
     <div class="sc">
       <div class="sch">
-        <h3>Plan Your Visit</h3>
-        <p>Get in touch with us today</p>
+        <h3>Booking Inquiry</h3>
+        <p>Fill in your details &amp; we'll get back to you</p>
       </div>
-      <div class="scb">
-        <div class="ci"><div class="cico">&#128222;</div><div><div class="cl">Call Us</div><div class="cv"><a href="tel:8971352652">+91 89713 52652</a></div></div></div>
-        <div class="ci"><div class="cico">&#9993;</div><div><div class="cl">Email Us</div><div class="cv"><a href="mailto:info@dandelitourpackage.com">info@dandelitourpackage.com</a></div></div></div>
-        <div class="ci"><div class="cico">&#128205;</div><div><div class="cl">Location</div><div class="cv">Opp. Bus Stop, Dandeli</div></div></div>
-        <div class="ci"><div class="cico">&#128336;</div><div><div class="cl">Check In / Out</div><div class="cv">1:00 PM / 11:00 AM</div></div></div>
-        <a href="https://api.whatsapp.com/send?phone=+919611943766" class="scta">&#128172; Book on WhatsApp</a>
+      <div class="scb" style="padding:28px 28px 32px;">
 
-        <!-- Weather widget -->
-        <div class="ww">
-          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px;">Dandeli, Karnataka</div>
-          <div style="display:flex;align-items:flex-end;gap:12px;">
-            <div class="wt" id="wt">28&#176;</div>
-            <div><div style="font-size:18px;" id="wi">&#9925;</div><div class="wd" id="wd">Partly Cloudy</div></div>
-          </div>
-          <div class="wr">
-            <div class="wi" style="text-align:center;flex:1;"><div class="wiv">72%</div><div class="wil">Humidity</div></div>
-            <div class="wi" style="text-align:center;flex:1;"><div class="wiv">12 km/h</div><div class="wil">Wind</div></div>
-            <div class="wi" style="text-align:center;flex:1;"><div class="wiv" id="ws">Dry</div><div class="wil">Season</div></div>
+        <!-- Full Name -->
+        <div class="bfi">
+          <label class="bfl">Full Name</label>
+          <div class="bfw">
+            <span class="bfic">&#128100;</span>
+            <input class="bfinput" type="text" placeholder="e.g. Ravi Kumar" id="bf-name">
           </div>
         </div>
+
+        <!-- Email -->
+        <div class="bfi">
+          <label class="bfl">Email Address</label>
+          <div class="bfw">
+            <span class="bfic">&#9993;</span>
+            <input class="bfinput" type="email" placeholder="e.g. ravi@email.com" id="bf-email">
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="bfi">
+          <label class="bfl">Phone Number</label>
+          <div class="bfw">
+            <span class="bfic">&#128222;</span>
+            <input class="bfinput" type="tel" placeholder="e.g. +91 98765 43210" id="bf-phone">
+          </div>
+        </div>
+
+        <!-- No. of People -->
+        <div class="bfi">
+          <label class="bfl">No. of Guests</label>
+          <div class="bfw">
+            <span class="bfic">&#128101;</span>
+            <input class="bfinput" type="number" placeholder="e.g. 4" min="1" id="bf-guests">
+          </div>
+        </div>
+
+        <!-- Check-in / Check-out -->
+        <div class="bfi-row">
+          <div class="bfi bfi-half">
+            <label class="bfl">Check-In</label>
+            <div class="bfw">
+              <span class="bfic">&#128197;</span>
+              <input class="bfinput" type="date" id="bf-checkin">
+            </div>
+          </div>
+          <div class="bfi bfi-half">
+            <label class="bfl">Check-Out</label>
+            <div class="bfw">
+              <span class="bfic">&#128197;</span>
+              <input class="bfinput" type="date" id="bf-checkout">
+            </div>
+          </div>
+        </div>
+
+        <!-- Resort / Package -->
+        <div class="bfi">
+          <label class="bfl">Resort / Package</label>
+          <div class="bfw bfw-sel">
+            <span class="bfic">&#127968;</span>
+            <select class="bfinput bfselect" id="bf-resort">
+              <option value="" disabled selected>Select a resort or package</option>
+              <optgroup label="Resorts">
+                <option>Heritage River Resort</option>
+                <option>Rain Forest Dandeli</option>
+                <option>Tuskar Trail Lake Resort</option>
+                <option>Riverpoint Resort</option>
+                <option>Rajhans Retreat</option>
+                <option>Dew Drops Resort</option>
+                <option>Bison River Resort</option>
+                <option>White Petal Homestays</option>
+                <option>River Edge Resort</option>
+                <option>Jungle View Pool Resort</option>
+                <option>Verdhant Jungle Resort</option>
+                <option>Dandeli Riverside Resort</option>
+              </optgroup>
+              <optgroup label="Packages">
+                <option>Student Package</option>
+                <option>Couple Package</option>
+                <option>Family Package</option>
+              </optgroup>
+            </select>
+            <span class="bfsel-arrow">&#8964;</span>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button class="bf-submit" onclick="submitInquiry()">
+          <span id="bf-btn-text">Send Inquiry</span>
+          <span class="bf-submit-arrow">&#8594;</span>
+        </button>
+
+        <!-- Success message -->
+        <div class="bf-success" id="bf-success">
+          &#10003; &nbsp; Thank you! We'll reach out to you shortly.
+        </div>
+
       </div>
     </div>
   </div>
@@ -957,26 +892,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div class="rc rv" data-d="1"><div class="rs">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rt">"An absolutely magical experience. The resort blends perfectly with the forest, and the staff was incredibly warm. The riverside view was breathtaking."</p><div class="ra">Priya Sharma</div><div class="rd">Bangalore &middot; March 2024</div></div>
     <div class="rc rv" data-d="2"><div class="rs">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rt">"We did kayaking, bird watching and the campfire all in one day! Buffet food was excellent and the ambiance is truly serene. Highly recommend for families."</p><div class="ra">Rahul Mehta</div><div class="rd">Mumbai &middot; February 2024</div></div>
     <div class="rc rv" data-d="3"><div class="rs">&#9733;&#9733;&#9733;&#9733;&#9734;</div><p class="rt">"Peaceful escape from city life. The Western Ghats backdrop is stunning. We spotted hornbills on the nature walk. Will definitely return!"</p><div class="ra">Ananya Krishnan</div><div class="rd">Pune &middot; January 2024</div></div>
-  </div>
-</div>
-
-<!-- ══ HOW TO REACH ══ -->
-<div class="rsection">
-  <div class="rinner">
-    <div class="sl">Dandeli Tour</div>
-    <h2 class="st">How to Reach Dandeli</h2>
-    <div class="rgrid">
-      <div class="rcd rv" data-d="1"><h4>&#128642; By Train</h4><ul><li>Alnavar (LWR) &mdash; 32 kms</li><li>Londa (LD) &mdash; 48 kms</li><li>Hubli (UBL) &mdash; 75 kms</li></ul></div>
-      <div class="rcd rv" data-d="2"><h4>&#9992;&#65039; By Air</h4><ul><li>Hubli (HBX) &mdash; 75 kms</li><li>Belgaum (IXG) &mdash; 110 kms</li><li>Goa (GOI) &mdash; 150 kms</li></ul></div>
-      <div class="rcd rv" data-d="3"><h4>&#128652; Bus Services</h4><ul><li>Karnataka KSRTC</li><li>Sugama Travels</li><li>Durgamba Travels</li><li>VRL Travels</li><li>SRS &amp; Red Bus</li></ul></div>
-    </div>
-    <div class="rcd rv" style="margin-top:24px;"><h4>&#128663; By Road</h4>
-      <div class="rdg">
-        <ul><li>57 kms from Dharwad</li><li>75 kms from Hubli</li><li>110 kms from Belgaum</li></ul>
-        <ul><li>117 kms from Karwar</li><li>150 kms from Goa</li><li>481 kms from Bangalore</li></ul>
-        <ul><li>578 kms from Mumbai</li><li>439 kms from Pune</li><li>580 kms from Hyderabad</li></ul>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1180,19 +1095,47 @@ function tAc(hdr){
 function tMob(){ document.getElementById('mob').classList.toggle('open'); }
 
 /* ══════════════════════════════════════
-   DYNAMIC WEATHER
+   BOOKING INQUIRY FORM
 ══════════════════════════════════════ */
-(function(){
-  const m = new Date().getMonth();
-  const S = ['Winter','Winter','Spring','Spring','Summer','Summer','Monsoon','Monsoon','Monsoon','Autumn','Autumn','Winter'];
-  const T = [22,24,28,30,34,36,26,24,26,28,26,23];
-  const D = ['Cool & Clear','Cool & Clear','Pleasant','Pleasant','Hot & Sunny','Hot & Sunny','Rainy','Heavy Rain','Light Rain','Mild','Mild','Cool & Clear'];
-  const I = ['&#10052;','&#10052;','&#127800;','&#127800;','&#9728;','&#9728;','&#127783;','&#127783;','&#127783;','&#127810;','&#127810;','&#10052;'];
-  document.getElementById('wt').innerHTML = T[m] + '&#176;';
-  document.getElementById('wd').textContent = D[m];
-  document.getElementById('ws').textContent = S[m];
-  document.getElementById('wi').innerHTML = I[m];
-})();
+function submitInquiry(){
+  const name    = document.getElementById('bf-name').value.trim();
+  const email   = document.getElementById('bf-email').value.trim();
+  const phone   = document.getElementById('bf-phone').value.trim();
+  const guests  = document.getElementById('bf-guests').value.trim();
+  const checkin = document.getElementById('bf-checkin').value;
+  const checkout= document.getElementById('bf-checkout').value;
+  const resort  = document.getElementById('bf-resort').value;
+
+  if(!name||!email||!phone||!guests||!checkin||!checkout||!resort){
+    alert('Please fill in all fields before submitting.');
+    return;
+  }
+  if(new Date(checkout) <= new Date(checkin)){
+    alert('Check-out date must be after check-in date.');
+    return;
+  }
+
+  /* Build WhatsApp message */
+  const msg = encodeURIComponent(
+    `*Booking Inquiry — Dandeli Tour Package*\n\n`+
+    `👤 Name: ${name}\n`+
+    `✉️ Email: ${email}\n`+
+    `📞 Phone: ${phone}\n`+
+    `👥 Guests: ${guests}\n`+
+    `📅 Check-In: ${checkin}\n`+
+    `📅 Check-Out: ${checkout}\n`+
+    `🏨 Resort/Package: ${resort}`
+  );
+
+  const btn = document.getElementById('bf-btn-text');
+  btn.textContent = 'Sending…';
+  setTimeout(()=>{
+    document.getElementById('bf-success').style.display = 'block';
+    btn.textContent = 'Send Inquiry';
+    window.open(`https://api.whatsapp.com/send?phone=+919611943766&text=${msg}`, '_blank');
+  }, 600);
+}
+
 </script>
 </body>
 </html>
