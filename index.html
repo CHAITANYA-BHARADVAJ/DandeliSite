@@ -461,6 +461,32 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .pl-t1{font-size:42px;}
   .hero-tags{gap:14px;}
 }
+
+/* ══════════════════════════════════════
+   PACKAGES — 3 CATEGORY CARDS
+══════════════════════════════════════ */
+.pkg-section{padding:56px 0 48px;position:relative;}
+.pkg-section::before{content:'';position:absolute;top:0;left:-40px;right:-40px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.25),transparent);}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px;}
+.pkg-card{position:relative;border-radius:6px;overflow:hidden;cursor:pointer;display:block;text-decoration:none;height:420px;background:var(--forest);}
+.pkg-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;opacity:.7;}
+.pkg-card:hover img{transform:scale(1.06);}
+.pkg-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,10,.88) 0%,rgba(5,18,10,.3) 55%,transparent 100%);transition:background .4s;}
+.pkg-card:hover .pkg-card-overlay{background:linear-gradient(to top,rgba(5,18,10,.92) 0%,rgba(5,18,10,.45) 60%,rgba(5,18,10,.1) 100%);}
+.pkg-card-body{position:absolute;bottom:0;left:0;right:0;padding:32px 28px;display:flex;flex-direction:column;gap:0;}
+.pkg-card-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:8px;font-weight:600;}
+.pkg-card-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:#fff;line-height:1.05;letter-spacing:1px;margin-bottom:14px;}
+.pkg-card-rule{width:0;height:1px;background:rgba(201,168,76,.5);margin-bottom:20px;transition:width .5s ease;}
+.pkg-card:hover .pkg-card-rule{width:40px;}
+.pkg-card-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .4s ease;}
+.pkg-card:hover .pkg-card-desc{max-height:60px;opacity:1;}
+.pkg-card-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(201,168,76,.5);color:rgba(201,168,76,.9);font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:12px 22px;width:fit-content;transition:all .35s;}
+.pkg-card:hover .pkg-card-btn{background:var(--gold);border-color:var(--gold);color:#fff;}
+.pkg-card-btn-arrow{display:inline-block;transition:transform .3s;}
+.pkg-card:hover .pkg-card-btn-arrow{transform:translateX(5px);}
+.pkg-card-top-badge{position:absolute;top:20px;left:20px;background:rgba(201,168,76,.15);backdrop-filter:blur(10px);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:20px;}
+@media(max-width:900px){.pkg-grid{grid-template-columns:1fr;}.pkg-card{height:340px;}}
+@media(max-width:600px){.pkg-card{height:300px;}.pkg-card-title{font-size:28px;}}
 </style>
 </head>
 <body>
@@ -620,6 +646,55 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="sd"></div>
       <p class="ot">Nestled in the serene heart of Dandeli, this enchanting resort offers a rejuvenating escape, allowing you to unwind and detach from the chaotic city life. Embark on a transformative journey, where you can immerse yourself in the captivating wonders of nature, accompanied by a myriad of delightful bird species, enchanting amphibians, graceful reptiles, and vibrant blooming flora.</p>
       <p class="ot" style="margin-top:16px;">Embraced by the captivating allure of the Western Ghats' verdant canopy, Dandeli unveils itself as a captivating town in northern Karnataka, boasting picturesque vistas and a tranquil ambiance. Enveloped by lush greenery and dotted with charming sights, this exclusive retreat provides an idyllic haven for your mind to find solace and serenity.</p>
+    </div>
+
+    <!-- Packages -->
+    <div class="pkg-section rv" id="packages">
+      <div class="sl">Explore by Category</div>
+      <h2 class="st">Our Tour <em style="color:var(--gold);font-style:italic;">Packages</em></h2>
+      <div class="sd"></div>
+      <div class="pkg-grid">
+
+        <a class="pkg-card" href="student-packages.html">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Student Packages">
+          <div class="pkg-card-overlay"></div>
+          <div class="pkg-card-top-badge">🎒 From ₹1,999/person</div>
+          <div class="pkg-card-body">
+            <div class="pkg-card-eyebrow">Category</div>
+            <div class="pkg-card-title">Student</div>
+            <div class="pkg-card-rule"></div>
+            <div class="pkg-card-desc">Adventure camps, group tours & budget stays built for college trips and youth groups.</div>
+            <div class="pkg-card-btn">View Details <span class="pkg-card-btn-arrow">→</span></div>
+          </div>
+        </a>
+
+        <a class="pkg-card" href="couple-packages.html">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Couple Packages">
+          <div class="pkg-card-overlay"></div>
+          <div class="pkg-card-top-badge">💑 From ₹6,499/couple</div>
+          <div class="pkg-card-body">
+            <div class="pkg-card-eyebrow">Category</div>
+            <div class="pkg-card-title">Couples</div>
+            <div class="pkg-card-rule"></div>
+            <div class="pkg-card-desc">Romantic riverside escapes, luxury forest cottages and honeymoon specials.</div>
+            <div class="pkg-card-btn">View Details <span class="pkg-card-btn-arrow">→</span></div>
+          </div>
+        </a>
+
+        <a class="pkg-card" href="family-packages.html">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Family Packages">
+          <div class="pkg-card-overlay"></div>
+          <div class="pkg-card-top-badge">👨‍👩‍👧‍👦 From ₹8,999/family</div>
+          <div class="pkg-card-body">
+            <div class="pkg-card-eyebrow">Category</div>
+            <div class="pkg-card-title">Family</div>
+            <div class="pkg-card-rule"></div>
+            <div class="pkg-card-desc">Kid-friendly resorts with pools, safaris, sightseeing and all-inclusive meal plans.</div>
+            <div class="pkg-card-btn">View Details <span class="pkg-card-btn-arrow">→</span></div>
+          </div>
+        </a>
+
+      </div>
     </div>
 
     <!-- Stats -->
@@ -936,9 +1011,10 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 
 <script>
 /* ══════════════════════════════════════
-   PREMIUM PRELOADER INIT
+   PREMIUM PRELOADER INIT — first visit only
 ══════════════════════════════════════ */
 (function(){
+  if(sessionStorage.getItem('plSeen')){ return; } /* skip on repeat visits */
   /* Spores */
   const sw = document.getElementById('pl-spores');
   for(let i = 0; i < 32; i++){
@@ -1008,17 +1084,28 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 })();
 
 /* ══════════════════════════════════════
-   PRELOADER EXIT
+   PRELOADER EXIT — only first visit
 ══════════════════════════════════════ */
-window.addEventListener('load', ()=>{
-  setTimeout(()=>{
-    const pl = document.getElementById('pl');
-    pl.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-    pl.style.opacity = '0';
-    pl.style.transform = 'scale(1.04)';
-    setTimeout(()=>{ pl.style.display = 'none'; }, 950);
-  }, 2900);
-});
+(function(){
+  const pl = document.getElementById('pl');
+  if(sessionStorage.getItem('plSeen')){
+    /* Already visited this session — kill instantly, no flash */
+    pl.style.display = 'none';
+  } else {
+    /* First visit — play full animation, then set flag */
+    window.addEventListener('load', ()=>{
+      setTimeout(()=>{
+        pl.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+        pl.style.opacity = '0';
+        pl.style.transform = 'scale(1.04)';
+        setTimeout(()=>{
+          pl.style.display = 'none';
+          sessionStorage.setItem('plSeen', '1');
+        }, 950);
+      }, 2900);
+    });
+  }
+})();
 
 /* ══════════════════════════════════════
    CURSOR

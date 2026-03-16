@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Packages — Dandeli Tour Package</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1a3a2a;--moss:#2d5a3d;--gold:#c9a84c;--gold-light:#e8c97a;--cream:#f5f0e8;--sand:#e8dfc8;--text:#1a1a1a;--bg:#f4f6f8;--white:#fff;--border:#e2e8f0;--shadow:rgba(0,0,0,0.07);--cat:#1a5a3a;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);}
+.nav{background:var(--forest);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.2);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:10px;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-phone{color:rgba(255,255,255,.7);font-size:13px;text-decoration:none;}
+.nav-wa{background:#25d366;color:#fff;padding:8px 20px;border-radius:4px;font-size:12px;font-weight:600;letter-spacing:1px;text-decoration:none;transition:all .3s;}
+.nav-wa:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,211,102,.4);}
+.hero{position:relative;height:380px;overflow:hidden;background:#0d2318;}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,20,12,.25) 0%,rgba(5,20,12,.88) 100%);}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 40px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:50px;}
+.hero-back{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.45);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;margin-bottom:20px;transition:color .2s;}
+.hero-back:hover{color:var(--gold);}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;font-weight:600;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,72px);font-weight:300;color:#fff;line-height:1.05;margin-bottom:16px;}
+.hero-title em{color:var(--gold);font-style:italic;}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:6px 14px;font-size:12px;color:rgba(255,255,255,.7);}
+.main{max-width:1200px;margin:0 auto;padding:32px 40px 70px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start;}
+.sidebar{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;position:sticky;top:80px;box-shadow:0 2px 16px var(--shadow);}
+.sb-head{background:var(--forest);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.sb-title{color:#fff;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;}
+.sb-reset{font-size:11px;color:var(--gold);background:none;border:none;cursor:pointer;}
+.sb-group{padding:16px 18px;border-bottom:1px solid var(--border);}
+.sb-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;}
+.sb-checks{display:flex;flex-direction:column;gap:9px;}
+.sb-opt{display:flex;align-items:center;gap:9px;cursor:pointer;}
+.sb-opt input{accent-color:var(--gold);width:14px;height:14px;cursor:pointer;}
+.sb-opt label{font-size:13px;color:#555;cursor:pointer;}
+.sb-slider{width:100%;accent-color:var(--gold);cursor:pointer;margin-top:6px;}
+.sb-price-row{display:flex;justify-content:space-between;margin-bottom:8px;}
+.sb-pval{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--forest);}
+.sort-strip{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:13px 18px;margin-bottom:16px;box-shadow:0 2px 10px var(--shadow);flex-wrap:wrap;}
+.sort-lbl{font-size:11px;font-weight:600;letter-spacing:1.5px;color:#aaa;text-transform:uppercase;white-space:nowrap;}
+.sort-btn{padding:7px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;font-size:12px;color:#666;cursor:pointer;transition:all .25s;font-family:'Jost',sans-serif;}
+.sort-btn:hover{border-color:var(--gold);color:var(--forest);}
+.sort-btn.active{background:var(--forest);border-color:var(--forest);color:var(--gold);}
+.result-count{margin-left:auto;font-size:13px;color:#aaa;white-space:nowrap;}
+.result-count strong{color:var(--forest);}
+.cards{display:flex;flex-direction:column;gap:16px;}
+.rcard{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:290px 1fr;transition:all .35s;box-shadow:0 2px 14px var(--shadow);}
+.rcard:hover{box-shadow:0 12px 40px rgba(0,0,0,.11);transform:translateY(-2px);border-color:rgba(201,168,76,.3);}
+.rcard-img{position:relative;overflow:hidden;min-height:230px;}
+.rcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.rcard:hover .rcard-img img{transform:scale(1.05);}
+.rcard-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:5px;}
+.rbadge{display:inline-block;padding:4px 10px;border-radius:4px;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;}
+.rb-top{background:#e05c3a;}.rb-deal{background:var(--gold);}.rb-eco{background:#2d7a3d;}.rb-cat{background:var(--cat);}.rb-grand{background:#8b5e3c;}
+.rcard-heart{position:absolute;top:12px;right:12px;width:32px;height:32px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;border:none;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:transform .3s;}
+.rcard-heart:hover{transform:scale(1.15);}
+.rcard-thumbs{position:absolute;bottom:10px;left:10px;display:flex;gap:5px;}
+.rthumb{width:38px;height:30px;border-radius:4px;overflow:hidden;border:1.5px solid rgba(255,255,255,.6);cursor:pointer;}
+.rthumb img{width:100%;height:100%;object-fit:cover;}
+.rthumb-more{width:38px;height:30px;border-radius:4px;background:rgba(0,0,0,.6);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600;cursor:pointer;}
+.rcard-info{padding:20px 22px;display:flex;flex-direction:column;}
+.rcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:5px;}
+.rcard-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--forest);line-height:1.2;}
+.rcard-rating{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.rating-badge{background:#1a6e3a;color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:6px 6px 6px 0;line-height:1;}
+.rating-count{font-size:10px;color:#aaa;margin-top:3px;text-align:center;}
+.rcard-loc{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.rcard-stars{color:#f5a623;font-size:11px;}
+.rcard-dist{font-size:11px;color:#aaa;}
+.rcard-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
+.rtag{font-size:11px;color:#2d7a3d;background:rgba(45,122,61,.07);border:1px solid rgba(45,122,61,.14);border-radius:4px;padding:3px 9px;}
+.rcard-amenities{display:flex;gap:14px;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:12px;}
+.ramenity{display:flex;align-items:center;gap:5px;font-size:11.5px;color:#666;}
+.rcard-incs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.rinc{font-size:11px;color:var(--forest);font-weight:500;}
+.rinc::before{content:'✓ ';color:#4caf70;font-weight:700;}
+.rcard-price-row{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;padding-top:12px;}
+.rdiscount{display:inline-flex;align-items:center;background:rgba(228,74,33,.08);color:#e44a21;font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;margin-bottom:4px;}
+.rprice-cross{font-size:13px;color:#ccc;text-decoration:line-through;margin-bottom:1px;}
+.rprice{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--forest);line-height:1;}
+.rprice-unit{font-size:12px;color:#aaa;font-family:'Jost',sans-serif;font-weight:300;}
+.rprice-tax{font-size:10px;color:#aaa;margin-top:2px;}
+.rprice-tax span{color:#4caf70;font-weight:600;}
+.rcard-ctas{display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
+.btn-book{background:var(--forest);color:#fff;padding:11px 22px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;text-align:center;display:block;min-width:150px;}
+.btn-book:hover{background:var(--moss);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,58,42,.25);}
+.btn-wa{background:#25d366;color:#fff;padding:9px 16px;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px;min-width:150px;}
+.btn-wa:hover{background:#20b958;}
+.no-results{text-align:center;padding:70px 40px;display:none;}
+.no-results.show{display:block;}
+@media(max-width:960px){.main{grid-template-columns:1fr;}.sidebar{position:static;}}
+@media(max-width:680px){.rcard{grid-template-columns:1fr;}.rcard-img{min-height:190px;}.nav{padding:12px 20px;}.hero{height:280px;}.main{padding:24px 20px 50px;}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🌿 Dandeli Tour Package</a>
+  <div class="nav-right">
+    <a href="tel:8971352652" class="nav-phone">📞 +91 89713 52652</a>
+    <a href="https://api.whatsapp.com/send?phone=+919611943766" class="nav-wa">💬 WhatsApp</a>
+  </div>
+</nav>
+<div class="hero">
+  <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Family Packages Dandeli">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <a href="index.html#packages" class="hero-back">← Back to Packages</a>
+    <div class="hero-eyebrow">Dandeli · Karnataka · India</div>
+    <h1 class="hero-title">Family <em>Packages</em></h1>
+    <div class="hero-pills">
+      <span class="hero-pill">👨‍👩‍👧‍👦 Kid Friendly</span>
+      <span class="hero-pill">🦁 Jeep Safari</span>
+      <span class="hero-pill">🍽 All Meals Included</span>
+      <span class="hero-pill">🏊 Pool & Water Park</span>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <aside class="sidebar">
+    <div class="sb-head"><span class="sb-title">Filters</span><button class="sb-reset" onclick="resetFilters()">Reset</button></div>
+    <div class="sb-group">
+      <div class="sb-label">Star Rating</div>
+      <div class="sb-checks">
+        <label class="sb-opt"><input type="checkbox" class="star-filter" onchange="applyFilters()" value="3"><label>⭐⭐⭐ 3 Star</label></label>
+        <label class="sb-opt"><input type="checkbox" class="star-filter" onchange="applyFilters()" value="4"><label>⭐⭐⭐⭐ 4 Star</label></label>
+        <label class="sb-opt"><input type="checkbox" class="star-filter" onchange="applyFilters()" value="5"><label>⭐⭐⭐⭐⭐ 5 Star</label></label>
+      </div>
+    </div>
+    <div class="sb-group">
+      <div class="sb-label">Max Budget</div>
+      <div class="sb-price-row"><span style="font-size:12px;color:#aaa;">₹0</span><span class="sb-pval" id="priceVal">₹25,000</span></div>
+      <input type="range" class="sb-slider" id="priceSlider" min="0" max="25000" value="25000" step="500" oninput="document.getElementById('priceVal').textContent='₹'+Number(this.value).toLocaleString('en-IN');applyFilters()">
+    </div>
+    <div class="sb-group">
+      <div class="sb-label">Amenities</div>
+      <div class="sb-checks">
+        <label class="sb-opt"><input type="checkbox" class="amen-filter" onchange="applyFilters()" value="pool"><label>🏊 Swimming Pool</label></label>
+        <label class="sb-opt"><input type="checkbox" class="amen-filter" onchange="applyFilters()" value="raindance"><label>🌧 Rain Dance</label></label>
+        <label class="sb-opt"><input type="checkbox" class="amen-filter" onchange="applyFilters()" value="safari"><label>🦁 Jeep Safari</label></label>
+        <label class="sb-opt"><input type="checkbox" class="amen-filter" onchange="applyFilters()" value="river"><label>🌊 River View</label></label>
+        <label class="sb-opt"><input type="checkbox" class="amen-filter" onchange="applyFilters()" value="wifi"><label>📶 WiFi</label></label>
+      </div>
+    </div>
+    <div class="sb-group" style="border-bottom:none;">
+      <div class="sb-label">Duration</div>
+      <div class="sb-checks">
+        <label class="sb-opt"><input type="checkbox" class="dur-filter" onchange="applyFilters()" value="1n2d"><label>1 Night · 2 Days</label></label>
+        <label class="sb-opt"><input type="checkbox" class="dur-filter" onchange="applyFilters()" value="2n3d"><label>2 Nights · 3 Days</label></label>
+        <label class="sb-opt"><input type="checkbox" class="dur-filter" onchange="applyFilters()" value="3n4d"><label>3 Nights · 4 Days</label></label>
+      </div>
+    </div>
+  </aside>
+  <div>
+    <div class="sort-strip">
+      <span class="sort-lbl">Sort:</span>
+      <button class="sort-btn active" onclick="sortCards('rec',this)">Recommended</button>
+      <button class="sort-btn" onclick="sortCards('price-low',this)">Price ↑</button>
+      <button class="sort-btn" onclick="sortCards('price-high',this)">Price ↓</button>
+      <button class="sort-btn" onclick="sortCards('rating',this)">Top Rated</button>
+      <div class="result-count"><strong id="countNum">6</strong> Resorts Found</div>
+    </div>
+    <div class="cards" id="cardsContainer">
+
+      <div class="rcard" data-stars="4" data-price="8999" data-rating="4.4" data-amenities="pool raindance river wifi" data-dur="1n2d">
+        <div class="rcard-img">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Riverpoint Resort">
+          <div class="rcard-badges"><span class="rbadge rb-cat">👨‍👩‍👧‍👦 Family Pick</span><span class="rbadge rb-deal">Most Popular</span></div>
+          <button class="rcard-heart" onclick="toggleHeart(this)">🤍</button>
+          <div class="rcard-thumbs"><div class="rthumb"><img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt=""></div><div class="rthumb-more">+6</div></div>
+        </div>
+        <div class="rcard-info">
+          <div class="rcard-top"><div class="rcard-name">Riverpoint Resort</div><div class="rcard-rating"><div class="rating-badge">4.4</div><div class="rating-count">203 reviews</div></div></div>
+          <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Resort</span><span class="rcard-dist">📍 Kali Riverside, Dandeli</span></div>
+          <div class="rcard-tags"><span class="rtag">✓ Kid Friendly</span><span class="rtag">✓ Pool & Rain Dance</span><span class="rtag">✓ Free Cancellation</span></div>
+          <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">🌊 River View</span><span class="ramenity">📶 WiFi</span><span class="ramenity">🍽 Restaurant</span></div>
+          <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Pool Access</span><span class="rinc">Crocodile Park</span><span class="rinc">Supa Dam</span><span class="rinc">Rain Dance</span></div>
+          <div class="rcard-price-row">
+            <div><div class="rdiscount">💰 Save 22%</div><div class="rprice-cross">₹11,500</div><div class="rprice">₹8,999 <span class="rprice-unit">/family·night</span></div><div class="rprice-tax">+₹900 taxes · <span>Free cancellation</span></div></div>
+            <div class="rcard-ctas"><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! I want to book Riverpoint Resort - Family Package at ₹8,999/family" class="btn-book">Book Now</a><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! Enquiry about Riverpoint Resort - Family Package" class="btn-wa">💬 WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard" data-stars="4" data-price="12999" data-rating="4.5" data-amenities="pool safari river wifi" data-dur="2n3d">
+        <div class="rcard-img">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Bison River Resort Family">
+          <div class="rcard-badges"><span class="rbadge rb-cat">👨‍👩‍👧‍👦 Adventure Family</span></div>
+          <button class="rcard-heart" onclick="toggleHeart(this)">🤍</button>
+          <div class="rcard-thumbs"><div class="rthumb"><img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt=""></div><div class="rthumb-more">+5</div></div>
+        </div>
+        <div class="rcard-info">
+          <div class="rcard-top"><div class="rcard-name">Bison River Resort</div><div class="rcard-rating"><div class="rating-badge">4.5</div><div class="rating-count">186 reviews</div></div></div>
+          <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Resort</span><span class="rcard-dist">📍 Kali River Bank, Dandeli</span></div>
+          <div class="rcard-tags"><span class="rtag">✓ Jeep Safari Included</span><span class="rtag">✓ Boating</span><span class="rtag">✓ Supa Dam Visit</span></div>
+          <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🦁 Safari</span><span class="ramenity">🛶 Boating</span><span class="ramenity">🌊 River View</span><span class="ramenity">🚗 Parking</span></div>
+          <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Jeep Safari</span><span class="rinc">Boating</span><span class="rinc">Supa Dam</span><span class="rinc">Campfire</span></div>
+          <div class="rcard-price-row">
+            <div><div class="rdiscount">💰 Save 19%</div><div class="rprice-cross">₹16,000</div><div class="rprice">₹12,999 <span class="rprice-unit">/family·night</span></div><div class="rprice-tax">+₹1,300 taxes · <span>Free cancellation</span></div></div>
+            <div class="rcard-ctas"><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! I want to book Bison River Resort - Family Package at ₹12,999/family" class="btn-book">Book Now</a><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! Enquiry about Bison River Resort - Family Package" class="btn-wa">💬 WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard" data-stars="5" data-price="22999" data-rating="4.7" data-amenities="pool raindance safari river wifi" data-dur="3n4d">
+        <div class="rcard-img">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Rain Forest Dandeli Family">
+          <div class="rcard-badges"><span class="rbadge rb-grand">👑 Grand Family</span><span class="rbadge rb-deal">Premium</span></div>
+          <button class="rcard-heart" onclick="toggleHeart(this)">🤍</button>
+          <div class="rcard-thumbs"><div class="rthumb"><img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt=""></div><div class="rthumb-more">+8</div></div>
+        </div>
+        <div class="rcard-info">
+          <div class="rcard-top"><div class="rcard-name">Rain Forest Dandeli</div><div class="rcard-rating"><div class="rating-badge" style="background:#1a5fa0;">4.7</div><div class="rating-count">312 reviews</div></div></div>
+          <div class="rcard-loc"><span class="rcard-stars">★★★★★</span><span style="font-size:11px;color:#888;">5 Star Luxury</span><span class="rcard-dist">📍 Forest Reserve Edge, Dandeli</span></div>
+          <div class="rcard-tags"><span class="rtag">✓ Family Suite</span><span class="rtag">✓ All Sightseeing</span><span class="rtag">✓ Premium Experience</span></div>
+          <div class="rcard-amenities"><span class="ramenity">🏊 Infinity Pool</span><span class="ramenity">🦁 Safari</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span></div>
+          <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Safari</span><span class="rinc">Bird Watching</span><span class="rinc">All Sightseeing</span><span class="rinc">Boating</span></div>
+          <div class="rcard-price-row">
+            <div><div class="rdiscount">💰 Save 21%</div><div class="rprice-cross">₹29,000</div><div class="rprice">₹22,999 <span class="rprice-unit">/family·night</span></div><div class="rprice-tax">+₹2,500 taxes · <span>Free cancellation</span></div></div>
+            <div class="rcard-ctas"><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! I want to book Rain Forest Dandeli - Grand Family Package at ₹22,999" class="btn-book">Book Now</a><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! Enquiry about Rain Forest Dandeli - Grand Family Package" class="btn-wa">💬 WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard" data-stars="3" data-price="6999" data-rating="4.1" data-amenities="pool raindance wifi" data-dur="1n2d">
+        <div class="rcard-img">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Dew Drops Resort Family">
+          <div class="rcard-badges"><span class="rbadge rb-deal">Budget Family</span></div>
+          <button class="rcard-heart" onclick="toggleHeart(this)">🤍</button>
+          <div class="rcard-thumbs"><div class="rthumb"><img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt=""></div><div class="rthumb-more">+3</div></div>
+        </div>
+        <div class="rcard-info">
+          <div class="rcard-top"><div class="rcard-name">Dew Drops Resort</div><div class="rcard-rating"><div class="rating-badge" style="background:#5a8a00;">4.1</div><div class="rating-count">112 reviews</div></div></div>
+          <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span style="font-size:11px;color:#888;">3 Star Resort</span><span class="rcard-dist">📍 Dandeli Village</span></div>
+          <div class="rcard-tags"><span class="rtag">✓ Budget Friendly</span><span class="rtag">✓ Kids Welcome</span></div>
+          <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">🌿 Nature Walk</span><span class="ramenity">🚗 Parking</span></div>
+          <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Pool Access</span><span class="rinc">Rain Dance</span><span class="rinc">Campfire</span></div>
+          <div class="rcard-price-row">
+            <div><div class="rdiscount">💰 Save 25%</div><div class="rprice-cross">₹9,300</div><div class="rprice">₹6,999 <span class="rprice-unit">/family·night</span></div><div class="rprice-tax">+₹700 taxes · <span>Free cancellation</span></div></div>
+            <div class="rcard-ctas"><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! I want to book Dew Drops Resort - Family Package at ₹6,999" class="btn-book">Book Now</a><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! Enquiry about Dew Drops Resort - Family Package" class="btn-wa">💬 WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard" data-stars="4" data-price="15999" data-rating="4.6" data-amenities="pool safari raindance river wifi" data-dur="2n3d">
+        <div class="rcard-img">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Tuskar Trail Family">
+          <div class="rcard-badges"><span class="rbadge rb-cat">👨‍👩‍👧‍👦 Top Rated</span></div>
+          <button class="rcard-heart" onclick="toggleHeart(this)">🤍</button>
+          <div class="rcard-thumbs"><div class="rthumb"><img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt=""></div><div class="rthumb-more">+5</div></div>
+        </div>
+        <div class="rcard-info">
+          <div class="rcard-top"><div class="rcard-name">Tuskar Trail Lake Resort</div><div class="rcard-rating"><div class="rating-badge">4.6</div><div class="rating-count">221 reviews</div></div></div>
+          <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Resort</span><span class="rcard-dist">📍 Lake View, Dandeli</span></div>
+          <div class="rcard-tags"><span class="rtag">✓ Safari Included</span><span class="rtag">✓ Lake View Rooms</span><span class="rtag">✓ Free Cancellation</span></div>
+          <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🦁 Safari</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">🌊 Lake View</span><span class="ramenity">📶 WiFi</span></div>
+          <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Jeep Safari</span><span class="rinc">Rain Dance</span><span class="rinc">Crocodile Park</span><span class="rinc">Boating</span></div>
+          <div class="rcard-price-row">
+            <div><div class="rdiscount">💰 Save 20%</div><div class="rprice-cross">₹20,000</div><div class="rprice">₹15,999 <span class="rprice-unit">/family·night</span></div><div class="rprice-tax">+₹1,600 taxes · <span>Free cancellation</span></div></div>
+            <div class="rcard-ctas"><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! I want to book Tuskar Trail Lake Resort - Family Package at ₹15,999" class="btn-book">Book Now</a><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! Enquiry about Tuskar Trail Lake Resort - Family Package" class="btn-wa">💬 WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard" data-stars="5" data-price="24999" data-rating="4.8" data-amenities="pool raindance safari river wifi" data-dur="3n4d">
+        <div class="rcard-img">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Heritage River Grand Family">
+          <div class="rcard-badges"><span class="rbadge rb-grand">👑 Grand Expedition</span></div>
+          <button class="rcard-heart" onclick="toggleHeart(this)">🤍</button>
+          <div class="rcard-thumbs"><div class="rthumb"><img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt=""></div><div class="rthumb-more">+7</div></div>
+        </div>
+        <div class="rcard-info">
+          <div class="rcard-top"><div class="rcard-name">Heritage River Resort</div><div class="rcard-rating"><div class="rating-badge" style="background:#7b3fa0;">4.8</div><div class="rating-count">248 reviews</div></div></div>
+          <div class="rcard-loc"><span class="rcard-stars">★★★★★</span><span style="font-size:11px;color:#888;">5 Star Luxury</span><span class="rcard-dist">📍 Opp. Bus Stop, Dandeli</span></div>
+          <div class="rcard-tags"><span class="rtag">✓ Family Villa</span><span class="rtag">✓ All Inclusive</span><span class="rtag">✓ Full Sightseeing</span></div>
+          <div class="rcard-amenities"><span class="ramenity">🏊 Infinity Pool</span><span class="ramenity">🦁 Safari</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">🌊 River View</span><span class="ramenity">❄️ AC</span></div>
+          <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Safari</span><span class="rinc">Bird Watching</span><span class="rinc">All Sightseeing</span><span class="rinc">Zorbing</span></div>
+          <div class="rcard-price-row">
+            <div><div class="rdiscount">💰 Save 17%</div><div class="rprice-cross">₹30,000</div><div class="rprice">₹24,999 <span class="rprice-unit">/family·night</span></div><div class="rprice-tax">+₹2,800 taxes · <span>Free cancellation</span></div></div>
+            <div class="rcard-ctas"><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! I want to book Heritage River Resort - Grand Family Package at ₹24,999" class="btn-book">Book Now</a><a href="https://api.whatsapp.com/send?phone=+919611943766&text=Hi! Enquiry about Heritage River Resort - Grand Family Package" class="btn-wa">💬 WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="no-results" id="noResults"><div style="font-size:50px;margin-bottom:14px;">👨‍👩‍👧‍👦</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;">No resorts match your filters</div><div style="font-size:14px;color:#888;">Try adjusting the filters to see more options</div></div>
+  </div>
+</div>
+<script>
+function applyFilters(){
+  const maxPrice=+document.getElementById('priceSlider').value;
+  const starVals=Array.from(document.querySelectorAll('.star-filter:checked')).map(i=>+i.value);
+  const amenVals=Array.from(document.querySelectorAll('.amen-filter:checked')).map(i=>i.value);
+  const durVals=Array.from(document.querySelectorAll('.dur-filter:checked')).map(i=>i.value);
+  let vis=0;
+  document.querySelectorAll('.rcard').forEach(c=>{
+    let show=true;
+    if(+c.dataset.price>maxPrice)show=false;
+    if(starVals.length&&!starVals.includes(+c.dataset.stars))show=false;
+    if(amenVals.length&&!amenVals.every(a=>c.dataset.amenities.includes(a)))show=false;
+    if(durVals.length&&!durVals.includes(c.dataset.dur))show=false;
+    c.style.display=show?'grid':'none';
+    if(show)vis++;
+  });
+  document.getElementById('countNum').textContent=vis;
+  document.getElementById('noResults').classList.toggle('show',vis===0);
+}
+function resetFilters(){
+  document.querySelectorAll('.sidebar input[type="checkbox"]').forEach(i=>i.checked=false);
+  document.getElementById('priceSlider').value=25000;
+  document.getElementById('priceVal').textContent='₹25,000';
+  document.querySelectorAll('.rcard').forEach(c=>c.style.display='grid');
+  document.getElementById('countNum').textContent=document.querySelectorAll('.rcard').length;
+  document.getElementById('noResults').classList.remove('show');
+}
+function sortCards(key,btn){
+  document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  const cont=document.getElementById('cardsContainer');
+  const cards=Array.from(cont.querySelectorAll('.rcard'));
+  cards.sort((a,b)=>{if(key==='price-low')return+a.dataset.price-+b.dataset.price;if(key==='price-high')return+b.dataset.price-+a.dataset.price;if(key==='rating')return+b.dataset.rating-+a.dataset.rating;return 0;});
+  cont.style.opacity='0';setTimeout(()=>{cards.forEach(c=>cont.appendChild(c));cont.style.opacity='1';cont.style.transition='opacity .3s';},200);
+}
+function toggleHeart(btn){btn.classList.toggle('liked');btn.textContent=btn.classList.contains('liked')?'❤️':'🤍';}
+</script>
+</body>
+</html>

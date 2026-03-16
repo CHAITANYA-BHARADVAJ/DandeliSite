@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dandeli Tour Packages</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   PACKAGES SECTION — HOME PAGE INSERT
+   Drop this entire block into index.html
+   just before the <!-- ══ REVIEWS ══ --> section
+══════════════════════════════════════ */
+
+:root {
+  --forest: #1a3a2a;
+  --moss: #2d5a3d;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f5f0e8;
+  --sand: #e8dfc8;
+  --text: #1a1a1a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); }
+
+/* ── PACKAGES SECTION ── */
+.pkg-section {
+  background: var(--cream);
+  padding: 90px 40px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pkg-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+.pkg-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Section header */
+.pkg-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pkg-sl {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.pkg-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.pkg-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.pkg-subtitle {
+  font-size: 14px;
+  color: #777;
+  letter-spacing: 0.5px;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.pkg-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 20px 0 0;
+}
+
+.pkg-div-line {
+  height: 0.5px;
+  width: 50px;
+  background: rgba(201,168,76,0.4);
+}
+
+.pkg-div-diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ── CATEGORY TABS ── */
+.pkg-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 50px;
+  border: 1px solid rgba(26,58,42,0.12);
+  border-radius: 50px;
+  padding: 5px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.pkg-tab {
+  padding: 11px 28px;
+  border: none;
+  background: transparent;
+  border-radius: 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.35s cubic-bezier(0.34,1.3,0.64,1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.pkg-tab-icon {
+  font-size: 15px;
+}
+
+.pkg-tab:hover {
+  color: var(--forest);
+}
+
+.pkg-tab.active {
+  background: var(--forest);
+  color: var(--gold);
+  box-shadow: 0 4px 16px rgba(26,58,42,0.25);
+}
+
+/* ── PACKAGE GRID ── */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  transition: opacity 0.3s;
+}
+
+.pkg-grid.fading {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* ── PACKAGE CARD ── */
+.pkg-card {
+  background: #fff;
+  border: 1px solid rgba(26,58,42,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  text-decoration: none;
+  display: block;
+}
+
+.pkg-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(26,58,42,0.14);
+  border-color: rgba(201,168,76,0.35);
+}
+
+.pkg-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.pkg-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* Card badge */
+.pkg-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.pkg-badge.popular {
+  background: var(--forest);
+}
+
+.pkg-badge.new-badge {
+  background: #e05c3a;
+}
+
+/* Card image area */
+.pkg-img-wrap {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  background: var(--forest);
+}
+
+.pkg-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  opacity: 0.85;
+}
+
+.pkg-card:hover .pkg-img-wrap img {
+  transform: scale(1.06);
+}
+
+.pkg-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,28,18,0.7) 0%, transparent 60%);
+}
+
+/* Category icon pill */
+.pkg-cat-pill {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px;
+  padding: 5px 13px 5px 8px;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.pkg-cat-emoji {
+  font-size: 14px;
+}
+
+/* Card body */
+.pkg-body {
+  padding: 22px 22px 20px;
+}
+
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+}
+
+.pkg-card:hover .pkg-name {
+  color: var(--moss);
+}
+
+.pkg-duration {
+  font-size: 11px;
+  color: #aaa;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* Amenities strip */
+.pkg-amenities {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.pkg-tag {
+  font-size: 10.5px;
+  color: #5a8a6a;
+  background: rgba(45,90,61,0.07);
+  border: 1px solid rgba(45,90,61,0.12);
+  border-radius: 20px;
+  padding: 3px 10px;
+  letter-spacing: 0.3px;
+}
+
+/* Price row */
+.pkg-price-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(26,58,42,0.07);
+}
+
+.pkg-price-left {}
+
+.pkg-price-label {
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.pkg-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1;
+}
+
+.pkg-price span {
+  font-size: 14px;
+  color: #aaa;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+}
+
+.pkg-price-crossed {
+  font-size: 13px;
+  color: #bbb;
+  text-decoration: line-through;
+  margin-left: 4px;
+}
+
+.pkg-savings {
+  font-size: 10px;
+  color: #4caf70;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.pkg-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--forest);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.pkg-card:hover .pkg-cta-btn {
+  background: var(--gold);
+  color: #fff;
+}
+
+.pkg-cta-arrow {
+  transition: transform 0.3s;
+}
+
+.pkg-card:hover .pkg-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ── HIGHLIGHT STRIP ── */
+.pkg-highlights {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--forest);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pkg-hl {
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.3s;
+}
+
+.pkg-hl:last-child { border-right: none; }
+
+.pkg-hl:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.pkg-hl-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.pkg-hl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: var(--gold-light);
+  margin-bottom: 3px;
+}
+
+.pkg-hl-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+  .pkg-highlights { grid-template-columns: repeat(2, 1fr); }
+  .pkg-hl:nth-child(2) { border-right: none; }
+  .pkg-hl:nth-child(3) { border-right: none; border-top: 1px solid rgba(255,255,255,0.08); }
+  .pkg-hl:last-child { border-top: 1px solid rgba(255,255,255,0.08); }
+}
+
+@media (max-width: 600px) {
+  .pkg-section { padding: 60px 20px 70px; }
+  .pkg-grid { grid-template-columns: 1fr; }
+  .pkg-tabs { width: 100%; border-radius: 12px; flex-wrap: wrap; }
+  .pkg-tab { flex: 1; justify-content: center; border-radius: 8px; }
+  .pkg-highlights { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     PACKAGES SECTION — INSERT INTO index.html
+     Place this block right before <!-- ══ REVIEWS ══ -->
+═══════════════════════════════════════════════════ -->
+
+<section class="pkg-section" id="packages">
+  <div class="pkg-inner">
+
+    <!-- Header -->
+    <div class="pkg-header">
+      <div class="pkg-sl">Curated Escapes</div>
+      <h2 class="pkg-title">Dandeli Tour <em>Packages</em></h2>
+      <div class="pkg-divider">
+        <div class="pkg-div-line"></div>
+        <div class="pkg-div-diamond"></div>
+        <div class="pkg-div-line"></div>
+      </div>
+      <p class="pkg-subtitle" style="margin-top:16px;">Handcrafted experiences for every kind of traveller — from college adventures to romantic retreats and family memories</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="pkg-tabs">
+      <button class="pkg-tab active" onclick="filterPkg('all', this)">
+        <span class="pkg-tab-icon">🌿</span> All Packages
+      </button>
+      <button class="pkg-tab" onclick="filterPkg('student', this)">
+        <span class="pkg-tab-icon">🎒</span> Student
+      </button>
+      <button class="pkg-tab" onclick="filterPkg('couple', this)">
+        <span class="pkg-tab-icon">💑</span> Couple
+      </button>
+      <button class="pkg-tab" onclick="filterPkg('family', this)">
+        <span class="pkg-tab-icon">👨‍👩‍👧‍👦</span> Family
+      </button>
+    </div>
+
+    <!-- Package Grid -->
+    <div class="pkg-grid" id="pkgGrid">
+
+      <!-- STUDENT PACKAGES -->
+      <a class="pkg-card" data-cat="student" href="resort-listing.html?pkg=student-adventure" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge">Best Value</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Adventure Package">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">🎒</span> Student</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Jungle Thrill Adventure</div>
+          <div class="pkg-duration">1 Night · 2 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Rafting</span>
+            <span class="pkg-tag">Kayaking</span>
+            <span class="pkg-tag">Camping</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">Per Person</div>
+              <div class="pkg-price">₹2,499 <span>/person</span> <span class="pkg-price-crossed">₹3,200</span></div>
+              <div class="pkg-savings">Save ₹701 per head</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="pkg-card" data-cat="student" href="resort-listing.html?pkg=student-budget" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge new-badge">New</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Budget Camp">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">🎒</span> Student</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Budget Backpacker Camp</div>
+          <div class="pkg-duration">2 Nights · 3 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Trekking</span>
+            <span class="pkg-tag">Campfire</span>
+            <span class="pkg-tag">Zorbing</span>
+            <span class="pkg-tag">Breakfast</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">Per Person</div>
+              <div class="pkg-price">₹3,499 <span>/person</span> <span class="pkg-price-crossed">₹4,500</span></div>
+              <div class="pkg-savings">Save ₹1,001 per head</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="pkg-card" data-cat="student" href="resort-listing.html?pkg=student-group" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge popular">Popular</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Group Tour">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">🎒</span> Student</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">College Group Tour (10+)</div>
+          <div class="pkg-duration">2 Nights · 3 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Jeep Safari</span>
+            <span class="pkg-tag">Boating</span>
+            <span class="pkg-tag">Sightseeing</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">Per Person (min 10)</div>
+              <div class="pkg-price">₹1,999 <span>/person</span> <span class="pkg-price-crossed">₹2,800</span></div>
+              <div class="pkg-savings">Save ₹801 per head</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- COUPLE PACKAGES -->
+      <a class="pkg-card" data-cat="couple" href="resort-listing.html?pkg=couple-romantic" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge popular">Popular</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Romantic Escape">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">💑</span> Couple</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Riverside Romance</div>
+          <div class="pkg-duration">1 Night · 2 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">River View</span>
+            <span class="pkg-tag">Candlelight Dinner</span>
+            <span class="pkg-tag">Jacuzzi</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">Per Couple</div>
+              <div class="pkg-price">₹6,499 <span>/couple</span> <span class="pkg-price-crossed">₹8,500</span></div>
+              <div class="pkg-savings">Save ₹2,001 per couple</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="pkg-card" data-cat="couple" href="resort-listing.html?pkg=couple-luxury" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge" style="background:#8b5e3c;">Luxury</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Luxury Retreat">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">💑</span> Couple</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Forest Luxury Retreat</div>
+          <div class="pkg-duration">2 Nights · 3 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Forest Cottage</span>
+            <span class="pkg-tag">Spa</span>
+            <span class="pkg-tag">Private Bonfire</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">Per Couple</div>
+              <div class="pkg-price">₹9,999 <span>/couple</span> <span class="pkg-price-crossed">₹13,000</span></div>
+              <div class="pkg-savings">Save ₹3,001 per couple</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="pkg-card" data-cat="couple" href="resort-listing.html?pkg=couple-honeymoon" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge new-badge">Honeymoon</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Honeymoon">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">💑</span> Couple</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Honeymoon in the Wild</div>
+          <div class="pkg-duration">3 Nights · 4 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Premium Cottage</span>
+            <span class="pkg-tag">Boat Ride</span>
+            <span class="pkg-tag">Nature Walk</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">Per Couple</div>
+              <div class="pkg-price">₹14,999 <span>/couple</span> <span class="pkg-price-crossed">₹19,000</span></div>
+              <div class="pkg-savings">Save ₹4,001 per couple</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- FAMILY PACKAGES -->
+      <a class="pkg-card" data-cat="family" href="resort-listing.html?pkg=family-weekend" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge popular">Popular</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Family Weekend">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">👨‍👩‍👧‍👦</span> Family</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Family Weekend Getaway</div>
+          <div class="pkg-duration">1 Night · 2 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Pool</span>
+            <span class="pkg-tag">Rain Dance</span>
+            <span class="pkg-tag">Crocodile Park</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">For 2 Adults + 2 Kids</div>
+              <div class="pkg-price">₹8,999 <span>/family</span> <span class="pkg-price-crossed">₹11,500</span></div>
+              <div class="pkg-savings">Save ₹2,501</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="pkg-card" data-cat="family" href="resort-listing.html?pkg=family-adventure" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge">Best Pick</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Family Adventure">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">👨‍👩‍👧‍👦</span> Family</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Wild Family Adventure</div>
+          <div class="pkg-duration">2 Nights · 3 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Jeep Safari</span>
+            <span class="pkg-tag">Boating</span>
+            <span class="pkg-tag">Supa Dam</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">For 2 Adults + 2 Kids</div>
+              <div class="pkg-price">₹12,999 <span>/family</span> <span class="pkg-price-crossed">₹16,000</span></div>
+              <div class="pkg-savings">Save ₹3,001</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="pkg-card" data-cat="family" href="resort-listing.html?pkg=family-grand" style="text-decoration:none;color:inherit;">
+        <div class="pkg-badge" style="background:#8b5e3c;">Grand</div>
+        <div class="pkg-img-wrap">
+          <img src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" alt="Grand Family">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-cat-pill"><span class="pkg-cat-emoji">👨‍👩‍👧‍👦</span> Family</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Grand Family Expedition</div>
+          <div class="pkg-duration">3 Nights · 4 Days</div>
+          <div class="pkg-amenities">
+            <span class="pkg-tag">Safari</span>
+            <span class="pkg-tag">Bird Watching</span>
+            <span class="pkg-tag">All Sightseeing</span>
+            <span class="pkg-tag">All Meals</span>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price-left">
+              <div class="pkg-price-label">For 2 Adults + 2 Kids</div>
+              <div class="pkg-price">₹18,999 <span>/family</span> <span class="pkg-price-crossed">₹24,000</span></div>
+              <div class="pkg-savings">Save ₹5,001</div>
+            </div>
+            <div class="pkg-cta-btn">View <span class="pkg-cta-arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <!-- /pkg-grid -->
+
+    <!-- Highlight strip -->
+    <div class="pkg-highlights">
+      <div class="pkg-hl">
+        <div class="pkg-hl-icon">✅</div>
+        <div>
+          <div class="pkg-hl-title">All Meals Included</div>
+          <div class="pkg-hl-sub">Breakfast, Lunch, Dinner</div>
+        </div>
+      </div>
+      <div class="pkg-hl">
+        <div class="pkg-hl-icon">🛡️</div>
+        <div>
+          <div class="pkg-hl-title">Instant Confirmation</div>
+          <div class="pkg-hl-sub">Book via WhatsApp</div>
+        </div>
+      </div>
+      <div class="pkg-hl">
+        <div class="pkg-hl-icon">💯</div>
+        <div>
+          <div class="pkg-hl-title">Best Price Guarantee</div>
+          <div class="pkg-hl-sub">No hidden charges</div>
+        </div>
+      </div>
+      <div class="pkg-hl">
+        <div class="pkg-hl-icon">🔄</div>
+        <div>
+          <div class="pkg-hl-title">Free Cancellation</div>
+          <div class="pkg-hl-sub">Up to 48 hrs before</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ══ END PACKAGES SECTION ══ -->
+
+<script>
+/* ── PACKAGE FILTER ── */
+function filterPkg(cat, btn) {
+  // Tab active state
+  document.querySelectorAll('.pkg-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const grid = document.getElementById('pkgGrid');
+  grid.classList.add('fading');
+
+  setTimeout(() => {
+    document.querySelectorAll('.pkg-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    grid.classList.remove('fading');
+    grid.style.opacity = '1';
+    grid.style.transform = 'none';
+    grid.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+  }, 260);
+}
+</script>
+
+</body>
+</html>
