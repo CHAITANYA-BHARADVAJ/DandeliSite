@@ -328,22 +328,131 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 /* ══════════════════════════════════════
    SIDEBAR
 ══════════════════════════════════════ */
-.sc{background:#fff;border:1px solid #e8e0d0;border-radius:4px;overflow:hidden;position:sticky;top:90px;box-shadow:0 4px 20px rgba(0,0,0,.08);}
-.sch{background:linear-gradient(135deg,var(--forest),var(--moss));padding:32px;text-align:center;position:relative;overflow:hidden;}
-.sch::after{content:'';position:absolute;width:200px;height:200px;border:60px solid rgba(255,255,255,.04);border-radius:50%;bottom:-80px;right:-60px;}
-.sch h3{font-family:'Cormorant Garamond',serif;color:#fff;font-size:26px;font-weight:400;margin-bottom:6px;position:relative;}
-.sch p{color:rgba(255,255,255,.65);font-size:13px;position:relative;}
-.scb{padding:28px;}
-.ci{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid #f0f0f0;}
-.ci:last-child{border-bottom:none;}
-.cico{width:42px;height:42px;background:var(--sand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:transform .3s;}
-.ci:hover .cico{transform:scale(1.1) rotate(5deg);}
-.cl{font-size:11px;color:#999;letter-spacing:1px;text-transform:uppercase;}
-.cv{font-size:14px;color:var(--text);font-weight:500;}
-.cv a{color:var(--moss);text-decoration:none;}
-.scta{display:block;margin-top:20px;background:var(--gold);color:#fff;text-decoration:none;text-align:center;padding:15px;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;position:relative;overflow:hidden;}
-.scta::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-105%);transition:transform .4s;}
-.scta:hover::after{transform:translateX(0);}
+.sc {
+  background: #fff;
+  border: 1px solid #e8e0d0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: sticky;
+  top: 90px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  margin-top: 10px;
+}
+
+.sch {
+  background: linear-gradient(135deg, var(--forest), var(--moss));
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sch::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 60px solid rgba(255,255,255,.04);
+  border-radius: 50%;
+  bottom: -80px;
+  right: -60px;
+}
+
+.sch h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.sch p {
+  color: rgba(255,255,255,.65);
+  font-size: 13px;
+  position: relative;
+}
+
+.scb {
+  padding: 28px;
+}
+
+.ci {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ci:last-child {
+  border-bottom: none;
+}
+
+.cico {
+  width: 42px;
+  height: 42px;
+  background: var(--sand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: transform .3s;
+}
+
+.ci:hover .cico {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cl {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cv {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.cv a {
+  color: var(--moss);
+  text-decoration: none;
+}
+
+.scta {
+  display: block;
+  margin-top: 20px;
+  background: var(--gold);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.scta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.15);
+  transform: translateX(-105%);
+  transition: transform .4s;
+}
+
+.scta:hover::after {
+  transform: translateX(0);
+}
 
 /* Weather */
 .ww{background:linear-gradient(135deg,#1a4f35,#0d2f20);border-radius:4px;padding:20px;color:#fff;margin-top:20px;position:relative;overflow:hidden;}
