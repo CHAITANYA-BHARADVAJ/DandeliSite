@@ -315,7 +315,7 @@ body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);}
     </div></div>
     <div class="no-results" id="noRes"><div style="font-size:50px;margin-bottom:14px;">🏕️</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;">No resorts match your filters</div><div style="font-size:13px;color:#888;">Try adjusting your filters</div></div>
   </div>
-</div>
+
 
 <script>
 function sortCards(k,btn){document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('act'));btn.classList.add('act');const c=document.getElementById('cards');const cards=[...c.querySelectorAll('.card')];cards.sort((a,b)=>{if(k==='low')return+a.dataset.price-+b.dataset.price;if(k==='high')return+b.dataset.price-+a.dataset.price;if(k==='rating')return+b.dataset.rating-+a.dataset.rating;return 0;});c.style.opacity='0';setTimeout(()=>{cards.forEach(x=>c.appendChild(x));c.style.opacity='1';c.style.transition='opacity .3s';},200);}
