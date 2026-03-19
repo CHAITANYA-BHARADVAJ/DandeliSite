@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  RESORT DETAIL PAGE — Book myDandeli                       ║
+     ║  HOW TO EDIT FOR EACH RESORT:                              ║
+     ║  1. Change <title> tag                                     ║
+     ║  2. Edit the JS CONFIG BLOCK at the bottom (~line 700+)    ║
+     ║     — All text, prices, is,mage amenities live there.      ║
+     ║  3.  AlDone.l sections update automatically.               ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+
+<title>Heritage River Resort — Book myDandeli</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   CSS VARIABLES — matches site design
+═══════════════════════════════════════ */
+:root{
+  --forest:#1a3a2a; --moss:#2d5a3d; --gold:#c9a84c; --gold-light:#e8c97a;
+  --cream:#f5f0e8; --sand:#e8dfc8; --text:#1a1a1a; --white:#fff;
+  --border:rgba(26,58,42,.1); --shadow:rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ═══ PROGRESS BAR ═══ */
+#pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:9999;width:0;transition:width .12s;}
+
+/* ═══ CURSOR ═══ */
+.cursor,.cursor-f{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;}
+.cursor{width:10px;height:10px;background:var(--gold);margin-top:-5px;margin-left:-5px;transition:transform .05s;}
+.cursor-f{width:36px;height:36px;border:1.5px solid var(--gold);opacity:.5;margin-top:-18px;margin-left:-18px;transition:opacity .3s;}
+@media(hover:none){.cursor,.cursor-f{display:none;}}
+
+/* ═══ TOPBAR ═══ */
+.topbar{background:var(--forest);color:#bbb;padding:8px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+.topbar a{color:#bbb;text-decoration:none;transition:color .3s;}
+.topbar a:hover{color:var(--gold);}
+.tb-r{display:flex;gap:20px;align-items:center;}
+.soc{width:26px;height:26px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#bbb;text-decoration:none;font-size:11px;transition:all .3s;}
+.soc:hover{background:var(--gold);border-color:var(--gold);color:#fff;transform:rotate(15deg) scale(1.2);}
+.bnow{background:var(--gold);color:#fff!important;padding:6px 18px;font-weight:500;font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;}
+.bnow::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.25);transform:translateX(-110%) skewX(-15deg);transition:transform .4s;}
+.bnow:hover::after{transform:translateX(110%) skewX(-15deg);}
+
+/* ═══ NAV ═══ */
+nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,.08);position:sticky;top:0;z-index:100;transition:box-shadow .3s;}
+.logo{height:52px;display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--forest);text-decoration:none;}
+.leaf{font-size:26px;animation:sway 3s ease-in-out infinite;}
+@keyframes sway{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
+.nl{display:flex;list-style:none;}
+.nl>li{position:relative;}
+.nl>li>a{display:block;padding:22px 15px;font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color .3s;position:relative;}
+.nl>li>a::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:3px;background:var(--gold);transition:left .3s,right .3s;}
+.nl>li>a:hover::after{left:0;right:0;}
+.nl>li>a:hover{color:var(--moss);}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;}
+.hbg span{width:22px;height:2px;background:var(--forest);display:block;}
+.mob{position:fixed;inset:0;background:var(--forest);z-index:500;padding:80px 40px;transform:translateX(100%);transition:transform .4s cubic-bezier(.77,0,.175,1);}
+.mob.open{transform:none;}
+.mob a{display:block;font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+.mob-x{position:absolute;top:24px;right:30px;font-size:28px;color:#fff;cursor:pointer;background:none;border:none;}
+
+/* ═══ HERO GALLERY ═══ */
+.hero{position:relative;height:92vh;min-height:600px;max-height:860px;overflow:hidden;background:var(--forest);}
+.hero-slides{position:absolute;inset:0;display:flex;transition:transform .8s cubic-bezier(.77,0,.175,1);}
+.hero-slide{flex-shrink:0;width:100%;height:100%;position:relative;overflow:hidden;}
+.hero-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 6s ease;}
+.hero-slide.active img{transform:scale(1);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,10,.88) 0%,rgba(5,18,10,.4) 45%,rgba(5,18,10,.25) 100%);}
+
+/* hero content */
+.hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 60px 60px;display:grid;grid-template-columns:1fr auto;align-items:flex-end;gap:30px;z-index:10;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.15);backdrop-filter:blur(10px);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:9.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;width:fit-content;opacity:0;animation:hRise .6s .3s ease forwards;}
+.hero-stars{color:var(--gold);font-size:15px;letter-spacing:3px;margin-bottom:12px;display:block;opacity:0;animation:hRise .6s .4s ease forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,74px);font-weight:300;color:#fff;letter-spacing:2px;line-height:1.05;opacity:0;animation:hRise .9s .5s cubic-bezier(.22,1,.36,1) forwards;}
+.hero-title em{color:var(--gold);font-style:italic;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.4);margin-top:10px;letter-spacing:1px;opacity:0;animation:hRise .6s .75s ease forwards;}
+.hero-orn{display:flex;align-items:center;gap:12px;margin-top:18px;opacity:0;animation:hFade .5s .95s ease forwards;}
+.hero-orn-line{height:.5px;background:rgba(201,168,76,.4);width:0;animation:hLine 1s 1s ease forwards;}
+@keyframes hLine{to{width:48px;}}
+.hero-orn-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg) scale(0);animation:hDia .4s 1.1s cubic-bezier(.34,1.6,.64,1) forwards;}
+@keyframes hRise{to{opacity:1;transform:none;} from{opacity:0;transform:translateY(22px);}}
+@keyframes hFade{to{opacity:1;}}
+@keyframes hDia{to{transform:rotate(45deg) scale(1);}}
+
+/* hero quick stats */
+.hero-stats{display:flex;flex-direction:column;gap:16px;align-items:flex-end;opacity:0;animation:hFade .7s .6s ease forwards;}
+.hstat{text-align:right;}
+.hstat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;line-height:1;}
+.hstat-n em{color:var(--gold);font-style:normal;}
+.hstat-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px;}
+.hstat-div{width:80px;height:.5px;background:rgba(255,255,255,.1);align-self:flex-end;}
+
+/* gallery thumbnails */
+.gallery-thumbs{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10;opacity:0;animation:hFade .5s 1.2s ease forwards;}
+.gthumb{width:52px;height:36px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .3s;opacity:.55;}
+.gthumb.active{border-color:var(--gold);opacity:1;}
+.gthumb img{width:100%;height:100%;object-fit:cover;}
+
+/* nav arrows */
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:18px;cursor:pointer;z-index:10;transition:all .3s;display:flex;align-items:center;justify-content:center;}
+.hero-arrow:hover{background:var(--gold);border-color:var(--gold);}
+.hero-prev{left:24px;}
+.hero-next{right:24px;}
+
+/* scroll indicator */
+.scroll-hint{position:absolute;bottom:28px;right:28px;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:10;opacity:0;animation:hFade .5s 1.5s ease forwards;}
+.scroll-hint-text{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl;}
+.scroll-hint-line{width:1px;height:0;background:rgba(201,168,76,.5);animation:scrollLine 1.5s 1.8s ease forwards infinite;}
+@keyframes scrollLine{0%{height:0;opacity:1;}100%{height:40px;opacity:0;}}
+
+/* ═══ BREADCRUMB STRIP ═══ */
+.bc-strip{background:var(--forest);padding:12px 60px;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.bc-strip a{color:rgba(201,168,76,.6);text-decoration:none;transition:color .2s;}
+.bc-strip a:hover{color:var(--gold);}
+.bc-sep{opacity:.25;}
+
+/* ═══ MAIN LAYOUT ═══ */
+.main-wrap{max-width:1320px;margin:0 auto;padding:56px 60px 80px;display:grid;grid-template-columns:1fr 360px;gap:52px;align-items:start;}
+
+/* ═══ SECTION LABELS ═══ */
+.sl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,38px);font-weight:600;color:var(--forest);line-height:1.2;margin-bottom:14px;}
+.rule{width:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));margin-bottom:28px;transition:width .9s ease;}
+.rule.go{width:48px;}
+
+/* ═══ OVERVIEW SECTION ═══ */
+.overview{margin-bottom:56px;}
+.overview-body{font-size:15px;color:#555;line-height:2;font-weight:300;}
+.overview-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;}
+.oh-item{background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:20px 18px;text-align:center;transition:all .35s;cursor:default;}
+.oh-item:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.08);}
+.oh-icon{font-size:22px;margin-bottom:8px;display:block;}
+.oh-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--forest);display:block;line-height:1;}
+.oh-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-top:4px;display:block;}
+
+/* ═══ AMENITIES ═══ */
+.amenities-section{margin-bottom:56px;}
+.amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;}
+.am-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:4px;transition:all .3s;cursor:default;}
+.am-item:hover{border-color:rgba(201,168,76,.4);transform:translateX(4px);box-shadow:0 6px 20px rgba(0,0,0,.06);}
+.am-icon{font-size:20px;width:38px;height:38px;background:rgba(201,168,76,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s;}
+.am-item:hover .am-icon{background:rgba(201,168,76,.15);}
+.am-text{font-size:13px;color:#444;font-weight:400;}
+
+/* ═══ ROOMS ═══ */
+.rooms-section{margin-bottom:56px;}
+.rooms-grid{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+.room-card{background:#fff;border:1px solid var(--border);display:grid;grid-template-columns:220px 1fr;overflow:hidden;transition:all .4s;cursor:pointer;}
+.room-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.1);transform:translateY(-3px);border-color:rgba(201,168,76,.3);}
+.room-img{position:relative;overflow:hidden;height:180px;}
+.room-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.room-card:hover .room-img img{transform:scale(1.07);}
+.room-badge{position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;}
+.room-body{padding:20px 24px;display:flex;flex-direction:column;}
+.room-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--forest);margin-bottom:6px;}
+.room-desc{font-size:13px;color:#666;line-height:1.7;font-weight:300;flex:1;margin-bottom:14px;}
+.room-features{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.room-feat{font-size:11px;color:var(--moss);background:rgba(45,90,61,.06);border:1px solid rgba(45,90,61,.12);border-radius:20px;padding:3px 10px;}
+.room-bottom{display:flex;align-items:flex-end;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border);}
+.room-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--forest);line-height:1;}
+.room-price-unit{font-size:12px;color:#aaa;font-family:'Jost',sans-serif;font-weight:300;}
+.room-book-btn{background:var(--forest);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;border:none;cursor:pointer;transition:all .3s;}
+.room-book-btn:hover{background:var(--gold);color:#fff;}
+
+/* ═══ INCLUSIONS ═══ */
+.inc-section{margin-bottom:56px;}
+.inc-tabs{display:flex;gap:0;border-bottom:2px solid rgba(26,58,42,.08);margin-top:24px;}
+.inc-tab{padding:12px 24px;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#888;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .3s;}
+.inc-tab.active{color:var(--forest);border-bottom-color:var(--gold);}
+.inc-panel{display:none;padding:24px 0 0;}
+.inc-panel.active{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.inc-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border:1px solid var(--border);transition:all .3s;}
+.inc-item:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.02);}
+.inc-check{width:20px;height:20px;border-radius:50%;background:rgba(76,175,112,.1);border:1px solid rgba(76,175,112,.25);display:flex;align-items:center;justify-content:center;font-size:10px;color:#4caf70;flex-shrink:0;}
+.inc-text{font-size:13px;color:#555;}
+.exc-item .inc-check{background:rgba(220,80,60,.08);border-color:rgba(220,80,60,.2);color:#dc503c;}
+
+/* ═══ ACTIVITIES ═══ */
+.act-section{margin-bottom:56px;}
+.act-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px;}
+.act-card{position:relative;height:160px;overflow:hidden;border-radius:4px;cursor:pointer;display:block;text-decoration:none;}
+.act-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;}
+.act-card:hover img{transform:scale(1.08);}
+.act-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,10,.8) 0%,rgba(5,18,10,.2) 60%,transparent 100%);transition:background .4s;}
+.act-card:hover .act-card-overlay{background:linear-gradient(to top,rgba(5,18,10,.9) 0%,rgba(5,18,10,.4) 60%,transparent 100%);}
+.act-card-cat{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(10,20,14,.6);border:1px solid rgba(201,168,76,.3);padding:4px 10px;backdrop-filter:blur(4px);}
+.act-card-label{position:absolute;bottom:12px;left:14px;right:14px;}
+.act-card-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:400;display:block;margin-bottom:4px;}
+.act-card-meta{font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px;}
+
+/* ═══ REVIEWS ═══ */
+.reviews-section{margin-bottom:56px;}
+.rating-overview{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;background:#fff;border:1px solid var(--border);border-top:4px solid var(--gold);padding:28px;margin-top:24px;margin-bottom:20px;}
+.rating-big{text-align:center;}
+.rating-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--forest);line-height:1;}
+.rating-stars{color:var(--gold);font-size:16px;letter-spacing:3px;margin:4px 0;}
+.rating-count{font-size:11px;color:#aaa;letter-spacing:1px;text-transform:uppercase;}
+.rating-bars{display:flex;flex-direction:column;gap:8px;}
+.rbar-row{display:flex;align-items:center;gap:10px;}
+.rbar-label{font-size:12px;color:#888;width:80px;flex-shrink:0;}
+.rbar-track{flex:1;height:5px;background:#f0ece4;border-radius:3px;overflow:hidden;}
+.rbar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;width:0;transition:width 1.2s ease;}
+.rbar-pct{font-size:12px;color:#999;width:36px;text-align:right;flex-shrink:0;}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.rev-card{background:#fff;border:1px solid var(--border);padding:24px;position:relative;transition:all .35s;}
+.rev-card::before{content:'\275D';position:absolute;top:14px;right:18px;font-size:44px;color:var(--sand);line-height:1;}
+.rev-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.08);border-color:rgba(201,168,76,.25);}
+.rev-stars{color:var(--gold);font-size:12px;margin-bottom:10px;}
+.rev-text{font-size:13.5px;color:#555;line-height:1.8;font-style:italic;margin-bottom:14px;}
+.rev-author{font-size:13px;font-weight:600;color:var(--forest);}
+.rev-date{font-size:11px;color:#bbb;margin-top:2px;}
+
+/* ═══ MAP / LOCATION ═══ */
+.location-section{margin-bottom:56px;}
+.location-body{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
+.map-placeholder{background:var(--forest);height:280px;border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
+.map-bg{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");opacity:.4;}
+.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.06) 1px,transparent 1px);background-size:30px 30px;}
+.map-pin{position:relative;z-index:2;text-align:center;}
+.map-pin-dot{width:16px;height:16px;background:var(--gold);border-radius:50%;margin:0 auto 8px;box-shadow:0 0 0 5px rgba(201,168,76,.2),0 0 0 10px rgba(201,168,76,.1);animation:pinPulse 2s infinite;}
+@keyframes pinPulse{0%,100%{box-shadow:0 0 0 5px rgba(201,168,76,.2),0 0 0 10px rgba(201,168,76,.1);}50%{box-shadow:0 0 0 8px rgba(201,168,76,.15),0 0 0 16px rgba(201,168,76,.05);}}
+.map-pin-label{font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;opacity:.8;}
+.map-pin-cta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.7);margin-top:6px;}
+.location-details{display:flex;flex-direction:column;gap:16px;}
+.loc-item{display:flex;gap:14px;align-items:flex-start;}
+.loc-icon{width:36px;height:36px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px;}
+.loc-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#aaa;margin-bottom:3px;}
+.loc-val{font-size:14px;color:var(--text);}
+.directions-btn{display:inline-flex;align-items:center;gap:8px;margin-top:4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:.5px solid rgba(201,168,76,.3);padding-bottom:2px;transition:all .3s;}
+.directions-btn:hover{color:var(--forest);border-color:var(--forest);}
+
+/* ═══ POLICIES ═══ */
+.policy-section{margin-bottom:32px;}
+.policy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;}
+.policy-card{background:#fff;border:1px solid var(--border);padding:20px 18px;}
+.policy-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.policy-icon{font-size:18px;}
+.policy-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--forest);}
+.policy-items{list-style:none;}
+.policy-items li{font-size:12.5px;color:#666;padding:6px 0;border-bottom:1px solid rgba(26,58,42,.05);display:flex;align-items:flex-start;gap:8px;}
+.policy-items li:last-child{border-bottom:none;}
+.policy-items li::before{content:'·';color:var(--gold);font-size:18px;line-height:1;flex-shrink:0;}
+
+/* ═══ SIDEBAR / BOOKING CARD ═══ */
+.sidebar{position:sticky;top:90px;}
+.book-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+.book-head{background:linear-gradient(135deg,var(--forest),var(--moss));padding:28px 28px 24px;position:relative;overflow:hidden;}
+.book-head::after{content:'';position:absolute;width:200px;height:200px;border:50px solid rgba(255,255,255,.04);border-radius:50%;bottom:-80px;right:-60px;pointer-events:none;}
+.book-head-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px;}
+.book-head-price{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:#fff;line-height:1;}
+.book-head-unit{font-size:13px;color:rgba(255,255,255,.45);font-family:'Jost',sans-serif;}
+.book-head-crossed{font-size:16px;color:rgba(255,255,255,.35);text-decoration:line-through;margin-left:8px;}
+.book-head-save{display:inline-block;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;margin-top:8px;}
+.book-rating{display:flex;align-items:center;gap:6px;margin-top:10px;}
+.book-rating-badge{background:rgba(26,110,60,.9);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;border-radius:5px 5px 5px 0;}
+.book-rating-text{font-size:12px;color:rgba(255,255,255,.5);}
+.book-body{padding:24px 24px 28px;}
+
+/* form fields */
+.bf{margin-bottom:14px;}
+.bf label{display:block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.bf-wrap{position:relative;display:flex;align-items:stretch;}
+.bf-ico{
+  position:absolute;left:0;top:0;bottom:0;width:38px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;pointer-events:none;opacity:.5;z-index:1;
+  flex-shrink:0;
+}
+.bf input,.bf select{
+  width:100%;padding:11px 12px 11px 38px;
+  border:1.5px solid #e0d8c8;border-radius:3px;
+  font-family:'Jost',sans-serif;font-size:13px;color:var(--text);
+  background:#faf8f4;outline:none;
+  transition:border-color .25s,box-shadow .25s,background .2s;
+  -webkit-appearance:none;appearance:none;
+  line-height:1.4;
+}
+/* Date inputs: keep left padding for icon, right padding for native calendar icon */
+.bf input[type="date"]{
+  padding-right:10px;
+  cursor:pointer;
+}
+/* Prevent icon from clipping the native date picker trigger */
+.bf-wrap.date-wrap .bf-ico{pointer-events:none;}
+.bf input:focus,.bf select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1);background:#fff;}
+.bf input::placeholder{color:#ccc;}
+.bf select{padding-right:32px;cursor:pointer;}
+.bf-sel-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:11px;color:#aaa;pointer-events:none;}
+.bf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.book-submit{width:100%;margin-top:8px;background:linear-gradient(135deg,var(--forest),var(--moss));color:#fff;border:none;padding:16px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .35s;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;}
+.book-submit::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);transform:translateX(-110%) skewX(-15deg);transition:transform .4s;}
+.book-submit:hover::before{transform:translateX(110%) skewX(-15deg);}
+.book-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,42,.3);}
+.book-success{display:none;margin-top:12px;background:rgba(45,90,61,.1);border:1px solid rgba(45,90,61,.2);color:var(--moss);font-size:13px;text-align:center;padding:12px;animation:fadeIn .4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.book-wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;background:#25d366;color:#fff;text-decoration:none;padding:13px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;}
+.book-wa:hover{background:#20b958;transform:translateY(-1px);}
+.book-trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#888;}
+.trust-dot{width:4px;height:4px;background:var(--gold);border-radius:50%;}
+
+/* sidebar info cards */
+.side-card{background:#fff;border:1px solid var(--border);padding:20px;margin-top:16px;}
+.side-card-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.side-card-icon{font-size:18px;}
+.side-card-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--forest);}
+.sc-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(26,58,42,.05);}
+.sc-item:last-child{border-bottom:none;}
+.sc-item-icon{font-size:14px;margin-top:1px;}
+.sc-item-text{font-size:13px;color:#555;line-height:1.5;}
+
+/* ═══ WRITE A REVIEW ═══ */
+.write-review-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:20px;
+  background:var(--forest);color:var(--gold);
+  border:none;cursor:pointer;
+  padding:13px 28px;
+  font-family:'Jost',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.write-review-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.08);transform:translateX(-110%) skewX(-15deg);transition:transform .4s;}
+.write-review-btn:hover::before{transform:translateX(110%) skewX(-15deg);}
+.write-review-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,42,.25);}
+
+/* Modal backdrop */
+.rev-modal-backdrop{
+  position:fixed;inset:0;background:rgba(10,20,14,.6);
+  z-index:800;opacity:0;pointer-events:none;
+  transition:opacity .35s;backdrop-filter:blur(6px);
+}
+.rev-modal-backdrop.open{opacity:1;pointer-events:all;}
+
+/* Modal sheet */
+.rev-modal{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-44%) scale(.96);
+  z-index:900;background:#fff;
+  width:min(600px, calc(100vw - 32px));
+  max-height:92vh;overflow-y:auto;
+  border-radius:4px;
+  box-shadow:0 32px 80px rgba(0,0,0,.3);
+  transition:transform .4s cubic-bezier(.34,1.2,.64,1),opacity .35s;
+  opacity:0;pointer-events:none;
+  -webkit-overflow-scrolling:touch;
+}
+.rev-modal.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:all;}
+
+.rev-modal-header{
+  background:linear-gradient(135deg,var(--forest),var(--moss));
+  padding:28px 32px 24px;position:relative;overflow:hidden;
+}
+.rev-modal-header::after{content:'';position:absolute;width:180px;height:180px;border:50px solid rgba(255,255,255,.04);border-radius:50%;bottom:-70px;right:-50px;}
+.rev-modal-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:8px;}
+.rev-modal-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:#fff;line-height:1.1;}
+.rev-modal-title em{color:var(--gold);font-style:italic;}
+.rev-modal-sub{font-size:13px;color:rgba(255,255,255,.4);margin-top:6px;}
+.rev-modal-close{
+  position:absolute;top:20px;right:20px;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  color:#fff;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;z-index:2;
+}
+.rev-modal-close:hover{background:rgba(201,168,76,.3);border-color:var(--gold);}
+
+.rev-modal-body{padding:28px 32px 32px;}
+
+/* Star picker */
+.rev-stars-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#888;margin-bottom:10px;}
+.rev-star-picker{display:flex;gap:6px;margin-bottom:22px;flex-direction:row-reverse;justify-content:flex-end;}
+.rev-star-picker input{display:none;}
+.rev-star-picker label{
+  font-size:30px;color:#ddd;cursor:pointer;
+  transition:color .15s,transform .2s;
+  line-height:1;
+}
+.rev-star-picker label:hover,
+.rev-star-picker label:hover ~ label,
+.rev-star-picker input:checked ~ label{color:var(--gold);}
+.rev-star-picker label:hover{transform:scale(1.2);}
+
+/* Review form fields */
+.rf{margin-bottom:16px;}
+.rf label{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:7px;}
+.rf-wrap{position:relative;}
+.rf-ico{position:absolute;left:0;top:0;bottom:0;width:38px;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:.45;pointer-events:none;}
+.rf input,.rf select,.rf textarea{
+  width:100%;padding:11px 12px 11px 38px;
+  border:1.5px solid #e0d8c8;border-radius:3px;
+  font-family:'Jost',sans-serif;font-size:13px;color:var(--text);
+  background:#faf8f4;outline:none;resize:none;
+  transition:border-color .25s,box-shadow .25s,background .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.rf textarea{padding-left:14px;min-height:110px;line-height:1.65;}
+.rf input:focus,.rf select:focus,.rf textarea:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1);background:#fff;
+}
+.rf input::placeholder,.rf textarea::placeholder{color:#ccc;}
+.rf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rf-sel-wrap{position:relative;}
+.rf-sel-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:11px;color:#aaa;pointer-events:none;}
+.rf-sel-wrap select{padding-right:28px;}
+
+/* Character count */
+.rf-char{font-size:11px;color:#bbb;text-align:right;margin-top:4px;}
+.rf-char.warn{color:#e05c3a;}
+
+/* Helpful tags */
+.rf-tags-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:9px;}
+.rf-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.rf-tag-btn{
+  padding:6px 14px;border:1.5px solid #e0d8c8;border-radius:20px;
+  font-size:11.5px;color:#777;background:#faf8f4;cursor:pointer;
+  transition:all .25s;font-family:'Jost',sans-serif;
+}
+.rf-tag-btn.sel{background:rgba(201,168,76,.1);border-color:var(--gold);color:var(--forest);font-weight:600;}
+.rf-tag-btn:hover{border-color:var(--gold);color:var(--forest);}
+
+/* Submit */
+.rev-submit{
+  width:100%;background:linear-gradient(135deg,var(--forest),var(--moss));
+  color:#fff;border:none;padding:15px;
+  font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .35s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  position:relative;overflow:hidden;border-radius:3px;
+}
+.rev-submit::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);transform:translateX(-110%) skewX(-15deg);transition:transform .4s;}
+.rev-submit:hover::before{transform:translateX(110%) skewX(-15deg);}
+.rev-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,42,.28);}
+.rev-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* Success state */
+.rev-success{
+  display:none;text-align:center;padding:32px 20px;
+  animation:fadeIn .4s ease;
+}
+.rev-success-icon{font-size:48px;margin-bottom:12px;}
+.rev-success-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;}
+.rev-success-sub{font-size:14px;color:#888;line-height:1.7;}
+
+/* New review card animation */
+@keyframes reviewSlideIn{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:none;}}
+.rev-card.new-review{border-color:var(--gold);animation:reviewSlideIn .5s ease forwards;}
+.new-rev-badge{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.1);
+  border:1px solid rgba(201,168,76,.25);padding:2px 10px;border-radius:20px;
+  margin-bottom:6px;
+}
+
+/* ═══ CTA STRIP ═══ */
+.cta-strip{background:var(--forest);padding:64px 60px;position:relative;overflow:hidden;text-align:center;}
+.cta-strip::before{content:'';position:absolute;width:320px;height:320px;border:60px solid rgba(201,168,76,.06);border-radius:50%;top:-160px;left:-160px;}
+.cta-strip::after{content:'';position:absolute;width:240px;height:240px;border:50px solid rgba(201,168,76,.05);border-radius:50%;bottom:-120px;right:-120px;}
+.cta-sl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:300;color:#fff;margin-bottom:14px;}
+.cta-title em{color:var(--gold-light);font-style:italic;}
+.cta-body{color:rgba(255,255,255,.45);font-size:14px;max-width:440px;margin:0 auto 32px;line-height:1.8;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;}
+.cta-btn{display:inline-block;background:var(--gold);color:#fff;text-decoration:none;padding:15px 44px;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .35s;border:2px solid var(--gold);position:relative;overflow:hidden;}
+.cta-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-110%) skewX(-15deg);transition:transform .4s;}
+.cta-btn:hover::after{transform:translateX(110%) skewX(-15deg);}
+.cta-btn-outline{display:inline-block;background:transparent;color:rgba(255,255,255,.75);text-decoration:none;padding:15px 44px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:all .35s;border:1px solid rgba(255,255,255,.2);}
+.cta-btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ═══ FOOTER ═══ */
+footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;max-width:1200px;margin:0 auto;}
+.fl{font-family:'Cormorant Garamond',serif;color:#fff;font-size:22px;margin-bottom:16px;}
+.fd{font-size:13px;line-height:1.85;color:rgba(255,255,255,.5);}
+.fs{display:flex;gap:10px;margin-top:20px;}
+.fs a{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);text-decoration:none;font-size:13px;transition:all .3s;}
+.fs a:hover{border-color:var(--gold);color:var(--gold);}
+.fc h5{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1);}
+.fc ul{list-style:none;}
+.fc ul li{margin-bottom:9px;}
+.fc ul li a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:all .3s;display:inline-flex;align-items:center;gap:6px;}
+.fc ul li a::before{content:'›';color:var(--gold);}
+.fc ul li a:hover{color:var(--gold);padding-left:4px;}
+.fci{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.fci span{color:var(--gold);font-size:14px;margin-top:2px;}
+.fci a,.fci p{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;}
+.fb{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.3);}
+.fb a{color:var(--gold);text-decoration:none;}
+
+/* ═══ FLOATS ═══ */
+.fwa{position:fixed;bottom:30px;right:30px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;color:#fff;font-size:26px;transition:transform .3s;}
+.fwa:hover{transform:scale(1.12);}
+.fwa::before{content:'';position:absolute;inset:0;border-radius:50%;animation:wap 2s infinite;background:rgba(37,211,102,.5);}
+@keyframes wap{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.8);opacity:0;}}
+.bk{position:fixed;bottom:100px;right:30px;z-index:999;width:42px;height:42px;background:var(--forest);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 4px 14px rgba(0,0,0,.2);}
+.bk.s{display:flex;}
+.bk:hover{background:var(--gold);transform:translateY(-3px);}
+
+/* ═══ REVEAL ═══ */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s;}
+.rv.v{opacity:1;transform:none;}
+[data-d="1"]{transition-delay:.1s;}[data-d="2"]{transition-delay:.2s;}[data-d="3"]{transition-delay:.3s;}[data-d="4"]{transition-delay:.4s;}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1100px){.main-wrap{grid-template-columns:1fr;padding:40px;}.sidebar{position:static;}}
+@media(max-width:768px){
+  .topbar{padding:8px 20px;}.topbar .soc{display:none;}
+  nav{padding:0 20px;}.nl{display:none;}.hbg{display:flex;}
+  .main-wrap{padding:32px 20px;}
+  .hero-content{padding:0 24px 36px;grid-template-columns:1fr;}.hero-stats{flex-direction:row;align-items:flex-start;}
+  .overview-highlights,.amenities-grid{grid-template-columns:1fr 1fr;}
+  .act-grid,.reviews-grid,.policy-grid{grid-template-columns:1fr;}
+  .location-body{grid-template-columns:1fr;}
+  .bc-strip{padding:10px 20px;}
+  .cta-strip{padding:50px 20px;}
+  .fg{grid-template-columns:1fr 1fr;gap:28px;}
+}
+@media(max-width:480px){
+  .hero{min-height:520px;}
+  .overview-highlights,.amenities-grid{grid-template-columns:1fr;}
+  .room-card{grid-template-columns:1fr;}
+  .inc-panel.active{grid-template-columns:1fr;}
+  .bf-row{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr;}
+  .rev-modal-body{padding:20px 18px 24px;}
+  .rev-modal-header{padding:22px 18px 18px;}
+  .rf-row{grid-template-columns:1fr;}
+  .rev-star-picker label{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<div id="pb"></div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-f" id="cuf"></div>
+
+<!-- ═══ TOPBAR ═══ -->
+<div class="topbar">
+  <span>&#128222; <a href="tel:+919611943766">+91 96119 43766</a> &nbsp;|&nbsp; &#9993; <a href="mailto:info@dandelitourpackage.com">info@dandelitourpackage.com</a></span>
+  <div class="tb-r">
+    <a href="#" class="soc">f</a><a href="#" class="soc">in</a>
+    <a href="#book" class="bnow">Book Now</a>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="index.html" class="logo"><span class="leaf">&#127807;</span> Book myDandeli</a>
+  <ul class="nl">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="resort-listing.html">Our Stays</a></li>
+    <li><a href="things-to-do.html">Things To Do</a></li>
+    <li><a href="dandeli-sightseeing.html">Sightseeing</a></li>
+    <li><a href="index.html#packages">Packages</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="hbg" onclick="document.getElementById('mob').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <button class="mob-x" onclick="document.getElementById('mob').classList.remove('open')">&#x2715;</button>
+  <a href="index.html">Home</a><a href="resort-listing.html">Our Stays</a>
+  <a href="things-to-do.html">Things To Do</a><a href="dandeli-sightseeing.html">Sightseeing</a>
+  <a href="index.html#packages">Packages</a><a href="index.html#contact">Contact</a>
+</div>
+
+<!-- ═══ HERO GALLERY ═══ -->
+<div class="hero" id="hero">
+  <div class="hero-slides" id="heroSlides"></div>
+
+  <button class="hero-arrow hero-prev" onclick="prevSlide()">&#8592;</button>
+  <button class="hero-arrow hero-next" onclick="nextSlide()">&#8594;</button>
+
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge" id="heroBadge"></div>
+      <span class="hero-stars" id="heroStars"></span>
+      <h1 class="hero-title" id="heroTitle"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-orn">
+        <div class="hero-orn-line"></div>
+        <div class="hero-orn-diamond"></div>
+        <div class="hero-orn-line"></div>
+      </div>
+    </div>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
+
+  <div class="gallery-thumbs" id="galleryThumbs"></div>
+  <div class="scroll-hint"><div class="scroll-hint-text">Scroll</div><div class="scroll-hint-line"></div></div>
+</div>
+
+<!-- ═══ BREADCRUMB ═══ -->
+<div class="bc-strip">
+  <a href="index.html">Home</a><span class="bc-sep">&#9656;</span>
+  <a href="resort-listing.html">Our Stays</a><span class="bc-sep">&#9656;</span>
+  <span id="bcResort"></span>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<div class="main-wrap">
+  <div class="content-col">
+
+    <!-- OVERVIEW -->
+    <section class="overview rv">
+      <div class="sl" id="overviewLabel">About the Resort</div>
+      <h2 class="st" id="overviewTitle"></h2>
+      <div class="rule"></div>
+      <p class="overview-body" id="overviewBody"></p>
+      <div class="overview-highlights" id="overviewHighlights"></div>
+    </section>
+
+    <!-- AMENITIES -->
+    <section class="amenities-section rv">
+      <div class="sl">Facilities & Amenities</div>
+      <h2 class="st">What's Included</h2>
+      <div class="rule"></div>
+      <div class="amenities-grid" id="amenitiesGrid"></div>
+    </section>
+
+    <!-- ROOMS -->
+    <section class="rooms-section rv">
+      <div class="sl">Accommodation</div>
+      <h2 class="st">Choose Your Room</h2>
+      <div class="rule"></div>
+      <div class="rooms-grid" id="roomsGrid"></div>
+    </section>
+
+    <!-- INCLUSIONS -->
+    <section class="inc-section rv">
+      <div class="sl">Package Details</div>
+      <h2 class="st">Inclusions & Exclusions</h2>
+      <div class="rule"></div>
+      <div class="inc-tabs">
+        <button class="inc-tab active" onclick="switchIncTab('included', this)">&#10003; Included</button>
+        <button class="inc-tab" onclick="switchIncTab('excluded', this)">&#x2715; Not Included</button>
+      </div>
+      <div class="inc-panel active" id="inc-included"></div>
+      <div class="inc-panel" id="inc-excluded"></div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section class="act-section rv">
+      <div class="sl">Adventures & Experiences</div>
+      <h2 class="st">Things to Do Here</h2>
+      <div class="rule"></div>
+      <div class="act-grid" id="activitiesGrid"></div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section rv">
+      <div class="sl">Guest Experiences</div>
+      <h2 class="st">Reviews</h2>
+      <div class="rule"></div>
+      <div class="rating-overview" id="ratingOverview"></div>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+      <button class="write-review-btn" onclick="openRevModal()">
+        &#9998; &nbsp; Write a Review
+      </button>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location-section rv">
+      <div class="sl">Where to Find Us</div>
+      <h2 class="st">Location & How to Reach</h2>
+      <div class="rule"></div>
+      <div class="location-body">
+        <a class="map-placeholder" id="mapLink" href="#" target="_blank">
+          <div class="map-bg"></div>
+          <div class="map-grid"></div>
+          <div class="map-pin">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label" id="mapLabel"></div>
+            <div class="map-pin-cta">Click to open in Maps &#8594;</div>
+          </div>
+        </a>
+        <div class="location-details" id="locationDetails"></div>
+      </div>
+    </section>
+
+    <!-- POLICIES -->
+    <section class="policy-section rv">
+      <div class="sl">Good to Know</div>
+      <h2 class="st">Policies</h2>
+      <div class="rule"></div>
+      <div class="policy-grid" id="policyGrid"></div>
+    </section>
+
+  </div>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="book">
+    <div class="book-card">
+      <div class="book-head">
+        <div class="book-head-label">Starting From</div>
+        <div>
+          <span class="book-head-price" id="bookPrice"></span>
+          <span class="book-head-unit" id="bookUnit"></span>
+          <span class="book-head-crossed" id="bookCrossed"></span>
+        </div>
+        <div class="book-head-save" id="bookSave"></div>
+        <div class="book-rating">
+          <div class="book-rating-badge" id="bookRating"></div>
+          <span class="book-rating-text" id="bookRatingText"></span>
+        </div>
+      </div>
+      <div class="book-body">
+        <div class="bf">
+          <label>Full Name</label>
+          <div class="bf-wrap"><span class="bf-ico">&#128100;</span><input type="text" placeholder="Your name" id="bName"></div>
+        </div>
+        <div class="bf">
+          <label>Phone</label>
+          <div class="bf-wrap"><span class="bf-ico">&#128222;</span><input type="tel" placeholder="+91 xxxxx xxxxx" id="bPhone"></div>
+        </div>
+        <div class="bf bf-row">
+          <div class="bf">
+            <label>Check-In</label>
+            <div class="bf-wrap date-wrap"><span class="bf-ico">&#128197;</span><input type="date" id="bIn"></div>
+          </div>
+          <div class="bf" style="margin-bottom:0;">
+            <label>Check-Out</label>
+            <div class="bf-wrap date-wrap"><span class="bf-ico">&#128197;</span><input type="date" id="bOut"></div>
+          </div>
+        </div>
+        <div class="bf bf-row">
+          <div class="bf" style="margin-bottom:0;">
+            <label>Guests</label>
+            <div class="bf-wrap"><span class="bf-ico">&#128101;</span><input type="number" placeholder="2" min="1" id="bGuests"></div>
+          </div>
+          <div class="bf" style="margin-bottom:0;">
+            <label>Room Type</label>
+            <div class="bf-wrap" style="position:relative;">
+              <span class="bf-ico">&#127968;</span>
+              <select id="bRoom"></select>
+              <span class="bf-sel-arrow">&#9660;</span>
+            </div>
+          </div>
+        </div>
+        <button class="book-submit" onclick="submitBooking()">
+          <span id="submitText">Send Inquiry</span> &#8594;
+        </button>
+        <div class="book-success" id="bookSuccess">&#10003; &nbsp; Thank you! We'll reach out shortly.</div>
+        <a class="book-wa" id="bookWa" href="#" target="_blank">&#128172; &nbsp; Book via WhatsApp</a>
+        <div class="book-trust">
+          <div class="trust-item"><div class="trust-dot"></div>Free Cancellation</div>
+          <div class="trust-item"><div class="trust-dot"></div>Instant Confirm</div>
+          <div class="trust-item"><div class="trust-dot"></div>Best Price</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Info -->
+    <div class="side-card rv" id="sideInfoCard">
+      <div class="side-card-head">
+        <div class="side-card-icon">&#9432;</div>
+        <div class="side-card-title">Quick Info</div>
+      </div>
+      <div id="sideInfoItems"></div>
+    </div>
+
+    <!-- Nearby -->
+    <div class="side-card rv" id="sideNearbyCard">
+      <div class="side-card-head">
+        <div class="side-card-icon">&#128205;</div>
+        <div class="side-card-title">Nearby Attractions</div>
+      </div>
+      <div id="sideNearbyItems"></div>
+    </div>
+  </aside>
+</div>
+
+<!-- ═══ CTA STRIP ═══ -->
+<div class="cta-strip rv">
+  <div class="cta-sl">Book myDandeli</div>
+  <h2 class="cta-title">Ready to <em>Escape</em> the Ordinary?</h2>
+  <p class="cta-body">Every stay is curated to connect you with the wild, the beautiful, and the unforgettable.</p>
+  <div class="cta-btns">
+    <a href="#book" class="cta-btn">Reserve Your Stay</a>
+    <a href="resort-listing.html" class="cta-btn-outline">Browse All Resorts</a>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="fg">
+    <div>
+      <div class="fl">&#127807; Book myDandeli</div>
+      <p class="fd">Where the Kali River meets ancient forest, and every dawn begins a new conversation with nature.</p>
+      <div class="fs"><a href="#">f</a><a href="#">in</a><a href="#">yt</a></div>
+    </div>
+    <div class="fc"><h5>Sightseeing</h5><ul>
+      <li><a href="#">Kali Tiger Reserve</a></li><li><a href="#">Syntheri Rock Falls</a></li>
+      <li><a href="#">Supa Dam</a></li><li><a href="#">Kavala Caves</a></li>
+    </ul></div>
+    <div class="fc"><h5>Quick Links</h5><ul>
+      <li><a href="index.html">Home</a></li><li><a href="resort-listing.html">Our Stays</a></li>
+      <li><a href="things-to-do.html">Things To Do</a></li><li><a href="index.html#contact">Contact</a></li>
+    </ul></div>
+    <div class="fc"><h5>Contact</h5>
+      <div class="fci"><span>&#128205;</span><p>Dandeli, Uttara Kannada<br>Karnataka 581 325</p></div>
+      <div class="fci"><span>&#128222;</span><a href="tel:+919611943766">+91 96119 43766</a></div>
+      <div class="fci"><span>&#9993;</span><a href="mailto:info@dandelitourpackage.com">info@dandelitourpackage.com</a></div>
+    </div>
+  </div>
+  <div class="fb">&#169; 2025 Book myDandeli &middot; <a href="#">Privacy Policy</a></div>
+</footer>
+
+<a href="https://wa.me/919611943766" class="fwa" target="_blank">&#x1F4AC;</a>
+<button class="bk" id="bk" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<!-- ═══ WRITE A REVIEW MODAL ═══ -->
+<div class="rev-modal-backdrop" id="revBackdrop" onclick="closeRevModal()"></div>
+<div class="rev-modal" id="revModal" role="dialog" aria-modal="true" aria-label="Write a Review">
+
+  <div class="rev-modal-header">
+    <button class="rev-modal-close" onclick="closeRevModal()" aria-label="Close">&#x2715;</button>
+    <div class="rev-modal-eyebrow">Share Your Experience</div>
+    <div class="rev-modal-title">Write a <em>Review</em></div>
+    <div class="rev-modal-sub" id="revModalResortName"></div>
+  </div>
+
+  <div class="rev-modal-body">
+
+    <!-- Success state (hidden by default) -->
+    <div class="rev-success" id="revSuccess">
+      <div class="rev-success-icon">&#127807;</div>
+      <div class="rev-success-title">Thank you for sharing!</div>
+      <p class="rev-success-sub">Your review has been posted. It helps other travellers discover this beautiful place.</p>
+    </div>
+
+    <!-- Form -->
+    <div id="revFormWrap">
+
+      <!-- Star Rating -->
+      <div class="rev-stars-label">Your Overall Rating *</div>
+      <div class="rev-star-picker" id="revStarPicker">
+        <input type="radio" name="revStar" id="s5" value="5"><label for="s5" title="Excellent">&#9733;</label>
+        <input type="radio" name="revStar" id="s4" value="4"><label for="s4" title="Very Good">&#9733;</label>
+        <input type="radio" name="revStar" id="s3" value="3"><label for="s3" title="Good">&#9733;</label>
+        <input type="radio" name="revStar" id="s2" value="2"><label for="s2" title="Fair">&#9733;</label>
+        <input type="radio" name="revStar" id="s1" value="1"><label for="s1" title="Poor">&#9733;</label>
+      </div>
+      <div style="font-size:12px;color:var(--gold);margin-bottom:20px;min-height:18px;" id="revStarLabel"></div>
+
+      <!-- Name & Visit Type -->
+      <div class="rf-row" style="margin-bottom:16px;">
+        <div class="rf">
+          <label>Your Name *</label>
+          <div class="rf-wrap"><span class="rf-ico">&#128100;</span><input type="text" placeholder="e.g. Priya Sharma" id="revName" maxlength="60"></div>
+        </div>
+        <div class="rf">
+          <label>Visited From</label>
+          <div class="rf-wrap"><span class="rf-ico">&#128205;</span><input type="text" placeholder="e.g. Bangalore" id="revCity" maxlength="40"></div>
+        </div>
+      </div>
+
+      <!-- Trip Type & Month -->
+      <div class="rf-row" style="margin-bottom:16px;">
+        <div class="rf">
+          <label>Trip Type</label>
+          <div class="rf-wrap rf-sel-wrap">
+            <span class="rf-ico">&#127774;</span>
+            <select id="revTripType" style="padding-left:38px;">
+              <option value="">Select type</option>
+              <option>Couple / Honeymoon</option>
+              <option>Family</option>
+              <option>Friends / Group</option>
+              <option>Solo</option>
+              <option>Business</option>
+            </select>
+            <span class="rf-sel-arrow">&#9660;</span>
+          </div>
+        </div>
+        <div class="rf">
+          <label>Month of Visit</label>
+          <div class="rf-wrap rf-sel-wrap">
+            <span class="rf-ico">&#128197;</span>
+            <select id="revMonth" style="padding-left:38px;">
+              <option value="">Select month</option>
+              <option>January 2025</option><option>February 2025</option>
+              <option>March 2025</option><option>April 2025</option>
+              <option>May 2025</option><option>June 2025</option>
+              <option>July 2025</option><option>August 2025</option>
+              <option>September 2025</option><option>October 2025</option>
+              <option>November 2025</option><option>December 2025</option>
+              <option>January 2026</option><option>February 2026</option>
+              <option>March 2026</option>
+            </select>
+            <span class="rf-sel-arrow">&#9660;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Title -->
+      <div class="rf" style="margin-bottom:16px;">
+        <label>Review Title *</label>
+        <div class="rf-wrap"><span class="rf-ico">&#9998;</span><input type="text" placeholder="Summarise your stay in one line" id="revTitle" maxlength="80"></div>
+      </div>
+
+      <!-- Review Body -->
+      <div class="rf" style="margin-bottom:6px;">
+        <label>Your Review * <span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:10px;">(min 30 chars)</span></label>
+        <div class="rf-wrap">
+          <textarea placeholder="Tell future guests what made your stay special — the food, the views, the service, the activities..." id="revBody" maxlength="800" oninput="updateCharCount(this)"></textarea>
+        </div>
+      </div>
+      <div class="rf-char" id="revCharCount">0 / 800</div>
+
+      <!-- Highlight Tags -->
+      <div style="margin-top:20px;">
+        <div class="rf-tags-label">What stood out? (optional)</div>
+        <div class="rf-tags" id="revTags">
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#127807; Nature & Forest</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#127869; Food & Dining</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#128100; Staff & Service</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#127955; Activities</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#127968; Room Quality</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#128175; Value for Money</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#128683; Peaceful & Quiet</button>
+          <button type="button" class="rf-tag-btn" onclick="toggleTag(this)">&#128024; Wildlife</button>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button class="rev-submit" id="revSubmitBtn" onclick="submitReview()">
+        <span>Post My Review</span> &#8594;
+      </button>
+      <p style="font-size:11px;color:#bbb;text-align:center;margin-top:10px;">
+        By submitting you agree to our review guidelines. All reviews are moderated.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  ★★★  RESORT CONFIGURATION — EDIT THIS BLOCK  ★★★         ║
+     ║  Change these values to populate the entire page.          ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<script>
+const RESORT = {
+
+  /* ─── BASIC INFO ─── */
+  name: "Heritage River Resort",
+  tagline: "Where the Kali flows through your mornings",
+  badge: "&#11088; Top Rated Resort",
+  stars: 4,           /* 1–5 */
+  rating: 4.5,
+  ratingLabel: "Excellent",
+  reviewCount: "248 reviews",
+  whatsapp: "+919611943766",
+
+  /* ─── PRICING ─── */
+  price: "₹6,499",
+  priceUnit: "/ couple · night",
+  priceCrossed: "₹8,500",
+  priceSave: "Save 24% · Best Price Guarantee",
+
+  /* ─── HERO GALLERY IMAGES ─── */
+  /* Replace src values with actual resort photos */
+  images: [
+    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Riverside View" },
+    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Forest Cottage" },
+    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Swimming Pool" },
+    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Dining Area" },
+  ],
+
+  /* ─── HERO STATS (shown top-right of hero) ─── */
+  heroStats: [
+    { value: "4.5", unit: "Rating" },
+    { value: "475", unit: "Sq km Forest" },
+    { value: "200+", unit: "Bird Species" },
+  ],
+
+  /* ─── OVERVIEW ─── */
+  overviewTitle: "A Wilderness Sanctuary on the Kali",
+  overviewBody: `Nestled on the banks of the Kali River at the edge of Dandeli Wildlife Sanctuary, Heritage River Resort offers a rare blend of comfort and immersion in one of Karnataka's most pristine forest ecosystems. The resort was designed to let the natural world in — open-air dining, bamboo-shaded walkways, and cottages that frame river views through floor-to-ceiling windows. Whether you're here for the early-morning hornbills, the rush of white-water rapids, or simply the luxury of a forest sunset, Heritage River Resort curates every moment with quiet precision.`,
+
+  /* highlight boxes below overview text */
+  overviewHighlights: [
+    { icon: "&#127807;", value: "475 sq km", label: "Forest Reserve" },
+    { icon: "&#129413;", value: "200+", label: "Bird Species" },
+    { icon: "&#9971;", value: "12 km", label: "River Rafting" },
+  ],
+
+  /* ─── AMENITIES ─── */
+  amenities: [
+    { icon: "&#127754;", text: "Infinity Pool & Jacuzzi" },
+    { icon: "&#127807;", text: "Riverside Nature Trails" },
+    { icon: "&#128675;", text: "White Water Rafting" },
+    { icon: "&#128247;", text: "Bird Watching Decks" },
+    { icon: "&#9729;&#65039;", text: "Air-Conditioned Rooms" },
+    { icon: "&#128100;", text: "Spa & Wellness Centre" },
+    { icon: "&#127869;", text: "Multi-Cuisine Restaurant" },
+    { icon: "&#128293;", text: "Riverside Bonfire" },
+    { icon: "&#128186;", text: "Free High-Speed WiFi" },
+    { icon: "&#128661;", text: "Jeep Safari Desk" },
+    { icon: "&#128663;", text: "Free Parking" },
+    { icon: "&#127879;", text: "Event & Group Spaces" },
+  ],
+
+  /* ─── ROOMS ─── */
+  rooms: [
+    {
+      name: "Forest View Cottage",
+      badge: "Most Popular",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+      desc: "A charming private cottage nestled among teak trees, with a sit-out veranda facing the forest. King bed, AC, ensuite bathroom with rain shower.",
+      features: ["King Bed", "Forest View", "Veranda", "AC", "Rain Shower"],
+      price: "₹5,499",
+      unit: "/ night"
+    },
+    {
+      name: "Riverside Premium Suite",
+      badge: "Best Pick",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+      desc: "Floor-to-ceiling glass doors open onto a private deck above the Kali River. Oversized bath, Jacuzzi, and a curated in-room minibar.",
+      features: ["River View", "Private Deck", "Jacuzzi", "Minibar", "King Bed"],
+      price: "₹8,999",
+      unit: "/ night"
+    },
+    {
+      name: "Deluxe Family Room",
+      badge: "Family Friendly",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+      desc: "Spacious interconnecting room for 4 guests. Two queen beds, a shared sit-out, and a children's play corner. Perfect for families.",
+      features: ["2 Queen Beds", "Sleeps 4", "AC", "Sit-out", "Play Corner"],
+      price: "₹9,499",
+      unit: "/ night"
+    },
+  ],
+
+  /* ─── INCLUSIONS / EXCLUSIONS ─── */
+  included: [
+    "Welcome drinks on arrival",
+    "Daily breakfast, lunch & dinner",
+    "One guided nature walk per stay",
+    "Coracle ride on the Kali River",
+    "Complimentary bird-watching session",
+    "Evening bonfire & barbecue",
+    "Complimentary kayaking (1 hr/day)",
+    "Free parking",
+    "Free WiFi",
+    "All government taxes",
+  ],
+  excluded: [
+    "White-water rafting (bookable at desk)",
+    "Jeep safari permits & fees",
+    "Spa & wellness treatments",
+    "Alcoholic beverages",
+    "Room service charges",
+    "Personal expenses & tips",
+  ],
+
+  /* ─── ACTIVITIES ─── */
+  activities: [
+    {
+      name: "White Water Rafting",
+      cat: "Water Sports",
+      duration: "3–4 hrs",
+      meta: "Grade III & IV",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+    },
+    {
+      name: "Jeep Safari",
+      cat: "Wildlife",
+      duration: "3 hrs",
+      meta: "Dawn & Dusk",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+    },
+    {
+      name: "Bird Watching",
+      cat: "Nature",
+      duration: "2 hrs",
+      meta: "200+ Species",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+    },
+    {
+      name: "Night Safari",
+      cat: "Wildlife",
+      duration: "2–3 hrs",
+      meta: "After Dark",
+      image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg",
+    },
+  ],
+
+  /* ─── REVIEWS ─── */
+  ratingValue: 4.5,
+  ratingBars: [
+    { label: "Location",  pct: 96 },
+    { label: "Cleanliness", pct: 92 },
+    { label: "Service",   pct: 90 },
+    { label: "Food",      pct: 94 },
+    { label: "Value",     pct: 88 },
+  ],
+  reviews: [
+    {
+      stars: 5,
+      text: "An absolutely magical experience. The riverside cottage was stunning — waking up to the sound of the Kali and hornbill calls made it unlike anywhere I've stayed before.",
+      author: "Priya Sharma",
+      date: "Bangalore · March 2025",
+    },
+    {
+      stars: 5,
+      text: "Exceptional service, incredible food, and the nature walks were genuinely educational. The bird-watching session at dawn was worth the entire trip.",
+      author: "Rahul Mehta",
+      date: "Mumbai · February 2025",
+    },
+    {
+      stars: 4,
+      text: "Peaceful, beautiful and well-organized. The bonfire by the river on our last night was the perfect send-off. Will absolutely return.",
+      author: "Ananya Krishnan",
+      date: "Pune · January 2025",
+    },
+    {
+      stars: 5,
+      text: "Booked the riverside suite for our honeymoon. Every detail was taken care of — from the welcome note to the private dinner setup. Truly five-star hospitality.",
+      author: "Karthik & Divya",
+      date: "Chennai · December 2024",
+    },
+  ],
+
+  /* ─── LOCATION ─── */
+  address: "Heritage River Resort, Kali Riverside, Dandeli, Uttara Kannada, Karnataka 581 325",
+  mapsUrl: "https://maps.google.com/?q=Dandeli+Karnataka",
+  locationDetails: [
+    { icon: "&#128205;", label: "Address", value: "Kali Riverside, Dandeli, Uttara Kannada, Karnataka" },
+    { icon: "&#128661;", label: "From Bengaluru", value: "480 km · approx. 7–8 hrs by road" },
+    { icon: "&#128661;", label: "From Hubballi", value: "65 km · approx. 1.5 hrs by road" },
+    { icon: "&#128646;", label: "Nearest Railway", value: "Alnavar Junction (31 km)" },
+    { icon: "&#9992;&#65039;", label: "Nearest Airport", value: "Hubballi Airport (75 km)" },
+  ],
+
+  /* ─── POLICIES ─── */
+  policies: [
+    {
+      icon: "&#128197;",
+      title: "Check-in & Check-out",
+      items: ["Check-in: 1:00 PM", "Check-out: 11:00 AM", "Early/late on request & availability", "ID proof mandatory for all guests"],
+    },
+    {
+      icon: "&#128683;",
+      title: "House Rules",
+      items: ["Outside food & alcohol not permitted", "Pets not allowed", "Noise curfew at 10:00 PM", "Smoking in designated areas only"],
+    },
+    {
+      icon: "&#128260;",
+      title: "Cancellation",
+      items: ["Free cancellation up to 48 hrs", "50% refund within 24–48 hrs", "No refund within 24 hrs", "Full refund for force majeure"],
+    },
+    {
+      icon: "&#128101;",
+      title: "Guest Rules",
+      items: ["Children welcome (all ages)", "Max 2 extra beds per room", "Valid ID required at check-in", "Aadhar/Passport accepted"],
+    },
+  ],
+
+  /* ─── SIDEBAR QUICK INFO ─── */
+  quickInfo: [
+    { icon: "&#127774;", text: "Open year-round (reserve closes Jun–Oct)" },
+    { icon: "&#127957;&#65039;", text: "Min stay: 1 night" },
+    { icon: "&#128101;", text: "Capacity: Up to 80 guests" },
+    { icon: "&#128186;", text: "100 Mbps WiFi throughout property" },
+  ],
+
+  /* ─── NEARBY ATTRACTIONS ─── */
+  nearby: [
+    { icon: "&#128024;", text: "Kali Tiger Reserve — 2 km" },
+    { icon: "&#127754;", text: "Syntheri Rock Falls — 22 km" },
+    { icon: "&#128697;&#65039;", text: "Supa Dam — 12 km" },
+    { icon: "&#127960;&#65039;", text: "Kavala Caves — 14 km" },
+    { icon: "&#128197;", text: "Ulavi Temple — 30 km" },
+  ],
+
+};
+/* ╚══════════════════════════════════ END CONFIG ══════════════════════════════╝ */
+
+
+/* ═══════════════════════════════════════
+   PAGE BUILDER — DO NOT EDIT BELOW
+═══════════════════════════════════════ */
+(function() {
+  const R = RESORT;
+
+  /* helper: build star string */
+  function starStr(n) {
+    let s = '';
+    for (let i = 0; i < 5; i++) s += i < n ? '&#9733;' : '&#9734;';
+    return s;
+  }
+
+  /* ─── HERO ─── */
+  document.title = R.name + ' — Book myDandeli';
+  document.getElementById('bcResort').textContent = R.name;
+  document.getElementById('heroBadge').innerHTML = R.badge;
+  document.getElementById('heroStars').innerHTML = starStr(R.stars);
+  document.getElementById('heroTitle').innerHTML = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
+  document.getElementById('heroSub').textContent = R.tagline;
+  document.getElementById('mapLabel').textContent = R.name;
+
+  // Slides
+  const slidesEl = document.getElementById('heroSlides');
+  const thumbsEl = document.getElementById('galleryThumbs');
+  R.images.forEach((img, i) => {
+    slidesEl.innerHTML += `<div class="hero-slide${i === 0 ? ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
+    thumbsEl.innerHTML += `<div class="gthumb${i === 0 ? ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+  });
+
+  // Hero stats
+  const statsEl = document.getElementById('heroStats');
+  R.heroStats.forEach((s, i) => {
+    statsEl.innerHTML += `
+      ${i > 0 ? '<div class="hstat-div"></div>' : ''}
+      <div class="hstat"><div class="hstat-n">${s.value}</div><div class="hstat-l">${s.unit}</div></div>`;
+  });
+
+  /* ─── OVERVIEW ─── */
+  document.getElementById('overviewTitle').textContent = R.overviewTitle;
+  document.getElementById('overviewBody').textContent = R.overviewBody;
+  const ohEl = document.getElementById('overviewHighlights');
+  R.overviewHighlights.forEach(h => {
+    ohEl.innerHTML += `<div class="oh-item"><span class="oh-icon">${h.icon}</span><span class="oh-val">${h.value}</span><span class="oh-label">${h.label}</span></div>`;
+  });
+
+  /* ─── AMENITIES ─── */
+  const amEl = document.getElementById('amenitiesGrid');
+  R.amenities.forEach(a => {
+    amEl.innerHTML += `<div class="am-item"><div class="am-icon">${a.icon}</div><span class="am-text">${a.text}</span></div>`;
+  });
+
+  /* ─── ROOMS ─── */
+  const roomsEl = document.getElementById('roomsGrid');
+  R.rooms.forEach(room => {
+    roomsEl.innerHTML += `
+      <div class="room-card">
+        <div class="room-img">
+          <img src="${room.image}" alt="${room.name}">
+          <div class="room-badge">${room.badge}</div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">${room.name}</div>
+          <p class="room-desc">${room.desc}</p>
+          <div class="room-features">${room.features.map(f => `<span class="room-feat">${f}</span>`).join('')}</div>
+          <div class="room-bottom">
+            <div><span class="room-price">${room.price}</span><span class="room-price-unit"> ${room.unit}</span></div>
+            <button class="room-book-btn" onclick="scrollToBook()">Book This Room</button>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  // Populate room select in booking form
+  const roomSel = document.getElementById('bRoom');
+  roomSel.innerHTML = '<option value="">Select room</option>';
+  R.rooms.forEach(r => roomSel.innerHTML += `<option>${r.name}</option>`);
+
+  /* ─── INCLUSIONS ─── */
+  const incEl = document.getElementById('inc-included');
+  R.included.forEach(item => {
+    incEl.innerHTML += `<div class="inc-item"><div class="inc-check">&#10003;</div><span class="inc-text">${item}</span></div>`;
+  });
+  const excEl = document.getElementById('inc-excluded');
+  R.excluded.forEach(item => {
+    excEl.innerHTML += `<div class="inc-item exc-item"><div class="inc-check">&#x2715;</div><span class="inc-text">${item}</span></div>`;
+  });
+
+  /* ─── ACTIVITIES ─── */
+  const actEl = document.getElementById('activitiesGrid');
+  R.activities.forEach(act => {
+    actEl.innerHTML += `
+      <a class="act-card" href="things-to-do.html">
+        <img src="${act.image}" alt="${act.name}">
+        <div class="act-card-overlay"></div>
+        <div class="act-card-cat">${act.cat}</div>
+        <div class="act-card-label">
+          <span class="act-card-name">${act.name}</span>
+          <span class="act-card-meta">&#9203; ${act.duration} &nbsp;&middot;&nbsp; ${act.meta}</span>
+        </div>
+      </a>`;
+  });
+
+  /* ─── REVIEWS ─── */
+  const ratEl = document.getElementById('ratingOverview');
+  ratEl.innerHTML = `
+    <div class="rating-big">
+      <div class="rating-num">${R.ratingValue}</div>
+      <div class="rating-stars">${starStr(Math.round(R.ratingValue))}</div>
+      <div class="rating-count">${R.reviewCount}</div>
+    </div>
+    <div class="rating-bars">
+      ${R.ratingBars.map(b => `
+        <div class="rbar-row">
+          <span class="rbar-label">${b.label}</span>
+          <div class="rbar-track"><div class="rbar-fill" data-pct="${b.pct}"></div></div>
+          <span class="rbar-pct">${(b.pct/20).toFixed(1)}</span>
+        </div>`).join('')}
+    </div>`;
+  const revEl = document.getElementById('reviewsGrid');
+  R.reviews.forEach(r => {
+    revEl.innerHTML += `
+      <div class="rev-card">
+        <div class="rev-stars">${starStr(r.stars)}</div>
+        <p class="rev-text">"${r.text}"</p>
+        <div class="rev-author">${r.author}</div>
+        <div class="rev-date">${r.date}</div>
+      </div>`;
+  });
+
+  /* ─── LOCATION ─── */
+  document.getElementById('mapLink').href = R.mapsUrl;
+  const locEl = document.getElementById('locationDetails');
+  R.locationDetails.forEach(l => {
+    locEl.innerHTML += `
+      <div class="loc-item">
+        <div class="loc-icon">${l.icon}</div>
+        <div><div class="loc-label">${l.label}</div><div class="loc-val">${l.value}</div></div>
+      </div>`;
+  });
+  if (R.mapsUrl) {
+    locEl.innerHTML += `<a class="directions-btn" href="${R.mapsUrl}" target="_blank">Open in Google Maps &#8594;</a>`;
+  }
+
+  /* ─── POLICIES ─── */
+  const polEl = document.getElementById('policyGrid');
+  R.policies.forEach(p => {
+    polEl.innerHTML += `
+      <div class="policy-card">
+        <div class="policy-head"><span class="policy-icon">${p.icon}</span><span class="policy-title">${p.title}</span></div>
+        <ul class="policy-items">${p.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>`;
+  });
+
+  /* ─── SIDEBAR BOOKING ─── */
+  document.getElementById('bookPrice').textContent = R.price;
+  document.getElementById('bookUnit').textContent = R.priceUnit;
+  document.getElementById('bookCrossed').textContent = R.priceCrossed;
+  document.getElementById('bookSave').textContent = R.priceSave;
+  document.getElementById('bookRating').textContent = R.ratingValue;
+  document.getElementById('bookRatingText').textContent = R.ratingLabel + ' · ' + R.reviewCount;
+  document.getElementById('bookWa').href = `https://wa.me/${R.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent('Hi! I want to book ' + R.name + ' via Book myDandeli.')}`;
+
+  /* ─── SIDEBAR QUICK INFO ─── */
+  const siEl = document.getElementById('sideInfoItems');
+  R.quickInfo.forEach(item => {
+    siEl.innerHTML += `<div class="sc-item"><div class="sc-item-icon">${item.icon}</div><div class="sc-item-text">${item.text}</div></div>`;
+  });
+
+  /* ─── SIDEBAR NEARBY ─── */
+  const snEl = document.getElementById('sideNearbyItems');
+  R.nearby.forEach(item => {
+    snEl.innerHTML += `<div class="sc-item"><div class="sc-item-icon">${item.icon}</div><div class="sc-item-text">${item.text}</div></div>`;
+  });
+
+})();
+
+/* ═══ GALLERY SLIDER ═══ */
+let currentSlide = 0;
+function goSlide(n) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const thumbs = document.querySelectorAll('.gthumb');
+  slides[currentSlide].classList.remove('active');
+  thumbs[currentSlide].classList.remove('active');
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  thumbs[currentSlide].classList.add('active');
+  document.getElementById('heroSlides').style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+function prevSlide() { goSlide(currentSlide - 1); }
+function nextSlide() { goSlide(currentSlide + 1); }
+setInterval(() => nextSlide(), 5000);
+
+/* ═══ INCLUSION TABS ═══ */
+function switchIncTab(id, btn) {
+  document.querySelectorAll('.inc-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.inc-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('inc-' + id).classList.add('active');
+}
+
+/* ═══ SCROLL HELPERS ═══ */
+function scrollToBook() {
+  document.getElementById('book').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ═══ BOOKING FORM ═══ */
+function submitBooking() {
+  const name = document.getElementById('bName').value.trim();
+  const phone = document.getElementById('bPhone').value.trim();
+  const inDate = document.getElementById('bIn').value;
+  const outDate = document.getElementById('bOut').value;
+  const guests = document.getElementById('bGuests').value;
+  const room = document.getElementById('bRoom').value;
+  if (!name || !phone || !inDate || !outDate) {
+    alert('Please fill in all required fields.'); return;
+  }
+  const msg = encodeURIComponent(
+    `*Booking Inquiry — ${RESORT.name}*\n\n` +
+    `👤 Name: ${name}\n📞 Phone: ${phone}\n` +
+    `📅 Check-In: ${inDate}\n📅 Check-Out: ${outDate}\n` +
+    `👥 Guests: ${guests}\n🏠 Room: ${room}`
+  );
+  const btn = document.getElementById('submitText');
+  btn.textContent = 'Sending…';
+  setTimeout(() => {
+    document.getElementById('bookSuccess').style.display = 'block';
+    btn.textContent = 'Send Inquiry';
+    window.open(`https://api.whatsapp.com/send?phone=${RESORT.whatsapp.replace(/\D/,'')}&text=${msg}`, '_blank');
+  }, 600);
+}
+
+/* ═══ SCROLL EVENTS ═══ */
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
+  document.getElementById('bk').classList.toggle('s', scrollY > 400);
+  document.getElementById('nav').style.boxShadow = scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+});
+
+/* ═══ SCROLL REVEAL ═══ */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('v');
+      // animate rating bars
+      e.target.querySelectorAll('.rbar-fill').forEach(bar => {
+        setTimeout(() => bar.style.width = bar.dataset.pct + '%', 200);
+      });
+      // animate rules
+      e.target.querySelectorAll('.rule').forEach(r => setTimeout(() => r.classList.add('go'), 250));
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// Fallback for above-fold content
+setTimeout(() => {
+  document.querySelectorAll('.rv:not(.v)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('v');
+      el.querySelectorAll('.rule').forEach(r => r.classList.add('go'));
+    }
+  });
+}, 350);
+
+/* ═══ CURSOR ═══ */
+const cur = document.getElementById('cur'), cuf = document.getElementById('cuf');
+let mx = 0, my = 0, fx = 0, fy = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.transform = `translate(${mx}px,${my}px)`;
+});
+(function tick() { fx += (mx - fx) * .1; fy += (my - fy) * .1; cuf.style.transform = `translate(${fx}px,${fy}px)`; requestAnimationFrame(tick); })();
+document.querySelectorAll('a,button,.am-item,.room-card,.rev-card,.act-card,.oh-item').forEach(el => {
+  el.addEventListener('mouseenter', () => { cuf.style.opacity = '.85'; });
+  el.addEventListener('mouseleave', () => { cuf.style.opacity = '.5'; });
+});
+/* ═══ REVIEW MODAL ═══ */
+function openRevModal() {
+  document.getElementById('revModalResortName').textContent = RESORT.name;
+  document.getElementById('revBackdrop').classList.add('open');
+  document.getElementById('revModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // reset form
+  document.getElementById('revFormWrap').style.display = '';
+  document.getElementById('revSuccess').style.display = 'none';
+  document.querySelectorAll('input[name="revStar"]').forEach(r => r.checked = false);
+  document.getElementById('revStarLabel').textContent = '';
+  ['revName','revCity','revTitle','revBody'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('revTripType').value = '';
+  document.getElementById('revMonth').value = '';
+  document.getElementById('revCharCount').textContent = '0 / 800';
+  document.getElementById('revCharCount').classList.remove('warn');
+  document.querySelectorAll('.rf-tag-btn').forEach(b => b.classList.remove('sel'));
+}
+
+function closeRevModal() {
+  document.getElementById('revBackdrop').classList.remove('open');
+  document.getElementById('revModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeRevModal(); });
+
+// Star label map
+const starLabels = {1:'Poor',2:'Fair',3:'Good',4:'Very Good',5:'Excellent'};
+document.querySelectorAll('input[name="revStar"]').forEach(input => {
+  input.addEventListener('change', function() {
+    document.getElementById('revStarLabel').textContent = '★ ' + starLabels[this.value];
+  });
+});
+
+function toggleTag(btn) { btn.classList.toggle('sel'); }
+
+function updateCharCount(el) {
+  const len = el.value.length;
+  const el2 = document.getElementById('revCharCount');
+  el2.textContent = len + ' / 800';
+  el2.classList.toggle('warn', len > 720);
+}
+
+function submitReview() {
+  const name    = document.getElementById('revName').value.trim();
+  const title   = document.getElementById('revTitle').value.trim();
+  const body    = document.getElementById('revBody').value.trim();
+  const starEl  = document.querySelector('input[name="revStar"]:checked');
+
+  if (!starEl) { alert('Please select a star rating.'); return; }
+  if (!name)   { alert('Please enter your name.'); return; }
+  if (!title)  { alert('Please add a review title.'); return; }
+  if (body.length < 30) { alert('Please write at least 30 characters in your review.'); return; }
+
+  const stars   = parseInt(starEl.value);
+  const city    = document.getElementById('revCity').value.trim();
+  const month   = document.getElementById('revMonth').value;
+  const tripType= document.getElementById('revTripType').value;
+  const tags    = [...document.querySelectorAll('.rf-tag-btn.sel')].map(b => b.textContent.trim()).join(', ');
+
+  const btn = document.getElementById('revSubmitBtn');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Posting…';
+
+  setTimeout(() => {
+    // Show success
+    document.getElementById('revFormWrap').style.display = 'none';
+    document.getElementById('revSuccess').style.display = 'block';
+
+    // Build star string
+    let starStr = '';
+    for (let i = 0; i < 5; i++) starStr += i < stars ? '★' : '☆';
+
+    // Inject new review card into the grid
+    const grid = document.getElementById('reviewsGrid');
+    const metaLine = [tripType, month, city].filter(Boolean).join(' · ');
+    const newCard = document.createElement('div');
+    newCard.className = 'rev-card new-review';
+    newCard.innerHTML = `
+      <div class="new-rev-badge">Just Posted</div>
+      <div class="rev-stars" style="color:var(--gold);font-size:13px;letter-spacing:2px;">${starStr}</div>
+      <strong style="display:block;font-size:14px;color:var(--forest);margin:6px 0 8px;font-family:'Cormorant Garamond',serif;font-size:17px;">${title}</strong>
+      <p class="rev-text">"${body}"</p>
+      ${tags ? `<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;">${tags.split(', ').map(t=>`<span style="font-size:10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:var(--gold);padding:2px 8px;border-radius:20px;">${t}</span>`).join('')}</div>` : ''}
+      <div class="rev-author" style="margin-top:12px;">${name}</div>
+      <div class="rev-date">${metaLine || 'Recent visit'}</div>`;
+    grid.prepend(newCard);
+
+    // Close modal after 2.8s
+    setTimeout(() => {
+      closeRevModal();
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Post My Review';
+      newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 2800);
+  }, 900);
+}
+
+</script>
+</body>
+</html>
