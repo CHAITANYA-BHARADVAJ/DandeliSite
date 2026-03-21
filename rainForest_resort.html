@@ -74,10 +74,6 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .hstat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;line-height:1;}
 .hstat-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px;}
 .hstat-div{width:80px;height:.5px;background:rgba(255,255,255,.1);align-self:flex-end;}
-.gallery-thumbs{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10;opacity:0;animation:hFade .5s 1.2s ease forwards;}
-.gthumb{width:52px;height:36px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .3s;opacity:.55;}
-.gthumb.active{border-color:var(--gold);opacity:1;}
-.gthumb img{width:100%;height:100%;object-fit:cover;}
 .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:18px;cursor:pointer;z-index:10;transition:all .3s;display:flex;align-items:center;justify-content:center;}
 .hero-arrow:hover{background:var(--gold);border-color:var(--gold);}
 .hero-prev{left:24px;}
@@ -86,6 +82,213 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .scroll-hint-text{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl;}
 .scroll-hint-line{width:1px;height:0;background:rgba(201,168,76,.5);animation:scrollLine 1.5s 1.8s ease infinite;}
 @keyframes scrollLine{0%{height:0;opacity:1;}100%{height:40px;opacity:0;}}
+
+/* ── THUMBNAIL STRIP + VIEW ALL ── */
+.hero-bottom-bar{
+  position:absolute;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  opacity:0;
+  animation:hFade .5s 1.2s ease forwards;
+}
+.gallery-thumbs{
+  display:flex;
+  gap:8px;
+}
+.gthumb{width:52px;height:36px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .3s;opacity:.55;}
+.gthumb.active{border-color:var(--gold);opacity:1;}
+.gthumb img{width:100%;height:100%;object-fit:cover;}
+
+/* ── VIEW ALL PHOTOS BUTTON ── */
+.view-all-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.22);
+  color:rgba(255,255,255,.8);
+  font-family:'Jost',sans-serif;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:7px 14px;
+  cursor:pointer;
+  border-radius:4px;
+  transition:all .3s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.view-all-btn:hover{
+  background:rgba(201,168,76,.2);
+  border-color:rgba(201,168,76,.5);
+  color:var(--gold);
+}
+.view-all-btn svg{
+  width:12px;height:12px;
+  stroke:currentColor;fill:none;stroke-width:1.8;
+  flex-shrink:0;transition:transform .3s;
+}
+.view-all-btn:hover svg{transform:scale(1.15);}
+
+/* ── PHOTO COUNT BADGE (top-right of hero) ── */
+.photo-count-badge{
+  position:absolute;
+  top:20px;
+  right:24px;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.7);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:6px 12px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:all .3s;
+  opacity:0;
+  animation:hFade .5s 1.2s ease forwards;
+}
+.photo-count-badge:hover{
+  background:rgba(201,168,76,.2);
+  border-color:rgba(201,168,76,.4);
+  color:var(--gold);
+}
+.photo-count-badge svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;}
+
+/* ────────────────────────────────────
+   LIGHTBOX GALLERY
+──────────────────────────────────── */
+.lightbox-backdrop{
+  position:fixed;inset:0;
+  background:rgba(5,12,8,.96);
+  z-index:2000;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+  display:flex;flex-direction:column;
+}
+.lightbox-backdrop.open{
+  opacity:1;pointer-events:all;
+}
+
+/* header */
+.lb-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 28px;
+  flex-shrink:0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.lb-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:300;
+  color:#fff;letter-spacing:1.5px;
+}
+.lb-title em{color:var(--gold);font-style:italic;}
+.lb-counter{
+  font-size:11px;letter-spacing:2px;
+  color:rgba(255,255,255,.35);
+  text-transform:uppercase;
+}
+.lb-close{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.7);
+  font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;flex-shrink:0;
+}
+.lb-close:hover{background:rgba(201,168,76,.2);border-color:var(--gold);color:var(--gold);}
+
+/* main image */
+.lb-stage{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:0 64px;
+}
+.lb-img-wrap{
+  position:relative;
+  max-width:1100px;
+  width:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.lb-img{
+  max-height:calc(100vh - 240px);
+  max-width:100%;
+  object-fit:contain;
+  border-radius:4px;
+  display:block;
+  transition:opacity .25s ease,transform .25s ease;
+  opacity:1;
+}
+.lb-img.fading{opacity:0;transform:scale(.97);}
+.lb-caption{
+  position:absolute;
+  bottom:-32px;
+  left:0;right:0;
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;font-style:italic;
+  color:rgba(255,255,255,.35);
+  letter-spacing:1px;
+}
+
+/* nav arrows */
+.lb-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.7);font-size:18px;
+  cursor:pointer;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;z-index:2;
+}
+.lb-arrow:hover{background:rgba(201,168,76,.18);border-color:rgba(201,168,76,.4);color:var(--gold);}
+.lb-prev{left:10px;}
+.lb-next{right:10px;}
+
+/* thumbnail strip */
+.lb-thumbs-bar{
+  flex-shrink:0;
+  padding:16px 28px 20px;
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex;align-items:center;gap:8px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  justify-content:center;
+}
+.lb-thumbs-bar::-webkit-scrollbar{display:none;}
+.lb-thumb{
+  width:64px;height:46px;flex-shrink:0;
+  border-radius:3px;overflow:hidden;
+  cursor:pointer;
+  border:2px solid transparent;
+  opacity:.45;
+  transition:all .3s;
+}
+.lb-thumb img{width:100%;height:100%;object-fit:cover;}
+.lb-thumb.active{border-color:var(--gold);opacity:1;}
+.lb-thumb:hover{opacity:.8;}
+
+/* keyboard hint */
+.lb-key-hint{
+  position:absolute;bottom:74px;right:28px;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.15);
+}
 
 /* ── BREADCRUMB ── */
 .bc-strip{background:var(--forest);padding:12px 60px;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);}
@@ -153,7 +356,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .policy-items li:last-child{border-bottom:none;}
 .policy-items li::before{content:'·';color:var(--gold);font-size:18px;line-height:1;flex-shrink:0;}
 
-/* ── LOCATION — map + address only ── */
+/* ── LOCATION ── */
 .location-section{margin-bottom:16px;}
 .location-body{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;align-items:start;}
 .map-placeholder{background:var(--forest);height:260px;border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
@@ -164,8 +367,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 @keyframes pinPulse{0%,100%{box-shadow:0 0 0 5px rgba(201,168,76,.2),0 0 0 10px rgba(201,168,76,.1);}50%{box-shadow:0 0 0 8px rgba(201,168,76,.15),0 0 0 16px rgba(201,168,76,.05);}}
 .map-pin-label{font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;opacity:.8;}
 .map-pin-cta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.7);margin-top:6px;}
-/* Address panel — sits beside the map */
-.address-panel{display:flex;flex-direction:column;justify-content:center;gap:0;}
+.address-panel{display:flex;flex-direction:column;justify-content:center;}
 .addr-block{background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);padding:20px 22px;}
 .addr-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .addr-text{font-size:15px;color:var(--text);line-height:1.7;font-family:'Cormorant Garamond',serif;font-weight:400;}
@@ -278,6 +480,9 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .bc-strip{padding:10px 20px;}
   .cta-strip{padding:50px 20px;}
   .fg{grid-template-columns:1fr 1fr;gap:28px;}
+  .lb-stage{padding:0 44px;}
+  .hero-bottom-bar{flex-direction:column;gap:8px;}
+  .photo-count-badge{display:none;}
 }
 @media(max-width:480px){
   .hero{min-height:520px;}
@@ -285,6 +490,12 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .room-card{grid-template-columns:1fr;}
   .bf-row{grid-template-columns:1fr;}
   .fg{grid-template-columns:1fr;}
+  .lb-stage{padding:0 32px;}
+  .lb-arrow{width:36px;height:36px;font-size:15px;}
+  .lb-thumbs-bar{padding:12px 16px 16px;}
+  .lb-thumb{width:50px;height:36px;}
+  .gallery-thumbs .gthumb{width:40px;height:28px;}
+  .view-all-btn{font-size:9px;padding:6px 11px;}
 }
 </style>
 </head>
@@ -325,11 +536,18 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   <a href="index.html#packages">Packages</a><a href="index.html#contact">Contact</a>
 </div>
 
-<!-- HERO GALLERY -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-slides" id="heroSlides"></div>
   <button class="hero-arrow hero-prev" onclick="prevSlide()">&#8592;</button>
   <button class="hero-arrow hero-next" onclick="nextSlide()">&#8594;</button>
+
+  <!-- Photo count badge — top right -->
+  <div class="photo-count-badge" id="photoCountBadge" onclick="openLightbox(currentSlide)">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span id="photoCountLabel"></span>
+  </div>
+
   <div class="hero-content">
     <div>
       <div class="hero-badge" id="heroBadge"></div>
@@ -344,8 +562,40 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     </div>
     <div class="hero-stats" id="heroStats"></div>
   </div>
-  <div class="gallery-thumbs" id="galleryThumbs"></div>
+
+  <!-- Thumbnails + View All Photos — bottom centre -->
+  <div class="hero-bottom-bar" id="heroBottomBar">
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+    <button class="view-all-btn" onclick="openLightbox(currentSlide)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      View All Photos
+    </button>
+  </div>
+
   <div class="scroll-hint"><div class="scroll-hint-text">Scroll</div><div class="scroll-hint-line"></div></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     LIGHTBOX
+══════════════════════════════════════ -->
+<div class="lightbox-backdrop" id="lightbox">
+  <div class="lb-header">
+    <div class="lb-title" id="lbResortName"></div>
+    <div class="lb-counter" id="lbCounter"></div>
+    <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
+  </div>
+
+  <div class="lb-stage">
+    <button class="lb-arrow lb-prev" onclick="lbPrev()">&#8592;</button>
+    <div class="lb-img-wrap">
+      <img class="lb-img" id="lbImg" src="" alt="">
+      <div class="lb-caption" id="lbCaption"></div>
+    </div>
+    <button class="lb-arrow lb-next" onclick="lbNext()">&#8594;</button>
+  </div>
+
+  <div class="lb-thumbs-bar" id="lbThumbs"></div>
+  <div class="lb-key-hint">← → to navigate &nbsp;·&nbsp; ESC to close</div>
 </div>
 
 <!-- BREADCRUMB -->
@@ -359,7 +609,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 <div class="main-wrap">
   <div class="content-col">
 
-    <!-- AMENITIES -->
     <section class="amenities-section rv">
       <div class="sl">Facilities &amp; Amenities</div>
       <h2 class="st">What's Included</h2>
@@ -367,7 +616,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="amenities-grid" id="amenitiesGrid"></div>
     </section>
 
-    <!-- ROOMS -->
     <section class="rooms-section rv">
       <div class="sl">Accommodation</div>
       <h2 class="st">Choose Your Room</h2>
@@ -375,7 +623,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="rooms-grid" id="roomsGrid"></div>
     </section>
 
-    <!-- ACTIVITIES -->
     <section class="act-section rv">
       <div class="sl">Adventures &amp; Experiences</div>
       <h2 class="st">Things to Do Here</h2>
@@ -383,7 +630,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="act-grid" id="activitiesGrid"></div>
     </section>
 
-    <!-- POLICIES -->
     <section class="policy-section rv">
       <div class="sl">Good to Know</div>
       <h2 class="st">Policies</h2>
@@ -391,7 +637,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
       <div class="policy-grid" id="policyGrid"></div>
     </section>
 
-    <!-- LOCATION — map + address only -->
     <section class="location-section rv">
       <div class="sl">Where to Find Us</div>
       <h2 class="st">Location</h2>
@@ -415,7 +660,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
         </div>
       </div>
     </section>
-
   </div>
 
   <!-- SIDEBAR -->
@@ -535,13 +779,13 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
      ╚══════════════════════════════════════╝ -->
 <script>
 const RESORT = {
-  name: "Rain Forest Resort",
+  name: "Dew Drops Resort",
   tagline: "Where the Kali flows through your mornings",
   badge: "&#11088; Top Rated Resort",
   stars: 4,
-  rating: 4.5,
+  rating: 4.3,
   ratingLabel: "Excellent",
-  reviewCount: "248 reviews",
+  reviewCount: "314 reviews",
   whatsapp: "+919611943766",
   price: "&#8377;6,499",
   priceUnit: "/ couple \u00b7 night",
@@ -549,44 +793,52 @@ const RESORT = {
   priceSave: "Save 24% \u00b7 Best Price Guarantee",
 
   images: [
-    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Riverside View" },
-    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Forest Cottage" },
-    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Swimming Pool" },
-    { src: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", caption: "Dining Area" },
+    { src: "images/RainForest/Forest Cabins.jpg",    caption: "Forest Cabins" },
+    { src: "images/RainForest/Balcony View.jpg",     caption: "Balcony View"    },
+    { src: "images/RainForest/Swiming Pool_2.jpg",    caption: "Swimming Pool"  },
+    { src: "images/RainForest/Room 1.jpg",   caption: "Room"    },
+    { src: "images/RainForest/Room2.jpg",   caption: "Room"    },
+    { src: "images/RainForest/Room3.jpg",   caption: "Room"    },
+    { src: "images/RainForest/Room4.jpg",   caption: "Room"    },
+    { src: "images/RainForest/Room5.jpg",   caption: "Room"    },
+    { src: "images/RainForest/Outdoor Siting.jpg",   caption: "Outdoor Siting"    },
+    { src: "images/RainForest/Path.jpg",   caption: "Path"    },
+    { src: "images/RainForest/Swimming Pool.jpg",   caption: "Swimming Pool"    },
+   
   ],
 
   heroStats: [
-    { value: "4.5", unit: "Rating" },
-    { value: "475", unit: "Sq km Forest" },
+    { value: "4.5",  unit: "Rating"       },
+    { value: "475",  unit: "Sq km Forest" },
     { value: "200+", unit: "Bird Species" },
   ],
 
   amenities: [
-    { icon: "&#127754;", text: "Infinity Pool & Jacuzzi" },
-    { icon: "&#127807;", text: "Riverside Nature Trails" },
-    { icon: "&#128675;", text: "White Water Rafting" },
-    { icon: "&#128247;", text: "Bird Watching Decks" },
-    { icon: "&#9729;&#65039;", text: "Air-Conditioned Rooms" },
-    { icon: "&#128100;", text: "Spa & Wellness Centre" },
-    { icon: "&#127869;", text: "Multi-Cuisine Restaurant" },
-    { icon: "&#128293;", text: "Riverside Bonfire" },
-    { icon: "&#128186;", text: "Free High-Speed WiFi" },
-    { icon: "&#128661;", text: "Jeep Safari Desk" },
-    { icon: "&#128663;", text: "Free Parking" },
-    { icon: "&#127879;", text: "Event & Group Spaces" },
+    { icon: "&#x2615;",   text: "Unlimited Breakfast"   },
+    { icon: "&#127869;",  text: "Unlimited Lunch"        },
+    { icon: "&#x1F958;",  text: "Unlimited Dinner"       },
+    { icon: "&#127754;",  text: "Swimming Pool"          },
+    { icon: "&#127807;",  text: "Jungle Trekking"        },
+    { icon: "&#128675;",  text: "Boating"                },
+    { icon: "&#x1F6F6;",  text: "Kayaking"               },
+    { icon: "&#x1FAE7;",  text: "Water Zorbing"          },
+    { icon: "&#x1F9D7;",  text: "Rope Activities"        },
+    { icon: "&#x1F3AF;",  text: "Archery Shooting"       },
+    { icon: "&#128293;",  text: "Campfire"               },
+    { icon: "&#x1F483;",  text: "Rain Dance"             },
   ],
 
   rooms: [
-    { name: "Forest View Cottage", badge: "Most Popular", image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", desc: "A charming private cottage nestled among teak trees, with a sit-out veranda facing the forest. King bed, AC, ensuite bathroom with rain shower.", features: ["King Bed","Forest View","Veranda","AC","Rain Shower"], price: "&#8377;5,499", unit: "/ night" },
-    { name: "Riverside Premium Suite", badge: "Best Pick", image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", desc: "Floor-to-ceiling glass doors open onto a private deck above the Kali River. Oversized bath, Jacuzzi, and a curated in-room minibar.", features: ["River View","Private Deck","Jacuzzi","Minibar","King Bed"], price: "&#8377;8,999", unit: "/ night" },
-    { name: "Deluxe Family Room", badge: "Family Friendly", image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", desc: "Spacious interconnecting room for 4 guests. Two queen beds, a shared sit-out, and a children's play corner.", features: ["2 Queen Beds","Sleeps 4","AC","Sit-out","Play Corner"], price: "&#8377;9,499", unit: "/ night" },
+    { name: "Forest View Cottage",    badge: "Most Popular",    image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", desc: "A charming private cottage nestled among teak trees, with a sit-out veranda facing the forest. King bed, AC, ensuite bathroom with rain shower.",                                            features: ["King Bed","Forest View","Veranda","AC","Rain Shower"],      price: "&#8377;5,499", unit: "/ night" },
+    { name: "Riverside Premium Suite", badge: "Best Pick",       image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", desc: "Floor-to-ceiling glass doors open onto a private deck above the Kali River. Oversized bath, Jacuzzi, and a curated in-room minibar.",                                                    features: ["River View","Private Deck","Jacuzzi","Minibar","King Bed"], price: "&#8377;8,999", unit: "/ night" },
+    { name: "Deluxe Family Room",      badge: "Family Friendly", image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg", desc: "Spacious interconnecting room for 4 guests. Two queen beds, a shared sit-out, and a children\u2019s play corner.",                                                                        features: ["2 Queen Beds","Sleeps 4","AC","Sit-out","Play Corner"],      price: "&#8377;9,499", unit: "/ night" },
   ],
 
   activities: [
     { name: "White Water Rafting", cat: "Water Sports", duration: "3\u20134 hrs", meta: "Grade III & IV", image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
-    { name: "Jeep Safari",         cat: "Wildlife",     duration: "3 hrs",         meta: "Dawn & Dusk",   image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
-    { name: "Bird Watching",       cat: "Nature",       duration: "2 hrs",         meta: "200+ Species",  image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
-    { name: "Night Safari",        cat: "Wildlife",     duration: "2\u20133 hrs",  meta: "After Dark",    image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
+    { name: "Jeep Safari",         cat: "Wildlife",     duration: "3 hrs",        meta: "Dawn & Dusk",   image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
+    { name: "Bird Watching",       cat: "Nature",       duration: "2 hrs",        meta: "200+ Species",  image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
+    { name: "Night Safari",        cat: "Wildlife",     duration: "2\u20133 hrs", meta: "After Dark",    image: "https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" },
   ],
 
   policies: [
@@ -596,49 +848,59 @@ const RESORT = {
     { icon: "&#128101;", title: "Guest Rules",           items: ["Children welcome (all ages)","Max 2 extra beds per room","Valid ID required at check-in","Aadhar/Passport accepted"] },
   ],
 
-  /* address only — no travel distances */
-  address: "Kali Riverside, Dandeli, Uttara Kannada, Karnataka 581 325",
-  mapsUrl: "https://maps.google.com/?q=Dandeli+Karnataka",
+  address:  "Kali Riverside, Dandeli, Uttara Kannada, Karnataka 581 325",
+  mapsUrl:  "https://maps.google.com/?q=Dandeli+Karnataka",
 
   quickInfo: [
     { icon: "&#127774;",         text: "Open year-round (reserve closes Jun\u2013Oct)" },
     { icon: "&#127957;&#65039;", text: "Min stay: 1 night"                              },
     { icon: "&#128101;",         text: "Capacity: Up to 80 guests"                      },
-    { icon: "&#128186;",         text: "100 Mbps WiFi throughout property"               },
   ],
 
   nearby: [
-    { icon: "&#128024;",         text: "Kali Tiger Reserve \u2014 2 km"    },
-    { icon: "&#127754;",         text: "Syntheri Rock Falls \u2014 22 km"  },
-    { icon: "&#128697;&#65039;", text: "Supa Dam \u2014 12 km"             },
-    { icon: "&#127960;&#65039;", text: "Kavala Caves \u2014 14 km"         },
-    { icon: "&#128197;",         text: "Ulavi Temple \u2014 30 km"         },
+    { icon: "&#128024;",         text: "Kali Tiger Reserve \u2014 2 km"   },
+    { icon: "&#127754;",         text: "Syntheri Rock Falls \u2014 22 km" },
+    { icon: "&#128697;&#65039;", text: "Supa Dam \u2014 12 km"            },
+    { icon: "&#127960;&#65039;", text: "Kavala Caves \u2014 14 km"        },
+    { icon: "&#128197;",         text: "Ulavi Temple \u2014 30 km"        },
   ],
 };
 
-/* ── PAGE BUILDER ── */
+/* ══════════════════════════════════════
+   PAGE BUILDER
+══════════════════════════════════════ */
 (function () {
   const R = RESORT;
-  function starStr(n) { let s=''; for (let i=0;i<5;i++) s += i<n?'&#9733;':'&#9734;'; return s; }
+  function starStr(n) { let s=''; for(let i=0;i<5;i++) s += i<n ? '&#9733;' : '&#9734;'; return s; }
 
-  /* hero */
   document.title = R.name + ' \u2014 Book myDandeli';
-  document.getElementById('bcResort').textContent    = R.name;
-  document.getElementById('heroBadge').innerHTML     = R.badge;
-  document.getElementById('heroStars').innerHTML     = starStr(R.stars);
-  document.getElementById('heroTitle').innerHTML     = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
-  document.getElementById('heroSub').textContent     = R.tagline;
-  document.getElementById('mapLabel').textContent    = R.name;
-  document.getElementById('mapLink').href            = R.mapsUrl;
-  document.getElementById('directionsBtn').href      = R.mapsUrl;
-  document.getElementById('addrText').textContent    = R.address;
+  document.getElementById('bcResort').textContent     = R.name;
+  document.getElementById('heroBadge').innerHTML      = R.badge;
+  document.getElementById('heroStars').innerHTML      = starStr(R.stars);
+  document.getElementById('heroTitle').innerHTML      = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
+  document.getElementById('heroSub').textContent      = R.tagline;
+  document.getElementById('mapLabel').textContent     = R.name;
+  document.getElementById('mapLink').href             = R.mapsUrl;
+  document.getElementById('directionsBtn').href       = R.mapsUrl;
+  document.getElementById('addrText').textContent     = R.address;
+  document.getElementById('lbResortName').innerHTML   = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
+  document.getElementById('photoCountLabel').textContent = R.images.length + ' Photos';
 
+  /* hero slides + hero thumbnails */
   R.images.forEach((img, i) => {
     document.getElementById('heroSlides').innerHTML +=
       `<div class="hero-slide${i===0?' active':''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
     document.getElementById('galleryThumbs').innerHTML +=
       `<div class="gthumb${i===0?' active':''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
   });
+
+  /* lightbox thumbnails */
+  R.images.forEach((img, i) => {
+    document.getElementById('lbThumbs').innerHTML +=
+      `<div class="lb-thumb${i===0?' active':''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+  });
+
+  /* hero stats */
   R.heroStats.forEach((s, i) => {
     document.getElementById('heroStats').innerHTML +=
       (i > 0 ? '<div class="hstat-div"></div>' : '') +
@@ -695,11 +957,11 @@ const RESORT = {
   });
 
   /* sidebar */
-  document.getElementById('bookPrice').innerHTML     = R.price;
-  document.getElementById('bookUnit').textContent    = R.priceUnit;
-  document.getElementById('bookCrossed').innerHTML   = R.priceCrossed;
-  document.getElementById('bookSave').textContent    = R.priceSave;
-  document.getElementById('bookRating').textContent  = R.ratingValue || R.rating;
+  document.getElementById('bookPrice').innerHTML      = R.price;
+  document.getElementById('bookUnit').textContent     = R.priceUnit;
+  document.getElementById('bookCrossed').innerHTML    = R.priceCrossed;
+  document.getElementById('bookSave').textContent     = R.priceSave;
+  document.getElementById('bookRating').textContent   = R.ratingValue || R.rating;
   document.getElementById('bookRatingText').textContent = R.ratingLabel + ' \u00b7 ' + R.reviewCount;
   document.getElementById('bookWa').href =
     `https://wa.me/${R.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent('Hi! I want to book '+R.name+' via Book myDandeli.')}`;
@@ -714,8 +976,11 @@ const RESORT = {
   });
 })();
 
-/* ── GALLERY ── */
+/* ══════════════════════════════════════
+   HERO GALLERY SLIDER
+══════════════════════════════════════ */
 let currentSlide = 0;
+
 function goSlide(n) {
   const slides = document.querySelectorAll('.hero-slide');
   const thumbs = document.querySelectorAll('.gthumb');
@@ -730,7 +995,78 @@ function prevSlide() { goSlide(currentSlide - 1); }
 function nextSlide() { goSlide(currentSlide + 1); }
 setInterval(() => nextSlide(), 5000);
 
-/* ── BOOKING ── */
+/* ══════════════════════════════════════
+   LIGHTBOX
+══════════════════════════════════════ */
+let lbCurrent = 0;
+
+function updateLightbox() {
+  const imgs   = RESORT.images;
+  const lb     = document.getElementById('lbImg');
+  const counter = document.getElementById('lbCounter');
+  const caption = document.getElementById('lbCaption');
+  const thumbs  = document.querySelectorAll('.lb-thumb');
+
+  lb.classList.add('fading');
+  setTimeout(() => {
+    lb.src = imgs[lbCurrent].src;
+    lb.alt = imgs[lbCurrent].caption;
+    caption.textContent = imgs[lbCurrent].caption;
+    counter.textContent = (lbCurrent + 1) + ' / ' + imgs.length;
+    lb.classList.remove('fading');
+  }, 200);
+
+  thumbs.forEach((t, i) => t.classList.toggle('active', i === lbCurrent));
+
+  // Scroll active thumb into view
+  if (thumbs[lbCurrent]) {
+    thumbs[lbCurrent].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+}
+
+function openLightbox(startIndex) {
+  lbCurrent = startIndex || 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbNext() {
+  lbCurrent = (lbCurrent + 1) % RESORT.images.length;
+  updateLightbox();
+}
+
+function lbPrev() {
+  lbCurrent = (lbCurrent - 1 + RESORT.images.length) % RESORT.images.length;
+  updateLightbox();
+}
+
+function lbGoTo(n) {
+  lbCurrent = n;
+  updateLightbox();
+}
+
+/* Keyboard navigation */
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNext();
+  if (e.key === 'ArrowLeft')  lbPrev();
+  if (e.key === 'Escape')     closeLightbox();
+});
+
+/* Click backdrop to close */
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+/* ══════════════════════════════════════
+   BOOKING FORM
+══════════════════════════════════════ */
 function submitBooking() {
   const name    = document.getElementById('bName').value.trim();
   const phone   = document.getElementById('bPhone').value.trim();
@@ -754,16 +1090,17 @@ function submitBooking() {
   }, 600);
 }
 
-/* ── SCROLL ── */
+/* ══════════════════════════════════════
+   SCROLL & REVEAL
+══════════════════════════════════════ */
 window.addEventListener('scroll', () => {
   const h = document.documentElement.scrollHeight - window.innerHeight;
   document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
   document.getElementById('bk').classList.toggle('s', scrollY > 400);
-  document.getElementById('nav').style.boxShadow = scrollY > 80
-    ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+  document.getElementById('nav').style.boxShadow =
+    scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
 });
 
-/* ── REVEAL ── */
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -773,6 +1110,7 @@ const obs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.07 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
 setTimeout(() => {
   document.querySelectorAll('.rv:not(.v)').forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight) {
@@ -782,14 +1120,16 @@ setTimeout(() => {
   });
 }, 350);
 
-/* ── CURSOR ── */
+/* ══════════════════════════════════════
+   CURSOR
+══════════════════════════════════════ */
 const cur = document.getElementById('cur'), cuf = document.getElementById('cuf');
 let mx = 0, my = 0, fx = 0, fy = 0;
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(${mx}px,${my}px)`; });
 (function tick() { fx += (mx-fx)*.1; fy += (my-fy)*.1; cuf.style.transform = `translate(${fx}px,${fy}px)`; requestAnimationFrame(tick); })();
-document.querySelectorAll('a,button,.am-item,.room-card,.act-card').forEach(el => {
+document.querySelectorAll('a,button,.am-item,.room-card,.act-card,.lb-thumb,.gthumb').forEach(el => {
   el.addEventListener('mouseenter', () => { cuf.style.opacity = '.85'; });
-  el.addEventListener('mouseleave', () => { cuf.style.opacity = '.5'; });
+  el.addEventListener('mouseleave', () => { cuf.style.opacity = '.5';  });
 });
 </script>
 </body>
