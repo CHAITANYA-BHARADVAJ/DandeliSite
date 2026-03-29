@@ -789,9 +789,16 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
 .rl-load-btn:hover { background: var(--forest); color: var(--gold); }
 
 /* ── RESPONSIVE ── */
+.mobile-only { display: none; margin-left: 8px; font-size: 10px; }
+.rl-filter-body { display: block; }
+
 @media (max-width: 960px) {
   .rl-main { grid-template-columns: 1fr; }
-  .rl-sidebar { position: static; }
+  .rl-sidebar { position: static; margin-bottom: 20px; }
+  .mobile-only { display: inline-block; }
+  .rl-filter-head { cursor: pointer; }
+  .rl-filter-body { display: none; }
+  .rl-filter-body.open { display: block; }
 }
 
 @media (max-width: 680px) {
@@ -811,8 +818,8 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
 <nav class="rl-nav">
   <a href="index.html" class="rl-logo">🌿 Book myDandeli</a>
   <div class="rl-nav-right">
-    <a href="tel:9611943766" class="rl-nav-phone">📞 +91 96119 43766</a>
-    <a href="https://api.whatsapp.com/send?phone=919611943766" class="rl-nav-wa">💬 WhatsApp</a>
+    <a href="tel:6363343766" class="rl-nav-phone">📞 +91 63633 43766</a>
+    <a href="https://api.whatsapp.com/send?phone=916363343766" class="rl-nav-wa">💬 WhatsApp</a>
   </div>
 </nav>
 
@@ -841,10 +848,11 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
 
   <!-- ── SIDEBAR FILTERS ── -->
   <aside class="rl-sidebar">
-    <div class="rl-filter-head">
-      <span class="rl-filter-title">Filters</span>
-      <button class="rl-filter-reset" onclick="resetFilters()">Reset All</button>
+    <div class="rl-filter-head" onclick="toggleMobileFilters()">
+      <span class="rl-filter-title">Filters<span id="filterToggleIcon" class="mobile-only">▼</span></span>
+      <button class="rl-filter-reset" onclick="event.stopPropagation(); resetFilters()">Reset All</button>
     </div>
+    <div class="rl-filter-body" id="filterBody">
 
     <div class="rl-filter-group">
       <div class="rl-filter-label">Star Rating</div>
@@ -885,6 +893,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
         <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="homestay"> <label>🏠 Homestay</label></label>
         <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="camp"> <label>⛺ Camp</label></label>
       </div>
+    </div>
     </div>
   </aside>
 
@@ -1029,7 +1038,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
               <a href="dewDrops_resort.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1093,7 +1102,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
                 <a href="River Edge.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1160,7 +1169,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
                <a href="rainForest_resort.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1217,7 +1226,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
              <a href="Tusker Trails.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1277,7 +1286,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
               <a href="Wild Wings.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1334,7 +1343,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
               <a href="Wild Wings.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1394,7 +1403,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text
             </div>
             <div class="rc-ctas">
               <a href="Wild Mist.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=919611943766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1473,6 +1482,18 @@ function sortResorts(key, btn) {
 }
 
 /* ── FILTERS ── */
+function toggleMobileFilters() {
+  const body = document.getElementById('filterBody');
+  const icon = document.getElementById('filterToggleIcon');
+  if (body.classList.contains('open')) {
+    body.classList.remove('open');
+    if (icon) icon.textContent = '▼';
+  } else {
+    body.classList.add('open');
+    if (icon) icon.textContent = '▲';
+  }
+}
+
 function applyFilters() {
   const cards = document.querySelectorAll('.resort-card');
   const maxPrice = document.querySelector('.rl-slider').value;
