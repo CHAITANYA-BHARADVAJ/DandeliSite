@@ -49,93 +49,129 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .mob a{display:block;font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);}
 .mob-x{position:absolute;top:24px;right:30px;font-size:28px;color:#fff;cursor:pointer;background:none;border:none;}
 
-/* ── HERO ── */
-.hero{position:relative;height:92vh;min-height:600px;max-height:860px;overflow:hidden;background:var(--forest);}
+/* ── HERO — mobile first ── */
+.hero{
+  position:relative;
+  height:100svh;
+  min-height:520px;
+  overflow:hidden;
+  background:var(--forest);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
 .hero-slides{position:absolute;inset:0;display:flex;transition:transform .8s cubic-bezier(.77,0,.175,1);}
 .hero-slide{flex-shrink:0;width:100%;height:100%;position:relative;overflow:hidden;}
 .hero-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 6s ease;}
 .hero-slide.active img{transform:scale(1);}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,10,.88) 0%,rgba(5,18,10,.4) 45%,rgba(5,18,10,.25) 100%);}
-.hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 60px 60px;display:grid;grid-template-columns:1fr auto;align-items:flex-end;gap:30px;z-index:10;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.15);backdrop-filter:blur(10px);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:9.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;width:fit-content;opacity:0;animation:hRise .6s .3s ease forwards;}
-.hero-stars{color:var(--gold);font-size:15px;letter-spacing:3px;margin-bottom:12px;display:block;opacity:0;animation:hRise .6s .4s ease forwards;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,74px);font-weight:300;color:#fff;letter-spacing:2px;line-height:1.05;opacity:0;animation:hRise .9s .5s cubic-bezier(.22,1,.36,1) forwards;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,10,.95) 0%,rgba(5,18,10,.55) 50%,rgba(5,18,10,.2) 100%);}
+
+/* Wrapper that stacks title then thumbnails in normal flow */
+.hero-bottom-stack{
+  position:relative;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Title block */
+.hero-content{
+  padding:0 20px 14px;
+}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.15);backdrop-filter:blur(10px);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin-bottom:10px;width:fit-content;opacity:0;animation:hRise .6s .3s ease forwards;}
+.hero-stars{color:var(--gold);font-size:13px;letter-spacing:3px;margin-bottom:8px;display:block;opacity:0;animation:hRise .6s .4s ease forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,9vw,74px);font-weight:300;color:#fff;letter-spacing:1.5px;line-height:1.05;opacity:0;animation:hRise .9s .5s cubic-bezier(.22,1,.36,1) forwards;}
 .hero-title em{color:var(--gold);font-style:italic;}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.4);margin-top:10px;letter-spacing:1px;opacity:0;animation:hRise .6s .75s ease forwards;}
-.hero-orn{display:flex;align-items:center;gap:12px;margin-top:18px;opacity:0;animation:hFade .5s .95s ease forwards;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.45);margin-top:7px;letter-spacing:1px;opacity:0;animation:hRise .6s .75s ease forwards;}
+.hero-orn{display:flex;align-items:center;gap:10px;margin-top:12px;opacity:0;animation:hFade .5s .95s ease forwards;}
 .hero-orn-line{height:.5px;background:rgba(201,168,76,.4);width:0;animation:hLine 1s 1s ease forwards;}
-@keyframes hLine{to{width:48px;}}
-.hero-orn-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg) scale(0);animation:hDia .4s 1.1s cubic-bezier(.34,1.6,.64,1) forwards;}
-@keyframes hRise{to{opacity:1;transform:none;}from{opacity:0;transform:translateY(22px);}}
+@keyframes hLine{to{width:36px;}}
+.hero-orn-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg) scale(0);animation:hDia .4s 1.1s cubic-bezier(.34,1.6,.64,1) forwards;}
+@keyframes hRise{to{opacity:1;transform:none;}from{opacity:0;transform:translateY(18px);}}
 @keyframes hFade{to{opacity:1;}}
 @keyframes hDia{to{transform:rotate(45deg) scale(1);}}
-.hero-stats{display:flex;flex-direction:column;gap:16px;align-items:flex-end;opacity:0;animation:hFade .7s .6s ease forwards;}
-.hstat{text-align:right;}
-.hstat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;line-height:1;}
-.hstat-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px;}
-.hstat-div{width:80px;height:.5px;background:rgba(255,255,255,.1);align-self:flex-end;}
-.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:18px;cursor:pointer;z-index:10;transition:all .3s;display:flex;align-items:center;justify-content:center;}
-.hero-arrow:hover{background:var(--gold);border-color:var(--gold);}
-.hero-prev{left:24px;}
-.hero-next{right:24px;}
-.scroll-hint{position:absolute;bottom:28px;right:28px;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:10;opacity:0;animation:hFade .5s 1.5s ease forwards;}
-.scroll-hint-text{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl;}
-.scroll-hint-line{width:1px;height:0;background:rgba(201,168,76,.5);animation:scrollLine 1.5s 1.8s ease infinite;}
-@keyframes scrollLine{0%{height:0;opacity:1;}100%{height:40px;opacity:0;}}
 
-/* ── THUMBNAIL STRIP + VIEW ALL ── */
+/* Thumbnail bar */
 .hero-bottom-bar{
-  position:absolute;
-  bottom:24px;
-  left:50%;
-  transform:translateX(-50%);
+  position:relative;
   z-index:10;
   display:flex;
   align-items:center;
-  gap:12px;
+  justify-content:flex-start;
+  gap:7px;
+  padding:10px 20px 24px;
   opacity:0;
   animation:hFade .5s 1.2s ease forwards;
 }
-.gallery-thumbs{
-  display:flex;
-  gap:8px;
-}
-.gthumb{width:52px;height:36px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .3s;opacity:.55;}
+.gallery-thumbs{display:flex;gap:7px;}
+.gthumb{width:48px;height:34px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .3s;opacity:.55;}
 .gthumb.active{border-color:var(--gold);opacity:1;}
 .gthumb img{width:100%;height:100%;object-fit:cover;}
 
-/* ── VIEW ALL PHOTOS BUTTON ── */
-.view-all-btn{
-  display:inline-flex;
+/* Nav arrows */
+.hero-arrow{position:absolute;top:42%;transform:translateY(-50%);width:38px;height:38px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:16px;cursor:pointer;z-index:10;transition:all .3s;display:flex;align-items:center;justify-content:center;}
+.hero-arrow:hover{background:var(--gold);border-color:var(--gold);}
+.hero-prev{left:14px;}
+.hero-next{right:14px;}
+
+.scroll-hint{display:none;}
+
+/* Desktop upgrades */
+@media(min-width:768px){
+  .hero{height:92vh;max-height:860px;}
+  .hero-content{padding:0 60px 16px;}
+  .hero-badge{font-size:9.5px;padding:6px 16px;}
+  .hero-stars{font-size:15px;}
+  .hero-sub{font-size:16px;}
+  .hero-orn-line{animation:hLineD 1s 1s ease forwards;}
+  @keyframes hLineD{to{width:48px;}}
+  .hero-bottom-bar{padding:12px 60px 32px;gap:8px;}
+  .gthumb{width:56px;height:38px;}
+  .hero-arrow{top:50%;width:46px;height:46px;font-size:18px;}
+  .hero-prev{left:24px;}
+  .hero-next{right:24px;}
+  .scroll-hint{
+    display:flex;position:absolute;bottom:32px;right:32px;
+    flex-direction:column;align-items:center;gap:6px;z-index:10;
+    opacity:0;animation:hFade .5s 1.5s ease forwards;
+  }
+  .scroll-hint-text{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl;}
+  .scroll-hint-line{width:1px;height:0;background:rgba(201,168,76,.5);animation:scrollLine 1.5s 1.8s ease infinite;}
+  @keyframes scrollLine{0%{height:0;opacity:1;}100%{height:40px;opacity:0;}}
+}
+
+/* "View More" thumb tile */
+.gthumb.view-more-thumb{
+  opacity:1 !important;
+  background:rgba(0,0,0,.55);
+  display:flex !important;
   align-items:center;
-  gap:7px;
-  background:rgba(255,255,255,.1);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.22);
-  color:rgba(255,255,255,.8);
-  font-family:'Jost',sans-serif;
-  font-size:10px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  padding:7px 14px;
-  cursor:pointer;
-  border-radius:4px;
+  justify-content:center;
+  flex-direction:column;
+  gap:3px;
+  border:1.5px solid rgba(201,168,76,.4);
   transition:all .3s;
-  white-space:nowrap;
-  flex-shrink:0;
 }
-.view-all-btn:hover{
+.gthumb.view-more-thumb:hover{
+  border-color:var(--gold);
   background:rgba(201,168,76,.2);
-  border-color:rgba(201,168,76,.5);
+}
+.gthumb.view-more-thumb .vm-count{
   color:var(--gold);
+  font-size:13px;
+  font-weight:600;
+  line-height:1;
+  font-family:'Jost',sans-serif;
 }
-.view-all-btn svg{
-  width:12px;height:12px;
-  stroke:currentColor;fill:none;stroke-width:1.8;
-  flex-shrink:0;transition:transform .3s;
+.gthumb.view-more-thumb .vm-label{
+  color:rgba(255,255,255,.7);
+  font-size:8px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  font-family:'Jost',sans-serif;
 }
-.view-all-btn:hover svg{transform:scale(1.15);}
+
+
 
 /* ── PHOTO COUNT BADGE (top-right of hero) ── */
 .photo-count-badge{
@@ -473,7 +509,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .topbar{padding:8px 20px;}.topbar .soc{display:none;}
   nav{padding:0 20px;}.nl{display:none;}.hbg{display:flex;}
   .main-wrap{padding:32px 20px;}
-  .hero-content{padding:0 24px 36px;grid-template-columns:1fr;}.hero-stats{flex-direction:row;align-items:flex-start;}
+  .hero-content{padding:0 24px 36px;}
   .amenities-grid{grid-template-columns:1fr 1fr;}
   .act-grid,.policy-grid{grid-template-columns:1fr;}
   .location-body{grid-template-columns:1fr;}
@@ -481,7 +517,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .cta-strip{padding:50px 20px;}
   .fg{grid-template-columns:1fr 1fr;gap:28px;}
   .lb-stage{padding:0 44px;}
-  .hero-bottom-bar{flex-direction:column;gap:8px;}
+  .hero-bottom-bar{gap:6px;}
   .photo-count-badge{display:none;}
 }
 @media(max-width:480px){
@@ -495,7 +531,6 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .lb-thumbs-bar{padding:12px 16px 16px;}
   .lb-thumb{width:50px;height:36px;}
   .gallery-thumbs .gthumb{width:40px;height:28px;}
-  .view-all-btn{font-size:9px;padding:6px 11px;}
 }
 </style>
 </head>
@@ -548,8 +583,9 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <span id="photoCountLabel"></span>
   </div>
 
-  <div class="hero-content">
-    <div>
+  <!-- Bottom stack: title then thumbnails, no overlap -->
+  <div class="hero-bottom-stack">
+    <div class="hero-content">
       <div class="hero-badge" id="heroBadge"></div>
       <span class="hero-stars" id="heroStars"></span>
       <h1 class="hero-title" id="heroTitle"></h1>
@@ -560,16 +596,9 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
         <div class="hero-orn-line"></div>
       </div>
     </div>
-    <div class="hero-stats" id="heroStats"></div>
-  </div>
-
-  <!-- Thumbnails + View All Photos — bottom centre -->
-  <div class="hero-bottom-bar" id="heroBottomBar">
-    <div class="gallery-thumbs" id="galleryThumbs"></div>
-    <button class="view-all-btn" onclick="openLightbox(currentSlide)">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      View All Photos
-    </button>
+    <div class="hero-bottom-bar" id="heroBottomBar">
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
   </div>
 
   <div class="scroll-hint"><div class="scroll-hint-text">Scroll</div><div class="scroll-hint-line"></div></div>
@@ -886,25 +915,32 @@ const RESORT = {
   document.getElementById('lbResortName').innerHTML   = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
   document.getElementById('photoCountLabel').textContent = R.images.length + ' Photos';
 
-  /* hero slides + hero thumbnails */
+  /* hero slides + hero thumbnails (max 4 shown, then +N More tile) */
+  const thumbsEl = document.getElementById('galleryThumbs');
+
   R.images.forEach((img, i) => {
     document.getElementById('heroSlides').innerHTML +=
       `<div class="hero-slide${i===0?' active':''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
-    document.getElementById('galleryThumbs').innerHTML +=
-      `<div class="gthumb${i===0?' active':''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+
+    if (i < 4) {
+      thumbsEl.innerHTML +=
+        `<div class="gthumb${i===0?' active':''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+    }
   });
 
-  /* lightbox thumbnails */
+  if (R.images.length > 4) {
+    const extra = R.images.length - 4;
+    thumbsEl.innerHTML +=
+      `<div class="gthumb view-more-thumb" onclick="openLightbox(4)">
+        <span class="vm-count">+${extra}</span>
+        <span class="vm-label">More</span>
+      </div>`;
+  }
+
+  /* lightbox thumbnails (all images) */
   R.images.forEach((img, i) => {
     document.getElementById('lbThumbs').innerHTML +=
       `<div class="lb-thumb${i===0?' active':''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
-  });
-
-  /* hero stats */
-  R.heroStats.forEach((s, i) => {
-    document.getElementById('heroStats').innerHTML +=
-      (i > 0 ? '<div class="hstat-div"></div>' : '') +
-      `<div class="hstat"><div class="hstat-n">${s.value}</div><div class="hstat-l">${s.unit}</div></div>`;
   });
 
   /* amenities */
@@ -983,12 +1019,12 @@ let currentSlide = 0;
 
 function goSlide(n) {
   const slides = document.querySelectorAll('.hero-slide');
-  const thumbs = document.querySelectorAll('.gthumb');
+  const thumbs = document.querySelectorAll('.gthumb:not(.view-more-thumb)');
   slides[currentSlide].classList.remove('active');
-  thumbs[currentSlide].classList.remove('active');
+  if (thumbs[currentSlide]) thumbs[currentSlide].classList.remove('active');
   currentSlide = (n + slides.length) % slides.length;
   slides[currentSlide].classList.add('active');
-  thumbs[currentSlide].classList.add('active');
+  if (thumbs[currentSlide]) thumbs[currentSlide].classList.add('active');
   document.getElementById('heroSlides').style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 function prevSlide() { goSlide(currentSlide - 1); }
