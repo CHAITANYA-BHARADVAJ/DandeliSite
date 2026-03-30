@@ -1,2021 +1,2230 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dandeli Resorts — Choose Your Stay</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --forest: #1a3a2a;
-  --moss: #2d5a3d;
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --cream: #f5f0e8;
-  --sand: #e8dfc8;
-  --text: #1a1a1a;
-  --bg: #f4f6f8;
-  --white: #ffffff;
-  --border: #e2e8f0;
-  --shadow: rgba(0,0,0,0.08);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text); }
-
-/* ── TOP NAV ── */
-.rl-nav {
-  background: var(--forest);
-  padding: 14px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
-}
-
-.rl-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--gold);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.rl-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.rl-nav-phone {
-  color: rgba(255,255,255,0.7);
-  font-size: 13px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.rl-nav-wa {
-  background: #25d366;
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.rl-nav-wa:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,211,102,0.4); }
-
-/* ── PACKAGE BANNER ── */
-.rl-banner {
-  background: linear-gradient(135deg, var(--forest) 0%, #0d2318 100%);
-  padding: 36px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.rl-banner::after {
-  content: '';
-  position: absolute;
-  right: -100px;
-  top: -100px;
-  width: 400px;
-  height: 400px;
-  border: 80px solid rgba(201,168,76,0.06);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.rl-banner-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.rl-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.5);
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  margin-bottom: 12px;
-  transition: color 0.2s;
-}
-
-.rl-back:hover { color: var(--gold); }
-
-.rl-pkg-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(26px, 4vw, 42px);
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.rl-pkg-name em { color: var(--gold); font-style: italic; }
-
-.rl-pkg-meta {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.rl-pkg-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px;
-  padding: 5px 14px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.65);
-}
-
-.rl-pkg-price-box {
-  background: rgba(201,168,76,0.12);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 8px;
-  padding: 16px 24px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.rl-pkg-from {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(201,168,76,0.6);
-  margin-bottom: 2px;
-}
-
-.rl-pkg-price-big {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.rl-pkg-price-unit {
-  font-size: 13px;
-  color: rgba(255,255,255,0.4);
-  font-family: 'Jost', sans-serif;
-}
-
-/* ── MAIN LAYOUT ── */
-.rl-main {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 30px 24px 60px;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-/* ── FILTERS SIDEBAR ── */
-.rl-sidebar {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  position: sticky;
-  top: 76px;
-  box-shadow: 0 2px 16px var(--shadow);
-}
-
-.rl-filter-head {
-  background: var(--forest);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.rl-filter-title {
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.rl-filter-reset {
-  font-size: 11px;
-  color: var(--gold);
-  cursor: pointer;
-  background: none;
-  border: none;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-}
-
-.rl-filter-group {
-  padding: 18px 20px;
-  border-bottom: 1px solid var(--border);
-}
-
-.rl-filter-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #888;
-  margin-bottom: 14px;
-}
-
-/* Star filter */
-.rl-star-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.rl-star-opt {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.rl-star-opt input { accent-color: var(--gold); width: 15px; height: 15px; cursor: pointer; }
-.rl-star-opt label { font-size: 13px; color: #555; cursor: pointer; display: flex; align-items: center; gap: 5px; }
-
-/* Price slider */
-.rl-price-range {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.rl-price-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--forest);
-}
-
-.rl-slider {
-  width: 100%;
-  accent-color: var(--gold);
-  cursor: pointer;
-}
-
-/* Amenity checkboxes */
-.rl-amenities {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.rl-check-opt {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  cursor: pointer;
-}
-
-.rl-check-opt input { accent-color: var(--gold); width: 15px; height: 15px; cursor: pointer; }
-.rl-check-opt label { font-size: 13px; color: #555; cursor: pointer; }
-
-/* Sort strip */
-.rl-sort-strip {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 10px var(--shadow);
-  flex-wrap: wrap;
-}
-
-.rl-sort-label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #888;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.rl-sort-btn {
-  padding: 7px 16px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: transparent;
-  font-size: 12px;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.25s;
-  font-family: 'Jost', sans-serif;
-  letter-spacing: 0.3px;
-}
-
-.rl-sort-btn:hover { border-color: var(--gold); color: var(--forest); }
-.rl-sort-btn.active { background: var(--forest); border-color: var(--forest); color: var(--gold); }
-
-.rl-result-count {
-  margin-left: auto;
-  font-size: 13px;
-  color: #888;
-  white-space: nowrap;
-}
-
-.rl-result-count strong { color: var(--forest); }
-
-/* ── RESORT CARDS (MakeMyTrip style) ── */
-.rl-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.resort-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  transition: all 0.35s ease;
-  position: relative;
-  box-shadow: 0 2px 14px var(--shadow);
-}
-
-.resort-card:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-  border-color: rgba(201,168,76,0.3);
-}
-
-/* Image column */
-.rc-img-col {
-  position: relative;
-  overflow: hidden;
-  min-height: 240px;
-}
-
-.rc-img-col img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.resort-card:hover .rc-img-col img {
-  transform: scale(1.05);
-}
-
-.rc-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent 70%, rgba(255,255,255,0.04));
-}
-
-/* Badges on image */
-.rc-badge-row {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.rc-badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.rc-badge-top { background: #e05c3a; color: #fff; }
-.rc-badge-deal { background: var(--gold); color: #fff; }
-.rc-badge-eco { background: #2d7a3d; color: #fff; }
-
-/* Photo thumbs */
-.rc-thumbs {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: flex;
-  gap: 5px;
-}
-
-.rc-thumb {
-  width: 42px;
-  height: 32px;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1.5px solid rgba(255,255,255,0.6);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.rc-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.rc-thumb-more {
-  width: 42px;
-  height: 32px;
-  border-radius: 4px;
-  background: rgba(0,0,0,0.6);
-  border: 1.5px solid rgba(255,255,255,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* Info column */
-.rc-info-col {
-  padding: 20px 22px;
-  display: flex;
-  flex-direction: column;
-}
-
-.rc-top-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.rc-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--forest);
-  line-height: 1.2;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.rc-name:hover { color: var(--moss); text-decoration: underline; }
-
-.rc-rating {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.rc-rating-badge {
-  background: #1a6e3a;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 6px 6px 6px 0;
-  line-height: 1;
-}
-
-.rc-rating-text {
-  font-size: 11px;
-  color: #888;
-  text-align: center;
-}
-
-.rc-rating-count {
-  font-size: 10px;
-  color: #aaa;
-}
-
-/* Location & stars */
-.rc-location {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.rc-loc-text {
-  font-size: 12px;
-  color: #888;
-}
-
-.rc-stars {
-  color: #f5a623;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.rc-distance {
-  font-size: 11px;
-  color: #aaa;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* USP tags */
-.rc-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.rc-tag {
-  font-size: 11px;
-  color: #2d7a3d;
-  background: rgba(45,122,61,0.07);
-  border: 1px solid rgba(45,122,61,0.15);
-  border-radius: 4px;
-  padding: 3px 9px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Amenities */
-.rc-amenities {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-  padding: 10px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.rc-amenity {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11.5px;
-  color: #666;
-}
-
-.rc-amenity-icon { font-size: 14px; }
-
-/* Inclusions */
-.rc-inclusions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.rc-inc {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  color: var(--forest);
-  font-weight: 500;
-}
-
-.rc-inc::before {
-  content: '✓';
-  color: #4caf70;
-  font-weight: 700;
-}
-
-/* Price area */
-.rc-price-row {
-  margin-top: auto;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding-top: 12px;
-}
-
-
-.rc-discount-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(228,74,33,0.08);
-  color: #e44a21;
-  font-size: 10.5px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 3px;
-  margin-bottom: 4px;
-}
-
-.rc-price-crossed {
-  font-size: 13px;
-  color: #bbb;
-  text-decoration: line-through;
-  margin-bottom: 1px;
-}
-
-.rc-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--forest);
-  line-height: 1;
-}
-
-.rc-price-unit {
-  font-size: 12px;
-  color: #aaa;
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
-}
-
-.rc-taxes {
-  font-size: 10.5px;
-  color: #aaa;
-  margin-top: 2px;
-}
-
-.rc-taxes span { color: #4caf70; font-weight: 600; }
-
-/* CTA buttons */
-.rc-ctas {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-.rc-btn-primary {
-  background: var(--forest);
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  text-align: center;
-  display: block;
-  min-width: 160px;
-}
-
-.rc-btn-primary:hover {
-  background: var(--moss);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(26,58,42,0.25);
-}
-
-.rc-btn-wa {
-  background: #25d366;
-  color: #fff;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-width: 160px;
-}
-
-.rc-btn-wa:hover { background: #20b958; }
-
-/* Wishlist heart */
-.rc-heart {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s;
-  border: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.rc-heart:hover { transform: scale(1.15); }
-.rc-heart.liked { background: #ffe0e0; }
-
-/* Sold out */
-.resort-card.sold-out .rc-btn-primary {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-.rc-sold-label {
-  font-size: 10px;
-  color: #e44a21;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-align: center;
-}
-
-/* ── NO RESULTS ── */
-.rl-no-results {
-  text-align: center;
-  padding: 80px 40px;
-  display: none;
-}
-
-.rl-no-results.show { display: block; }
-
-.rl-no-icon { font-size: 60px; margin-bottom: 16px; }
-.rl-no-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--forest); margin-bottom: 8px; }
-.rl-no-sub { font-size: 14px; color: #888; }
-
-.no_decoration{text-decoration: none;}
-
-/* ── LOAD MORE ── */
-.rl-load-more {
-  text-align: center;
-  margin-top: 28px;
-}
-
-.rl-load-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1.5px solid var(--forest);
-  background: transparent;
-  color: var(--forest);
-  padding: 12px 36px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-family: 'Jost', sans-serif;
-}
-
-.rl-load-btn:hover { background: var(--forest); color: var(--gold); }
-
-/* ── RESPONSIVE ── */
-.mobile-only { display: none; margin-left: 8px; font-size: 10px; }
-.rl-filter-body { display: block; }
-
-@media (max-width: 960px) {
-  .rl-main { grid-template-columns: 1fr; }
-  .rl-sidebar { position: static; margin-bottom: 20px; }
-  .mobile-only { display: inline-block; }
-  .rl-filter-head { cursor: pointer; }
-  .rl-filter-body { display: none; }
-  .rl-filter-body.open { display: block; }
-}
-
-@media (max-width: 680px) {
-  .resort-card { grid-template-columns: 1fr; }
-  .rc-img-col { min-height: 200px; }
-  .rl-nav { padding: 12px 20px; }
-  .rl-banner { padding: 24px 20px; }
-  .rl-sort-strip { padding: 12px 16px; }
-}
-
-/* ── LOGO TEXT STYLE ── */
-.logo{text-decoration:none !important;}
-.logo-title {
-  margin-left: 8px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  -webkit-text-fill-color: #fff;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.logo-title em {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-style: italic;
-  font-weight: 600;
-}
-@media(max-width:600px){
-  .logo-title { font-size: 20px; margin-left: 4px; gap: 4px; }
-}
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dandeli Resorts — Choose Your Stay</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1a3a2a;
+      --moss: #2d5a3d;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --sand: #e8dfc8;
+      --text: #1a1a1a;
+      --bg: #f4f6f8;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── TOP NAV ── */
+    .rl-nav {
+      background: var(--forest);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .rl-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rl-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .rl-nav-phone {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rl-nav-wa {
+      background: #25d366;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .rl-nav-wa:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    }
+
+    /* ── PACKAGE BANNER ── */
+    .rl-banner {
+      background: linear-gradient(135deg, var(--forest) 0%, #0d2318 100%);
+      padding: 36px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rl-banner::after {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 400px;
+      height: 400px;
+      border: 80px solid rgba(201, 168, 76, 0.06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .rl-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .rl-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+
+    .rl-back:hover {
+      color: var(--gold);
+    }
+
+    .rl-pkg-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .rl-pkg-name em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .rl-pkg-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .rl-pkg-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .rl-pkg-price-box {
+      background: rgba(201, 168, 76, 0.12);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 8px;
+      padding: 16px 24px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .rl-pkg-from {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.6);
+      margin-bottom: 2px;
+    }
+
+    .rl-pkg-price-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .rl-pkg-price-unit {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .rl-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 30px 24px 60px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── FILTERS SIDEBAR ── */
+    .rl-sidebar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      position: sticky;
+      top: 76px;
+      box-shadow: 0 2px 16px var(--shadow);
+    }
+
+    .rl-filter-head {
+      background: var(--forest);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .rl-filter-title {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .rl-filter-reset {
+      font-size: 11px;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      border: none;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+
+    .rl-filter-group {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rl-filter-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    /* Star filter */
+    .rl-star-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rl-star-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .rl-star-opt input {
+      accent-color: var(--gold);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .rl-star-opt label {
+      font-size: 13px;
+      color: #555;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Price slider */
+    .rl-price-range {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .rl-price-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .rl-slider {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    /* Amenity checkboxes */
+    .rl-amenities {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rl-check-opt {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+    }
+
+    .rl-check-opt input {
+      accent-color: var(--gold);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .rl-check-opt label {
+      font-size: 13px;
+      color: #555;
+      cursor: pointer;
+    }
+
+    /* Sort strip */
+    .rl-sort-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px var(--shadow);
+      flex-wrap: wrap;
+    }
+
+    .rl-sort-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #888;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .rl-sort-btn {
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      font-size: 12px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .rl-sort-btn:hover {
+      border-color: var(--gold);
+      color: var(--forest);
+    }
+
+    .rl-sort-btn.active {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: var(--gold);
+    }
+
+    .rl-result-count {
+      margin-left: auto;
+      font-size: 13px;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    .rl-result-count strong {
+      color: var(--forest);
+    }
+
+    /* ── RESORT CARDS (MakeMyTrip style) ── */
+    .rl-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .resort-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      transition: all 0.35s ease;
+      position: relative;
+      box-shadow: 0 2px 14px var(--shadow);
+    }
+
+    .resort-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    /* Image column */
+    .rc-img-col {
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+    }
+
+    .rc-img-col img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .resort-card:hover .rc-img-col img {
+      transform: scale(1.05);
+    }
+
+    .rc-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 70%, rgba(255, 255, 255, 0.04));
+    }
+
+    /* Badges on image */
+    .rc-badge-row {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .rc-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .rc-badge-top {
+      background: #e05c3a;
+      color: #fff;
+    }
+
+    .rc-badge-deal {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .rc-badge-eco {
+      background: #2d7a3d;
+      color: #fff;
+    }
+
+    /* Photo thumbs */
+    .rc-thumbs {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .rc-thumb {
+      width: 42px;
+      height: 32px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .rc-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rc-thumb-more {
+      width: 42px;
+      height: 32px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Info column */
+    .rc-info-col {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rc-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .rc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.2;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .rc-name:hover {
+      color: var(--moss);
+      text-decoration: underline;
+    }
+
+    .rc-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .rc-rating-badge {
+      background: #1a6e3a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px 6px 6px 0;
+      line-height: 1;
+    }
+
+    .rc-rating-text {
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+    }
+
+    .rc-rating-count {
+      font-size: 10px;
+      color: #aaa;
+    }
+
+    /* Location & stars */
+    .rc-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .rc-loc-text {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .rc-stars {
+      color: #f5a623;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .rc-distance {
+      font-size: 11px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* USP tags */
+    .rc-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .rc-tag {
+      font-size: 11px;
+      color: #2d7a3d;
+      background: rgba(45, 122, 61, 0.07);
+      border: 1px solid rgba(45, 122, 61, 0.15);
+      border-radius: 4px;
+      padding: 3px 9px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Amenities */
+    .rc-amenities {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rc-amenity {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      color: #666;
+    }
+
+    .rc-amenity-icon {
+      font-size: 14px;
+    }
+
+    /* Inclusions */
+    .rc-inclusions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .rc-inc {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--forest);
+      font-weight: 500;
+    }
+
+    .rc-inc::before {
+      content: '✓';
+      color: #4caf70;
+      font-weight: 700;
+    }
+
+    /* Price area */
+    .rc-price-row {
+      margin-top: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 12px;
+    }
+
+
+    .rc-discount-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(228, 74, 33, 0.08);
+      color: #e44a21;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+
+    .rc-price-crossed {
+      font-size: 13px;
+      color: #bbb;
+      text-decoration: line-through;
+      margin-bottom: 1px;
+    }
+
+    .rc-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .rc-price-unit {
+      font-size: 12px;
+      color: #aaa;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+    }
+
+    .rc-taxes {
+      font-size: 10.5px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .rc-taxes span {
+      color: #4caf70;
+      font-weight: 600;
+    }
+
+    /* CTA buttons */
+    .rc-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .rc-btn-primary {
+      background: var(--forest);
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      min-width: 160px;
+    }
+
+    .rc-btn-primary:hover {
+      background: var(--moss);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(26, 58, 42, 0.25);
+    }
+
+    .rc-btn-wa {
+      background: #25d366;
+      color: #fff;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-width: 160px;
+    }
+
+    .rc-btn-wa:hover {
+      background: #20b958;
+    }
+
+    /* Wishlist heart */
+    .rc-heart {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .rc-heart:hover {
+      transform: scale(1.15);
+    }
+
+    .rc-heart.liked {
+      background: #ffe0e0;
+    }
+
+    /* Sold out */
+    .resort-card.sold-out .rc-btn-primary {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .rc-sold-label {
+      font-size: 10px;
+      color: #e44a21;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    /* ── NO RESULTS ── */
+    .rl-no-results {
+      text-align: center;
+      padding: 80px 40px;
+      display: none;
+    }
+
+    .rl-no-results.show {
+      display: block;
+    }
+
+    .rl-no-icon {
+      font-size: 60px;
+      margin-bottom: 16px;
+    }
+
+    .rl-no-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--forest);
+      margin-bottom: 8px;
+    }
+
+    .rl-no-sub {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .no_decoration {
+      text-decoration: none;
+    }
+
+    /* ── LOAD MORE ── */
+    .rl-load-more {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .rl-load-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--forest);
+      background: transparent;
+      color: var(--forest);
+      padding: 12px 36px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .rl-load-btn:hover {
+      background: var(--forest);
+      color: var(--gold);
+    }
+
+    /* ── RESPONSIVE ── */
+    .mobile-only {
+      display: none;
+      margin-left: 8px;
+      font-size: 10px;
+    }
+
+    .rl-filter-body {
+      display: block;
+    }
+
+    @media (max-width: 960px) {
+      .rl-main {
+        grid-template-columns: 1fr;
+      }
+
+      .rl-sidebar {
+        position: static;
+        margin-bottom: 20px;
+      }
+
+      .mobile-only {
+        display: inline-block;
+      }
+
+      .rl-filter-head {
+        cursor: pointer;
+      }
+
+      .rl-filter-body {
+        display: none;
+      }
+
+      .rl-filter-body.open {
+        display: block;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .resort-card {
+        grid-template-columns: 1fr;
+      }
+
+      .rc-img-col {
+        min-height: 200px;
+      }
+
+      .rl-nav {
+        padding: 12px 20px;
+      }
+
+      .rl-banner {
+        padding: 24px 20px;
+      }
+
+      .rl-sort-strip {
+        padding: 12px 16px;
+      }
+    }
+
+    /* ── LOGO TEXT STYLE ── */
+    .logo {
+      text-decoration: none !important;
+    }
+
+    .logo-title {
+      margin-left: 8px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      -webkit-text-fill-color: #fff;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo-title em {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    @media(max-width:600px) {
+      .logo-title {
+        font-size: 20px;
+        margin-left: 4px;
+        gap: 4px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
 <body>
 
-<!-- ── NAV ── -->
-<nav class="rl-nav">
-  <a href="index.html" class="rl-logo"><img src="images/logo.png" alt="Book myDandeli" style="height:64px;width:64px;object-fit:contain;vertical-align:middle;margin-right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2)) saturate(1.3) contrast(1.05);"><span class="logo-title">Book <em>myDandeli</em></span></a>
-  <div class="rl-nav-right">
-    <a href="tel:6363343766" class="rl-nav-phone">📞 +91 63633 43766</a>
-    <a href="https://api.whatsapp.com/send?phone=916363343766" class="rl-nav-wa">💬 WhatsApp</a>
-  </div>
-</nav>
+  <!-- ── NAV ── -->
+  <nav class="rl-nav">
+    <a href="index.html" class="rl-logo"><img src="images/logo.png" alt="Book myDandeli"
+        style="height:64px;width:64px;object-fit:contain;vertical-align:middle;margin-right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2)) saturate(1.3) contrast(1.05);"><span
+        class="logo-title">Book <em>myDandeli</em></span></a>
+    <div class="rl-nav-right">
+      <a href="tel:6363343766" class="rl-nav-phone">📞 +91 63633 43766</a>
+      <a href="https://api.whatsapp.com/send?phone=916363343766" class="rl-nav-wa">💬 WhatsApp</a>
+    </div>
+  </nav>
 
-<!-- ── PACKAGE BANNER ── -->
-<div class="rl-banner">
-  <div class="rl-banner-inner">
+  <!-- ── PACKAGE BANNER ── -->
+  <div class="rl-banner">
+    <div class="rl-banner-inner">
+      <div>
+        <a href="index.html#packages" class="rl-back">← Back to Packages</a>
+        <h1 class="rl-pkg-name" id="bannerTitle">Loading <em>Package</em></h1>
+        <div class="rl-pkg-meta" id="bannerMeta">
+          <span class="rl-pkg-pill">⏱ 2 Nights · 3 Days</span>
+          <span class="rl-pkg-pill">🍽 All Meals</span>
+          <span class="rl-pkg-pill">✅ Instant Confirm</span>
+        </div>
+      </div>
+      <div class="rl-pkg-price-box">
+        <div class="rl-pkg-from">Starting from</div>
+        <div class="rl-pkg-price-big" id="bannerPrice">₹2,499</div>
+        <div class="rl-pkg-price-unit" id="bannerUnit">/person</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <div class="rl-main">
+
+    <!-- ── SIDEBAR FILTERS ── -->
+    <aside class="rl-sidebar">
+      <div class="rl-filter-head" onclick="toggleMobileFilters()">
+        <span class="rl-filter-title">Filters<span id="filterToggleIcon" class="mobile-only">▼</span></span>
+        <button class="rl-filter-reset" onclick="event.stopPropagation(); resetFilters()">Reset All</button>
+      </div>
+      <div class="rl-filter-body" id="filterBody">
+
+        <div class="rl-filter-group">
+          <div class="rl-filter-label">Star Rating</div>
+          <div class="rl-star-options">
+            <label class="rl-star-opt"><input type="checkbox" onchange="applyFilters()" value="5"> <label>⭐⭐⭐⭐⭐ 5
+                Star</label></label>
+            <label class="rl-star-opt"><input type="checkbox" onchange="applyFilters()" value="4"> <label>⭐⭐⭐⭐ 4
+                Star</label></label>
+            <label class="rl-star-opt"><input type="checkbox" onchange="applyFilters()" value="3"> <label>⭐⭐⭐ 3
+                Star</label></label>
+          </div>
+        </div>
+
+        <div class="rl-filter-group">
+          <div class="rl-filter-label">Budget <small>(per night)</small></div>
+          <div class="rl-price-range">
+            <span class="rl-price-val">₹0</span>
+            <span class="rl-price-val" id="priceVal">₹25,000</span>
+          </div>
+          <input type="range" class="rl-slider" min="0" max="25000" value="25000" step="500"
+            oninput="document.getElementById('priceVal').textContent='₹'+Number(this.value).toLocaleString('en-IN'); applyFilters()">
+        </div>
+
+        <div class="rl-filter-group">
+          <div class="rl-filter-label">Amenities</div>
+          <div class="rl-amenities">
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="pool"> <label>🏊
+                Swimming Pool</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="wifi"> <label>📶 Free
+                WiFi</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="river"> <label>🌊 River
+                View</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="ac"> <label>❄️ AC
+                Rooms</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="parking"> <label>🚗 Free
+                Parking</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="restaurant"> <label>🍽
+                Restaurant</label></label>
+          </div>
+        </div>
+
+        <div class="rl-filter-group" style="border-bottom:none;">
+          <div class="rl-filter-label">Property Type</div>
+          <div class="rl-amenities">
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="resort"> <label>🏨
+                Resort</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="cottage"> <label>🏡
+                Cottage</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="homestay"> <label>🏠
+                Homestay</label></label>
+            <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="camp"> <label>⛺
+                Camp</label></label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── CARDS AREA ── -->
     <div>
-      <a href="index.html#packages" class="rl-back">← Back to Packages</a>
-      <h1 class="rl-pkg-name" id="bannerTitle">Loading <em>Package</em></h1>
-      <div class="rl-pkg-meta" id="bannerMeta">
-        <span class="rl-pkg-pill">⏱ 2 Nights · 3 Days</span>
-        <span class="rl-pkg-pill">🍽 All Meals</span>
-        <span class="rl-pkg-pill">✅ Instant Confirm</span>
+      <!-- Sort strip -->
+      <div class="rl-sort-strip">
+        <span class="rl-sort-label">Sort by:</span>
+        <button class="rl-sort-btn active" onclick="sortResorts('recommended', this)">Recommended</button>
+        <button class="rl-sort-btn" onclick="sortResorts('price-low', this)">Price: Low</button>
+        <button class="rl-sort-btn" onclick="sortResorts('price-high', this)">Price: High</button>
+        <button class="rl-sort-btn" onclick="sortResorts('rating', this)">Top Rated</button>
+        <div class="rl-result-count"><strong id="countDisplay">12</strong> Properties Found</div>
       </div>
-    </div>
-    <div class="rl-pkg-price-box">
-      <div class="rl-pkg-from">Starting from</div>
-      <div class="rl-pkg-price-big" id="bannerPrice">₹2,499</div>
-      <div class="rl-pkg-price-unit" id="bannerUnit">/person</div>
-    </div>
+
+      <!-- Resort Cards -->
+      <div class="rl-cards" id="resortsContainer">
+
+        <!-- WHISTLING WOODZS CARD -->
+        <a href="whistling_woods_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="5" data-price="8000" data-rating="4.8"
+            data-amenities="river pool restaurant natures premium" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Whistling Woods/hq_3.jpg" alt="Whistling Woodzs Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">⭐ Luxury Resort</span>
+                <span class="rc-badge rc-badge-deal">🌊 Premium Riverfront</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Whistling Woods/hq_2.jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.20.46 AM.jpeg" alt=""></div>
+                <div class="rc-thumb-more">+5</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Whistling Woodz Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.8</div>
+                    <div class="rc-rating-count">850 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★★</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">5 Star Property</span>
+                <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ River Front</span>
+                <span class="rc-tag">✓ Luxury Suites</span>
+                <span class="rc-tag">✓ Giant Swing</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River Access</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Buffet</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">Breakfast</span>
+                <span class="rc-inc">Lunch</span>
+                <span class="rc-inc">Dinner</span>
+                <span class="rc-inc">Boating</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Early Bird Discount</div>
+                  <div class="rc-price-crossed">₹10,000</div>
+                  <div class="rc-price">₹8,000 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                  <div class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- HORNBILL CARD -->
+        <a href="hornbill_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="4" data-price="7000" data-rating="4.6"
+            data-amenities="river restaurant natures" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg" alt="Hornbill River Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">⭐ Premium Resort</span>
+                <span class="rc-badge rc-badge-deal">🌳 Nature Vibes</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Hornbill/HRR-Brochure-2024 (1)-images-10.jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/Hornbill/HRR-Brochure-2024 (1)-images-18.jpg" alt=""></div>
+                <div class="rc-thumb-more">+5</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Hornbill River Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.6</div>
+                    <div class="rc-rating-count">420 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Property</span>
+                <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Treehouse Stay</span>
+                <span class="rc-tag">✓ River Bank</span>
+                <span class="rc-tag">✓ Safari Options</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌳</span>Jungle View</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">Breakfast</span>
+                <span class="rc-inc">Lunch</span>
+                <span class="rc-inc">Dinner</span>
+                <span class="rc-inc">Kayaking</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Early Bird Discount</div>
+                  <div class="rc-price-crossed">₹9,000</div>
+                  <div class="rc-price">₹7,000 <span class="rc-price-unit">/couple·night</span></div>
+                  <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                  <div class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- LAGUNA CARD -->
+        <a href="laguna_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="4" data-price="3000" data-rating="4.4"
+            data-amenities="river pool restaurant" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.22 PM (1).jpeg" alt="Laguna River Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">⚡ Recommended</span>
+                <span class="rc-badge rc-badge-deal">🌊 River Side</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.21 PM (1).jpeg" alt="">
+                </div>
+                <div class="rc-thumb"><img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.18 PM (1).jpeg" alt="">
+                </div>
+                <div class="rc-thumb-more">+5</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Laguna River Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.4</div>
+                    <div class="rc-rating-count">215 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Property</span>
+                <span class="rc-distance">📍 Ganeshgudi, Ilva near Supa Dam</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ All Meals Included</span>
+                <span class="rc-tag">✓ River Swimming</span>
+                <span class="rc-tag">✓ Campfire & Trekking</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River Side</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC Cottages</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">Breakfast</span>
+                <span class="rc-inc">Lunch</span>
+                <span class="rc-inc">Dinner</span>
+                <span class="rc-inc">Kayaking</span>
+                <span class="rc-inc">Boating</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Group Disounts Available</div>
+                  <div class="rc-price-crossed">₹4,000</div>
+                  <div class="rc-price">₹3,000 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                  <div class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 1 -->
+        <a href="dewDrops_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="4" data-price="6499" data-rating="4.5"
+            data-amenities="pool river ac parking restaurant" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Dewdrops/Cabin View.jpg" alt="Dew Drops">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">⚡ Top Rated</span>
+                <span class="rc-badge rc-badge-deal">🔥 Best Deal</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Dewdrops/swimingPool2.jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/Dewdrops/Room1_2.jpg" alt=""></div>
+                <div class="rc-thumb-more">+6</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Dew Drops Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.5</div>
+                    <div class="rc-rating-count">248 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
+                <span class="rc-distance">📍 Opp. Bus Stop, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <!-- <span class="rc-tag">✓ Free Cancellation</span> -->
+                <span class="rc-tag">✓ Breakfast Included</span>
+                <span class="rc-tag">✓ River View</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
+                <!-- <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span> -->
+                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Bonfire</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+                <!-- <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span> -->
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">Breakfast</span>
+                <span class="rc-inc">Lunch</span>
+                <span class="rc-inc">Dinner</span>
+                <span class="rc-inc">Kayaking</span>
+                <span class="rc-inc">Nature Walk</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 24%</div>
+                  <div class="rc-price-crossed">₹8,500</div>
+                  <div class="rc-price">₹6,499 <span class="rc-price-unit">/couple·night</span></div>
+                  <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="dewDrops_resort.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="River Edge.html" class="no_decoration">
+          <!-- CARD 2 -->
+          <div class="resort-card" data-stars="3" data-price="2499" data-rating="4.2"
+            data-amenities="river parking restaurant" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" alt="Bison River Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-eco">🌿 Eco Certified</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/RiverEdge/Aa River Edge Gallery (2)-images-12.jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/RiverEdge/Aa River Edge Gallery (2)-images-5.jpg" alt=""></div>
+                <div class="rc-thumb-more">+4</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">River Edge Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge" style="background:#2d7a3d;">4.2</div>
+                    <div class="rc-rating-count">186 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">3 Star Resort</span>
+                <span class="rc-distance">📍 Kali River Bank, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Great for Students</span>
+                <span class="rc-tag">✓ Adventure Hub</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River View</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🛶</span>Kayaking</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Dining</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+                <span class="rc-inc">Rafting</span>
+                <span class="rc-inc">Trekking</span>
+                <span class="rc-inc">Campfire</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 22%</div>
+                  <div class="rc-price-crossed">₹3,200</div>
+                  <div class="rc-price">₹2,499 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes">+₹280 taxes · <span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="River Edge.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+
+        <!-- CARD 3 -->
+
+        <a href="rainForest_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="5" data-price="14999" data-rating="4.8"
+            data-amenities="pool wifi river ac parking restaurant" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/RainForest/Swiming Pool_2.jpg" alt="Rain Forest Dandeli">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge" style="background:#7b3fa0;color:#fff;">👑 Luxury</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/RainForest/Cabins.jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/RainForest/Path.jpg" alt=""></div>
+                <div class="rc-thumb-more">+8</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Rain Forest Dandeli</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge" style="background:#1a5fa0;">4.8</div>
+                    <div class="rc-rating-count">312 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★★</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">5 Star Luxury</span>
+                <span class="rc-distance">📍 Forest Reserve Edge, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Honeymoon Special</span>
+                <span class="rc-tag">✓ Premium Cottage</span>
+                <span class="rc-tag">✓ Spa Available</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Infinity Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">💆</span>Spa</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🛁</span>Jacuzzi</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+                <span class="rc-inc">Boat Ride</span>
+                <span class="rc-inc">Jeep Safari</span>
+                <span class="rc-inc">Spa</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 21%</div>
+                  <div class="rc-price-crossed">₹19,000</div>
+                  <div class="rc-price">₹14,999 <span class="rc-price-unit">/couple·night</span></div>
+                  <!-- <div class="rc-taxes">+₹1,800 taxes · <span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="rainForest_resort.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 4 -->
+        <a href="Tusker Trails.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="3499" data-rating="4.0" data-amenities="pool parking"
+            data-type="camp">
+            <div class="rc-img-col">
+              <img src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" alt="Tusker Trails">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-deal">🎒 Student Fav</span>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Tusker Trails</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge" style="background:#5a8a00;">4.0</div>
+                    <div class="rc-rating-count">144 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">Budget Camp</span>
+                <span class="rc-distance">📍 Forest Trail, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Great for Groups</span>
+                <span class="rc-tag">✓ Budget Friendly</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">⛺</span>Camping</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌿</span>Nature Walk</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+                <span class="rc-inc">Zorbing</span>
+                <span class="rc-inc">Trekking</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 22%</div>
+                  <div class="rc-price-crossed">₹4,500</div>
+                  <div class="rc-price">₹3,499 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes">+₹350 taxes · <span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="Tusker Trails.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 5 -->
+        <a href="Wild Wings.html" class="no_decoration">
+          <div class="resort-card" data-stars="4" data-price="8999" data-rating="4.4"
+            data-amenities="pool wifi ac parking restaurant" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" alt="Wild Wings">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">👨‍👩‍👧‍👦 Family Pick</span>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Wild Wings Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge" style="background:#1a6e3a;">4.4</div>
+                    <div class="rc-rating-count">203 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
+                <span class="rc-distance">📍 Kali Riverside, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Kid Friendly</span>
+                <span class="rc-tag">✓ Pool & Water Park</span>
+                <span class="rc-tag">✓ Free Cancellation</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌧</span>Rain Dance</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+                <span class="rc-inc">Pool Access</span>
+                <span class="rc-inc">Crocodile Park</span>
+                <span class="rc-inc">Supa Dam</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 22%</div>
+                  <div class="rc-price-crossed">₹11,500</div>
+                  <div class="rc-price">₹8,999 <span class="rc-price-unit">/family·night</span></div>
+                  <!-- <div class="rc-taxes">+₹900 taxes · <span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="Wild Wings.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 6 -->
+        <a href="White Petal.html" class="no_decoration">
+          <div class="resort-card" data-stars="4" data-price="5999" data-rating="4.3"
+            data-amenities="river wifi parking restaurant" data-type="homestay">
+            <div class="rc-img-col">
+              <img src="images/White Petal/White Petal Dandeli (1).jpg" alt="White Petal Homestay">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-eco">🏡 Homestay</span>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">White Petal Homestays</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge" style="background:#2d7a3d;">4.3</div>
+                    <div class="rc-rating-count">97 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">Boutique Homestay</span>
+                <span class="rc-distance">📍 Dandeli Village</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Local Experience</span>
+                <span class="rc-tag">✓ Home-cooked Meals</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌿</span>Garden</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍳</span>Home Food</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">Breakfast</span>
+                <span class="rc-inc">Dinner</span>
+                <span class="rc-inc">Bird Watching</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 20%</div>
+                  <div class="rc-price-crossed">₹7,500</div>
+                  <div class="rc-price">₹5,999 <span class="rc-price-unit">/couple·night</span></div>
+                  <!-- <div class="rc-taxes">+₹600 taxes · <span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="Wild Wings.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 7 -->
+        <a href="Wild Mist.html" class="no_decoration">
+          <div class="resort-card" data-stars="4" data-price="8999" data-rating="4.4"
+            data-amenities="pool wifi ac parking restaurant" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Wild Mist/1.jpeg" alt="Wild Mist">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">👨‍👩‍👧‍👦 Family Pick</span>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Wild Mist Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge" style="background:#1a6e3a;">4.4</div>
+                    <div class="rc-rating-count">203 reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
+                <span class="rc-distance">📍 Kali Riverside, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Kid Friendly</span>
+                <span class="rc-tag">✓ Pool & Water Park</span>
+                <span class="rc-tag">✓ Free Cancellation</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🌧</span>Rain Dance</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+                <span class="rc-inc">Pool Access</span>
+                <span class="rc-inc">Crocodile Park</span>
+                <span class="rc-inc">Supa Dam</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Save 22%</div>
+                  <div class="rc-price-crossed">₹11,500</div>
+                  <div class="rc-price">₹8,999 <span class="rc-price-unit">/family·night</span></div>
+                  <!-- <div class="rc-taxes">+₹900 taxes · <span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <a href="Wild Mist.html" class="rc-btn-primary">View Details</a>
+                  <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i
+                      class="fa fa-whatsapp"></i>WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+
+
+        <a href="bison_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="2500" data-rating="4.1" data-amenities="river pool"
+            data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Bison/Bison River Resorts (1).jpg" alt="Bison River Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">⭐ Prime Wildlife Pick</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Bison/Bison River Resorts (10).jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/Bison/Bison River Resorts (11).jpg" alt=""></div>
+                <div class="rc-thumb-more">+3</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Bison River Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.1</div>
+                    <div class="rc-rating-count">100+ reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Free Cancellation</span>
+                <span class="rc-tag">✓ Comfortable Rooms</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity">✨ Great Service</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Special Price</div>
+                  <div class="rc-price">₹2500 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes"><span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="jungle_bell_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="3000" data-rating="4.2" data-amenities="pool parking"
+            data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Jungle Bell/Jungle Bell River Retreat (1).jpg" alt="Jungle Bell Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">🌳 Nature Vibes</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Jungle Bell/Jungle Bell River Retreat (10).jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/Jungle Bell/Jungle Bell River Retreat (11).jpg" alt=""></div>
+                <div class="rc-thumb-more">+3</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Jungle Bell Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.2</div>
+                    <div class="rc-rating-count">100+ reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-distance">📍 Dandeli Forest</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Free Cancellation</span>
+                <span class="rc-tag">✓ Comfortable Rooms</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity">✨ Great Service</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Special Price</div>
+                  <div class="rc-price">₹3000 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes"><span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="palm_meadows_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="2800" data-rating="4.4" data-amenities="pool wifi"
+            data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg" alt="Palm Meadows Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">🍃 Peaceful Retreat</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Palm meadows/0f00a659-0333-4056-b06f-0e36efb01155.jpg" alt="">
+                </div>
+                <div class="rc-thumb"><img src="images/Palm meadows/16796820-39e2-4313-9480-62bc80ff9838.jpg" alt="">
+                </div>
+                <div class="rc-thumb-more">+3</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Palm Meadows Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.4</div>
+                    <div class="rc-rating-count">100+ reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-distance">📍 Dandeli Town Outskirts</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Free Cancellation</span>
+                <span class="rc-tag">✓ Comfortable Rooms</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity">✨ Great Service</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Special Price</div>
+                  <div class="rc-price">₹2800 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes"><span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="state_lodge.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="2000" data-rating="4.0" data-amenities="wifi parking"
+            data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/State Lodge/SL.jpg" alt="State Lodge Dandeli">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">🏨 Central Pick</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/State Lodge/SL.jpg" alt=""></div>
+                <div class="rc-thumb"><img src="images/State Lodge/SL.jpg" alt=""></div>
+                <div class="rc-thumb-more">+3</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">State Lodge Dandeli</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.0</div>
+                    <div class="rc-rating-count">100+ reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-distance">📍 Dandeli Center</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Free Cancellation</span>
+                <span class="rc-tag">✓ Comfortable Rooms</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity">✨ Great Service</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Special Price</div>
+                  <div class="rc-price">₹2000 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes"><span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="sunbird_resort.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="3200" data-rating="4.5"
+            data-amenities="river wifi parking" data-type="resort">
+            <div class="rc-img-col">
+              <img src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg" alt="Sunbird Resort">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">🦅 Bird Watcher Fav</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Sunbird resort/15d04e05-32c2-4d2f-99de-03f55db19f21.jpg" alt="">
+                </div>
+                <div class="rc-thumb"><img src="images/Sunbird resort/23da86d8-84e4-4276-b797-b597c7ba8041.jpg" alt="">
+                </div>
+                <div class="rc-thumb-more">+3</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Sunbird Resort</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.5</div>
+                    <div class="rc-rating-count">100+ reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-distance">📍 Kali River Bank</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Free Cancellation</span>
+                <span class="rc-tag">✓ Comfortable Rooms</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity">✨ Great Service</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Special Price</div>
+                  <div class="rc-price">₹3200 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes"><span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="tarang_homestay.html" class="no_decoration">
+          <div class="resort-card" data-stars="3" data-price="2200" data-rating="4.6" data-amenities="wifi parking"
+            data-type="homestay">
+            <div class="rc-img-col">
+              <img src="images/Tarang home stay/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" alt="Tarang Homestay">
+              <div class="rc-img-overlay"></div>
+              <div class="rc-badge-row">
+                <span class="rc-badge rc-badge-top">🏠 Cozy Comfort</span>
+              </div>
+              <div class="rc-thumbs">
+                <div class="rc-thumb"><img src="images/Tarang home stay/0ff2ddff-a4d8-4c1a-ba5e-676a50fbc7e9.jpg"
+                    alt=""></div>
+                <div class="rc-thumb"><img src="images/Tarang home stay/1116d2aa-2828-4b67-91ff-b1f64f663269.jpg"
+                    alt=""></div>
+                <div class="rc-thumb-more">+3</div>
+              </div>
+            </div>
+            <div class="rc-info-col">
+              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <div class="rc-top-row">
+                <div class="rc-name">Tarang Homestay</div>
+                <div class="rc-rating">
+                  <div>
+                    <div class="rc-rating-badge">4.6</div>
+                    <div class="rc-rating-count">100+ reviews</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-location">
+                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-distance">📍 Dandeli Village</span>
+              </div>
+              <div class="rc-tags">
+                <span class="rc-tag">✓ Free Cancellation</span>
+                <span class="rc-tag">✓ Comfortable Rooms</span>
+              </div>
+              <div class="rc-amenities">
+                <span class="rc-amenity">✨ Great Service</span>
+              </div>
+              <div class="rc-inclusions">
+                <span class="rc-inc">All Meals</span>
+              </div>
+              <div class="rc-price-row">
+                <div class="rc-price-left">
+                  <div class="rc-discount-label">💰 Special Price</div>
+                  <div class="rc-price">₹2200 <span class="rc-price-unit">/person·night</span></div>
+                  <!-- <div class="rc-taxes"><span>Free cancellation</span></div> -->
+                   <div class="rc-taxes"><span>All Meals Included</span></div>
+                </div>
+                <div class="rc-ctas">
+                  <div class="rc-btn-primary">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- /rl-cards -->
+
+      <!-- No results -->
+      <div class="rl-no-results" id="noResults">
+        <div class="rl-no-icon">🏕️</div>
+        <div class="rl-no-title">No resorts match your filters</div>
+        <div class="rl-no-sub">Try adjusting your filters to see more options</div>
+      </div>
+
+      <!-- Load more -->
+      <!-- <div class="rl-load-more">
+        <button class="rl-load-btn">View More Resorts ↓</button>
+      </div>
+    </div> -->
+
   </div>
-</div>
+  <!-- /rl-main -->
 
-<!-- ── MAIN ── -->
-<div class="rl-main">
+  <script>
+    /* ── READ URL PARAMS & SET BANNER ── */
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const pkg = params.get('pkg') || 'all';
 
-  <!-- ── SIDEBAR FILTERS ── -->
-  <aside class="rl-sidebar">
-    <div class="rl-filter-head" onclick="toggleMobileFilters()">
-      <span class="rl-filter-title">Filters<span id="filterToggleIcon" class="mobile-only">▼</span></span>
-      <button class="rl-filter-reset" onclick="event.stopPropagation(); resetFilters()">Reset All</button>
-    </div>
-    <div class="rl-filter-body" id="filterBody">
+      const pkgData = {
+        'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🎒 Student Pack'], price: '₹2,499', unit: '/person' },
+        'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['⏱ 2N·3D', '🍽 Breakfast', '🎒 Budget Pick'], price: '₹3,499', unit: '/person' },
+        'student-group': { name: 'College <em>Group Tour</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '👥 Min 10 Pax'], price: '₹1,999', unit: '/person (min 10)' },
+        'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🕯 Candlelight'], price: '₹6,499', unit: '/couple' },
+        'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '💆 Spa'], price: '₹9,999', unit: '/couple' },
+        'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '🌹 Honeymoon'], price: '₹14,999', unit: '/couple' },
+        'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '👨‍👩‍👧‍👦 2+2'], price: '₹8,999', unit: '/family' },
+        'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '🦁 Safari'], price: '₹12,999', unit: '/family' },
+        'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '👑 Premium'], price: '₹18,999', unit: '/family' },
+      };
 
-    <div class="rl-filter-group">
-      <div class="rl-filter-label">Star Rating</div>
-      <div class="rl-star-options">
-        <label class="rl-star-opt"><input type="checkbox" onchange="applyFilters()" value="5"> <label>⭐⭐⭐⭐⭐ 5 Star</label></label>
-        <label class="rl-star-opt"><input type="checkbox" onchange="applyFilters()" value="4"> <label>⭐⭐⭐⭐ 4 Star</label></label>
-        <label class="rl-star-opt"><input type="checkbox" onchange="applyFilters()" value="3"> <label>⭐⭐⭐ 3 Star</label></label>
-      </div>
-    </div>
+      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['✅ All Meals', '✅ Activities', '✅ Transfers'], price: '₹2,499', unit: '/person' };
 
-    <div class="rl-filter-group">
-      <div class="rl-filter-label">Budget <small>(per night)</small></div>
-      <div class="rl-price-range">
-        <span class="rl-price-val">₹0</span>
-        <span class="rl-price-val" id="priceVal">₹25,000</span>
-      </div>
-      <input type="range" class="rl-slider" min="0" max="25000" value="25000" step="500"
-        oninput="document.getElementById('priceVal').textContent='₹'+Number(this.value).toLocaleString('en-IN'); applyFilters()">
-    </div>
+      document.getElementById('bannerTitle').innerHTML = d.name;
+      document.getElementById('bannerPrice').textContent = d.price;
+      document.getElementById('bannerUnit').textContent = d.unit;
 
-    <div class="rl-filter-group">
-      <div class="rl-filter-label">Amenities</div>
-      <div class="rl-amenities">
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="pool"> <label>🏊 Swimming Pool</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="wifi"> <label>📶 Free WiFi</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="river"> <label>🌊 River View</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="ac"> <label>❄️ AC Rooms</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="parking"> <label>🚗 Free Parking</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="restaurant"> <label>🍽 Restaurant</label></label>
-      </div>
-    </div>
+      const meta = document.getElementById('bannerMeta');
+      meta.innerHTML = d.pills.map(p => `<span class="rl-pkg-pill">${p}</span>`).join('');
+    })();
 
-    <div class="rl-filter-group" style="border-bottom:none;">
-      <div class="rl-filter-label">Property Type</div>
-      <div class="rl-amenities">
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="resort"> <label>🏨 Resort</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="cottage"> <label>🏡 Cottage</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="homestay"> <label>🏠 Homestay</label></label>
-        <label class="rl-check-opt"><input type="checkbox" onchange="applyFilters()" value="camp"> <label>⛺ Camp</label></label>
-      </div>
-    </div>
-    </div>
-  </aside>
+    /* ── SORT ── */
+    function sortResorts(key, btn) {
+      document.querySelectorAll('.rl-sort-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-  <!-- ── CARDS AREA ── -->
-  <div>
-    <!-- Sort strip -->
-    <div class="rl-sort-strip">
-      <span class="rl-sort-label">Sort by:</span>
-      <button class="rl-sort-btn active" onclick="sortResorts('recommended', this)">Recommended</button>
-      <button class="rl-sort-btn" onclick="sortResorts('price-low', this)">Price: Low</button>
-      <button class="rl-sort-btn" onclick="sortResorts('price-high', this)">Price: High</button>
-      <button class="rl-sort-btn" onclick="sortResorts('rating', this)">Top Rated</button>
-      <div class="rl-result-count"><strong id="countDisplay">12</strong> Properties Found</div>
-    </div>
+      const container = document.getElementById('resortsContainer');
+      const cards = Array.from(container.querySelectorAll('.resort-card'));
 
-    <!-- Resort Cards -->
-    <div class="rl-cards" id="resortsContainer">
+      cards.sort((a, b) => {
+        if (key === 'price-low') return +a.dataset.price - +b.dataset.price;
+        if (key === 'price-high') return +b.dataset.price - +a.dataset.price;
+        if (key === 'rating') return +b.dataset.rating - +a.dataset.rating;
+        return 0; // recommended
+      });
 
-      <!-- WHISTLING WOODZS CARD -->
-      <a href="whistling_woods_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="5" data-price="8000" data-rating="4.8" data-amenities="river pool restaurant natures premium" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Whistling Woods/hq_1.jpg" alt="Whistling Woodzs Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">⭐ Luxury Resort</span>
-            <span class="rc-badge rc-badge-deal">🌊 Premium Riverfront</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Whistling Woods/hq_2.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Whistling Woods/hq_3.jpg" alt=""></div>
-            <div class="rc-thumb-more">+5</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Whistling Woodz Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.8</div>
-                <div class="rc-rating-count">850 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★★</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">5 Star Property</span>
-            <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ River Front</span>
-            <span class="rc-tag">✓ Luxury Suites</span>
-            <span class="rc-tag">✓ Giant Swing</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River Access</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Buffet</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">Breakfast</span>
-            <span class="rc-inc">Lunch</span>
-            <span class="rc-inc">Dinner</span>
-            <span class="rc-inc">Boating</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Early Bird Discount</div>
-              <div class="rc-price-crossed">₹10,000</div>
-              <div class="rc-price">₹8,000 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>All Meals Included</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-              <div class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+      container.style.opacity = '0';
+      setTimeout(() => {
+        cards.forEach(c => container.appendChild(c));
+        container.style.opacity = '1';
+        container.style.transition = 'opacity 0.3s ease';
+      }, 200);
+    }
 
-      <!-- HORNBILL CARD -->
-      <a href="hornbill_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="4" data-price="7000" data-rating="4.6" data-amenities="river restaurant natures" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg" alt="Hornbill River Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">⭐ Premium Resort</span>
-            <span class="rc-badge rc-badge-deal">🌳 Nature Vibes</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Hornbill/HRR-Brochure-2024 (1)-images-10.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Hornbill/HRR-Brochure-2024 (1)-images-18.jpg" alt=""></div>
-            <div class="rc-thumb-more">+5</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Hornbill River Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.6</div>
-                <div class="rc-rating-count">420 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Property</span>
-            <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Treehouse Stay</span>
-            <span class="rc-tag">✓ River Bank</span>
-            <span class="rc-tag">✓ Safari Options</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌳</span>Jungle View</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">Breakfast</span>
-            <span class="rc-inc">Lunch</span>
-            <span class="rc-inc">Dinner</span>
-            <span class="rc-inc">Kayaking</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Early Bird Discount</div>
-              <div class="rc-price-crossed">₹9,000</div>
-              <div class="rc-price">₹7,000 <span class="rc-price-unit">/couple·night</span></div>
-              <div class="rc-taxes"><span>All Meals Included</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-              <div class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+    /* ── FILTERS ── */
+    function toggleMobileFilters() {
+      const body = document.getElementById('filterBody');
+      const icon = document.getElementById('filterToggleIcon');
+      if (body.classList.contains('open')) {
+        body.classList.remove('open');
+        if (icon) icon.textContent = '▼';
+      } else {
+        body.classList.add('open');
+        if (icon) icon.textContent = '▲';
+      }
+    }
 
-      <!-- LAGUNA CARD -->
-      <a href="laguna_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="4" data-price="3000" data-rating="4.4" data-amenities="river pool restaurant" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.22 PM (1).jpeg" alt="Laguna River Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">⚡ Recommended</span>
-            <span class="rc-badge rc-badge-deal">🌊 River Side</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.21 PM (1).jpeg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.18 PM (1).jpeg" alt=""></div>
-            <div class="rc-thumb-more">+5</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Laguna River Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.4</div>
-                <div class="rc-rating-count">215 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Property</span>
-            <span class="rc-distance">📍 Ganeshgudi, Ilva near Supa Dam</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ All Meals Included</span>
-            <span class="rc-tag">✓ River Swimming</span>
-            <span class="rc-tag">✓ Campfire & Trekking</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River Side</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC Cottages</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">Breakfast</span>
-            <span class="rc-inc">Lunch</span>
-            <span class="rc-inc">Dinner</span>
-            <span class="rc-inc">Kayaking</span>
-            <span class="rc-inc">Boating</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Group Disounts Available</div>
-              <div class="rc-price-crossed">₹4,000</div>
-              <div class="rc-price">₹3,000 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>All Meals Included</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-              <div class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+    function applyFilters() {
+      const cards = document.querySelectorAll('.resort-card');
+      const maxPrice = document.querySelector('.rl-slider').value;
 
-      <!-- CARD 1 -->
-       <a href="dewDrops_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="4" data-price="6499" data-rating="4.5" data-amenities="pool river ac parking restaurant" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Dewdrops/Cabin View.jpg" alt="Dew Drops">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">⚡ Top Rated</span>
-            <span class="rc-badge rc-badge-deal">🔥 Best Deal</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Dewdrops/swimingPool2.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Dewdrops/Room1_2.jpg" alt=""></div>
-            <div class="rc-thumb-more">+6</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Dew Drops Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.5</div>
-                <div class="rc-rating-count">248 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
-            <span class="rc-distance">📍 Opp. Bus Stop, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Breakfast Included</span>
-            <span class="rc-tag">✓ River View</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-            <!-- <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span> -->
-            <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Bonfire</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-            <!-- <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span> -->
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">Breakfast</span>
-            <span class="rc-inc">Lunch</span>
-            <span class="rc-inc">Dinner</span>
-            <span class="rc-inc">Kayaking</span>
-            <span class="rc-inc">Nature Walk</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 24%</div>
-              <div class="rc-price-crossed">₹8,500</div>
-              <div class="rc-price">₹6,499 <span class="rc-price-unit">/couple·night</span></div>
-              <div class="rc-taxes">+₹780 taxes & fees · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <a href="dewDrops_resort.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+      const checkedStars = Array.from(document.querySelectorAll('.rl-star-options input:checked')).map(i => +i.value);
+      const checkedAmenities = Array.from(document.querySelectorAll('.rl-amenities input:checked')).map(i => i.value);
+      const checkedTypes = Array.from(document.querySelectorAll('.rl-check-opt input[value="resort"], .rl-check-opt input[value="cottage"], .rl-check-opt input[value="homestay"], .rl-check-opt input[value="camp"]').constructor === NodeList
+        ? document.querySelectorAll('.rl-filter-group:last-child input:checked')
+        : []).map(i => i.value);
 
-      <a href="River Edge.html" class="no_decoration">
-      <!-- CARD 2 -->
-      <div class="resort-card" data-stars="3" data-price="2499" data-rating="4.2" data-amenities="river parking restaurant" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" alt="Bison River Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-eco">🌿 Eco Certified</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/RiverEdge/Aa River Edge Gallery (2)-images-12.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/RiverEdge/Aa River Edge Gallery (2)-images-5.jpg" alt=""></div>
-            <div class="rc-thumb-more">+4</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">River Edge Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge" style="background:#2d7a3d;">4.2</div>
-                <div class="rc-rating-count">186 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">3 Star Resort</span>
-            <span class="rc-distance">📍 Kali River Bank, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Great for Students</span>
-            <span class="rc-tag">✓ Adventure Hub</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River View</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🛶</span>Kayaking</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Dining</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-            <span class="rc-inc">Rafting</span>
-            <span class="rc-inc">Trekking</span>
-            <span class="rc-inc">Campfire</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 22%</div>
-              <div class="rc-price-crossed">₹3,200</div>
-              <div class="rc-price">₹2,499 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes">+₹280 taxes · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-                <a href="River Edge.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+      let visible = 0;
 
+      cards.forEach(card => {
+        const price = +card.dataset.price;
+        const stars = +card.dataset.stars;
+        const amenities = card.dataset.amenities || '';
+        const type = card.dataset.type || '';
 
-      <!-- CARD 3 -->
-       
-       <a href="rainForest_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="5" data-price="14999" data-rating="4.8" data-amenities="pool wifi river ac parking restaurant" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/RainForest/Swiming Pool_2.jpg" alt="Rain Forest Dandeli">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge" style="background:#7b3fa0;color:#fff;">👑 Luxury</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/RainForest/Cabins.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/RainForest/Path.jpg" alt=""></div>
-            <div class="rc-thumb-more">+8</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Rain Forest Dandeli</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge" style="background:#1a5fa0;">4.8</div>
-                <div class="rc-rating-count">312 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★★</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">5 Star Luxury</span>
-            <span class="rc-distance">📍 Forest Reserve Edge, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Honeymoon Special</span>
-            <span class="rc-tag">✓ Premium Cottage</span>
-            <span class="rc-tag">✓ Spa Available</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Infinity Pool</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">💆</span>Spa</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🛁</span>Jacuzzi</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-            <span class="rc-inc">Boat Ride</span>
-            <span class="rc-inc">Jeep Safari</span>
-            <span class="rc-inc">Spa</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 21%</div>
-              <div class="rc-price-crossed">₹19,000</div>
-              <div class="rc-price">₹14,999 <span class="rc-price-unit">/couple·night</span></div>
-              <div class="rc-taxes">+₹1,800 taxes · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-               <a href="rainForest_resort.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+        let show = true;
 
-      <!-- CARD 4 -->
-       <a href="Tusker Trails.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="3499" data-rating="4.0" data-amenities="pool parking" data-type="camp">
-        <div class="rc-img-col">
-          <img src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" alt="Tusker Trails">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-deal">🎒 Student Fav</span>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Tusker Trails</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge" style="background:#5a8a00;">4.0</div>
-                <div class="rc-rating-count">144 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">Budget Camp</span>
-            <span class="rc-distance">📍 Forest Trail, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Great for Groups</span>
-            <span class="rc-tag">✓ Budget Friendly</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">⛺</span>Camping</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌿</span>Nature Walk</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-            <span class="rc-inc">Zorbing</span>
-            <span class="rc-inc">Trekking</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 22%</div>
-              <div class="rc-price-crossed">₹4,500</div>
-              <div class="rc-price">₹3,499 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes">+₹350 taxes · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-             <a href="Tusker Trails.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+        if (price > +maxPrice) show = false;
+        if (checkedStars.length && !checkedStars.includes(stars)) show = false;
+        if (checkedAmenities.length && !checkedAmenities.every(a => amenities.includes(a))) show = false;
 
-      <!-- CARD 5 -->
-       <a href="Wild Wings.html" class="no_decoration">
-      <div class="resort-card" data-stars="4" data-price="8999" data-rating="4.4" data-amenities="pool wifi ac parking restaurant" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" alt="Wild Wings">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">👨‍👩‍👧‍👦 Family Pick</span>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Wild Wings Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge" style="background:#1a6e3a;">4.4</div>
-                <div class="rc-rating-count">203 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
-            <span class="rc-distance">📍 Kali Riverside, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Kid Friendly</span>
-            <span class="rc-tag">✓ Pool & Water Park</span>
-            <span class="rc-tag">✓ Free Cancellation</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌧</span>Rain Dance</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-            <span class="rc-inc">Pool Access</span>
-            <span class="rc-inc">Crocodile Park</span>
-            <span class="rc-inc">Supa Dam</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 22%</div>
-              <div class="rc-price-crossed">₹11,500</div>
-              <div class="rc-price">₹8,999 <span class="rc-price-unit">/family·night</span></div>
-              <div class="rc-taxes">+₹900 taxes · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <a href="Wild Wings.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+        card.style.display = show ? 'grid' : 'none';
+        if (show) visible++;
+      });
 
-      <!-- CARD 6 -->
-       <a href="White Petal.html" class="no_decoration">
-      <div class="resort-card" data-stars="4" data-price="5999" data-rating="4.3" data-amenities="river wifi parking restaurant" data-type="homestay">
-        <div class="rc-img-col">
-          <img src="images/White Petal/White Petal Dandeli (1).jpg" alt="White Petal Homestay">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-eco">🏡 Homestay</span>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">White Petal Homestays</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge" style="background:#2d7a3d;">4.3</div>
-                <div class="rc-rating-count">97 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">Boutique Homestay</span>
-            <span class="rc-distance">📍 Dandeli Village</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Local Experience</span>
-            <span class="rc-tag">✓ Home-cooked Meals</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌿</span>Garden</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍳</span>Home Food</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">Breakfast</span>
-            <span class="rc-inc">Dinner</span>
-            <span class="rc-inc">Bird Watching</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 20%</div>
-              <div class="rc-price-crossed">₹7,500</div>
-              <div class="rc-price">₹5,999 <span class="rc-price-unit">/couple·night</span></div>
-              <div class="rc-taxes">+₹600 taxes · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <a href="Wild Wings.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+      document.getElementById('countDisplay').textContent = visible;
+      document.getElementById('noResults').classList.toggle('show', visible === 0);
+    }
 
-      <!-- CARD 7 -->
-       <a href="Wild Mist.html" class="no_decoration">
-      <div class="resort-card" data-stars="4" data-price="8999" data-rating="4.4" data-amenities="pool wifi ac parking restaurant" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Wild Mist/1.jpeg" alt="Wild Mist">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">👨‍👩‍👧‍👦 Family Pick</span>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Wild Mist Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge" style="background:#1a6e3a;">4.4</div>
-                <div class="rc-rating-count">203 reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
-            <span class="rc-distance">📍 Kali Riverside, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Kid Friendly</span>
-            <span class="rc-tag">✓ Pool & Water Park</span>
-            <span class="rc-tag">✓ Free Cancellation</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🌧</span>Rain Dance</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
-            <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-            <span class="rc-inc">Pool Access</span>
-            <span class="rc-inc">Crocodile Park</span>
-            <span class="rc-inc">Supa Dam</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Save 22%</div>
-              <div class="rc-price-crossed">₹11,500</div>
-              <div class="rc-price">₹8,999 <span class="rc-price-unit">/family·night</span></div>
-              <div class="rc-taxes">+₹900 taxes · <span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <a href="Wild Mist.html" class="rc-btn-primary">View Details</a>
-              <a href="https://api.whatsapp.com/send?phone=916363343766" class="rc-btn-wa"> <i class="fa fa-whatsapp"></i>WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
+    function resetFilters() {
+      document.querySelectorAll('.rl-sidebar input[type="checkbox"]').forEach(i => i.checked = false);
+      document.querySelector('.rl-slider').value = 25000;
+      document.getElementById('priceVal').textContent = '₹25,000';
+      document.querySelectorAll('.resort-card').forEach(c => c.style.display = 'grid');
+      document.getElementById('countDisplay').textContent = document.querySelectorAll('.resort-card').length;
+      document.getElementById('noResults').classList.remove('show');
+    }
 
-
-    
-      <a href="bison_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="2500" data-rating="4.1" data-amenities="river pool" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Bison/Bison River Resorts (1).jpg" alt="Bison River Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">⭐ Prime Wildlife Pick</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Bison/Bison River Resorts (10).jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Bison/Bison River Resorts (11).jpg" alt=""></div>
-            <div class="rc-thumb-more">+3</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Bison River Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.1</div>
-                <div class="rc-rating-count">100+ reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Comfortable Rooms</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity">✨ Great Service</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Special Price</div>
-              <div class="rc-price">₹2500 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
-
-      <a href="jungle_bell_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="3000" data-rating="4.2" data-amenities="pool parking" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Jungle Bell/Jungle Bell River Retreat (1).jpg" alt="Jungle Bell Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">🌳 Nature Vibes</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Jungle Bell/Jungle Bell River Retreat (10).jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Jungle Bell/Jungle Bell River Retreat (11).jpg" alt=""></div>
-            <div class="rc-thumb-more">+3</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Jungle Bell Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.2</div>
-                <div class="rc-rating-count">100+ reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-distance">📍 Dandeli Forest</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Comfortable Rooms</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity">✨ Great Service</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Special Price</div>
-              <div class="rc-price">₹3000 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
-
-      <a href="palm_meadows_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="2800" data-rating="4.4" data-amenities="pool wifi" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg" alt="Palm Meadows Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">🍃 Peaceful Retreat</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Palm meadows/0f00a659-0333-4056-b06f-0e36efb01155.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Palm meadows/16796820-39e2-4313-9480-62bc80ff9838.jpg" alt=""></div>
-            <div class="rc-thumb-more">+3</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Palm Meadows Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.4</div>
-                <div class="rc-rating-count">100+ reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-distance">📍 Dandeli Town Outskirts</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Comfortable Rooms</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity">✨ Great Service</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Special Price</div>
-              <div class="rc-price">₹2800 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
-
-      <a href="state_lodge.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="2000" data-rating="4.0" data-amenities="wifi parking" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/State Lodge/SL.jpg" alt="State Lodge Dandeli">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">🏨 Central Pick</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/State Lodge/SL.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/State Lodge/SL.jpg" alt=""></div>
-            <div class="rc-thumb-more">+3</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">State Lodge Dandeli</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.0</div>
-                <div class="rc-rating-count">100+ reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-distance">📍 Dandeli Center</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Comfortable Rooms</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity">✨ Great Service</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Special Price</div>
-              <div class="rc-price">₹2000 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
-
-      <a href="sunbird_resort.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="3200" data-rating="4.5" data-amenities="river wifi parking" data-type="resort">
-        <div class="rc-img-col">
-          <img src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg" alt="Sunbird Resort">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">🦅 Bird Watcher Fav</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Sunbird resort/15d04e05-32c2-4d2f-99de-03f55db19f21.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Sunbird resort/23da86d8-84e4-4276-b797-b597c7ba8041.jpg" alt=""></div>
-            <div class="rc-thumb-more">+3</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Sunbird Resort</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.5</div>
-                <div class="rc-rating-count">100+ reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-distance">📍 Kali River Bank</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Comfortable Rooms</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity">✨ Great Service</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Special Price</div>
-              <div class="rc-price">₹3200 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
-
-      <a href="tarang_homestay.html" class="no_decoration">
-      <div class="resort-card" data-stars="3" data-price="2200" data-rating="4.6" data-amenities="wifi parking" data-type="homestay">
-        <div class="rc-img-col">
-          <img src="images/Tarang home stay/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" alt="Tarang Homestay">
-          <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row">
-            <span class="rc-badge rc-badge-top">🏠 Cozy Comfort</span>
-          </div>
-          <div class="rc-thumbs">
-            <div class="rc-thumb"><img src="images/Tarang home stay/0ff2ddff-a4d8-4c1a-ba5e-676a50fbc7e9.jpg" alt=""></div>
-            <div class="rc-thumb"><img src="images/Tarang home stay/1116d2aa-2828-4b67-91ff-b1f64f663269.jpg" alt=""></div>
-            <div class="rc-thumb-more">+3</div>
-          </div>
-        </div>
-        <div class="rc-info-col">
-          <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
-          <div class="rc-top-row">
-            <div class="rc-name">Tarang Homestay</div>
-            <div class="rc-rating">
-              <div>
-                <div class="rc-rating-badge">4.6</div>
-                <div class="rc-rating-count">100+ reviews</div>
-              </div>
-            </div>
-          </div>
-          <div class="rc-location">
-            <span class="rc-stars">★★★☆☆</span>
-            <span class="rc-distance">📍 Dandeli Village</span>
-          </div>
-          <div class="rc-tags">
-            <span class="rc-tag">✓ Free Cancellation</span>
-            <span class="rc-tag">✓ Comfortable Rooms</span>
-          </div>
-          <div class="rc-amenities">
-            <span class="rc-amenity">✨ Great Service</span>
-          </div>
-          <div class="rc-inclusions">
-            <span class="rc-inc">All Meals</span>
-          </div>
-          <div class="rc-price-row">
-            <div class="rc-price-left">
-              <div class="rc-discount-label">💰 Special Price</div>
-              <div class="rc-price">₹2200 <span class="rc-price-unit">/person·night</span></div>
-              <div class="rc-taxes"><span>Free cancellation</span></div>
-            </div>
-            <div class="rc-ctas">
-              <div class="rc-btn-primary">View Details</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </a>
-</div>
-    <!-- /rl-cards -->
-
-    <!-- No results -->
-    <div class="rl-no-results" id="noResults">
-      <div class="rl-no-icon">🏕️</div>
-      <div class="rl-no-title">No resorts match your filters</div>
-      <div class="rl-no-sub">Try adjusting your filters to see more options</div>
-    </div>
-
-    <!-- Load more -->
-    <div class="rl-load-more">
-      <button class="rl-load-btn">View More Resorts ↓</button>
-    </div>
-  </div>
-
-</div>
-<!-- /rl-main -->
-
-<script>
-/* ── READ URL PARAMS & SET BANNER ── */
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  const pkg = params.get('pkg') || 'all';
-
-  const pkgData = {
-    'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['⏱ 1N·2D','🍽 All Meals','🎒 Student Pack'], price: '₹2,499', unit: '/person' },
-    'student-budget':    { name: 'Budget Backpacker <em>Camp</em>',  pills: ['⏱ 2N·3D','🍽 Breakfast','🎒 Budget Pick'], price: '₹3,499', unit: '/person' },
-    'student-group':     { name: 'College <em>Group Tour</em>',       pills: ['⏱ 2N·3D','🍽 All Meals','👥 Min 10 Pax'], price: '₹1,999', unit: '/person (min 10)' },
-    'couple-romantic':   { name: 'Riverside <em>Romance</em>',        pills: ['⏱ 1N·2D','🍽 All Meals','🕯 Candlelight'], price: '₹6,499', unit: '/couple' },
-    'couple-luxury':     { name: 'Forest Luxury <em>Retreat</em>',    pills: ['⏱ 2N·3D','🍽 All Meals','💆 Spa'], price: '₹9,999', unit: '/couple' },
-    'couple-honeymoon':  { name: 'Honeymoon <em>in the Wild</em>',    pills: ['⏱ 3N·4D','🍽 All Meals','🌹 Honeymoon'], price: '₹14,999', unit: '/couple' },
-    'family-weekend':    { name: 'Family <em>Weekend Getaway</em>',   pills: ['⏱ 1N·2D','🍽 All Meals','👨‍👩‍👧‍👦 2+2'], price: '₹8,999', unit: '/family' },
-    'family-adventure':  { name: 'Wild Family <em>Adventure</em>',    pills: ['⏱ 2N·3D','🍽 All Meals','🦁 Safari'], price: '₹12,999', unit: '/family' },
-    'family-grand':      { name: 'Grand Family <em>Expedition</em>',  pills: ['⏱ 3N·4D','🍽 All Meals','👑 Premium'], price: '₹18,999', unit: '/family' },
-  };
-
-  const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['✅ All Meals','✅ Activities','✅ Transfers'], price: '₹2,499', unit: '/person' };
-
-  document.getElementById('bannerTitle').innerHTML = d.name;
-  document.getElementById('bannerPrice').textContent = d.price;
-  document.getElementById('bannerUnit').textContent = d.unit;
-
-  const meta = document.getElementById('bannerMeta');
-  meta.innerHTML = d.pills.map(p => `<span class="rl-pkg-pill">${p}</span>`).join('');
-})();
-
-/* ── SORT ── */
-function sortResorts(key, btn) {
-  document.querySelectorAll('.rl-sort-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  const container = document.getElementById('resortsContainer');
-  const cards = Array.from(container.querySelectorAll('.resort-card'));
-
-  cards.sort((a, b) => {
-    if (key === 'price-low') return +a.dataset.price - +b.dataset.price;
-    if (key === 'price-high') return +b.dataset.price - +a.dataset.price;
-    if (key === 'rating') return +b.dataset.rating - +a.dataset.rating;
-    return 0; // recommended
-  });
-
-  container.style.opacity = '0';
-  setTimeout(() => {
-    cards.forEach(c => container.appendChild(c));
-    container.style.opacity = '1';
-    container.style.transition = 'opacity 0.3s ease';
-  }, 200);
-}
-
-/* ── FILTERS ── */
-function toggleMobileFilters() {
-  const body = document.getElementById('filterBody');
-  const icon = document.getElementById('filterToggleIcon');
-  if (body.classList.contains('open')) {
-    body.classList.remove('open');
-    if (icon) icon.textContent = '▼';
-  } else {
-    body.classList.add('open');
-    if (icon) icon.textContent = '▲';
-  }
-}
-
-function applyFilters() {
-  const cards = document.querySelectorAll('.resort-card');
-  const maxPrice = document.querySelector('.rl-slider').value;
-
-  const checkedStars = Array.from(document.querySelectorAll('.rl-star-options input:checked')).map(i => +i.value);
-  const checkedAmenities = Array.from(document.querySelectorAll('.rl-amenities input:checked')).map(i => i.value);
-  const checkedTypes = Array.from(document.querySelectorAll('.rl-check-opt input[value="resort"], .rl-check-opt input[value="cottage"], .rl-check-opt input[value="homestay"], .rl-check-opt input[value="camp"]').constructor === NodeList
-    ? document.querySelectorAll('.rl-filter-group:last-child input:checked')
-    : []).map(i => i.value);
-
-  let visible = 0;
-
-  cards.forEach(card => {
-    const price = +card.dataset.price;
-    const stars = +card.dataset.stars;
-    const amenities = card.dataset.amenities || '';
-    const type = card.dataset.type || '';
-
-    let show = true;
-
-    if (price > +maxPrice) show = false;
-    if (checkedStars.length && !checkedStars.includes(stars)) show = false;
-    if (checkedAmenities.length && !checkedAmenities.every(a => amenities.includes(a))) show = false;
-
-    card.style.display = show ? 'grid' : 'none';
-    if (show) visible++;
-  });
-
-  document.getElementById('countDisplay').textContent = visible;
-  document.getElementById('noResults').classList.toggle('show', visible === 0);
-}
-
-function resetFilters() {
-  document.querySelectorAll('.rl-sidebar input[type="checkbox"]').forEach(i => i.checked = false);
-  document.querySelector('.rl-slider').value = 25000;
-  document.getElementById('priceVal').textContent = '₹25,000';
-  document.querySelectorAll('.resort-card').forEach(c => c.style.display = 'grid');
-  document.getElementById('countDisplay').textContent = document.querySelectorAll('.resort-card').length;
-  document.getElementById('noResults').classList.remove('show');
-}
-
-/* ── HEART ── */
-function toggleHeart(btn) {
-  btn.classList.toggle('liked');
-  btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
-}
-</script>
+    /* ── HEART ── */
+    function toggleHeart(btn) {
+      btn.classList.toggle('liked');
+      btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
+    }
+  </script>
 
 </body>
-</html>
 
+</html>
