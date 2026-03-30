@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -95,7 +95,9 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .sg-card:hover .sg-card-inner,.sg-card.flipped .sg-card-inner{transform:rotateY(180deg);}
 .sg-front,.sg-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:6px;overflow:hidden;}
 .sg-back{transform:rotateY(180deg);}
-.sg-front{background:var(--forest);}
+.sg-front{background:var(--forest);position:relative;overflow:hidden;}
+.sg-front img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.165,.84,.44,1);}
+.sg-card:hover .sg-front img{transform:scale(1.15);}
 .sg-front svg{width:100%;height:100%;display:block;}
 .sg-front-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,14,.92) 0%,rgba(10,20,14,.35) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px 24px;}
 .sg-front-badge{position:absolute;top:18px;left:18px;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;font-family:'Jost',sans-serif;font-weight:500;background:rgba(10,20,14,.7);border:1px solid rgba(201,168,76,.4);color:var(--gold);backdrop-filter:blur(4px);}
@@ -295,6 +297,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   letter-spacing: 0.5px;
   background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
   align-items: center;
@@ -303,6 +306,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 .logo-title em {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-style: italic;
   font-weight: 600;
@@ -414,28 +418,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div class="sg-card rv" data-d="1">
       <div class="sg-card-inner">
         <div class="sg-front">
-          <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g1a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040d06"/><stop offset="100%" stop-color="#0d2318"/></linearGradient>
-              <radialGradient id="moonGlow" cx="72%" cy="20%" r="35%"><stop offset="0%" stop-color="#e8c97a" stop-opacity=".18"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-            </defs>
-            <rect width="380" height="420" fill="url(#g1a)"/>
-            <rect width="380" height="420" fill="url(#moonGlow)"/>
-            <circle cx="275" cy="60" r="28" fill="#e8c97a" opacity=".1"/>
-            <circle cx="275" cy="60" r="20" fill="#f5e5b0" opacity=".12"/>
-            <circle cx="40" cy="35" r="1.2" fill="#fff" opacity=".6"/><circle cx="90" cy="22" r="1" fill="#fff" opacity=".5"/>
-            <circle cx="150" cy="45" r="1.2" fill="#fff" opacity=".5"/><circle cx="200" cy="28" r="1" fill="#fff" opacity=".4"/>
-            <circle cx="330" cy="42" r="1" fill="#fff" opacity=".6"/>
-            <polygon points="0,420 0,220 25,185 50,210 78,175 105,198 130,165 158,188 185,155 212,178 240,162 268,186 295,158 322,182 350,168 380,190 380,420" fill="#091509"/>
-            <ellipse cx="185" cy="270" rx="65" ry="25" fill="#c9a84c" opacity=".1"/>
-            <ellipse cx="185" cy="262" rx="52" ry="18" fill="#c9a84c" opacity=".12"/>
-            <ellipse cx="175" cy="258" rx="55" ry="16" fill="#1a2a1a"/>
-            <circle cx="226" cy="248" r="18" fill="#1a2a1a"/>
-            <path d="M120,255 Q105,240 100,225" stroke="#1a2a1a" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <circle cx="220" cy="245" r="4" fill="#ffee44" opacity=".9"/>
-            <circle cx="233" cy="245" r="4" fill="#ffee44" opacity=".9"/>
-            <rect x="0" y="340" width="380" height="80" fill="rgba(255,255,255,.015)" rx="40"/>
-          </svg>
+          <img src="images/SightSeeing/KaliTigerReserve.jpeg" alt="Kali Tiger Reserve">
           <div class="sg-front-overlay">
             <div class="sg-front-badge">Wildlife</div>
             <div class="sg-front-dist">8 km away</div>
@@ -507,24 +490,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div class="sg-card rv" data-d="3">
       <div class="sg-card-inner">
         <div class="sg-front">
-          <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g3sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff8c38" stop-opacity=".7"/><stop offset="40%" stop-color="#e05a10" stop-opacity=".5"/><stop offset="100%" stop-color="#0a1a2a"/></linearGradient>
-              <linearGradient id="g3water" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a3a5a"/><stop offset="100%" stop-color="#0a1a2a"/></linearGradient>
-            </defs>
-            <rect width="380" height="420" fill="#0a1a2a"/>
-            <rect width="380" height="240" fill="url(#g3sky)"/>
-            <circle cx="190" cy="195" r="30" fill="#ff8c38" opacity=".5"/>
-            <polygon points="0,200 60,130 120,200" fill="#0d1e1a" opacity=".9"/>
-            <polygon points="60,200 130,110 200,200" fill="#0a1a14" opacity=".9"/>
-            <polygon points="180,200 250,120 320,200" fill="#0d1e1a" opacity=".9"/>
-            <rect x="60" y="200" width="260" height="70" fill="#1a2a3a" rx="1"/>
-            <rect x="95" y="215" width="48" height="56" fill="#0d1822" rx="1"/>
-            <rect x="166" y="215" width="48" height="56" fill="#0d1822" rx="1"/>
-            <rect x="237" y="215" width="48" height="56" fill="#0d1822" rx="1"/>
-            <rect x="0" y="295" width="380" height="125" fill="url(#g3water)"/>
-            <ellipse cx="190" cy="340" rx="60" ry="8" fill="#ff8c38" opacity=".18"/>
-          </svg>
+          <img src="images/SightSeeing/Supa dam.jpeg" alt="Supa Dam">
           <div class="sg-front-overlay">
             <div class="sg-front-badge">Reservoir</div>
             <div class="sg-front-dist">12 km away</div>
@@ -552,25 +518,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div class="sg-card rv" data-d="1">
       <div class="sg-card-inner">
         <div class="sg-front">
-          <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="torchGlow1" cx="42%" cy="55%" r="30%"><stop offset="0%" stop-color="#c9a84c" stop-opacity=".3"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-            </defs>
-            <rect width="380" height="420" fill="#1a0a05"/>
-            <polygon points="0,420 0,120 70,70 150,110 230,60 310,100 380,75 380,420" fill="#2a1505"/>
-            <ellipse cx="190" cy="240" rx="95" ry="75" fill="#0a0503"/>
-            <path d="M95,240 Q95,155 190,148 Q285,155 285,240Z" fill="#060300"/>
-            <polygon points="122,152 128,185 134,152" fill="#2a1805" opacity=".9"/>
-            <polygon points="150,148 157,175 164,148" fill="#2a1805" opacity=".85"/>
-            <polygon points="182,146 190,178 198,146" fill="#2a1805" opacity=".85"/>
-            <polygon points="226,150 232,180 238,150" fill="#2a1805" opacity=".85"/>
-            <rect width="380" height="420" fill="url(#torchGlow1)"/>
-            <circle cx="155" cy="210" r="8" fill="#c9a84c" opacity=".6"/>
-            <circle cx="155" cy="205" r="5" fill="#e8c97a" opacity=".7"/>
-            <circle cx="230" cy="205" r="7" fill="#c9a84c" opacity=".6"/>
-            <polygon points="170,420 176,365 182,420" fill="#2a1805" opacity=".7"/>
-            <polygon points="195,420 202,380 209,420" fill="#2a1805" opacity=".6"/>
-          </svg>
+          <img src="images/SightSeeing/Cave.jpeg" alt="Kavala Caves">
           <div class="sg-front-overlay">
             <div class="sg-front-badge">Sacred Site</div>
             <div class="sg-front-dist">14 km away</div>
@@ -598,25 +546,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div class="sg-card rv" data-d="2">
       <div class="sg-card-inner">
         <div class="sg-front">
-          <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g5sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2a1a"/><stop offset="100%" stop-color="#2a4a2a"/></linearGradient>
-            </defs>
-            <rect width="380" height="420" fill="url(#g5sky)"/>
-            <circle cx="50" cy="100" r="65" fill="#0d3a1a" opacity=".85"/>
-            <circle cx="200" cy="75" r="70" fill="#0d3a1a" opacity=".85"/>
-            <circle cx="340" cy="95" r="58" fill="#0d3a1a" opacity=".85"/>
-            <path d="M60,200 Q180,180 320,190" stroke="#1a2a12" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <ellipse cx="210" cy="188" rx="38" ry="17" fill="#111"/>
-            <ellipse cx="210" cy="190" rx="28" ry="11" fill="#fff" opacity=".85"/>
-            <circle cx="246" cy="178" r="20" fill="#111"/>
-            <path d="M232,162 Q248,148 265,158 Q270,165 262,170 Q248,163 232,162Z" fill="#c9a84c"/>
-            <path d="M234,175 Q225,170 215,173 L222,180 Q235,178 234,175Z" fill="#c9a84c"/>
-            <circle cx="250" cy="176" r="5" fill="#ffee00" opacity=".95"/>
-            <circle cx="250" cy="176" r="2.5" fill="#000"/>
-            <path d="M172,186 Q158,178 150,182 Q158,192 172,192Z" fill="#fff" opacity=".8"/>
-            <rect x="0" y="320" width="380" height="100" fill="#0a1a0a"/>
-          </svg>
+          <img src="images/SightSeeing/birdwatching.jpeg" alt="Hornbill Trails">
           <div class="sg-front-overlay">
             <div class="sg-front-badge">Birdwatching</div>
             <div class="sg-front-dist">Forest trails</div>
@@ -644,28 +574,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div class="sg-card rv" data-d="3">
       <div class="sg-card-inner">
         <div class="sg-front">
-          <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g6sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a0d05"/><stop offset="100%" stop-color="#4a1a05"/></linearGradient>
-              <radialGradient id="lampGlow" cx="50%" cy="65%" r="40%"><stop offset="0%" stop-color="#c9a84c" stop-opacity=".2"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-            </defs>
-            <rect width="380" height="420" fill="url(#g6sky)"/>
-            <rect width="380" height="420" fill="url(#lampGlow)"/>
-            <polygon points="0,420 0,220 30,185 60,210 90,175 120,195 150,168 180,188 190,170 200,188 230,165 260,190 290,170 320,195 350,178 380,200 380,420" fill="#0d0805"/>
-            <rect x="85" y="280" width="210" height="25" fill="#8a6a3a" rx="2"/>
-            <rect x="100" y="255" width="180" height="32" fill="#7a5a2a"/>
-            <rect x="172" y="265" width="36" height="22" fill="#2a0d05" rx="2"/>
-            <polygon points="120,255 190,175 260,255" fill="#8a6a2a"/>
-            <rect x="178" y="172" width="24" height="8" fill="#c9a84c" opacity=".7" rx="1"/>
-            <rect x="186" y="156" width="8" height="10" fill="#c9a84c" opacity=".6" rx="1"/>
-            <line x1="190" y1="156" x2="190" y2="135" stroke="#c9a84c" stroke-width="1.5"/>
-            <polygon points="190,135 210,142 190,149" fill="#c9a84c" opacity=".75"/>
-            <circle cx="60" cy="235" r="48" fill="#0d3010" opacity=".85"/>
-            <circle cx="320" cy="238" r="45" fill="#0d3010" opacity=".85"/>
-            <circle cx="120" cy="285" r="6" fill="#c9a84c" opacity=".75"/>
-            <circle cx="260" cy="285" r="6" fill="#c9a84c" opacity=".75"/>
-            <rect x="0" y="305" width="380" height="115" fill="#1a0805"/>
-          </svg>
+          <img src="images/SightSeeing/Ullavi Temple.jpeg" alt="Ulavi Temple">
           <div class="sg-front-overlay">
             <div class="sg-front-badge">Temple</div>
             <div class="sg-front-dist">30 km away</div>
