@@ -456,6 +456,32 @@ body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--t
   .pkg-tab { flex: 1; justify-content: center; border-radius: 8px; }
   .pkg-highlights { grid-template-columns: 1fr 1fr; }
 }
+
+/* â”€â”€ LOGO TEXT STYLE â”€â”€ */
+.logo{text-decoration:none !important;}
+.logo-title {
+  margin-left: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.logo-title em {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  font-weight: 600;
+}
+@media(max-width:600px){
+  .logo-title { font-size: 20px; margin-left: 4px; gap: 4px; }
+}
 </style>
 </head>
 <body>
@@ -812,3 +838,4 @@ function filterPkg(cat, btn) {
 
 </body>
 </html>
+
