@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laguna River Resort — Book myDandeli</title>
+<title>Laguna River Resort â€” Book myDandeli</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -21,7 +21,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);ove
 .cursor-f{width:36px;height:36px;border:1.5px solid var(--gold);opacity:.5;margin-top:-18px;margin-left:-18px;transition:opacity .3s;}
 @media(hover:none){.cursor,.cursor-f{display:none;}}
 
-/* ── TOPBAR ── */
+/* â”€â”€ TOPBAR â”€â”€ */
 .topbar{background:var(--forest);color:#bbb;padding:8px 40px;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
 .topbar a{color:#bbb;text-decoration:none;transition:color .3s;}
 .topbar a:hover{color:var(--gold);}
@@ -32,7 +32,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);ove
 .bnow::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.25);transform:translateX(-110%) skewX(-15deg);transition:transform .4s;}
 .bnow:hover::after{transform:translateX(110%) skewX(-15deg);}
 
-/* ── NAV ── */
+/* â”€â”€ NAV â”€â”€ */
 nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,.08);position:sticky;top:0;z-index:100;transition:box-shadow .3s;}
 .logo{height:52px;display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--forest);text-decoration:none;}
 .leaf{font-size:26px;animation:sway 3s ease-in-out infinite;}
@@ -49,7 +49,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .mob a{display:block;font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);}
 .mob-x{position:absolute;top:24px;right:30px;font-size:28px;color:#fff;cursor:pointer;background:none;border:none;}
 
-/* ── HERO — mobile first ── */
+/* â”€â”€ HERO â€” mobile first â”€â”€ */
 .hero{
   position:relative;
   height:100svh;
@@ -66,7 +66,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .hero-slide.active img{transform:scale(1);}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,10,.95) 0%,rgba(5,18,10,.55) 50%,rgba(5,18,10,.2) 100%);}
 
-/* Wrapper that stacks title then thumbnails in normal flow — no overlap */
+/* Wrapper that stacks title then thumbnails in normal flow â€” no overlap */
 .hero-bottom-stack{
   position:relative;
   z-index:10;
@@ -91,7 +91,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 @keyframes hFade{to{opacity:1;}}
 @keyframes hDia{to{transform:rotate(45deg) scale(1);}}
 
-/* Thumbnail bar — in flow, sits directly below title */
+/* Thumbnail bar â€” in flow, sits directly below title */
 .hero-bottom-bar{
   position:relative;
   z-index:10;
@@ -116,7 +116,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 
 .scroll-hint{display:none;}
 
-/* ── Desktop upgrades ── */
+/* â”€â”€ Desktop upgrades â”€â”€ */
 @media(min-width:768px){
   .hero{height:92vh;max-height:860px;}
   .hero-content{padding:0 60px 16px;}
@@ -171,7 +171,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
   font-family:'Jost',sans-serif;
 }
 
-/* ── PHOTO COUNT BADGE (top-right of hero) ── */
+/* â”€â”€ PHOTO COUNT BADGE (top-right of hero) â”€â”€ */
 .photo-count-badge{
   position:absolute;
   top:20px;
@@ -202,9 +202,9 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 }
 .photo-count-badge svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;}
 
-/* ────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LIGHTBOX GALLERY
-──────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .lightbox-backdrop{
   position:fixed;inset:0;
   background:rgba(5,12,8,.96);
@@ -324,20 +324,20 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
   color:rgba(255,255,255,.15);
 }
 
-/* ── BREADCRUMB ── */
+/* â”€â”€ BREADCRUMB â”€â”€ */
 .bc-strip{background:var(--forest);padding:12px 60px;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);}
 .bc-strip a{color:rgba(201,168,76,.6);text-decoration:none;transition:color .2s;}
 .bc-strip a:hover{color:var(--gold);}
 .bc-sep{opacity:.25;}
 
-/* ── MAIN LAYOUT ── */
+/* â”€â”€ MAIN LAYOUT â”€â”€ */
 .main-wrap{max-width:1320px;margin:0 auto;padding:56px 60px 80px;display:grid;grid-template-columns:1fr 360px;gap:52px;align-items:start;}
 .sl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
 .st{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,38px);font-weight:600;color:var(--forest);line-height:1.2;margin-bottom:14px;}
 .rule{width:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));margin-bottom:28px;transition:width .9s ease;}
 .rule.go{width:48px;}
 
-/* ── AMENITIES — list style ── */
+/* â”€â”€ AMENITIES â€” list style â”€â”€ */
 .amenities-section{margin-bottom:52px;}
 .amenities-list{display:grid;grid-template-columns:1fr;margin-top:24px;border:1px solid var(--border);background:#fff;}
 .am-item{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border);transition:background .2s;}
@@ -352,7 +352,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
   .am-item:nth-last-child(-n+2){border-bottom:none;}
 }
 
-/* ── ROOMS ── */
+/* â”€â”€ ROOMS â”€â”€ */
 .rooms-section{margin-bottom:52px;}
 .rooms-grid{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
 .room-card{background:#fff;border:1px solid var(--border);display:grid;grid-template-columns:220px 1fr;overflow:hidden;transition:all .4s;cursor:pointer;}
@@ -372,7 +372,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .room-book-btn{background:var(--forest);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;border:none;cursor:pointer;transition:all .3s;}
 .room-book-btn:hover{background:var(--gold);color:#fff;}
 
-/* ── POLICIES ── */
+/* â”€â”€ POLICIES â”€â”€ */
 .policy-section{margin-bottom:52px;}
 .policy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;}
 .policy-card{background:#fff;border:1px solid var(--border);padding:20px 18px;}
@@ -382,9 +382,9 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .policy-items{list-style:none;}
 .policy-items li{font-size:12.5px;color:#666;padding:6px 0;border-bottom:1px solid rgba(26,58,42,.05);display:flex;align-items:flex-start;gap:8px;}
 .policy-items li:last-child{border-bottom:none;}
-.policy-items li::before{content:'·';color:var(--gold);font-size:18px;line-height:1;flex-shrink:0;}
+.policy-items li::before{content:'Â·';color:var(--gold);font-size:18px;line-height:1;flex-shrink:0;}
 
-/* ── LOCATION ── */
+/* â”€â”€ LOCATION â”€â”€ */
 .location-section{margin-bottom:16px;}
 .location-body{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;align-items:start;}
 .map-placeholder{background:var(--forest);height:260px;border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;}
@@ -402,7 +402,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .directions-btn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:.5px solid rgba(201,168,76,.3);padding-bottom:2px;transition:all .3s;width:fit-content;}
 .directions-btn:hover{color:var(--forest);border-color:var(--forest);}
 
-/* ── SIDEBAR ── */
+/* â”€â”€ SIDEBAR â”€â”€ */
 .sidebar{position:sticky;top:90px;}
 .book-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);}
 .book-head{background:linear-gradient(135deg,var(--forest),var(--moss));padding:28px 28px 24px;position:relative;overflow:hidden;}
@@ -447,7 +447,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .sc-item-icon{font-size:14px;margin-top:1px;}
 .sc-item-text{font-size:13px;color:#555;line-height:1.5;}
 
-/* ── HOW TO REACH ── */
+/* â”€â”€ HOW TO REACH â”€â”€ */
 .reach-section{background:#fff;padding:72px 20px;border-top:1px solid var(--border);}
 .reach-inner{max-width:1000px;margin:0 auto;}
 .reach-header{margin-bottom:40px;}
@@ -474,7 +474,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
   .reach-row{grid-template-columns:140px 1fr;}
 }
 
-/* ── CTA ── */
+/* â”€â”€ CTA â”€â”€ */
 .cta-strip{background:var(--forest);padding:64px 60px;position:relative;overflow:hidden;text-align:center;}
 .cta-strip::before{content:'';position:absolute;width:320px;height:320px;border:60px solid rgba(201,168,76,.06);border-radius:50%;top:-160px;left:-160px;}
 .cta-strip::after{content:'';position:absolute;width:240px;height:240px;border:50px solid rgba(201,168,76,.05);border-radius:50%;bottom:-120px;right:-120px;}
@@ -489,7 +489,7 @@ nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-conte
 .cta-btn-outline{display:inline-block;background:transparent;color:rgba(255,255,255,.75);text-decoration:none;padding:15px 44px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:all .35s;border:1px solid rgba(255,255,255,.2);}
 .cta-btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ── FOOTER ── */
+/* â”€â”€ FOOTER â”€â”€ */
 footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:50px;max-width:1200px;margin:0 auto;}
 .fl{font-family:'Cormorant Garamond',serif;color:#fff;font-size:22px;margin-bottom:16px;}
@@ -501,7 +501,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 .fc ul{list-style:none;}
 .fc ul li{margin-bottom:9px;}
 .fc ul li a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:all .3s;display:inline-flex;align-items:center;gap:6px;}
-.fc ul li a::before{content:'›';color:var(--gold);}
+.fc ul li a::before{content:'â€º';color:var(--gold);}
 .fc ul li a:hover{color:var(--gold);padding-left:4px;}
 .fci{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
 .fci span{color:var(--gold);font-size:14px;margin-top:2px;}
@@ -509,7 +509,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 .fb{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.3);}
 .fb a{color:var(--gold);text-decoration:none;}
 
-/* ── FLOATS ── */
+/* â”€â”€ FLOATS â”€â”€ */
 .fwa{position:fixed;bottom:30px;right:30px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;color:#fff;font-size:26px;transition:transform .3s;}
 .fwa:hover{transform:scale(1.12);}
 .fwa::before{content:'';position:absolute;inset:0;border-radius:50%;animation:wap 2s infinite;background:rgba(37,211,102,.5);}
@@ -518,11 +518,11 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 .bk.s{display:flex;}
 .bk:hover{background:var(--gold);transform:translateY(-3px);}
 
-/* ── REVEAL ── */
+/* â”€â”€ REVEAL â”€â”€ */
 .rv{opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s;}
 .rv.v{opacity:1;transform:none;}
 
-/* ── RESPONSIVE ── */
+/* â”€â”€ RESPONSIVE â”€â”€ */
 @media(max-width:1100px){.main-wrap{grid-template-columns:1fr;padding:40px;}.sidebar{position:static;}}
 @media(max-width:768px){
   .topbar{padding:8px 20px;}.topbar .soc{display:none;}
@@ -551,6 +551,34 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   .lb-thumb{width:50px;height:36px;}
   .gallery-thumbs .gthumb{width:40px;height:28px;}
 }
+
+/* â”€â”€ LOGO TEXT STYLE â”€â”€ */
+.logo-img{height:64px;width:64px;object-fit:contain;margin-right:-2px;filter:drop-shadow(0 2px 8px rgba(201,168,76,.5)) saturate(1.3) brightness(1.1);}
+.footer-logo-img{height:72px;width:72px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2)) saturate(1.3) contrast(1.05);}
+.logo{text-decoration:none !important;}
+.logo-title {
+  margin-left: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.logo-title em {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  font-weight: 600;
+}
+@media(max-width:600px){
+  .logo-title { font-size: 20px; margin-left: 4px; gap: 4px; }
+}
 </style>
 </head>
 <body>
@@ -570,7 +598,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="logo"><span class="leaf">&#127807;</span> Book myDandeli</a>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Book myDandeli" class="logo-img"><span class="logo-title">Book <em>myDandeli</em></span></a>
   <ul class="nl">
     <li><a href="index.html">Home</a></li>
     <li><a href="resort-listing.html">Our Stays</a></li>
@@ -596,7 +624,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   <button class="hero-arrow hero-prev" onclick="prevSlide()">&#8592;</button>
   <button class="hero-arrow hero-next" onclick="nextSlide()">&#8594;</button>
 
-  <!-- Photo count badge — top right -->
+  <!-- Photo count badge â€” top right -->
   <div class="photo-count-badge" id="photoCountBadge" onclick="openLightbox(currentSlide)">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
     <span id="photoCountLabel"></span>
@@ -623,9 +651,9 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
   <div class="scroll-hint"><div class="scroll-hint-text">Scroll</div><div class="scroll-hint-line"></div></div>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      LIGHTBOX
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="lightbox-backdrop" id="lightbox">
   <div class="lb-header">
     <div class="lb-title" id="lbResortName"></div>
@@ -810,7 +838,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
           <span class="reach-mode-name">Drive</span>
         </div>
         <div class="reach-detail">
-          <p class="reach-desc">Dandeli is <strong>460 km from Bengaluru</strong> via NH48 and SH57 — roughly an 8-hour drive. From <strong>Pune</strong>, it is approximately 390 km (7 hrs). The roads are well-maintained with scenic ghats from Dharwad onwards.</p>
+          <p class="reach-desc">Dandeli is <strong>460 km from Bengaluru</strong> via NH48 and SH57 â€” roughly an 8-hour drive. From <strong>Pune</strong>, it is approximately 390 km (7 hrs). The roads are well-maintained with scenic ghats from Dharwad onwards.</p>
           <span class="reach-note">Self-drive or hired cab both work well</span>
         </div>
       </div>
@@ -877,7 +905,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 const RESORT = {
   name: "Bison River Resort",
   tagline: "Ganeshgudi, Ilva near Supa Dam",
-  badge: "⭐ Prime Wildlife Pick",
+  badge: "â­ Prime Wildlife Pick",
   stars: 4,
   rating: 4.1,
   ratingLabel: "Very Good",
@@ -916,8 +944,8 @@ const RESORT = {
   ],
 
   rooms: [
-    { name: "River & Jungle View Cottage", badge: "⭐ Prime Wildlife Pick", image: "images/Bison/Bison River Resorts (1).jpg", desc: "Private cottages with attached bathrooms. Perfect for couples or small families offering direct views of the surrounding nature.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,500", unit: "/ person" },
-    { name: "Dormitory", badge: "⭐ Prime Wildlife Pick", image: "images/Bison/Bison River Resorts (1).jpg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,500", unit: "/ person" },
+    { name: "River & Jungle View Cottage", badge: "â­ Prime Wildlife Pick", image: "images/Bison/Bison River Resorts (1).jpg", desc: "Private cottages with attached bathrooms. Perfect for couples or small families offering direct views of the surrounding nature.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,500", unit: "/ person" },
+    { name: "Dormitory", badge: "â­ Prime Wildlife Pick", image: "images/Bison/Bison River Resorts (1).jpg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,500", unit: "/ person" },
   ],
 
   activities: [
@@ -950,9 +978,9 @@ const RESORT = {
   ],
 };
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PAGE BUILDER
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 (function () {
   const R = RESORT;
   function starStr(n) { let s=''; for(let i=0;i<5;i++) s += i<n ? '&#9733;' : '&#9734;'; return s; }
@@ -970,7 +998,7 @@ const RESORT = {
   document.getElementById('lbResortName').innerHTML   = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
   document.getElementById('photoCountLabel').textContent = R.images.length + ' Photos';
 
-  /* ── hero slides + hero thumbnails (max 4 shown, then +N More tile) ── */
+  /* â”€â”€ hero slides + hero thumbnails (max 4 shown, then +N More tile) â”€â”€ */
   const thumbsEl = document.getElementById('galleryThumbs');
 
   R.images.forEach((img, i) => {
@@ -1001,7 +1029,7 @@ const RESORT = {
       `<div class="lb-thumb${i===0?' active':''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
   });
 
-  /* amenities — list style */
+  /* amenities â€” list style */
   R.amenities.forEach(a => {
     document.getElementById('amenitiesGrid').innerHTML +=
       `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
@@ -1056,9 +1084,9 @@ const RESORT = {
   });
 })();
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HERO GALLERY SLIDER
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 let currentSlide = 0;
 
 function goSlide(n) {
@@ -1075,9 +1103,9 @@ function prevSlide() { goSlide(currentSlide - 1); }
 function nextSlide() { goSlide(currentSlide + 1); }
 setInterval(() => nextSlide(), 5000);
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    LIGHTBOX
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 let lbCurrent = 0;
 
 function updateLightbox() {
@@ -1128,9 +1156,9 @@ document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target === this) closeLightbox();
 });
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    BOOKING FORM
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function submitBooking() {
   const name    = document.getElementById('bName').value.trim();
   const phone   = document.getElementById('bPhone').value.trim();
@@ -1154,9 +1182,9 @@ function submitBooking() {
   }, 600);
 }
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SCROLL & REVEAL
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 window.addEventListener('scroll', () => {
   const h = document.documentElement.scrollHeight - window.innerHeight;
   document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
@@ -1184,9 +1212,9 @@ setTimeout(() => {
   });
 }, 350);
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    CURSOR
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const cur = document.getElementById('cur'), cuf = document.getElementById('cuf');
 let mx = 0, my = 0, fx = 0, fy = 0;
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(${mx}px,${my}px)`; });
@@ -1198,3 +1226,4 @@ document.querySelectorAll('a,button,.am-item,.room-card,.act-card,.lb-thumb,.gth
 </script>
 </body>
 </html>
+
