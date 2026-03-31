@@ -34,7 +34,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);ove
 
 /* ── NAV ── */
 nav{background:#fff;padding:0 40px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,.08);position:sticky;top:0;z-index:100;transition:box-shadow .3s;}
-.logo{height:52px;display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--forest);text-decoration:none;}
+.logo{height:auto;min-height:52px;padding:4px 0;display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--forest);text-decoration:none;}
 .leaf{font-size:26px;animation:sway 3s ease-in-out infinite;}
 @keyframes sway{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
 .nl{display:flex;list-style:none;}
@@ -525,8 +525,8 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){.main-wrap{grid-template-columns:1fr;padding:40px;}.sidebar{position:static;}}
 @media(max-width:768px){
-  .topbar{padding:8px 20px;}.topbar .soc{display:none;}
-  nav{padding:0 20px;}.nl{display:none;}.hbg{display:flex;}
+  .topbar{padding:8px 20px;}.topbar .soc{display:none;}.logo-img{height:48px;width:48px;}
+  nav{padding:0 20px;}.logo{padding:4px 0;}.nl{display:none;}.hbg{display:flex;}
   .main-wrap{padding:32px 20px;}
   .hero-content{padding:0 24px 36px;grid-template-columns:1fr;}.hero-stats{flex-direction:row;align-items:flex-start;}
   .amenities-grid{grid-template-columns:1fr 1fr;}
@@ -591,9 +591,9 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <span>&#128222; <a href="tel:+919611943766">+91 96119 43766</a> &nbsp;|&nbsp; &#9993; <a href="mailto:info@dandelitourpackage.com">info@dandelitourpackage.com</a></span>
+  <span>&#128222; <a href="tel:+916363343766">+91 63633 43766</a> &nbsp;|&nbsp; &#9993; <a href="mailto:bookmydandelii@gmail.com">bookmydandelii@gmail.com</a></span>
   <div class="tb-r">
-    <a href="#" class="soc">f</a><a href="#" class="soc">in</a>
+    <a href="https://www.instagram.com/bookmydandeli?igsh=ZzZpdGpsam1ueXl4&utm_source=qr" class="soc" target="_blank" title="Instagram">&#128247;</a>
     <a href="#book" class="bnow">Book Now</a>
   </div>
 </div>
@@ -881,7 +881,7 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     <div>
       <div class="fl"><img src="images/logo.png" alt="Book myDandeli" class="footer-logo-img"></div>
       <p class="fd">Where the Kali River meets ancient forest, and every dawn begins a new conversation with nature.</p>
-      <div class="fs"><a href="#">f</a><a href="#">in</a><a href="#">yt</a></div>
+      <div class="fs"><a href="https://www.instagram.com/bookmydandeli?igsh=ZzZpdGpsam1ueXl4&utm_source=qr" target="_blank" title="Instagram">&#128247;</a></div>
     </div>
     <div class="fc"><h5>Sightseeing</h5><ul>
       <li><a href="#">Kali Tiger Reserve</a></li><li><a href="#">Syntheri Rock Falls</a></li>
@@ -893,14 +893,14 @@ footer{background:#0d1f16;color:rgba(255,255,255,.65);padding:70px 40px 30px;}
     </ul></div>
     <div class="fc"><h5>Contact</h5>
       <div class="fci"><span>&#128205;</span><p>Dandeli, Uttara Kannada<br>Karnataka 581 325</p></div>
-      <div class="fci"><span>&#128222;</span><a href="tel:+919611943766">+91 96119 43766</a></div>
-      <div class="fci"><span>&#9993;</span><a href="mailto:info@dandelitourpackage.com">info@dandelitourpackage.com</a></div>
+      <div class="fci"><span>&#128222;</span><a href="tel:+916363343766">+91 63633 43766</a></div>
+      <div class="fci"><span>&#9993;</span><a href="mailto:bookmydandelii@gmail.com">bookmydandelii@gmail.com</a></div>
     </div>
   </div>
   <div class="fb">&#169; 2025 Book myDandeli &middot; <a href="#">Privacy Policy</a></div>
 </footer>
 
-<a href="https://wa.me/919611943766" class="fwa" target="_blank">&#x1F4AC;</a>
+<a href="https://wa.me/916363343766" class="fwa" target="_blank">&#x1F4AC;</a>
 <button class="bk" id="bk" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
@@ -912,7 +912,7 @@ const RESORT = {
   rating: 4.6,
   ratingLabel: "Superb",
   reviewCount: "420 reviews",
-  whatsapp: "+919611943766",
+  whatsapp: "+916363343766",
   price: "&#8377;7,000",
   priceUnit: "/ couple \u00b7 night",
   priceCrossed: "&#8377;9,000",

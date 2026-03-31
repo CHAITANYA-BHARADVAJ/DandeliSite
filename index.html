@@ -542,6 +542,7 @@
       right: 0;
       z-index: 100;
       transition: background .4s ease, box-shadow .4s ease;
+      margin: 0;
     }
     nav.scrolled {
       background: #fff;
@@ -549,7 +550,8 @@
     }
 
     .logo {
-      height: 52px;
+      height: auto;
+      min-height: 52px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -557,6 +559,7 @@
       font-size: 20px;
       font-weight: 700;
       color: var(--forest);
+      padding: 4px 0;
     }
 
     .leaf {
@@ -2501,7 +2504,12 @@
 
       nav,
       .topbar {
-        padding: 10px 20px;
+        padding: 8px 16px;
+      }
+
+      .logo-img {
+        height: 48px;
+        width: 48px;
       }
 
       .mc {
@@ -2652,9 +2660,13 @@
 
     @media(max-width:600px) {
       .logo-title {
-        font-size: 21px;
+        font-size: 20px;
         margin-left: 6px;
         gap: 3px;
+      }
+      .logo {
+        gap: 6px;
+        padding: 4px 0;
       }
     }
   </style>
@@ -2730,9 +2742,9 @@
   <!-- ══ TOPBAR (hidden on homepage for transparent nav) ══ -->
   <div class="topbar" id="topbar" style="display:none;">
     <div><a href="tel:6363343766">&#128222; +91 63633 43766</a>&nbsp;|&nbsp;<a
-        href="mailto:info@dandelitourpackage.com">&#9993; info@dandelitourpackage.com</a></div>
+        href="mailto:bookmydandelii@gmail.com">&#9993; bookmydandelii@gmail.com</a></div>
     <div class="tb-r">
-      <div style="display:flex;gap:10px;"><a href="#" class="soc">f</a><a href="#" class="soc">in</a></div>
+      <div style="display:flex;gap:10px;"><a href="https://www.instagram.com/bookmydandeli?igsh=ZzZpdGpsam1ueXl4&utm_source=qr" class="soc" target="_blank" title="Instagram">&#128247;</a></div>
       <a href="https://api.whatsapp.com/send?phone=916363343766" class="bnow">Book Now</a>
     </div>
   </div>
@@ -3091,7 +3103,7 @@
         <div class="fl"><img src="images/logo.png" alt="Book myDandeli" class="footer-logo-img"></div>
         <p class="fd">We provide a wide range of accommodation and services from luxury hotels, homestays, river view
           resorts with top-notch restaurants to middle-range hotels offering good service and a comfortable stay.</p>
-        <div class="fs"><a href="#">f</a><a href="#">in</a></div>
+        <div class="fs"><a href="https://www.instagram.com/bookmydandeli?igsh=ZzZpdGpsam1ueXl4&utm_source=qr" target="_blank" title="Instagram">&#128247;</a></div>
       </div>
       <div class="fc">
         <h5>Useful Links</h5>
@@ -3117,7 +3129,7 @@
         <h5>Contact Us</h5>
         <div class="fci"><span>&#128222;</span><a href="tel:6363343766">+91 6363343766</a></div>
         <div class="fci"><span>&#9993;</span><a
-            href="mailto:info@dandelitourpackage.com">info@dandelitourpackage.com</a></div>
+            href="mailto:bookmydandelii@gmail.com">bookmydandelii@gmail.com</a></div>
         <div class="fci"><span>&#128205;</span>
           <p>Opp. Bus Stop Dandeli, Nisarga or State Lodge</p>
         </div>
