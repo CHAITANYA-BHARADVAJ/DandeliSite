@@ -3633,8 +3633,120 @@
     .floating-oneday-btn {
       bottom: 24px;
       left: 16px;
-      padding: 5px 12px;
+      width: 75px; /* Reduced width */
+      height: 75px; /* Increased height */
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 20px;
+      padding: 10px;
+      text-align: center;
+    }
+    .fob-content {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .fob-text {
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .fob-badge {
+      font-size: 7px;
+      padding: 2px 5px;
     }
   }
   </style>
+
+  <!-- ONE DAY PACKAGE POP-UP -->
+  <div id="odp-popup-overlay" class="odp-popup-overlay">
+    <div class="odp-popup-content">
+      <button class="odp-popup-close" onclick="closeOdpPopup()">&times;</button>
+      <div class="odp-popup-image" style="background-image: url('images/Whistling Woods/hq_3.jpg');">
+        <div class="odp-popup-tag">Special Offer</div>
+      </div>
+      <div class="odp-popup-body">
+        <div class="odp-popup-eyebrow">Exclusive Adventure</div>
+        <h2 class="odp-popup-title">1-Day Package</h2>
+        <p class="odp-popup-text">Experience Whistling Woodzs with Rafting, Kayaking, Flyingfox & Unlimited Lunch.</p>
+        <div class="odp-popup-price">₹1,300 <span>/ person</span></div>
+        <a href="one-day-packages.html" class="odp-popup-btn">View Details & Book</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  .odp-popup-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; transition: opacity 0.5s ease;
+  }
+  .odp-popup-overlay.show { display: flex; opacity: 1; }
+  
+  .odp-popup-content {
+    background: #fff; width: 100%; max-width: 400px; border-radius: 28px; overflow: hidden;
+    position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    transform: translateY(40px) scale(0.9); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .odp-popup-overlay.show .odp-popup-content { transform: translateY(0) scale(1); }
+
+  .odp-popup-close {
+    position: absolute; top: 15px; right: 15px; width: 32px; height: 32px;
+    background: rgba(255,255,255,0.2); border: none; border-radius: 50%; color: #fff;
+    font-size: 24px; cursor: pointer; z-index: 10; backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center; transition: all 0.3s;
+  }
+  .odp-popup-close:hover { background: rgba(255,255,255,0.4); }
+
+  .odp-popup-image {
+    height: 180px; background-size: cover; background-position: center; position: relative;
+  }
+  .odp-popup-image::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, #fff 0%, transparent 60%);
+  }
+  .odp-popup-tag {
+    position: absolute; bottom: 15px; left: 20px; background: var(--gold);
+    color: #fff; font-size: 10px; font-weight: 700; padding: 5px 12px;
+    border-radius: 30px; text-transform: uppercase; letter-spacing: 1px; z-index: 2;
+  }
+
+  .odp-popup-body { padding: 30px 25px 35px; text-align: center; }
+  .odp-popup-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .odp-popup-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--forest); line-height: 1; margin-bottom: 12px; }
+  .odp-popup-text { font-size: 14px; color: #666; line-height: 1.5; margin-bottom: 20px; padding: 0 10px; }
+  .odp-popup-price { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--forest); margin-bottom: 25px; }
+  .odp-popup-price span { font-size: 14px; color: #999; font-family: 'Jost', sans-serif; font-weight: 400; }
+  
+  .odp-popup-btn {
+    display: block; background: var(--forest); color: #fff; padding: 16px; 
+    border-radius: 40px; text-decoration: none; font-weight: 600; 
+    transition: all 0.3s; box-shadow: 0 10px 25px rgba(26,58,42,0.2);
+  }
+  .odp-popup-btn:hover { background: var(--moss); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(26,58,42,0.3); }
+
+  @media(max-width: 480px) {
+    .odp-popup-content { max-width: 320px; }
+    .odp-popup-title { font-size: 30px; }
+    .odp-popup-price { font-size: 36px; }
+  }
+  </style>
+
+  <script>
+  function closeOdpPopup() {
+    const overlay = document.getElementById('odp-popup-overlay');
+    overlay.classList.remove('show');
+    setTimeout(() => overlay.style.display = 'none', 500);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Only show once per session correctly, or use localStorage for once ever
+    if (!localStorage.getItem('odp_popup_shown')) {
+      setTimeout(() => {
+        const overlay = document.getElementById('odp-popup-overlay');
+        overlay.style.display = 'flex';
+        setTimeout(() => overlay.classList.add('show'), 10);
+        localStorage.setItem('odp_popup_shown', 'true');
+      }, 1500); // 1.5s delay to let page load
+    }
+  });
+  </script>
 </body>
