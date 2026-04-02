@@ -1048,7 +1048,62 @@
       display: block;
     }
 
+        /* â”€â”€ ACCORDION AMENITIES â”€â”€ */
+    .am-details {
+      border: 1px solid var(--border);
+      background: #fff;
+      margin-top: 16px;
+    }
+    .am-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      transition: background .2s;
+      list-style: none;
+    }
+    .am-summary::-webkit-details-marker {
+      display: none;
+    }
+    .am-summary:hover {
+      background: rgba(201, 168, 76, .05);
+    }
+    .am-summary::after {
+      content: 'â–¼';
+      font-size: 10px;
+      color: var(--gold);
+      transition: transform .3s;
+    }
+    .am-details[open] .am-summary::after {
+      transform: rotate(180deg);
+    }
+    .am-details[open] .am-summary {
+      border-bottom: 1px dashed var(--border);
+    }
+    .am-content {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .am-content .am-item {
+      border: none !important;
+      border-bottom: 1px solid var(--border) !important;
+    }
     @media(min-width:560px) {
+      .am-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .am-content .am-item:nth-child(even) {
+        border-left: 1px solid var(--border) !important;
+      }
+      .am-content .am-item:nth-last-child(-n+2) {
+        border-bottom: none !important;
+      }
+    }
+@media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2840,16 +2895,30 @@
       ],
 
       amenities: [
-        { icon: "&#x2615;", text: "Buffet Breakfast" },
-        { icon: "&#127869;", text: "Buffet Lunch" },
-        { icon: "&#x1F958;", text: "Buffet Dinner" },
-        { icon: "&#127754;", text: "Outdoor Swimming Pool" },
-        { icon: "&#127807;", text: "Natural Jacuzzi" },
-        { icon: "&#128675;", text: "Kali River Boating" },
-        { icon: "&#x1F6F6;", text: "Kayaking" },
-        { icon: "&#128134;", text: "Spa & Massage Services" },
-        { icon: "&#128690;", text: "Indoor & Outdoor Games" },
-        { icon: "&#128293;", text: "Bonfire & Rain Dance" },
+        { icon: "&#127869;", text: "Buffet Lunch (01:30pm - 03:00pm) Veg & Non-veg" },
+        { icon: "&#x1F958;", text: "Buffet Dinner (09:30pm - 10:30pm) Veg & Non-veg" },
+        { icon: "&#x2615;", text: "Breakfast (09:00am - 10:00am)" },
+        { icon: "&#x2615;", text: "Morning & Evening Tea/Coffee" },
+      ],
+      groupedActivities: [
+        {
+          name: "Included Activities",
+          items: ["Night campfire with music (Depends on rain)", "Jungle trekking (Morning 06:30 Am)", "Archery", "Boating in river Kali", "Swimming in river kali", "Kayaking in river Kali"]
+        },
+        {
+          name: "Activities (Extra Cost)",
+          items: ["River Mid Rafting (5km)", "Short Rafting (1km)", "River Zip Line", "Moon Light Boating in kali River"]
+        }
+      ],
+      groupedActivities: [
+        {
+          name: "Included Activities",
+          items: ["Night campfire with music (Depends on rain)", "Jungle trekking (Morning 06:30 Am)", "Archery", "Boating in river Kali", "Swimming in river kali", "Kayaking in river Kali"]
+        },
+        {
+          name: "Activities (Extra Cost)",
+          items: ["River Mid Rafting (5km)", "Short Rafting (1km)", "River Zip Line", "Moon Light Boating in kali River"]
+        }
       ],
 
       rooms: [
@@ -2867,9 +2936,10 @@
       ],
 
       policies: [
-        { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 12:00 PM", "Check-out: 11:00 AM", "Booking confirmed only on advance receipt."] },
-        { icon: "&#128683;", title: "House Rules", items: ["No Refundable, No Cancellation", "Balance amount to be paid before check-in.", "Carry light cotton clothes, swim wear, suited shoes, torch."] },
-        { icon: "&#128101;", title: "Guest Rules", items: ["Children (5 to 12 yrs): 50% Charges", "Adventure activities depend on water level & weather."] },
+        { icon: "&#128197;", title: "Check-in & Timings", items: ["Check-in: 12:00 PM", "Check-out: 11:00 AM", "After Food Buffet timing, it is strictly closed"] },
+        { icon: "&#128225;", title: "Important Notes", items: ["All Adventure Activity depends on water level & weather condition", "Carry light cotton clothes, swimwear, suitable walking shoes, torch, cap etc", "For Extra Cost Activity transport charges will be extra or guest can avail own vehicle."] },
+        { icon: "&#128205;", title: "Sightseeing", items: ["Supa Dam, Back water, Crocodile park, Honey park"] },
+        { icon: "&#128176;", title: "Payment & Cancellation", items: ["Strictly No Cancellation & Non-refundable", "Booking confirmed only upon receipt of advance", "Balance amount must be paid before check-in", "Children (5 to 12 years) charged 50%"] },
       ],
 
       address: "Ganeshgudi, Ilva near Supa Dam, Dandeli, Karnataka",
@@ -2941,10 +3011,27 @@
       });
 
       /* amenities — list style */
-      R.amenities.forEach(a => {
-        document.getElementById('amenitiesGrid').innerHTML +=
-          `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
-      });
+      /* amenities â€” list style */
+      if (R.amenities) {
+        R.amenities.forEach(a => {
+          document.getElementById('amenitiesGrid').innerHTML +=
+            <div class="am-item"><span class="am-name"> + a.text + </span><span class="am-check"></span></div>;
+        });
+      }
+
+      /* grouped activities â€” dropdown accordion style */
+      if (R.groupedActivities && R.groupedActivities.length > 0) {
+        let gaHtml = '';
+        R.groupedActivities.forEach(group => {
+           gaHtml += <details class="am-details"><summary class="am-summary"> + group.name + </summary><div class="am-content">;
+           group.items.forEach(item => {
+             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
+             gaHtml += <div class="am-item"><span class="am-name"> + item + </span><span class="am-check" ></span></div>;
+           });
+           gaHtml += </div></details>;
+        });
+        document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
+      }
 
       /* rooms */
       R.rooms.forEach(room => {
@@ -3138,3 +3225,4 @@
 </body>
 
 </html>
+
