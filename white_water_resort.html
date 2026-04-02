@@ -1048,7 +1048,62 @@
       display: block;
     }
 
+        /* â”€â”€ ACCORDION AMENITIES â”€â”€ */
+    .am-details {
+      border: 1px solid var(--border);
+      background: #fff;
+      margin-top: 16px;
+    }
+    .am-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      transition: background .2s;
+      list-style: none;
+    }
+    .am-summary::-webkit-details-marker {
+      display: none;
+    }
+    .am-summary:hover {
+      background: rgba(201, 168, 76, .05);
+    }
+    .am-summary::after {
+      content: 'â–¼';
+      font-size: 10px;
+      color: var(--gold);
+      transition: transform .3s;
+    }
+    .am-details[open] .am-summary::after {
+      transform: rotate(180deg);
+    }
+    .am-details[open] .am-summary {
+      border-bottom: 1px dashed var(--border);
+    }
+    .am-content {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .am-content .am-item {
+      border: none !important;
+      border-bottom: 1px solid var(--border) !important;
+    }
     @media(min-width:560px) {
+      .am-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .am-content .am-item:nth-child(even) {
+        border-left: 1px solid var(--border) !important;
+      }
+      .am-content .am-item:nth-last-child(-n+2) {
+        border-bottom: none !important;
+      }
+    }
+@media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2777,13 +2832,32 @@
       ],
 
       amenities: [
-        { icon: "&#x2615;", text: "Buffet Breakfast" },
-        { icon: "&#127869;", text: "Buffet Lunch" },
-        { icon: "&#x1F958;", text: "Buffet Dinner" },
-        { icon: "&#127754;", text: "Outdoor Swimming Pool" },
-        { icon: "&#127807;", text: "Nature Walk" },
-        { icon: "&#128690;", text: "Indoor & Outdoor Games" },
-        { icon: "&#128293;", text: "Bonfire & Music" },
+        { icon: "&#127968;", text: "Stay in River Touch Resort" },
+        { icon: "&#127754;", text: "River View Cottages" },
+        { icon: "&#x2615;", text: "1 Breakfast" },
+        { icon: "&#127869;", text: "1 Lunch (Veg & Non-Veg)" },
+        { icon: "&#x2615;", text: "1 Evening Tea/Coffee with Snacks" },
+        { icon: "&#x1F958;", text: "1 Dinner (Veg & Non-Veg)" },
+      ],
+      groupedActivities: [
+        {
+          name: "Water Activities",
+          items: ["Boating", "River Swimming", "Kayaking", "Zorbing"]
+        },
+        {
+          name: "In-Resort Activities",
+          items: ["Rain Dance", "Night Campfire with Music", "Carrom", "Badminton"]
+        }
+      ],
+      groupedActivities: [
+        {
+          name: "Water Activities",
+          items: ["Boating", "River Swimming", "Kayaking", "Zorbing"]
+        },
+        {
+          name: "In-resort Activities",
+          items: ["Rain Dance", "Night Camp Fire With Music", "Carrom", "Badminton"]
+        }
       ],
 
       rooms: [
@@ -2800,9 +2874,10 @@
       ],
 
       policies: [
-        { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 12:00 PM", "Check-out: 11:00 AM", "Booking confirmed only on advance receipt."] },
-        { icon: "&#128683;", title: "House Rules", items: ["No Refundable, No Cancellation", "Balance amount to be paid before check-in.", "Carry light cotton clothes, swim wear, suited shoes, torch."] },
-        { icon: "&#128101;", title: "Guest Rules", items: ["Children (5 to 12 yrs): 50% Charges", "Adventure activities depend on water level & weather."] },
+        { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 1:00 PM", "Check-out: 11:00 AM"] },
+        { icon: "&#128101;", title: "Child Policy", items: ["Children aged 5 to 10 years charged 50%"] },
+        { icon: "&#128663;", title: "Transportation", items: ["Transportation is not included in the package"] },
+        { icon: "&#128176;", title: "Booking & Payment", items: ["50% Advance payment for confirmation", "Remaining amount to be paid in cash while check-in", "Confirmation letter provided after booking"] },
       ],
 
       address: "White Water Resort, Dandeli, Karnataka",
@@ -2873,10 +2948,27 @@
       });
 
       /* amenities — list style */
-      R.amenities.forEach(a => {
-        document.getElementById('amenitiesGrid').innerHTML +=
-          `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
-      });
+      /* amenities â€” list style */
+      if (R.amenities) {
+        R.amenities.forEach(a => {
+          document.getElementById('amenitiesGrid').innerHTML +=
+            <div class="am-item"><span class="am-name"> + a.text + </span><span class="am-check"></span></div>;
+        });
+      }
+
+      /* grouped activities â€” dropdown accordion style */
+      if (R.groupedActivities && R.groupedActivities.length > 0) {
+        let gaHtml = '';
+        R.groupedActivities.forEach(group => {
+           gaHtml += <details class="am-details"><summary class="am-summary"> + group.name + </summary><div class="am-content">;
+           group.items.forEach(item => {
+             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
+             gaHtml += <div class="am-item"><span class="am-name"> + item + </span><span class="am-check" ></span></div>;
+           });
+           gaHtml += </div></details>;
+        });
+        document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
+      }
 
       /* rooms */
       R.rooms.forEach(room => {
@@ -3070,3 +3162,4 @@
 </body>
 
 </html>
+

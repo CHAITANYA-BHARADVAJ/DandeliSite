@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="images/logo_transparent.png">
-  <title>Whistling Woodzs Resort — Book myDandeli</title>
+  <title>Swayam Cottage â€” Book myDandeli</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
     rel="stylesheet">
@@ -86,7 +86,7 @@
       }
     }
 
-    /* ── TOPBAR ── */
+    /* â”€â”€ TOPBAR â”€â”€ */
     .topbar {
       background: var(--forest);
       color: #bbb;
@@ -160,7 +160,7 @@
       transform: translateX(110%) skewX(-15deg);
     }
 
-    /* ── NAV ── */
+    /* â”€â”€ NAV â”€â”€ */
     nav {
       background: #fff;
       padding: 0 40px;
@@ -293,7 +293,7 @@
       border: none;
     }
 
-    /* ── HERO — mobile first ── */
+    /* â”€â”€ HERO â€” mobile first â”€â”€ */
     .hero {
       position: relative;
       height: 100svh;
@@ -338,7 +338,7 @@
       background: linear-gradient(to top, rgba(5, 18, 10, .95) 0%, rgba(5, 18, 10, .55) 50%, rgba(5, 18, 10, .2) 100%);
     }
 
-    /* Wrapper that stacks title then thumbnails in normal flow — no overlap */
+    /* Wrapper that stacks title then thumbnails in normal flow â€” no overlap */
     .hero-bottom-stack {
       position: relative;
       z-index: 10;
@@ -462,7 +462,7 @@
       }
     }
 
-    /* Thumbnail bar — in flow, sits directly below title */
+    /* Thumbnail bar â€” in flow, sits directly below title */
     .hero-bottom-bar {
       position: relative;
       z-index: 10;
@@ -539,7 +539,7 @@
       display: none;
     }
 
-    /* ── Desktop upgrades ── */
+    /* â”€â”€ Desktop upgrades â”€â”€ */
     @media(min-width:768px) {
       .hero {
         height: 92vh;
@@ -673,7 +673,7 @@
       font-family: 'Jost', sans-serif;
     }
 
-    /* ── PHOTO COUNT BADGE (top-right of hero) ── */
+    /* â”€â”€ PHOTO COUNT BADGE (top-right of hero) â”€â”€ */
     .photo-count-badge {
       position: absolute;
       top: 20px;
@@ -712,9 +712,9 @@
       stroke-width: 1.8;
     }
 
-    /* ────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LIGHTBOX GALLERY
-──────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .lightbox-backdrop {
       position: fixed;
       inset: 0;
@@ -922,7 +922,7 @@
       color: rgba(255, 255, 255, .15);
     }
 
-    /* ── BREADCRUMB ── */
+    /* â”€â”€ BREADCRUMB â”€â”€ */
     .bc-strip {
       background: var(--forest);
       padding: 12px 60px;
@@ -949,7 +949,7 @@
       opacity: .25;
     }
 
-    /* ── MAIN LAYOUT ── */
+    /* â”€â”€ MAIN LAYOUT â”€â”€ */
     .main-wrap {
       max-width: 1320px;
       margin: 0 auto;
@@ -990,7 +990,7 @@
       width: 48px;
     }
 
-    /* ── AMENITIES — list style ── */
+    /* â”€â”€ AMENITIES â€” list style â”€â”€ */
     .amenities-section {
       margin-bottom: 52px;
     }
@@ -1048,62 +1048,7 @@
       display: block;
     }
 
-        /* â”€â”€ ACCORDION AMENITIES â”€â”€ */
-    .am-details {
-      border: 1px solid var(--border);
-      background: #fff;
-      margin-top: 16px;
-    }
-    .am-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--forest);
-      transition: background .2s;
-      list-style: none;
-    }
-    .am-summary::-webkit-details-marker {
-      display: none;
-    }
-    .am-summary:hover {
-      background: rgba(201, 168, 76, .05);
-    }
-    .am-summary::after {
-      content: 'â–¼';
-      font-size: 10px;
-      color: var(--gold);
-      transition: transform .3s;
-    }
-    .am-details[open] .am-summary::after {
-      transform: rotate(180deg);
-    }
-    .am-details[open] .am-summary {
-      border-bottom: 1px dashed var(--border);
-    }
-    .am-content {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-    .am-content .am-item {
-      border: none !important;
-      border-bottom: 1px solid var(--border) !important;
-    }
     @media(min-width:560px) {
-      .am-content {
-        grid-template-columns: 1fr 1fr;
-      }
-      .am-content .am-item:nth-child(even) {
-        border-left: 1px solid var(--border) !important;
-      }
-      .am-content .am-item:nth-last-child(-n+2) {
-        border-bottom: none !important;
-      }
-    }
-@media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -1117,7 +1062,7 @@
       }
     }
 
-    /* ── ROOMS ── */
+    /* â”€â”€ ROOMS â”€â”€ */
     .rooms-section {
       margin-bottom: 52px;
     }
@@ -1255,7 +1200,7 @@
       color: #fff;
     }
 
-    /* ── POLICIES ── */
+    /* â”€â”€ POLICIES â”€â”€ */
     .policy-section {
       margin-bottom: 52px;
     }
@@ -1310,14 +1255,14 @@
     }
 
     .policy-items li::before {
-      content: '·';
+      content: 'Â·';
       color: var(--gold);
       font-size: 18px;
       line-height: 1;
       flex-shrink: 0;
     }
 
-    /* ── LOCATION ── */
+    /* â”€â”€ LOCATION â”€â”€ */
     .location-section {
       margin-bottom: 16px;
     }
@@ -1451,7 +1396,7 @@
       border-color: var(--forest);
     }
 
-    /* ── SIDEBAR ── */
+    /* â”€â”€ SIDEBAR â”€â”€ */
     .sidebar {
       position: sticky;
       top: 90px;
@@ -1801,7 +1746,7 @@
       line-height: 1.5;
     }
 
-    /* ── HOW TO REACH ── */
+    /* â”€â”€ HOW TO REACH â”€â”€ */
     .reach-section {
       background: #fff;
       padding: 72px 20px;
@@ -1960,7 +1905,7 @@
       }
     }
 
-    /* ── CTA ── */
+    /* â”€â”€ CTA â”€â”€ */
     .cta-strip {
       background: var(--forest);
       padding: 64px 60px;
@@ -2077,7 +2022,7 @@
       color: var(--gold);
     }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     footer {
       background: #0d1f16;
       color: rgba(255, 255, 255, .65);
@@ -2160,7 +2105,7 @@
     }
 
     .fc ul li a::before {
-      content: '›';
+      content: 'â€º';
       color: var(--gold);
     }
 
@@ -2203,7 +2148,7 @@
       text-decoration: none;
     }
 
-    /* ── FLOATS ── */
+    /* â”€â”€ FLOATS â”€â”€ */
     .fwa {
       position: fixed;
       bottom: 30px;
@@ -2277,7 +2222,7 @@
       transform: translateY(-3px);
     }
 
-    /* ── REVEAL ── */
+    /* â”€â”€ REVEAL â”€â”€ */
     .rv {
       opacity: 0;
       transform: translateY(32px);
@@ -2289,7 +2234,7 @@
       transform: none;
     }
 
-    /* ── RESPONSIVE ── */
+    /* â”€â”€ RESPONSIVE â”€â”€ */
     @media(max-width:1100px) {
       .main-wrap {
         grid-template-columns: 1fr;
@@ -2430,32 +2375,22 @@
       }
     }
 
-    /* â”€â”€ LOGO IMAGE â”€â”€ */
+    /* â”€â”€ LOGO TEXT STYLE â”€â”€ */
     .logo-img {
       height: 64px;
       width: 64px;
       object-fit: contain;
-      flex-shrink: 0;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .2)) saturate(1.3) contrast(1.05);
-      transition: transform .3s ease, filter .3s ease;
-    }
-
-    .logo:hover .logo-img,
-    .logo-img:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 3px 8px rgba(201, 168, 76, .4)) saturate(1.5) contrast(1.1);
+      margin-right: -2px;
+      filter: drop-shadow(0 2px 8px rgba(201, 168, 76, .5)) saturate(1.3) brightness(1.1);
     }
 
     .footer-logo-img {
       height: 72px;
       width: 72px;
       object-fit: contain;
-      vertical-align: middle;
-      margin-right: 12px;
-      filter: drop-shadow(0 2px 8px rgba(201, 168, 76, .5)) saturate(1.3) brightness(1.1);
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .2)) saturate(1.3) contrast(1.05);
     }
 
-    /* â”€â”€ LOGO TEXT STYLE â”€â”€ */
     .logo {
       text-decoration: none !important;
     }
@@ -2538,7 +2473,7 @@
     <button class="hero-arrow hero-prev" onclick="prevSlide()">&#8592;</button>
     <button class="hero-arrow hero-next" onclick="nextSlide()">&#8594;</button>
 
-    <!-- Photo count badge — top right -->
+    <!-- Photo count badge â€” top right -->
     <div class="photo-count-badge" id="photoCountBadge" onclick="openLightbox(currentSlide)">
       <svg viewBox="0 0 24 24">
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -2572,9 +2507,9 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      LIGHTBOX
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <div class="lightbox-backdrop" id="lightbox">
     <div class="lb-header">
       <div class="lb-title" id="lbResortName"></div>
@@ -2778,7 +2713,7 @@
             <span class="reach-mode-name">Drive</span>
           </div>
           <div class="reach-detail">
-            <p class="reach-desc">Dandeli is <strong>460 km from Bengaluru</strong> via NH48 and SH57 — roughly an
+            <p class="reach-desc">Dandeli is <strong>460 km from Bengaluru</strong> via NH48 and SH57 â€” roughly an
               8-hour drive. From <strong>Pune</strong>, it is approximately 390 km (7 hrs). The roads are
               well-maintained with scenic ghats from Dharwad onwards.</p>
             <span class="reach-note">Self-drive or hired cab both work well</span>
@@ -2823,7 +2758,7 @@
   <footer>
     <div class="fg">
       <div>
-        <div class="fl"><img src="images/logo.png" alt="Book myDandeli" class="footer-logo-img"></div>
+        <div class="fl">&#127807; Book myDandeli</div>
         <p class="fd">Where the Kali River meets ancient forest, and every dawn begins a new conversation with nature.
         </p>
         <div class="fs"><a href="https://www.instagram.com/bookmydandeli?igsh=ZzZpdGpsam1ueXl4&utm_source=qr"
@@ -2865,113 +2800,84 @@
 
   <script>
     const RESORT = {
-      name: "Whistling Woodzs Resort",
-      tagline: "Welcome to the world of adventure! Discover the spirits of Wilderness in the lap of Dandeli forest.",
-      badge: "&#11088; Luxury Jungle Resort",
-      stars: 5,
-      rating: 4.8,
+      name: "Swayam Cottage",
+      tagline: "Ganeshgudi, Ilva near Supa Dam",
+      badge: "ðŸ  Cozy Comfort",
+      stars: 4,
+      rating: 4.6,
       ratingLabel: "Exceptional",
-      reviewCount: "850 reviews",
+      reviewCount: "402 reviews",
       whatsapp: "+916363343766",
-      price: "&#8377;8,000",
+      price: "&#8377;2,200",
       priceUnit: "/ person \u00b7 night",
-      priceCrossed: "&#8377;10,000",
-      priceSave: "Save 20% \u00b7 All Meals Included",
+      priceCrossed: "&#8377;2,900",
+      priceSave: "Save 24% &middot; Standard Pricing",
 
       images: [
-        { src: "images/Whistling Woods/hq_4.jpg", caption: "Riverfront Views" },
-        { src: "images/Whistling Woods/hq_3.jpg", caption: "Jungle Experiences" },
-        { src: "images/Whistling Woods/hq_2.jpg", caption: "Premium Living" },
-        { src: "images/Whistling Woods/hq_1.jpg", caption: "Resort Overview" },
-        { src: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.43.32 AM.jpeg", caption: "Kali River & Rafting Access" },
-        { src: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.24.48 AM.jpeg", caption: "Premium Accommodation" },
-        { src: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.34.01 AM.jpeg", caption: "Jungle Surroundings" },
-        { src: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.19.43 AM (1).jpeg", caption: "Resort Dining" },
+        { src: "images/Swayam Cottage/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg", caption: "Resort View" },
+        { src: "images/Swayam Cottage/0ff2ddff-a4d8-4c1a-ba5e-676a50fbc7e9.jpg", caption: "Room Interior" },
+        { src: "images/Swayam Cottage/1116d2aa-2828-4b67-91ff-b1f64f663269.jpg", caption: "Dining Area" },
+        { src: "images/Swayam Cottage/190878f4-da78-46da-af3e-cfed17cef3ea.jpg", caption: "Activities" },
+        { src: "images/Swayam Cottage/1ad8323a-76ce-44bc-a354-31e6f4ad3e5b.jpg", caption: "Night View" },
       ],
 
       heroStats: [
-        { value: "5", unit: "Star Luxury" },
-        { value: "River", unit: "Front Access" },
-        { value: "Giant", unit: "Swing & Sports" },
+        { value: "River", unit: "Side Property" },
+        { value: "Kali", unit: "River View" },
+        { value: "100%", unit: "Nature Vibes" },
       ],
 
       amenities: [
-        { icon: "&#x2615;", text: "Buffet Breakfast (08:30am - 10:00am)" },
-        { icon: "&#127869;", text: "Buffet Lunch (01:30pm - 03:00pm)" },
-        { icon: "&#x1F958;", text: "Buffet Dinner (08:30pm - 10:00pm)" },
-      ],
-      groupedActivities: [
-        {
-          name: "Adventure & Nature",
-          items: ["Jungle Trekking (7:30am - 8:30am)", "Bird Watching (4:30pm - 5:00pm)", "Firecamp (Based on weather)", "Boating (Depends on dam water level)", "Natural Jacuzzi (Depends on water level)"]
-        },
-        {
-          name: "Resort Recreation",
-          items: ["Swimming Pool (9am - 6pm)", "Indoor Games (Carom, Chess)", "Outdoor Games (Shuttlecock, Cricket)", "Kids Play Area"]
-        },
-        {
-          name: "Obstacle Course (9am - 6pm)",
-          items: ["Pipe line Activity", "Balancing Led Activity", "Zig Zag Activity", "Swing Ladder", "Multi Vain Activity", "Burma Bridge Activity"]
-        }
-      ],
-      groupedActivities: [
-        {
-          name: "Adventure & Nature",
-          items: ["Jungle Trekking (7:30am - 8:30am)", "Bird Watching (4:30pm - 5:00pm)", "Firecamp (Based on weather)", "Boating (Depends on dam water level)", "Natural Jacuzzi (Depends on water level)"]
-        },
-        {
-          name: "Resort Recreation",
-          items: ["Swimming Pool (9am - 6pm)", "Indoor Games (Carom, Chess)", "Outdoor Games (Shuttlecock, Cricket)", "Kids Play Area"]
-        },
-        {
-          name: "Obstacle Course (9am - 6pm)",
-          items: ["Pipe line Activity", "Balancing Led Activity", "Zig Zag Activity", "Swing Ladder", "Multi Vain Activity", "Burma Bridge Activity"]
-        }
+        { icon: "&#x2615;", text: "Unlimited Breakfast (9-10 AM)" },
+        { icon: "&#127869;", text: "Unlimited Lunch (1:30-3 PM)" },
+        { icon: "&#x1F958;", text: "Unlimited Dinner (9:30-10:30 PM)" },
+        { icon: "&#x2615;", text: "Morning & Evening Tea/Coffee" },
+        { icon: "&#127754;", text: "Swimming in River Kali" },
+        { icon: "&#127807;", text: "Jungle Trekking (6:30 AM)" },
+        { icon: "&#128675;", text: "Boating in River Kali" },
+        { icon: "&#x1F6F6;", text: "Kayaking in River Kali" },
+        { icon: "&#x1F3AF;", text: "Archery" },
+        { icon: "&#128293;", text: "Night Campfire with Music" },
       ],
 
       rooms: [
-        { name: "Executive Premium Cottages", badge: "Ultra Luxury", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-6.jpg", desc: "Top-tier suites designed for complete luxury. Featuring a spacious layout, premium bedding, and a private balcony overlooking the beautiful Kali river.", features: ["King Size Bed", "River View", "Private Balcony", "Bathtub", "Mini-bar"], price: "&#8377;14,000", unit: "/ night" },
-        { name: "Penthouse Suite Room", badge: "Most Popular", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-8.jpg", desc: "Experience living amidst the branches or directly facing the river. These air-conditioned cottages provide rustin charm with modern amenities.", features: ["Queen Bed", "Elevated Setup", "AC", "Private Sit-out"], price: "&#8377;10,000", unit: "/ night" },
-        { name: "Family Cottage", badge: "Family Stay", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-19.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
-        { name: "River Side Rooms", badge: "Adventure Stay", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-24.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
-        { name: "Executive Room", badge: "Luxury", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-30.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
-        { name: "Executive Delux Room", badge: "Premium Luxury", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-26.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
-        { name: "Executive Suite with Terrace", badge: "Premium Luxury", image: "images/Whistling Woods/hq_1.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
+        { name: "Standard Room", badge: "ðŸ  Cozy Comfort", image: "images/Swayam Cottage/1e71cb65-d7ae-4381-ad74-2844ab5c3890.jpg", desc: "Private cottages with attached bathrooms. Perfect for couples or small families offering direct views of the surrounding nature.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,200", unit: "/ person" },
+        { name: "Couple Room", badge: "ðŸ  Couples Pick", image: "images/Swayam Cottage/coup.jpeg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,200", unit: "/ person" },
       ],
 
       activities: [
-        // { name: "White Water Rafting", cat: "Adventure", duration: "2\u20133 hrs", meta: "Extra Cost", image: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.43.32 AM.jpeg" },
-        // { name: "Giant Swing", cat: "Thrill", duration: "30 mins", meta: "Extra Cost", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-21.jpg" },
-        // { name: "Ziplining", cat: "Adventure", duration: "1 hr", meta: "Extra Cost", image: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.42.38 AM.jpeg" },
-        // { name: "Natural Jacuzzi", cat: "Relaxation", duration: "1 hr", meta: "Included", image: "images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.21.24 AM.jpeg" },
+        // { name: "River Mid Rafting (5km)", cat: "Extra Cost", duration: "Thrilling", meta: "Depends on water level", image: "images/Swayam Cottage/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" },
+        // { name: "Short Rafting (1km)", cat: "Extra Cost", duration: "Fun", meta: "Depends on water level", image: "images/Swayam Cottage/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" },
+        // { name: "River Zip Line", cat: "Extra Cost", duration: "Adventure", meta: "River Kali", image: "images/Swayam Cottage/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" },
+        // { name: "Moon Light Boating", cat: "Extra Cost", duration: "Scenic", meta: "River Kali", image: "images/Laguna/WhatsApp Image 2026-03-28 at 10.14.24 PM (3).jpeg" },
       ],
 
       policies: [
-        { icon: "&#128197;", title: "Check-in & Rules", items: ["Valid photo ID mandatory during check-in", "Rooms are non-smoking, equipped with smoke detectors", "No pets permitted on premises", "Room service is not provided"] },
-        { icon: "&#128101;", title: "Extra Guests & Children", items: ["Children aged 6 to 11 charged 50% of adult tariff", "Children above 11 considered as adults", "Driver meals at staff cafeteria (Free) or Restaurant (Rs1500+GST)"] },
-        { icon: "&#128225;", title: "Connectivity & Entertainment", items: ["Only Airtel network is accessible", "Wi-Fi available exclusively in the reception area", "Riverside, Family Cottages, and Dormitories have no TV"] },
-        { icon: "&#128161;", title: "Good to Know", items: ["Ala-carte services available in evening at extra charge", "No towels or soaps provided in the dormitory", "Carry umbrellas during rainy season"] },
+        { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 12:00 PM", "Check-out: 11:00 AM", "Booking confirmed only on advance receipt."] },
+        { icon: "&#128683;", title: "House Rules", items: ["No Refundable, No Cancellation", "Balance amount to be paid before check-in.", "Carry light cotton clothes, swim wear, suited shoes, torch."] },
+        { icon: "&#128101;", title: "Guest Rules", items: ["Children (5 to 12 yrs): 50% Charges", "Adventure activities depend on water level & weather."] },
       ],
 
-      address: "Badgund Village, Ganeshgudi, Dandeli, Karnataka 581365",
-      mapsUrl: "https://maps.google.com/?q=Whistling+Woodzs+Jungle+Resort+Dandeli",
+      address: "Ganeshgudi, Ilva near Supa Dam, Dandeli, Karnataka",
+      mapsUrl: "https://maps.google.com/?q=Tarang+Homestay+Dandeli",
 
       quickInfo: [
-        { icon: "&#127774;", text: "Dandeli's Premium Riverfront Property" },
-        { icon: "&#127957;&#65039;", text: "Massive property with direct river access" },
-        { icon: "&#128024;", text: "Surrounded by rich wildlife & bird sanctuaries" },
+        { icon: "&#x1F4B0;", text: "All Activities included in Package" },
+        { icon: "&#127957;&#65039;", text: "Cottages & Dormitories with AC" },
+        { icon: "&#127869;", text: "Unlimited Veg & Non-Veg Meals" },
       ],
 
       nearby: [
-        { icon: "&#128697;&#65039;", text: "Supa Dam \u2014 3 km" },
-        { icon: "&#128024;", text: "Hornbill Habitat \u2014 5 km" },
-        { icon: "&#127754;", text: "Syntheri Rock Falls \u2014 26 km" },
+        { icon: "&#128697;&#65039;", text: "Supa Dam" },
+        { icon: "&#127754;", text: "Back water" },
+        { icon: "&#128010;", text: "Crocodile park" },
+        { icon: "&#127807;", text: "Honey park" },
       ],
     };
 
-    /* ══════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        PAGE BUILDER
-    ══════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     (function () {
       const R = RESORT;
       function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n ? '&#9733;' : '&#9734;'; return s; }
@@ -2989,7 +2895,7 @@
       document.getElementById('lbResortName').innerHTML = R.name.replace(/(\s)(\S+)$/, '$1<em>$2</em>');
       document.getElementById('photoCountLabel').textContent = R.images.length + ' Photos';
 
-      /* ── hero slides + hero thumbnails (max 4 shown, then +N More tile) ── */
+      /* â”€â”€ hero slides + hero thumbnails (max 4 shown, then +N More tile) â”€â”€ */
       const thumbsEl = document.getElementById('galleryThumbs');
 
       R.images.forEach((img, i) => {
@@ -3020,28 +2926,11 @@
           `<div class="lb-thumb${i === 0 ? ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
       });
 
-      /* amenities — list style */
       /* amenities â€” list style */
-      if (R.amenities) {
-        R.amenities.forEach(a => {
-          document.getElementById('amenitiesGrid').innerHTML +=
-            <div class="am-item"><span class="am-name"> + a.text + </span><span class="am-check"></span></div>;
-        });
-      }
-
-      /* grouped activities â€” dropdown accordion style */
-      if (R.groupedActivities && R.groupedActivities.length > 0) {
-        let gaHtml = '';
-        R.groupedActivities.forEach(group => {
-           gaHtml += <details class="am-details"><summary class="am-summary"> + group.name + </summary><div class="am-content">;
-           group.items.forEach(item => {
-             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
-             gaHtml += <div class="am-item"><span class="am-name"> + item + </span><span class="am-check" ></span></div>;
-           });
-           gaHtml += </div></details>;
-        });
-        document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
-      }
+      R.amenities.forEach(a => {
+        document.getElementById('amenitiesGrid').innerHTML +=
+          `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
+      });
 
       /* rooms */
       R.rooms.forEach(room => {
@@ -3092,9 +2981,9 @@
       });
     })();
 
-    /* ══════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        HERO GALLERY SLIDER
-    ══════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     let currentSlide = 0;
 
     function goSlide(n) {
@@ -3111,9 +3000,9 @@
     function nextSlide() { goSlide(currentSlide + 1); }
     setInterval(() => nextSlide(), 5000);
 
-    /* ══════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        LIGHTBOX
-    ══════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     let lbCurrent = 0;
 
     function updateLightbox() {
@@ -3164,9 +3053,9 @@
       if (e.target === this) closeLightbox();
     });
 
-    /* ══════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        BOOKING FORM
-    ══════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     function submitBooking() {
       const name = document.getElementById('bName').value.trim();
       const phone = document.getElementById('bPhone').value.trim();
@@ -3190,9 +3079,9 @@
       }, 600);
     }
 
-    /* ══════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        SCROLL & REVEAL
-    ══════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     window.addEventListener('scroll', () => {
       const h = document.documentElement.scrollHeight - window.innerHeight;
       document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
@@ -3220,9 +3109,9 @@
       });
     }, 350);
 
-    /* ══════════════════════════════════════
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        CURSOR
-    ══════════════════════════════════════ */
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     const cur = document.getElementById('cur'), cuf = document.getElementById('cuf');
     let mx = 0, my = 0, fx = 0, fy = 0;
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(${mx}px,${my}px)`; });
@@ -3235,4 +3124,3 @@
 </body>
 
 </html>
-
