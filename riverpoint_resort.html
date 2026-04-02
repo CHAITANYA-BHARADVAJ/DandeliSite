@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="images/logo_transparent.png">
-  <title>Riverpoint Resort â€” Book myDandeli</title>
+  <title>Riverpoint Resort — Book myDandeli</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
     rel="stylesheet">
@@ -181,27 +181,55 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--forest);
       text-decoration: none;
     }
 
-    .leaf {
-      font-size: 26px;
-      animation: sway 3s ease-in-out infinite;
+    /* ── LOGO IMAGE ── */
+    .logo-img {
+      height: 64px;
+      width: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .2)) saturate(1.3) contrast(1.05);
+      transition: transform .3s ease, filter .3s ease;
     }
 
-    @keyframes sway {
+    .logo:hover .logo-img,
+    .logo-img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 3px 8px rgba(201, 168, 76, .4)) saturate(1.5) contrast(1.1);
+    }
 
-      0%,
-      100% {
-        transform: rotate(-5deg);
-      }
+    /* ── LOGO TEXT STYLE ── */
+    .logo-title {
+      margin-left: 8px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-      50% {
-        transform: rotate(5deg);
+    .logo-title em {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    @media(max-width:600px) {
+      .logo-title {
+        font-size: 20px;
+        margin-left: 4px;
+        gap: 4px;
       }
     }
 
@@ -3065,7 +3093,7 @@
       const room = document.getElementById('bRoom').value;
       if (!name || !phone || !inDate || !outDate) { alert('Please fill in all required fields.'); return; }
       const msg = encodeURIComponent(
-        `*Booking Inquiry \u2014 ${RESORT.name}*\n\n` +
+        `*Book \u2014 ${RESORT.name}*\n\n` +
         `\u{1F464} Name: ${name}\n\u{1F4DE} Phone: ${phone}\n` +
         `\u{1F4C5} Check-In: ${inDate}\n\u{1F4C5} Check-Out: ${outDate}\n` +
         `\u{1F465} Guests: ${guests}\n\u{1F3E0} Room: ${room}`
