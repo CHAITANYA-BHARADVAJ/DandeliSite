@@ -2977,24 +2977,24 @@
       });
 
       /* amenities — list style */
-      /* amenities â€” list style */
+      /* amenities — list style */
       if (R.amenities) {
         R.amenities.forEach(a => {
           document.getElementById('amenitiesGrid').innerHTML +=
-            <div class="am-item"><span class="am-name"> + a.text + </span><span class="am-check"></span></div>;
+            `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
         });
       }
 
-      /* grouped activities â€” dropdown accordion style */
+      /* grouped activities — dropdown accordion style */
       if (R.groupedActivities && R.groupedActivities.length > 0) {
         let gaHtml = '';
         R.groupedActivities.forEach(group => {
-           gaHtml += <details class="am-details"><summary class="am-summary"> + group.name + </summary><div class="am-content">;
+           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
            group.items.forEach(item => {
              let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
-             gaHtml += <div class="am-item"><span class="am-name"> + item + </span><span class="am-check" ></span></div>;
+             gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
            });
-           gaHtml += </div></details>;
+           gaHtml += `</div></details>`;
         });
         document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
       }
