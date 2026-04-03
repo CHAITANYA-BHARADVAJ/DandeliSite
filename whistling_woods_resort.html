@@ -1048,12 +1048,13 @@
       display: block;
     }
 
-        /* ── ACCORDION AMENITIES ── */
+    /* ── ACCORDION AMENITIES ── */
     .am-details {
       border: 1px solid var(--border);
       background: #fff;
       margin-top: 16px;
     }
+
     .am-summary {
       display: flex;
       align-items: center;
@@ -1066,44 +1067,55 @@
       transition: background .2s;
       list-style: none;
     }
+
     .am-summary::-webkit-details-marker {
       display: none;
     }
+
     .am-summary:hover {
       background: rgba(201, 168, 76, .05);
     }
+
     .am-summary::after {
       content: '▼';
       font-size: 10px;
       color: var(--gold);
       transition: transform .3s;
     }
+
     .am-details[open] .am-summary::after {
       transform: rotate(180deg);
     }
+
     .am-details[open] .am-summary {
       border-bottom: 1px dashed var(--border);
     }
+
     .am-content {
       display: grid;
       grid-template-columns: 1fr;
     }
+
     .am-content .am-item {
       border: none !important;
       border-bottom: 1px solid var(--border) !important;
     }
+
     @media(min-width:560px) {
       .am-content {
         grid-template-columns: 1fr 1fr;
       }
+
       .am-content .am-item:nth-child(even) {
         border-left: 1px solid var(--border) !important;
       }
+
       .am-content .am-item:nth-last-child(-n+2) {
         border-bottom: none !important;
       }
     }
-@media(min-width:560px) {
+
+    @media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2493,10 +2505,25 @@
   <!-- nav-mobile-fix -->
   <style>
     @media(max-width: 600px) {
-      .nav-right { gap: 6px !important; }
-      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
-      .nav-wa, .rl-nav-wa { display: none !important; }
-      .logo-title { font-size: 18px !important; }
+      .nav-right {
+        gap: 6px !important;
+      }
+
+      .nav-phone,
+      .rl-nav-phone {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        letter-spacing: -0.2px !important;
+      }
+
+      .nav-wa,
+      .rl-nav-wa {
+        display: none !important;
+      }
+
+      .logo-title {
+        font-size: 18px !important;
+      }
     }
   </style>
 </head>
@@ -2944,8 +2971,8 @@
         { name: "Family Cottage", badge: "Family Stay", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-19.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
         { name: "River Side Rooms", badge: "Adventure Stay", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-24.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
         { name: "Executive Room", badge: "Luxury", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-30.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
-        { name: "Executive Delux Room", badge: "Premium Luxury", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-26.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
-        { name: "Executive Suite with Terrace", badge: "Premium Luxury", image: "images/Whistling Woods/hq_1.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
+        // { name: "Executive Delux Room", badge: "Premium Luxury", image: "images/Whistling Woods/WWZ WhatsApp Cataloge_Sep 2025-images-26.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
+        { name: "Suite Room with Terrace", badge: "Premium Luxury", image: "images/Whistling Woods/hq_1.jpg", desc: "Comfortable and authentic camping experience in our secure, electrified alpine tents. Essential for the true nature enthusiast.", features: ["Comfortable Beds", "Shared Bathrooms", "Nature Experience", "Fan"], price: "&#8377;8,000", unit: "/ night" },
       ],
 
       activities: [
@@ -3042,12 +3069,12 @@
       if (R.groupedActivities && R.groupedActivities.length > 0) {
         let gaHtml = '';
         R.groupedActivities.forEach(group => {
-           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
-           group.items.forEach(item => {
-             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
-             gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
-           });
-           gaHtml += `</div></details>`;
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
         });
         document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
       }
@@ -3244,4 +3271,3 @@
 </body>
 
 </html>
-
