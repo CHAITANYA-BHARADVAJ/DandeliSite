@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -799,7 +799,7 @@
         cursor: pointer;
         padding-bottom: 0;
       }
-      
+
       .sb-body.open {
         margin-top: 15px;
       }
@@ -865,10 +865,25 @@
   <!-- nav-mobile-fix -->
   <style>
     @media(max-width: 600px) {
-      .nav-right { gap: 6px !important; }
-      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
-      .nav-wa, .rl-nav-wa { display: none !important; }
-      .logo-title { font-size: 18px !important; }
+      .nav-right {
+        gap: 6px !important;
+      }
+
+      .nav-phone,
+      .rl-nav-phone {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        letter-spacing: -0.2px !important;
+      }
+
+      .nav-wa,
+      .rl-nav-wa {
+        display: none !important;
+      }
+
+      .logo-title {
+        font-size: 18px !important;
+      }
     }
   </style>
 </head>
@@ -919,15 +934,18 @@
 
   <div class="main">
     <aside class="sidebar">
-      <div class="sb-head" onclick="toggleFilters()"><span class="sb-title">Filters<span class="mobile-only" id="fIcon">▼</span></span><button class="sb-reset"
-          onclick="event.stopPropagation(); resetF()">Reset All</button></div>
+      <div class="sb-head" onclick="toggleFilters()"><span class="sb-title">Filters<span class="mobile-only"
+            id="fIcon">▼</span></span><button class="sb-reset" onclick="event.stopPropagation(); resetF()">Reset
+          All</button></div>
       <div class="sb-body" id="fBody">
         <div class="sb-group">
           <div class="sb-lbl">Star Rating</div>
           <div class="sb-opts">
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="4"><label>⭐⭐⭐⭐ 4 Star</label></label>
+            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="4"><label>⭐⭐⭐⭐ 4
+                Star</label></label>
             <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="3"><label>⭐⭐⭐ 3 Star</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="camp"><label>⛺ Camp / Budget</label></label>
+            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="camp"><label>⛺ Camp /
+                Budget</label></label>
           </div>
         </div>
         <div class="sb-group">
@@ -973,22 +991,26 @@
           <a href="whistling_woods_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Whistling Woods/hq_4.jpg" alt="Whistling Woodzs Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Luxury Garden</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Luxury Garden</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Whistling Woods/hq_4.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="whistling_woods_resort.html" style="color:inherit;text-decoration:none;">Whistling Woodzs Resort</a></div>
+              <div class="card-name"><a href="whistling_woods_resort.html"
+                  style="color:inherit;text-decoration:none;">Whistling Woodzs Resort</a></div>
               <div>
                 <div class="rating-badge">4.8</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★★</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★★</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -999,11 +1021,13 @@
               </div>
               <div class="card-ctas">
                 <a href="whistling_woods_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Whistling Woodzs Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Whistling Woodzs Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="3000" data-rating="4.6" data-amenities="river bonfire">
+        </div>
+        <div class="card" data-price="3000" data-rating="4.6" data-amenities="river bonfire">
           <a href="hornbill_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg" alt="Hornbill River Resort">
             <div class="card-img-overlay"></div>
@@ -1015,9 +1039,12 @@
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="hornbill_resort.html" style="color:inherit;text-decoration:none;">Hornbill River Resort</a></div>
+              <div class="card-name"><a href="hornbill_resort.html" style="color:inherit;text-decoration:none;">Hornbill
+                  River Resort</a></div>
               <div>
                 <div class="rating-badge">4.6</div>
                 <div class="rating-count">100+ reviews</div>
@@ -1038,30 +1065,36 @@
               </div>
               <div class="card-ctas">
                 <a href="hornbill_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Hornbill River Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Hornbill River Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2800" data-rating="4.4" data-amenities="river pool">
+        </div>
+        <div class="card" data-price="2800" data-rating="4.4" data-amenities="river pool">
           <a href="laguna_resort.html" class="card-img" style="display:block; text-decoration:none;">
-            <img src="images/Laguna/WhatsApp Image 2026-03-19 at 9.50.48 PM (2).jpeg" alt="Laguna River Resort">
+            <img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.16 PM.jpeg" alt="Laguna River Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  River Side</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ River Side</span></div>
             <div class="thumbs">
-              <div class="thumb"><img src="images/Laguna/WhatsApp Image 2026-03-19 at 9.50.48 PM (2).jpeg" alt=""></div>
+              <div class="thumb"><img src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.18 PM.jpeg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="laguna_resort.html" style="color:inherit;text-decoration:none;">Laguna River Resort</a></div>
+              <div class="card-name"><a href="laguna_resort.html" style="color:inherit;text-decoration:none;">Laguna
+                  River Resort</a></div>
               <div>
                 <div class="rating-badge">4.4</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1072,30 +1105,36 @@
               </div>
               <div class="card-ctas">
                 <a href="laguna_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Laguna River Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Laguna River Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2200" data-rating="4.2" data-amenities="river">
+        </div>
+        <div class="card" data-price="2200" data-rating="4.2" data-amenities="river">
           <a href="River Edge.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" alt="River Edge Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Eco Certified</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Eco Certified</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="River Edge.html" style="color:inherit;text-decoration:none;">River Edge Resort</a></div>
+              <div class="card-name"><a href="River Edge.html" style="color:inherit;text-decoration:none;">River Edge
+                  Resort</a></div>
               <div>
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1106,30 +1145,36 @@
               </div>
               <div class="card-ctas">
                 <a href="River Edge.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about River Edge Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about River Edge Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="1800" data-rating="4.0" data-amenities="pool">
+        </div>
+        <div class="card" data-price="1800" data-rating="4.0" data-amenities="pool">
           <a href="Tusker Trails.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" alt="Tusker Trails">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Forest Trail</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Forest Trail</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="Tusker Trails.html" style="color:inherit;text-decoration:none;">Tusker Trails</a></div>
+              <div class="card-name"><a href="Tusker Trails.html" style="color:inherit;text-decoration:none;">Tusker
+                  Trails</a></div>
               <div>
                 <div class="rating-badge">4.0</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1140,30 +1185,36 @@
               </div>
               <div class="card-ctas">
                 <a href="Tusker Trails.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tusker Trails Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tusker Trails Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2800" data-rating="4.5" data-amenities="pool wifi">
+        </div>
+        <div class="card" data-price="2800" data-rating="4.5" data-amenities="pool wifi">
           <a href="dewDrops_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Dewdrops/Cabin View.jpg" alt="Dew Drops Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Top Rated</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Top Rated</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Dewdrops/Cabin View.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="dewDrops_resort.html" style="color:inherit;text-decoration:none;">Dew Drops Resort</a></div>
+              <div class="card-name"><a href="dewDrops_resort.html" style="color:inherit;text-decoration:none;">Dew
+                  Drops Resort</a></div>
               <div>
                 <div class="rating-badge">4.5</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1174,30 +1225,36 @@
               </div>
               <div class="card-ctas">
                 <a href="dewDrops_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Dew Drops Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Dew Drops Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2600" data-rating="4.4" data-amenities="pool raindance">
+        </div>
+        <div class="card" data-price="2600" data-rating="4.4" data-amenities="pool raindance">
           <a href="Wild Wings.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" alt="Wild Wings Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Family Pick</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Family Pick</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="Wild Wings.html" style="color:inherit;text-decoration:none;">Wild Wings Resort</a></div>
+              <div class="card-name"><a href="Wild Wings.html" style="color:inherit;text-decoration:none;">Wild Wings
+                  Resort</a></div>
               <div>
                 <div class="rating-badge">4.4</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1208,24 +1265,29 @@
               </div>
               <div class="card-ctas">
                 <a href="Wild Wings.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Wings Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Wings Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2600" data-rating="4.4" data-amenities="pool raindance">
+        </div>
+        <div class="card" data-price="2600" data-rating="4.4" data-amenities="pool raindance">
           <a href="Wild Mist.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Wild Mist/1.jpeg" alt="Wild Mist Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Nature Stay</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Nature Stay</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Wild Mist/1.jpeg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="Wild Mist.html" style="color:inherit;text-decoration:none;">Wild Mist Resort</a></div>
+              <div class="card-name"><a href="Wild Mist.html" style="color:inherit;text-decoration:none;">Wild Mist
+                  Resort</a></div>
               <div>
                 <div class="rating-badge">4.4</div>
                 <div class="rating-count">100+ reviews</div>
@@ -1246,30 +1308,36 @@
               </div>
               <div class="card-ctas">
                 <a href="Wild Mist.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Mist Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Mist Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="4500" data-rating="4.8" data-amenities="pool river spa">
+        </div>
+        <div class="card" data-price="4500" data-rating="4.8" data-amenities="pool river spa">
           <a href="rainForest_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/RainForest/Swiming Pool_2.jpg" alt="Rain Forest Dandeli">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Luxury</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Luxury</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/RainForest/Swiming Pool_2.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="rainForest_resort.html" style="color:inherit;text-decoration:none;">Rain Forest Dandeli</a></div>
+              <div class="card-name"><a href="rainForest_resort.html" style="color:inherit;text-decoration:none;">Rain
+                  Forest Dandeli</a></div>
               <div>
                 <div class="rating-badge">4.8</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★★</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★★</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1280,30 +1348,36 @@
               </div>
               <div class="card-ctas">
                 <a href="rainForest_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Rain Forest Dandeli Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Rain Forest Dandeli Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2500" data-rating="4.1" data-amenities="river pool">
+        </div>
+        <div class="card" data-price="2500" data-rating="4.1" data-amenities="river pool">
           <a href="bison_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Bison/Bison River Resorts (1).jpg" alt="Bison River Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Wildlife Pick</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Wildlife Pick</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Bison/Bison River Resorts (1).jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="bison_resort.html" style="color:inherit;text-decoration:none;">Bison River Resort</a></div>
+              <div class="card-name"><a href="bison_resort.html" style="color:inherit;text-decoration:none;">Bison River
+                  Resort</a></div>
               <div>
                 <div class="rating-badge">4.1</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1314,30 +1388,36 @@
               </div>
               <div class="card-ctas">
                 <a href="bison_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Bison River Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Bison River Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2200" data-rating="4.3" data-amenities="pool wifi">
+        </div>
+        <div class="card" data-price="2200" data-rating="4.3" data-amenities="pool wifi">
           <a href="palm_meadows_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg" alt="Palm Meadows Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Peaceful</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Peaceful</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="palm_meadows_resort.html" style="color:inherit;text-decoration:none;">Palm Meadows Resort</a></div>
+              <div class="card-name"><a href="palm_meadows_resort.html" style="color:inherit;text-decoration:none;">Palm
+                  Meadows Resort</a></div>
               <div>
                 <div class="rating-badge">4.3</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1348,7 +1428,8 @@
               </div>
               <div class="card-ctas">
                 <a href="palm_meadows_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Palm Meadows Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Palm Meadows Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
@@ -1393,22 +1474,26 @@
           <a href="sunbird_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg" alt="Sunbird Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Bird Watching</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Bird Watching</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="sunbird_resort.html" style="color:inherit;text-decoration:none;">Sunbird Resort</a></div>
+              <div class="card-name"><a href="sunbird_resort.html" style="color:inherit;text-decoration:none;">Sunbird
+                  Resort</a></div>
               <div>
                 <div class="rating-badge">4.5</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1419,30 +1504,37 @@
               </div>
               <div class="card-ctas">
                 <a href="sunbird_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Sunbird Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Sunbird Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2000" data-rating="4.6" data-amenities="wifi">
+        </div>
+        <div class="card" data-price="2000" data-rating="4.6" data-amenities="wifi">
           <a href="tarang_homestay.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" alt="Tarang Homestay">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Cozy Comfort</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Cozy Comfort</span></div>
             <div class="thumbs">
-              <div class="thumb"><img src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" alt=""></div>
+              <div class="thumb"><img src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg"
+                  alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="tarang_homestay.html" style="color:inherit;text-decoration:none;">Tarang Homestay</a></div>
+              <div class="card-name"><a href="tarang_homestay.html" style="color:inherit;text-decoration:none;">Tarang
+                  Homestay</a></div>
               <div>
                 <div class="rating-badge">4.6</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1453,30 +1545,37 @@
               </div>
               <div class="card-ctas">
                 <a href="tarang_homestay.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tarang Homestay Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tarang Homestay Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2200" data-rating="4.2" data-amenities="pool">
+        </div>
+        <div class="card" data-price="2200" data-rating="4.2" data-amenities="pool">
           <a href="green_valley_resort.html" class="card-img" style="display:block; text-decoration:none;">
-            <img src="images/Green Valley/GV1.jpg" alt="Green Valley Resort">
+            <img src="images/Green Valley/WhatsApp Image 2026-03-30 at 12.36.04 AM.jpeg" alt="Green Valley Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Nature Retreat</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Nature Retreat</span></div>
             <div class="thumbs">
-              <div class="thumb"><img src="images/Green Valley/GV1.jpg" alt=""></div>
+              <div class="thumb"><img src="images/Green Valley/WhatsApp Image 2026-03-30 at 12.36.04 AM (1).jpeg"
+                  alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="green_valley_resort.html" style="color:inherit;text-decoration:none;">Green Valley Resort</a></div>
+              <div class="card-name"><a href="green_valley_resort.html"
+                  style="color:inherit;text-decoration:none;">Green Valley Resort</a></div>
               <div>
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1487,30 +1586,36 @@
               </div>
               <div class="card-ctas">
                 <a href="green_valley_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Green Valley Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Green Valley Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2600" data-rating="4.3" data-amenities="river pool">
+        </div>
+        <div class="card" data-price="2600" data-rating="4.3" data-amenities="river pool">
           <a href="white_water_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/White Waters/WHITE WATER RESORT  pdf-images-1.jpg" alt="White Water Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Premium</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Premium</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/White Waters/WHITE WATER RESORT  pdf-images-1.jpg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="white_water_resort.html" style="color:inherit;text-decoration:none;">White Water Resort</a></div>
+              <div class="card-name"><a href="white_water_resort.html" style="color:inherit;text-decoration:none;">White
+                  Water Resort</a></div>
               <div>
                 <div class="rating-badge">4.3</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1521,30 +1626,36 @@
               </div>
               <div class="card-ctas">
                 <a href="white_water_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about White Water Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about White Water Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="3000" data-rating="4.4" data-amenities="pool">
+        </div>
+        <div class="card" data-price="3000" data-rating="4.4" data-amenities="pool">
           <a href="ansh_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.49 PM.jpeg" alt="Ansh Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Premium Luxury</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Premium Luxury</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.49 PM.jpeg" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="ansh_resort.html" style="color:inherit;text-decoration:none;">Ansh Resort</a></div>
+              <div class="card-name"><a href="ansh_resort.html" style="color:inherit;text-decoration:none;">Ansh
+                  Resort</a></div>
               <div>
                 <div class="rating-badge">4.4</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★★☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1555,30 +1666,36 @@
               </div>
               <div class="card-ctas">
                 <a href="ansh_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Ansh Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Ansh Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2500" data-rating="4.2" data-amenities="pool wifi">
+        </div>
+        <div class="card" data-price="2500" data-rating="4.2" data-amenities="pool wifi">
           <a href="jungle_edge.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="" alt="Jungle Edge">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Nature Resort</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Nature Resort</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="jungle_edge.html" style="color:inherit;text-decoration:none;">Jungle Edge</a></div>
+              <div class="card-name"><a href="jungle_edge.html" style="color:inherit;text-decoration:none;">Jungle
+                  Edge</a></div>
               <div>
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1589,30 +1706,36 @@
               </div>
               <div class="card-ctas">
                 <a href="jungle_edge.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Jungle Edge Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Jungle Edge Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2500" data-rating="4.2" data-amenities="river pool">
+        </div>
+        <div class="card" data-price="2500" data-rating="4.2" data-amenities="river pool">
           <a href="riverpoint_resort.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="" alt="Riverpoint Resort">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Water Front</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Water Front</span></div>
             <div class="thumbs">
               <div class="thumb"><img src="" alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="riverpoint_resort.html" style="color:inherit;text-decoration:none;">Riverpoint Resort</a></div>
+              <div class="card-name"><a href="riverpoint_resort.html"
+                  style="color:inherit;text-decoration:none;">Riverpoint Resort</a></div>
               <div>
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1623,30 +1746,37 @@
               </div>
               <div class="card-ctas">
                 <a href="riverpoint_resort.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Riverpoint Resort Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Riverpoint Resort Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
-        </div>        <div class="card" data-price="2500" data-rating="4.2" data-amenities="pool wifi">
+        </div>
+        <div class="card" data-price="2500" data-rating="4.2" data-amenities="pool wifi">
           <a href="swayam_cottage.html" class="card-img" style="display:block; text-decoration:none;">
             <img src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" alt="Swayam Cottage">
             <div class="card-img-overlay"></div>
-            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­  Cozy Stay</span></div>
+            <div class="badge-row"><span class="badge" style="background:var(--forest);">â­ Cozy Stay</span></div>
             <div class="thumbs">
-              <div class="thumb"><img src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" alt=""></div>
+              <div class="thumb"><img src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg"
+                  alt=""></div>
               <div class="thumb-more">+3</div>
             </div>
           </a>
           <div class="card-info">
-            <button class="heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤ </button>
+            <button class="heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â ¤ï¸ ':'ðŸ¤ '">ðŸ¤
+            </button>
             <div class="card-top">
-              <div class="card-name"><a href="swayam_cottage.html" style="color:inherit;text-decoration:none;">Swayam Cottage</a></div>
+              <div class="card-name"><a href="swayam_cottage.html" style="color:inherit;text-decoration:none;">Swayam
+                  Cottage</a></div>
               <div>
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">100+ reviews</div>
               </div>
             </div>
-            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“  Dandeli, Karnataka</span></div>
+            <div class="card-loc"><span class="card-stars">★★★☆☆</span><span class="card-dist">ðŸ“ Dandeli,
+                Karnataka</span></div>
             <div class="card-usps"><span class="card-usp">✓ Clean & Safe</span></div>
             <div class="card-amenities"><span class="amenity">✨ Excellent Stay</span></div>
             <div class="card-incs"><span class="card-inc">Student Package</span></div>
@@ -1657,40 +1787,41 @@
               </div>
               <div class="card-ctas">
                 <a href="swayam_cottage.html" class="btn-book">View Details</a>
-                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Swayam Cottage Student Package" class="btn-wa">Book Now</a>
+                <a href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Swayam Cottage Student Package"
+                  class="btn-wa">Book Now</a>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="no-results" id="noRes">
+        <div style="font-size:50px;margin-bottom:14px;">ðŸ •ï¸ </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;">No
+          resorts match your filters</div>
+        <div style="font-size:13px;color:#888;">Try adjusting your filters</div>
+      </div>
     </div>
-    <div class="no-results" id="noRes">
-      <div style="font-size:50px;margin-bottom:14px;">ðŸ •ï¸ </div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;">No
-        resorts match your filters</div>
-      <div style="font-size:13px;color:#888;">Try adjusting your filters</div>
-    </div>
-  </div>
 
 
-  <script>
-    function sortCards(k, btn) { document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('act')); btn.classList.add('act'); const c = document.getElementById('cards'); const cards = [...c.querySelectorAll('.card')]; cards.sort((a, b) => { if (k === 'low') return +a.dataset.price - +b.dataset.price; if (k === 'high') return +b.dataset.price - +a.dataset.price; if (k === 'rating') return +b.dataset.rating - +a.dataset.rating; return 0; }); c.style.opacity = '0'; setTimeout(() => { cards.forEach(x => c.appendChild(x)); c.style.opacity = '1'; c.style.transition = 'opacity .3s'; }, 200); }
-    function applyF() { const cards = document.querySelectorAll('.card'); const maxP = document.querySelector('.sb-slider').value; const checked = [...document.querySelectorAll('.sb-opts input:checked')].map(i => i.value); let vis = 0; cards.forEach(card => { const p = +card.dataset.price; const a = card.dataset.amenities || ''; let show = p <= +maxP; if (show && checked.length) show = checked.every(c => a.includes(c) || ['3', '4', '5'].includes(c)); card.style.display = show ? 'grid' : 'none'; if (show) vis++; }); document.getElementById('cnt').textContent = vis; document.getElementById('noRes').classList.toggle('show', vis === 0); }
-    function resetF() {
-      document.querySelectorAll('.sb-opt input').forEach(c => c.checked = false);
-      const slider = document.querySelector('.sb-slider');
-      slider.value = slider.max;
-      document.getElementById('pv').textContent = '₹' + Number(slider.value).toLocaleString('en-IN');
-      applyF();
-    }
+    <script>
+      function sortCards(k, btn) { document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('act')); btn.classList.add('act'); const c = document.getElementById('cards'); const cards = [...c.querySelectorAll('.card')]; cards.sort((a, b) => { if (k === 'low') return +a.dataset.price - +b.dataset.price; if (k === 'high') return +b.dataset.price - +a.dataset.price; if (k === 'rating') return +b.dataset.rating - +a.dataset.rating; return 0; }); c.style.opacity = '0'; setTimeout(() => { cards.forEach(x => c.appendChild(x)); c.style.opacity = '1'; c.style.transition = 'opacity .3s'; }, 200); }
+      function applyF() { const cards = document.querySelectorAll('.card'); const maxP = document.querySelector('.sb-slider').value; const checked = [...document.querySelectorAll('.sb-opts input:checked')].map(i => i.value); let vis = 0; cards.forEach(card => { const p = +card.dataset.price; const a = card.dataset.amenities || ''; let show = p <= +maxP; if (show && checked.length) show = checked.every(c => a.includes(c) || ['3', '4', '5'].includes(c)); card.style.display = show ? 'grid' : 'none'; if (show) vis++; }); document.getElementById('cnt').textContent = vis; document.getElementById('noRes').classList.toggle('show', vis === 0); }
+      function resetF() {
+        document.querySelectorAll('.sb-opt input').forEach(c => c.checked = false);
+        const slider = document.querySelector('.sb-slider');
+        slider.value = slider.max;
+        document.getElementById('pv').textContent = '₹' + Number(slider.value).toLocaleString('en-IN');
+        applyF();
+      }
 
-    function toggleFilters() {
-      if (window.innerWidth > 960) return;
-      const body = document.getElementById('fBody');
-      const icon = document.getElementById('fIcon');
-      body.classList.toggle('open');
-      icon.textContent = body.classList.contains('open') ? '▲' : '▼';
-    }
-  </script>
+      function toggleFilters() {
+        if (window.innerWidth > 960) return;
+        const body = document.getElementById('fBody');
+        const icon = document.getElementById('fIcon');
+        body.classList.toggle('open');
+        icon.textContent = body.classList.contains('open') ? '▲' : '▼';
+      }
+    </script>
 </body>
 
 </html>
