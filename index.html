@@ -2683,6 +2683,15 @@
       }
     }
   </style>
+  <!-- nav-mobile-fix -->
+  <style>
+    @media(max-width: 600px) {
+      .nav-right { gap: 6px !important; }
+      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
+      .nav-wa, .rl-nav-wa { display: none !important; }
+      .logo-title { font-size: 18px !important; }
+    }
+  </style>
 </head>
 
 <body>
@@ -3868,13 +3877,13 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Only show once per session correctly, or use localStorage for once ever
-      if (!localStorage.getItem('odp_popup_shown')) {
+      // Only show once per session correctly
+      if (!sessionStorage.getItem('odp_popup_shown')) {
         setTimeout(() => {
           const overlay = document.getElementById('odp-popup-overlay');
           overlay.style.display = 'flex';
           setTimeout(() => overlay.classList.add('show'), 10);
-          localStorage.setItem('odp_popup_shown', 'true');
+          sessionStorage.setItem('odp_popup_shown', 'true');
         }, 1500); // 1.5s delay to let page load
       }
     });
