@@ -1,196 +1,881 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <link rel="icon" type="image/png" href="images/logo_transparent.png">
-<title>Couple Packages — Dandeli Tour Package</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<style>
-:root{--forest:#1a3a2a;--moss:#2d5a3d;--gold:#c9a84c;--gold-light:#e8c97a;--cream:#f5f0e8;--sand:#e8dfc8;--text:#1a1a1a;--bg:#f4f6f8;--white:#fff;--border:#e2e8f0;--shadow:rgba(0,0,0,0.07);--cat:#8b3a52;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);}
-.nav{background:var(--forest);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.2);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:10px;}
-.nav-right{display:flex;align-items:center;gap:20px;}
-.nav-phone{color:rgba(255,255,255,.7);font-size:13px;text-decoration:none;}
-.nav-wa{background:#25d366;color:#fff;padding:8px 20px;border-radius:4px;font-size:12px;font-weight:600;letter-spacing:1px;text-decoration:none;transition:all .3s;}
-.nav-wa:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,211,102,.4);}
-.hero{position:relative;height:380px;overflow:hidden;background:#2a1a1a;}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(18,5,10,.25) 0%,rgba(18,5,10,.88) 100%);}
-.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 40px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:50px;}
-.hero-back{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.45);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;margin-bottom:20px;transition:color .2s;}
-.hero-back:hover{color:var(--gold);}
-.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;font-weight:600;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,72px);font-weight:300;color:#fff;line-height:1.05;margin-bottom:16px;}
-.hero-title em{color:var(--gold);font-style:italic;}
-.hero-pills{display:flex;gap:10px;flex-wrap:wrap;}
-.hero-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:6px 14px;font-size:12px;color:rgba(255,255,255,.7);}
-.main{max-width:1200px;margin:0 auto;padding:32px 40px 70px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start;}
-.sidebar{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;position:sticky;top:80px;box-shadow:0 2px 16px var(--shadow);}
-.sb-head{background:var(--forest);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
-.sb-title{color:#fff;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;}
-.sb-reset{font-size:11px;color:var(--gold);background:none;border:none;cursor:pointer;}
-.sb-group{padding:16px 18px;border-bottom:1px solid var(--border);}
-.sb-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;}
-.sb-checks{display:flex;flex-direction:column;gap:9px;}
-.sb-opt{display:flex;align-items:center;gap:9px;cursor:pointer;}
-.sb-opt input{accent-color:var(--gold);width:14px;height:14px;cursor:pointer;}
-.sb-opt label{font-size:13px;color:#555;cursor:pointer;}
-.sb-slider{width:100%;accent-color:var(--gold);cursor:pointer;margin-top:6px;}
-.sb-price-row{display:flex;justify-content:space-between;margin-bottom:8px;}
-.sb-pval{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--forest);}
-.sort-strip{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:13px 18px;margin-bottom:16px;box-shadow:0 2px 10px var(--shadow);flex-wrap:wrap;}
-.sort-lbl{font-size:11px;font-weight:600;letter-spacing:1.5px;color:#aaa;text-transform:uppercase;white-space:nowrap;}
-.sort-btn{padding:7px 16px;border:1px solid var(--border);border-radius:20px;background:transparent;font-size:12px;color:#666;cursor:pointer;transition:all .25s;font-family:'Jost',sans-serif;}
-.sort-btn:hover{border-color:var(--gold);color:var(--forest);}
-.sort-btn.active{background:var(--forest);border-color:var(--forest);color:var(--gold);}
-.result-count{margin-left:auto;font-size:13px;color:#aaa;white-space:nowrap;}
-.result-count strong{color:var(--forest);}
-.cards{display:flex;flex-direction:column;gap:16px;}
-.rcard{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:290px 1fr;transition:all .35s;box-shadow:0 2px 14px var(--shadow);}
-.rcard:hover{box-shadow:0 12px 40px rgba(0,0,0,.11);transform:translateY(-2px);border-color:rgba(201,168,76,.3);}
-.rcard-img{position:relative;overflow:hidden;min-height:230px;}
-.rcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.rcard:hover .rcard-img img{transform:scale(1.05);}
-.rcard-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:5px;}
-.rbadge{display:inline-block;padding:4px 10px;border-radius:4px;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;}
-.rb-top{background:#e05c3a;}.rb-deal{background:var(--gold);}.rb-lux{background:#8b5e3c;}.rb-cat{background:var(--cat);}.rb-hon{background:#c0392b;}
-.rcard-heart{position:absolute;top:12px;right:12px;width:32px;height:32px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;border:none;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:transform .3s;}
-.rcard-heart:hover{transform:scale(1.15);}
-.rcard-thumbs{position:absolute;bottom:10px;left:10px;display:flex;gap:5px;}
-.rthumb{width:38px;height:30px;border-radius:4px;overflow:hidden;border:1.5px solid rgba(255,255,255,.6);cursor:pointer;}
-.rthumb img{width:100%;height:100%;object-fit:cover;}
-.rthumb-more{width:38px;height:30px;border-radius:4px;background:rgba(0,0,0,.6);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600;cursor:pointer;}
-.rcard-info{padding:20px 22px;display:flex;flex-direction:column;}
-.rcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:5px;}
-.rcard-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--forest);line-height:1.2;}
-.rcard-rating{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
-.rating-badge{background:#1a6e3a;color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:6px 6px 6px 0;line-height:1;}
-.rating-count{font-size:10px;color:#aaa;margin-top:3px;text-align:center;}
-.rcard-loc{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
-.rcard-stars{color:#f5a623;font-size:11px;}
-.rcard-dist{font-size:11px;color:#aaa;}
-.rcard-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
-.rtag{font-size:11px;color:#2d7a3d;background:rgba(45,122,61,.07);border:1px solid rgba(45,122,61,.14);border-radius:4px;padding:3px 9px;}
-.rcard-amenities{display:flex;gap:14px;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:12px;}
-.ramenity{display:flex;align-items:center;gap:5px;font-size:11.5px;color:#666;}
-.rcard-incs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
-.rinc{font-size:11px;color:var(--forest);font-weight:500;}
-.rinc::before{content:'âœ“ ';color:#4caf70;font-weight:700;}
-.rcard-price-row{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;padding-top:12px;}
-.rdiscount{display:inline-flex;align-items:center;background:rgba(228,74,33,.08);color:#e44a21;font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;margin-bottom:4px;}
-.rprice-cross{font-size:13px;color:#ccc;text-decoration:line-through;margin-bottom:1px;}
-.rprice{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--forest);line-height:1;}
-.rprice-unit{font-size:12px;color:#aaa;font-family:'Jost',sans-serif;font-weight:300;}
-.rprice-tax{font-size:10px;color:#aaa;margin-top:2px;}
-.rprice-tax span{color:#4caf70;font-weight:600;}
-.rcard-ctas{display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
-.btn-book{background:var(--forest);color:#fff;padding:11px 22px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;text-align:center;display:block;min-width:150px;}
-.btn-book:hover{background:var(--moss);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,58,42,.25);}
-.btn-wa{background:#25d366;color:#fff;padding:9px 16px;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px;min-width:150px;}
-.btn-wa:hover{background:#20b958;}
-.no-results{text-align:center;padding:70px 40px;display:none;}
-.no-results.show{display:block;}
-@media(max-width:960px){.main{grid-template-columns:1fr;}.sidebar{position:static;}}
-@media(max-width:680px){.rcard{grid-template-columns:1fr;}.rcard-img{min-height:190px;}.nav{padding:12px 20px;}.hero{height:280px;}.main{padding:24px 20px 50px;}}
+  <title>Couple Packages — Dandeli Tour Package</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;family=Jost:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #1a3a2a;
+      --moss: #2d5a3d;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --sand: #e8dfc8;
+      --text: #1a1a1a;
+      --bg: #f4f6f8;
+      --white: #fff;
+      --border: #e2e8f0;
+      --shadow: rgba(0, 0, 0, 0.07);
+      --cat: #8b3a52;
+    }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ LOGO TEXT STYLE Ã¢â€â‚¬Ã¢â€â‚¬ */
-.logo{text-decoration:none !important;}
-.logo-title {
-  margin-left: 8px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  -webkit-text-fill-color: #fff;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.logo-title em {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-style: italic;
-  font-weight: 600;
-}
-@media(max-width:600px){
-  .logo-title { font-size: 20px; margin-left: 4px; gap: 4px; }
-}
-</style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .nav {
+      background: var(--forest);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, .2);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-phone {
+      color: rgba(255, 255, 255, .7);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .nav-wa {
+      background: #25d366;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all .3s;
+    }
+
+    .nav-wa:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(37, 211, 102, .4);
+    }
+
+    .hero {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+      background: #2a1a1a;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .4;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(18, 5, 10, .25) 0%, rgba(18, 5, 10, .88) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 50px;
+    }
+
+    .hero-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, .45);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color .2s;
+    }
+
+    .hero-back:hover {
+      color: var(--gold);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .85;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 40px 70px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .sidebar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      position: sticky;
+      top: 80px;
+      box-shadow: 0 2px 16px var(--shadow);
+    }
+
+    .sb-head {
+      background: var(--forest);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sb-title {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .sb-reset {
+      font-size: 11px;
+      color: var(--gold);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .sb-group {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sb-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .sb-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .sb-opt {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+    }
+
+    .sb-opt input {
+      accent-color: var(--gold);
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+    }
+
+    .sb-opt label {
+      font-size: 13px;
+      color: #555;
+      cursor: pointer;
+    }
+
+    .sb-slider {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .sb-price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .sb-pval {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .sort-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px var(--shadow);
+      flex-wrap: wrap;
+    }
+
+    .sort-lbl {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #aaa;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .sort-btn {
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      font-size: 12px;
+      color: #666;
+      cursor: pointer;
+      transition: all .25s;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .sort-btn:hover {
+      border-color: var(--gold);
+      color: var(--forest);
+    }
+
+    .sort-btn.active {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: var(--gold);
+    }
+
+    .result-count {
+      margin-left: auto;
+      font-size: 13px;
+      color: #aaa;
+      white-space: nowrap;
+    }
+
+    .result-count strong {
+      color: var(--forest);
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .rcard {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      transition: all .35s;
+      box-shadow: 0 2px 14px var(--shadow);
+    }
+
+    .rcard:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .11);
+      transform: translateY(-2px);
+      border-color: rgba(201, 168, 76, .3);
+    }
+
+    .rcard-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 230px;
+    }
+
+    .rcard-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s;
+    }
+
+    .rcard:hover .rcard-img img {
+      transform: scale(1.05);
+    }
+
+    .rcard-badges {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .rbadge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .rb-top {
+      background: #e05c3a;
+    }
+
+    .rb-deal {
+      background: var(--gold);
+    }
+
+    .rb-lux {
+      background: #8b5e3c;
+    }
+
+    .rb-cat {
+      background: var(--cat);
+    }
+
+    .rb-hon {
+      background: #c0392b;
+    }
+
+    .rcard-heart {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, .9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+      transition: transform .3s;
+    }
+
+    .rcard-heart:hover {
+      transform: scale(1.15);
+    }
+
+    .rcard-thumbs {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .rthumb {
+      width: 38px;
+      height: 30px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 255, 255, .6);
+      cursor: pointer;
+    }
+
+    .rthumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rthumb-more {
+      width: 38px;
+      height: 30px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, .6);
+      border: 1.5px solid rgba(255, 255, 255, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .rcard-info {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rcard-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 5px;
+    }
+
+    .rcard-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.2;
+    }
+
+    .rcard-rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .rating-badge {
+      background: #1a6e3a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px 6px 6px 0;
+      line-height: 1;
+    }
+
+    .rating-count {
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 3px;
+      text-align: center;
+    }
+
+    .rcard-loc {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .rcard-stars {
+      color: #f5a623;
+      font-size: 11px;
+    }
+
+    .rcard-dist {
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    .rcard-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 11px;
+    }
+
+    .rtag {
+      font-size: 11px;
+      color: #2d7a3d;
+      background: rgba(45, 122, 61, .07);
+      border: 1px solid rgba(45, 122, 61, .14);
+      border-radius: 4px;
+      padding: 3px 9px;
+    }
+
+    .rcard-amenities {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .ramenity {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      color: #666;
+    }
+
+    .rcard-incs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .rinc {
+      font-size: 11px;
+      color: var(--forest);
+      font-weight: 500;
+    }
+
+    .rinc::before {
+      content: '✓ ';
+      color: #4caf70;
+      font-weight: 700;
+    }
+
+    .rcard-price-row {
+      margin-top: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 12px;
+    }
+
+    .rdiscount {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(228, 74, 33, .08);
+      color: #e44a21;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+
+    .rprice-cross {
+      font-size: 13px;
+      color: #ccc;
+      text-decoration: line-through;
+      margin-bottom: 1px;
+    }
+
+    .rprice {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .rprice-unit {
+      font-size: 12px;
+      color: #aaa;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+    }
+
+    .rprice-tax {
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .rprice-tax span {
+      color: #4caf70;
+      font-weight: 600;
+    }
+
+    .rcard-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-items: flex-end;
+    }
+
+    .btn-book {
+      background: var(--forest);
+      color: #fff;
+      padding: 11px 22px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      min-width: 150px;
+    }
+
+    .btn-book:hover {
+      background: var(--moss);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(26, 58, 42, .25);
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+      padding: 9px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-width: 150px;
+    }
+
+    .btn-wa:hover {
+      background: #20b958;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 70px 40px;
+      display: none;
+    }
+
+    .no-results.show {
+      display: block;
+    }
+
+    @media(max-width:960px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media(max-width:680px) {
+      .rcard {
+        grid-template-columns: 1fr;
+      }
+
+      .rcard-img {
+        min-height: 190px;
+      }
+
+      .nav {
+        padding: 12px 20px;
+      }
+
+      .hero {
+        height: 280px;
+      }
+
+      .main {
+        padding: 24px 20px 50px;
+      }
+    }
+
+    /* ── LOGO TEXT STYLE ── */
+    .logo {
+      text-decoration: none !important;
+    }
+
+    .logo-title {
+      margin-left: 8px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      -webkit-text-fill-color: #fff;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo-title em {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    @media(max-width:600px) {
+      .logo-title {
+        font-size: 20px;
+        margin-left: 4px;
+        gap: 4px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav class="nav">
-<a class="nav-logo" href="index.html"><img alt="Book myDandeli" src="images/logo.png" style="height:64px;width:64px;object-fit:contain;vertical-align:middle;margin-right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2)) saturate(1.3) contrast(1.05);"/><span class="logo-title">Book <em>myDandeli</em></span></a>
-<div class="nav-right">
-<a class="nav-phone" href="tel:6363343766">ðŸ“ž +91 63633 43766</a>
-<a class="nav-wa" href="https://api.whatsapp.com/send?phone=+916363343766">ðŸ’¬ WhatsApp</a>
-</div>
-</nav>
-<div class="hero">
-<img alt="Couple Packages Dandeli" src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg"/>
-<div class="hero-overlay"></div>
-<div class="hero-inner">
-<a class="hero-back" href="index.html#packages">â† Back to Packages</a>
-<div class="hero-eyebrow">Dandeli Â· Karnataka Â· India</div>
-<h1 class="hero-title">Couple <em>Packages</em></h1>
-<div class="hero-pills">
-<span class="hero-pill">ðŸ’‘ Romantic Escapes</span>
-<span class="hero-pill">ðŸŒ¹ Honeymoon Specials</span>
-<span class="hero-pill">ðŸ½ All Meals Included</span>
-<span class="hero-pill">ðŸ•¯ Candlelight Dinners</span>
-</div>
-</div>
-</div>
-<div class="main">
-<aside class="sidebar">
-<div class="sb-head"><span class="sb-title">Filters</span><button class="sb-reset" onclick="resetFilters()">Reset</button></div>
-<div class="sb-group">
-<div class="sb-label">Star Rating</div>
-<div class="sb-checks">
-<label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox" value="3"/><label>â­â­â­ 3 Star</label></label>
-<label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox" value="4"/><label>â­â­â­â­ 4 Star</label></label>
-<label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox" value="5"/><label>â­â­â­â­â­ 5 Star</label></label>
-</div>
-</div>
-<div class="sb-group">
-<div class="sb-label">Max Budget</div>
-<div class="sb-price-row"><span style="font-size:12px;color:#aaa;">â‚¹0</span><span class="sb-pval" id="priceVal">â‚¹20,000</span></div>
-<input class="sb-slider" id="priceSlider" max="20000" min="0" oninput="document.getElementById('priceVal').textContent='â‚¹'+Number(this.value).toLocaleString('en-IN');applyFilters()" step="500" type="range" value="20000"/>
-</div>
-<div class="sb-group">
-<div class="sb-label">Amenities</div>
-<div class="sb-checks">
-<label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox" value="river"/><label>ðŸŒŠ River View</label></label>
-<label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox" value="jacuzzi"/><label>ðŸ› Jacuzzi</label></label>
-<label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox" value="spa"/><label>ðŸ’† Spa</label></label>
-<label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox" value="bonfire"/><label>ðŸ”¥ Private Bonfire</label></label>
-<label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox" value="pool"/><label>ðŸŠ Pool</label></label>
-</div>
-</div>
-<div class="sb-group" style="border-bottom:none;">
-<div class="sb-label">Duration</div>
-<div class="sb-checks">
-<label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox" value="1n2d"/><label>1 Night Â· 2 Days</label></label>
-<label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox" value="2n3d"/><label>2 Nights Â· 3 Days</label></label>
-<label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox" value="3n4d"/><label>3 Nights Â· 4 Days</label></label>
-</div>
-</div>
-</aside>
-<div>
-<div class="sort-strip">
-<span class="sort-lbl">Sort:</span>
-<button class="sort-btn active" onclick="sortCards('rec',this)">Recommended</button>
-<button class="sort-btn" onclick="sortCards('price-low',this)">Price â†‘</button>
-<button class="sort-btn" onclick="sortCards('price-high',this)">Price â†“</button>
-<button class="sort-btn" onclick="sortCards('rating',this)">Top Rated</button>
-<div class="result-count"><strong id="countNum">6</strong> Resorts Found</div>
-</div>
-<div class="cards" id="cardsContainer">
+  <nav class="nav">
+    <a class="nav-logo" href="index.html"><img alt="Book myDandeli" src="images/logo.png"
+        style="height:64px;width:64px;object-fit:contain;vertical-align:middle;margin-right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2)) saturate(1.3) contrast(1.05);" /><span
+        class="logo-title">Book <em>myDandeli</em></span></a>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:6363343766">📞 +91 63633 43766</a>
+      <a class="nav-wa" href="https://api.whatsapp.com/send?phone=+916363343766">💬 WhatsApp</a>
+    </div>
+  </nav>
+  <div class="hero">
+    <img alt="Couple Packages Dandeli"
+      src="https://dandelitourpackage.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-07-at-12.12.36-PM-1024x682.jpeg" />
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <a class="hero-back" href="index.html#packages">← Back to Packages</a>
+      <div class="hero-eyebrow">Dandeli · Karnataka · India</div>
+      <h1 class="hero-title">Couple <em>Packages</em></h1>
+      <div class="hero-pills">
+        <span class="hero-pill">💑 Romantic Escapes</span>
+        <span class="hero-pill">🌹 Honeymoon Specials</span>
+        <span class="hero-pill">🍽️ All Meals Included</span>
+        <span class="hero-pill">🕯️ Candlelight Dinners</span>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <aside class="sidebar">
+      <div class="sb-head"><span class="sb-title">Filters</span><button class="sb-reset"
+          onclick="resetFilters()">Reset</button></div>
+      <div class="sb-group">
+        <div class="sb-label">Star Rating</div>
+        <div class="sb-checks">
+          <label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox"
+              value="3" /><label>⭐⭐⭐ 3 Star</label></label>
+          <label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox"
+              value="4" /><label>⭐⭐⭐⭐ 4 Star</label></label>
+          <label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox"
+              value="5" /><label>⭐⭐⭐⭐⭐ 5 Star</label></label>
+        </div>
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Max Budget</div>
+        <div class="sb-price-row"><span style="font-size:12px;color:#aaa;">₹0</span><span class="sb-pval"
+            id="priceVal">₹20,000</span></div>
+        <input class="sb-slider" id="priceSlider" max="20000" min="0"
+          oninput="document.getElementById('priceVal').textContent='₹'+Number(this.value).toLocaleString('en-IN');applyFilters()"
+          step="500" type="range" value="20000" />
+      </div>
+      <div class="sb-group">
+        <div class="sb-label">Amenities</div>
+        <div class="sb-checks">
+          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
+              value="river" /><label>🌊 River View</label></label>
+          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
+              value="jacuzzi" /><label>🛁 Jacuzzi</label></label>
+          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
+              value="spa" /><label>💆 Spa</label></label>
+          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
+              value="bonfire" /><label>🔥 Private Bonfire</label></label>
+          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
+              value="pool" /><label>🏊 Pool</label></label>
+        </div>
+      </div>
+      <div class="sb-group" style="border-bottom:none;">
+        <div class="sb-label">Duration</div>
+        <div class="sb-checks">
+          <label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox"
+              value="1n2d" /><label>1 Night · 2 Days</label></label>
+          <label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox"
+              value="2n3d" /><label>2 Nights · 3 Days</label></label>
+          <label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox"
+              value="3n4d" /><label>3 Nights · 4 Days</label></label>
+        </div>
+      </div>
+    </aside>
+    <div>
+      <div class="sort-strip">
+        <span class="sort-lbl">Sort:</span>
+        <button class="sort-btn active" onclick="sortCards('rec',this)">Recommended</button>
+        <button class="sort-btn" onclick="sortCards('price-low',this)">Price ↑</button>
+        <button class="sort-btn" onclick="sortCards('price-high',this)">Price ↓</button>
+        <button class="sort-btn" onclick="sortCards('rating',this)">Top Rated</button>
+        <div class="result-count"><strong id="countNum">6</strong> Resorts Found</div>
+      </div>
+      <div class="cards" id="cardsContainer">
 
 
 
@@ -201,438 +886,752 @@
 
 
 
-<div class="rcard" data-amenities="river pool" data-dur="2n3d" data-price="8000" data-rating="4.8" data-stars="5">
-<a class="rcard-img" href="whistling_woods_resort.html" style="display:block; text-decoration:none;">
-<img alt="Whistling Woodz Resort" src="images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.43.32 AM.jpeg"/>
-<div class="rcard-badges"><span class="rbadge rb-lux">⭐ Luxury Resort</span><span class="rbadge rb-deal">🌊 Premium Riverfront</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.43.32 AM.jpeg"/></div><div class="rthumb-more">+5</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="whistling_woods_resort.html" style="color:inherit;text-decoration:none;">Whistling Woodz Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.8</div><div class="rating-count">850 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★★</span><span style="font-size:11px;color:#888;">5 Star Property</span><span class="rcard-dist">📍 Ganeshgudi, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ River Front</span><span class="rtag">✓ Luxury Suites</span><span class="rtag">✓ Giant Swing</span></div>
-<div class="rcard-amenities"><span class="ramenity">🌊 River Access</span><span class="ramenity">🏊 Pool</span><span class="ramenity">🍽 Buffet</span></div>
-<div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span class="rinc">Dinner</span><span class="rinc">Boating</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Early Bird Discount</div><div class="rprice-cross">₹10,000</div><div class="rprice">₹8,000 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹800 taxes · <span>Free cancellation</span></div></div>
+        <div class="rcard" data-amenities="river pool" data-dur="2n3d" data-price="8000" data-rating="4.8"
+          data-stars="5">
+          <a class="rcard-img" href="whistling_woods_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Whistling Woodz Resort"
+              src="images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.43.32 AM.jpeg" />
+            <div class="rcard-badges"><span class="rbadge rb-lux">⭐ Luxury Resort</span><span class="rbadge rb-deal">🌊
+                Premium Riverfront</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt=""
+                  src="images/Whistling Woods/WhatsApp Image 2025-08-09 at 8.43.32 AM.jpeg" /></div>
+              <div class="rthumb-more">+5</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="whistling_woods_resort.html"
+                  style="color:inherit;text-decoration:none;">Whistling Woodz Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.8</div>
+                <div class="rating-count">850 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★★</span><span style="font-size:11px;color:#888;">5 Star
+                Property</span><span class="rcard-dist">📍 Ganeshgudi, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ River Front</span><span class="rtag">✓ Luxury
+                Suites</span><span class="rtag">✓ Giant Swing</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🌊 River Access</span><span class="ramenity">🏊
+                Pool</span><span class="ramenity">🍽 Buffet</span></div>
+            <div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span
+                class="rinc">Dinner</span><span class="rinc">Boating</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Early Bird Discount</div>
+                <div class="rprice-cross">₹10,000</div>
+                <div class="rprice">₹8,000 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹800 taxes · <span>Free cancellation</span></div>
+              </div>
               <div class="rcard-ctas">
                 <a class="btn-book" href="whistling_woods_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Whistling Woodzs Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river bonfire" data-dur="2n3d" data-price="7000" data-rating="4.6" data-stars="4">
-<a class="rcard-img" href="hornbill_resort.html" style="display:block; text-decoration:none;">
-<img alt="Hornbill River Resort" src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-top">⭐ Premium Resort</span><span class="rbadge rb-cat">🌳 Nature Vibes</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg"/></div><div class="rthumb-more">+5</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="hornbill_resort.html" style="color:inherit;text-decoration:none;">Hornbill River Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.6</div><div class="rating-count">420 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Property</span><span class="rcard-dist">📍 Ganeshgudi, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Treehouse Stay</span><span class="rtag">✓ River Bank</span><span class="rtag">✓ Safari Options</span></div>
-<div class="rcard-amenities"><span class="ramenity">🌳 Jungle View</span><span class="ramenity">🍽 Restaurant</span><span class="ramenity">🔥 Campfire</span></div>
-<div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span class="rinc">Dinner</span><span class="rinc">Kayaking</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Early Bird Discount</div><div class="rprice-cross">₹9,000</div><div class="rprice">₹7,000 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹700 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="hornbill_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Hornbill River Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river pool" data-dur="2n3d" data-price="3000" data-rating="4.4" data-stars="4">
-<a class="rcard-img" href="laguna_resort.html" style="display:block; text-decoration:none;">
-<img alt="Laguna River Resort" src="images/Laguna/WhatsApp Image 2026-03-19 at 9.50.48 PM (2).jpeg"/>
-<div class="rcard-badges"><span class="rbadge rb-top">⚡ Recommended</span><span class="rbadge rb-deal">🌊 River Side</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Laguna/WhatsApp Image 2026-03-19 at 9.50.48 PM (2).jpeg"/></div><div class="rthumb-more">+6</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="laguna_resort.html" style="color:inherit;text-decoration:none;">Laguna River Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.4</div><div class="rating-count">215 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Property</span><span class="rcard-dist">📍 Ganeshgudi, Ilva near Supa Dam</span></div>
-<div class="rcard-tags"><span class="rtag">✓ All Meals Included</span><span class="rtag">✓ River Swimming</span><span class="rtag">✓ Campfire &amp; Trekking</span></div>
-<div class="rcard-amenities"><span class="ramenity">🌊 River Side</span><span class="ramenity">🍽 Restaurant</span><span class="ramenity">❄️ AC Cottages</span></div>
-<div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span class="rinc">Dinner</span><span class="rinc">Kayaking</span><span class="rinc">Boating</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Group Disounts Available</div><div class="rprice-cross">₹4,000</div><div class="rprice">₹3,000 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹300 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="laguna_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Laguna River Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river" data-dur="2n3d" data-price="2499" data-rating="4.2" data-stars="3">
-<a class="rcard-img" href="River Edge.html" style="display:block; text-decoration:none;">
-<img alt="River Edge Resort" src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-deal">🌿 Eco Certified</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg"/></div><div class="rthumb-more">+4</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="River Edge.html" style="color:inherit;text-decoration:none;">River Edge Resort</a></div><div class="rcard-rating"><div class="rating-badge" style="background:#2d7a3d;">4.2</div><div class="rating-count">186 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span style="font-size:11px;color:#888;">3 Star Resort</span><span class="rcard-dist">📍 Kali River Bank, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Great for Students</span><span class="rtag">✓ Adventure Hub</span></div>
-<div class="rcard-amenities"><span class="ramenity">🌊 River View</span><span class="ramenity">🔥 Campfire</span><span class="ramenity">🛶 Kayaking</span><span class="ramenity">🍽 Dining</span><span class="ramenity">🚗 Parking</span></div>
-<div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Rafting</span><span class="rinc">Trekking</span><span class="rinc">Campfire</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 22%</div><div class="rprice-cross">₹3,200</div><div class="rprice">₹2,499 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹250 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="River Edge.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about River Edge Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool" data-dur="2n3d" data-price="3499" data-rating="4.0" data-stars="3">
-<a class="rcard-img" href="Tusker Trails.html" style="display:block; text-decoration:none;">
-<img alt="Tusker Trails" src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-deal">🎒 Student Fav</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg"/></div><div class="rthumb-more">+3</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="Tusker Trails.html" style="color:inherit;text-decoration:none;">Tusker Trails</a></div><div class="rcard-rating"><div class="rating-badge" style="background:#5a8a00;">4.0</div><div class="rating-count">144 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span style="font-size:11px;color:#888;">Budget Camp</span><span class="rcard-dist">📍 Forest Trail, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Great for Groups</span><span class="rtag">✓ Budget Friendly</span></div>
-<div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">⛺ Camping</span><span class="ramenity">🌿 Nature Walk</span><span class="ramenity">🔥 Campfire</span></div>
-<div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Zorbing</span><span class="rinc">Trekking</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 22%</div><div class="rprice-cross">₹4,500</div><div class="rprice">₹3,499 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹350 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="Tusker Trails.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tusker Trails couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool river bonfire jacuzzi" data-dur="2n3d" data-price="6499" data-rating="4.5" data-stars="4">
-<a class="rcard-img" href="dewDrops_resort.html" style="display:block; text-decoration:none;">
-<img alt="Dew Drops Resort" src="images/Dewdrops/Cabin View.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-top">⚡ Top Rated</span><span class="rbadge rb-deal">🔥 Best Deal</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Dewdrops/Cabin View.jpg"/></div><div class="rthumb-more">+6</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="dewDrops_resort.html" style="color:inherit;text-decoration:none;">Dew Drops Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.5</div><div class="rating-count">248 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Resort</span><span class="rcard-dist">📍 Opp. Bus Stop, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Free Cancellation</span><span class="rtag">✓ Breakfast Included</span><span class="rtag">✓ River View</span></div>
-<div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">📶 WiFi</span><span class="ramenity">🔥 Bonfire</span><span class="ramenity">🍽 Restaurant</span></div>
-<div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span class="rinc">Dinner</span><span class="rinc">Kayaking</span><span class="rinc">Nature Walk</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 24%</div><div class="rprice-cross">₹8,500</div><div class="rprice">₹6,499 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹650 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="dewDrops_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Dew Drops Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool" data-dur="2n3d" data-price="8999" data-rating="4.4" data-stars="4">
-<a class="rcard-img" href="Wild Wings.html" style="display:block; text-decoration:none;">
-<img alt="Wild Wings Resort" src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-top">👨‍👩‍👧‍👦 Family Pick</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg"/></div><div class="rthumb-more">+3</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="Wild Wings.html" style="color:inherit;text-decoration:none;">Wild Wings Resort</a></div><div class="rcard-rating"><div class="rating-badge" style="background:#1a6e3a;">4.4</div><div class="rating-count">203 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Resort</span><span class="rcard-dist">📍 Kali Riverside, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Kid Friendly</span><span class="rtag">✓ Pool &amp; Water Park</span><span class="rtag">✓ Free Cancellation</span></div>
-<div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span><span class="ramenity">🍽 Restaurant</span></div>
-<div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Pool Access</span><span class="rinc">Crocodile Park</span><span class="rinc">Supa Dam</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 22%</div><div class="rprice-cross">₹11,500</div><div class="rprice">₹8,999 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹900 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="Wild Wings.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Wings Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river" data-dur="2n3d" data-price="5999" data-rating="4.3" data-stars="4">
-<a class="rcard-img" href="White Petal.html" style="display:block; text-decoration:none;">
-<img alt="White Petal Homestays" src="images/White Petal/White Petal Dandeli (1).jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-deal">🏡 Homestay</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/White Petal/White Petal Dandeli (1).jpg"/></div><div class="rthumb-more">+2</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="White Petal.html" style="color:inherit;text-decoration:none;">White Petal Homestays</a></div><div class="rcard-rating"><div class="rating-badge" style="background:#2d7a3d;">4.3</div><div class="rating-count">97 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">Boutique Homestay</span><span class="rcard-dist">📍 Dandeli Village</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Local Experience</span><span class="rtag">✓ Home-cooked Meals</span></div>
-<div class="rcard-amenities"><span class="ramenity">🌿 Garden</span><span class="ramenity">📶 WiFi</span><span class="ramenity">🍳 Home Food</span><span class="ramenity">🚗 Parking</span></div>
-<div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Dinner</span><span class="rinc">Bird Watching</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 20%</div><div class="rprice-cross">₹7,500</div><div class="rprice">₹5,999 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹600 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="White Petal.html">View Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&amp;text=Hi! I want to book White Petal Homestays for the Couple Package at ₹5,999/couple">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool" data-dur="2n3d" data-price="8999" data-rating="4.4" data-stars="4">
-<a class="rcard-img" href="Wild Mist.html" style="display:block; text-decoration:none;">
-<img alt="Wild Mist Resort" src="images/Wild Mist/1.jpeg"/>
-<div class="rcard-badges"><span class="rbadge rb-top">👨‍👩‍👧‍👦 Family Pick</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Wild Mist/1.jpeg"/></div><div class="rthumb-more">+3</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="Wild Mist.html" style="color:inherit;text-decoration:none;">Wild Mist Resort</a></div><div class="rcard-rating"><div class="rating-badge" style="background:#1a6e3a;">4.4</div><div class="rating-count">203 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star Resort</span><span class="rcard-dist">📍 Kali Riverside, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Kid Friendly</span><span class="rtag">✓ Pool &amp; Water Park</span><span class="rtag">✓ Free Cancellation</span></div>
-<div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🌧 Rain Dance</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span><span class="ramenity">🍽 Restaurant</span></div>
-<div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Pool Access</span><span class="rinc">Crocodile Park</span><span class="rinc">Supa Dam</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 22%</div><div class="rprice-cross">₹11,500</div><div class="rprice">₹8,999 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹900 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="Wild Mist.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Mist Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool river jacuzzi spa bonfire" data-dur="3n4d" data-price="14999" data-rating="4.8" data-stars="5">
-<a class="rcard-img" href="rainForest_resort.html" style="display:block; text-decoration:none;">
-<img alt="Rain Forest Dandeli" src="images/RainForest/Swiming Pool_2.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-lux">👑 Luxury</span></div>
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/RainForest/Swiming Pool_2.jpg"/></div><div class="rthumb-more">+8</div></div>
-</a>
-<div class="rcard-info">
-<div class="rcard-top"><div class="rcard-name"><a href="rainForest_resort.html" style="color:inherit;text-decoration:none;">Rain Forest Dandeli</a></div><div class="rcard-rating"><div class="rating-badge" style="background:#1a5fa0;">4.8</div><div class="rating-count">312 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★★</span><span style="font-size:11px;color:#888;">5 Star Luxury</span><span class="rcard-dist">📍 Forest Reserve Edge, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Honeymoon Special</span><span class="rtag">✓ Premium Cottage</span><span class="rtag">✓ Spa Available</span></div>
-<div class="rcard-amenities"><span class="ramenity">🏊 Infinity Pool</span><span class="ramenity">💆 Spa</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span><span class="ramenity">🛁 Jacuzzi</span></div>
-<div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Boat Ride</span><span class="rinc">Jeep Safari</span><span class="rinc">Spa</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Save 21%</div><div class="rprice-cross">₹19,000</div><div class="rprice">₹14,999 <span class="rprice-unit">/couple</span></div><div class="rprice-tax">+₹1,500 taxes · <span>Free cancellation</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="rainForest_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Rain Forest Dandeli couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river pool" data-price="2500" data-rating="4.1">
-<div class="rcard-img">
-<img alt="Bison River Resort" src="images/Bison/Bison River Resorts (1).jpg"/>
-<div></div>
-<div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">⭐ Prime Wildlife Pick</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Bison/Bison River Resorts (10).jpg"/></div><div class="rthumb-more">+3</div></div>
-</div>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
-<div class="rcard-top"><div class="rcard-name">Bison River Resort</div><div><div class="rating-badge">4.1</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Ganeshgudi, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹2500 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="bison_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Bison River Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool parking" data-price="3000" data-rating="4.2">
-<div class="rcard-img">
-<img alt="Jungle Bell Resort" src="images/Jungle Bell/Jungle Bell River Retreat (1).jpg"/>
-<div></div>
-<div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🌳 Nature Vibes</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Jungle Bell/Jungle Bell River Retreat (10).jpg"/></div><div class="rthumb-more">+3</div></div>
-</div>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
-<div class="rcard-top"><div class="rcard-name">Jungle Bell Resort</div><div><div class="rating-badge">4.2</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli Forest</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹3000 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="jungle_bell_resort.html">View Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&amp;text=Hi! Enquiry about Jungle Bell Resort Couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool wifi" data-price="2800" data-rating="4.4">
-<div class="rcard-img">
-<img alt="Palm Meadows Resort" src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg"/>
-<div></div>
-<div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🍃 Peaceful Retreat</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Palm meadows/0f00a659-0333-4056-b06f-0e36efb01155.jpg"/></div><div class="rthumb-more">+3</div></div>
-</div>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
-<div class="rcard-top"><div class="rcard-name">Palm Meadows Resort</div><div><div class="rating-badge">4.4</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli Town Outskirts</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹2800 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="palm_meadows_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Palm Meadows Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="wifi parking" data-price="2000" data-rating="4.0">
-<div class="rcard-img">
-<img alt="State Lodge Dandeli" src="images/State Lodge/SL.jpg"/>
-<div></div>
-<div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🏨 Central Pick</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/State Lodge/SL.jpg"/></div><div class="rthumb-more">+3</div></div>
-</div>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
-<div class="rcard-top"><div class="rcard-name">State Lodge Dandeli</div><div><div class="rating-badge">4.0</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli Center</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹2000 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="state_lodge.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about State Lodge Dandeli couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river wifi parking" data-price="3200" data-rating="4.5">
-<div class="rcard-img">
-<img alt="Sunbird Resort" src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg"/>
-<div></div>
-<div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🦅 Bird Watcher Fav</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Sunbird resort/15d04e05-32c2-4d2f-99de-03f55db19f21.jpg"/></div><div class="rthumb-more">+3</div></div>
-</div>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
-<div class="rcard-top"><div class="rcard-name">Sunbird Resort</div><div><div class="rating-badge">4.5</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Kali River Bank</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹3200 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="sunbird_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Sunbird Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="wifi parking" data-price="2200" data-rating="4.6">
-<div class="rcard-img">
-<img alt="Tarang Homestay" src="images/Tarang home stay/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg"/>
-<div></div>
-<div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🏠 Cozy Comfort</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Tarang home stay/0ff2ddff-a4d8-4c1a-ba5e-676a50fbc7e9.jpg"/></div><div class="rthumb-more">+3</div></div>
-</div>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
-<div class="rcard-top"><div class="rcard-name">Tarang Homestay</div><div><div class="rating-badge">4.6</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli Village</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹2200 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="tarang_homestay.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tarang Homestay couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool parking" data-price="3000" data-rating="4.5" data-stars="4">
-<a class="rcard-img" href="green_valley_resort.html" style="display:block; text-decoration:none;">
-<img alt="Green Valley Resort" src="images/Green Valley/GV1.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-top" style="background:var(--forest);">⭐ Nature Retreat</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Green Valley/GV1.jpg"/></div><div class="rthumb-more">+3</div></div>
-</a>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-top"><div class="rcard-name"><a href="green_valley_resort.html" style="color:inherit;text-decoration:none;">Green Valley Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.5</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Green Valley, Dandeli</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹3000 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="green_valley_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Green Valley Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="river pool wifi parking" data-price="2800" data-rating="4.3" data-stars="4">
-<a class="rcard-img" href="white_water_resort.html" style="display:block; text-decoration:none;">
-<img alt="White Water Resort" src="images/White Waters/WHITE WATER RESORT  pdf-images-1.jpg"/>
-<div class="rcard-badges"><span class="rbadge rb-deal" style="background:var(--forest);">🌊 Premium Property</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/White Waters/WHITE WATER RESORT  pdf-images-1.jpg"/></div><div class="rthumb-more">+3</div></div>
-</a>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-top"><div class="rcard-name"><a href="white_water_resort.html" style="color:inherit;text-decoration:none;">White Water Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.3</div><div class="rating-count">110 reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli, Karnataka</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹2800 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="white_water_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about White Water Resort couple Package">Book</a>
-              </div>
-</div>
-</div>
-</div><div class="rcard" data-amenities="pool parking" data-price="3800" data-rating="4.4" data-stars="4">
-<a class="rcard-img" href="ansh_resort.html" style="display:block; text-decoration:none;">
-<img alt="Ansh Resort" src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.49 PM.jpeg"/>
-<div class="rcard-badges"><span class="rbadge rb-lux" style="background:var(--forest);">⭐ Premium</span></div>
-<div class="rcard-thumbs"><div class="rthumb"><img alt="" src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.49 PM.jpeg"/></div><div class="rthumb-more">+3</div></div>
-</a>
-<div class="rcard-info">
-<button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
-<div class="rcard-top"><div class="rcard-name"><a href="ansh_resort.html" style="color:inherit;text-decoration:none;">Ansh Resort</a></div><div class="rcard-rating"><div class="rating-badge">4.4</div><div class="rating-count">100+ reviews</div></div></div>
-<div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli, Karnataka</span></div>
-<div class="rcard-tags"><span class="rtag">✓ Premium Stay</span></div>
-<div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
-<div class="rcard-incs"><span class="rinc">Standard Package</span></div>
-<div class="rcard-price-row">
-<div><div class="rdiscount">💰 Limited Offer</div><div class="rprice">₹3800 <span class="rprice-unit">/person</span></div></div>
-              <div class="rcard-ctas">
-                <a class="btn-book" href="ansh_resort.html">Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Ansh Resort couple Package">Book</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Whistling Woodzs Resort couple Package">Book</a>
               </div>
             </div>
           </div>
-        </div>        <div class="rcard" data-amenities="pool wifi" data-dur="2n3d" data-price="6000" data-rating="4.2" data-stars="15">
-          <a class="rcard-img" href="jungle_edge.html" style="display:block; text-decoration:none;">
-            <img alt="Jungle Edge" src="" />
-            <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">ðŸƒ Nature Resort</span></div>
+        </div>
+        <div class="rcard" data-amenities="river bonfire" data-dur="2n3d" data-price="7000" data-rating="4.6"
+          data-stars="4">
+          <a class="rcard-img" href="hornbill_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Hornbill River Resort" src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-top">⭐ Premium Resort</span><span class="rbadge rb-cat">🌳
+                Nature Vibes</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg" /></div>
+              <div class="rthumb-more">+5</div>
+            </div>
           </a>
           <div class="rcard-info">
-            <button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â¤ï¸':'ðŸ¤'">ðŸ¤</button>
             <div class="rcard-top">
-              <a href="jungle_edge.html" style="text-decoration:none;"><div class="rcard-name">Jungle Edge</div></a>
+              <div class="rcard-name"><a href="hornbill_resort.html"
+                  style="color:inherit;text-decoration:none;">Hornbill River Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.6</div>
+                <div class="rating-count">420 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star
+                Property</span><span class="rcard-dist">📍 Ganeshgudi, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Treehouse Stay</span><span class="rtag">✓ River
+                Bank</span><span class="rtag">✓ Safari Options</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🌳 Jungle View</span><span class="ramenity">🍽
+                Restaurant</span><span class="ramenity">🔥 Campfire</span></div>
+            <div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span
+                class="rinc">Dinner</span><span class="rinc">Kayaking</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Early Bird Discount</div>
+                <div class="rprice-cross">₹9,000</div>
+                <div class="rprice">₹7,000 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹700 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="hornbill_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Hornbill River Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="river pool" data-dur="2n3d" data-price="3000" data-rating="4.4"
+          data-stars="4">
+          <a class="rcard-img" href="laguna_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Laguna River Resort" src="images/Laguna/WhatsApp Image 2026-03-19 at 9.50.48 PM (2).jpeg" />
+            <div class="rcard-badges"><span class="rbadge rb-top">⚡ Recommended</span><span class="rbadge rb-deal">🌊
+                River Side</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Laguna/WhatsApp Image 2026-03-19 at 9.50.48 PM (2).jpeg" />
+              </div>
+              <div class="rthumb-more">+6</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="laguna_resort.html" style="color:inherit;text-decoration:none;">Laguna
+                  River Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.4</div>
+                <div class="rating-count">215 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star
+                Property</span><span class="rcard-dist">📍 Ganeshgudi, Ilva near Supa Dam</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ All Meals Included</span><span class="rtag">✓ River
+                Swimming</span><span class="rtag">✓ Campfire &amp; Trekking</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🌊 River Side</span><span class="ramenity">🍽
+                Restaurant</span><span class="ramenity">❄️ AC Cottages</span></div>
+            <div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span
+                class="rinc">Dinner</span><span class="rinc">Kayaking</span><span class="rinc">Boating</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Group Disounts Available</div>
+                <div class="rprice-cross">₹4,000</div>
+                <div class="rprice">₹3,000 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹300 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="laguna_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Laguna River Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="river" data-dur="2n3d" data-price="2499" data-rating="4.2" data-stars="3">
+          <a class="rcard-img" href="River Edge.html" style="display:block; text-decoration:none;">
+            <img alt="River Edge Resort" src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-deal">🌿 Eco Certified</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" /></div>
+              <div class="rthumb-more">+4</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="River Edge.html" style="color:inherit;text-decoration:none;">River Edge
+                  Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge" style="background:#2d7a3d;">4.2</div>
+                <div class="rating-count">186 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span style="font-size:11px;color:#888;">3 Star
+                Resort</span><span class="rcard-dist">📍 Kali River Bank, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Great for Students</span><span class="rtag">✓ Adventure
+                Hub</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🌊 River View</span><span class="ramenity">🔥
+                Campfire</span><span class="ramenity">🛶 Kayaking</span><span class="ramenity">🍽 Dining</span><span
+                class="ramenity">🚗 Parking</span></div>
+            <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Rafting</span><span
+                class="rinc">Trekking</span><span class="rinc">Campfire</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Save 22%</div>
+                <div class="rprice-cross">₹3,200</div>
+                <div class="rprice">₹2,499 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹250 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="River Edge.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about River Edge Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool" data-dur="2n3d" data-price="3499" data-rating="4.0" data-stars="3">
+          <a class="rcard-img" href="Tusker Trails.html" style="display:block; text-decoration:none;">
+            <img alt="Tusker Trails" src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-deal">🎒 Student Fav</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" /></div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="Tusker Trails.html" style="color:inherit;text-decoration:none;">Tusker
+                  Trails</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge" style="background:#5a8a00;">4.0</div>
+                <div class="rating-count">144 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span style="font-size:11px;color:#888;">Budget
+                Camp</span><span class="rcard-dist">📍 Forest Trail, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Great for Groups</span><span class="rtag">✓ Budget
+                Friendly</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">⛺
+                Camping</span><span class="ramenity">🌿 Nature Walk</span><span class="ramenity">🔥 Campfire</span>
+            </div>
+            <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Zorbing</span><span
+                class="rinc">Trekking</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Save 22%</div>
+                <div class="rprice-cross">₹4,500</div>
+                <div class="rprice">₹3,499 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹350 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="Tusker Trails.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tusker Trails couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool river bonfire jacuzzi" data-dur="2n3d" data-price="6499"
+          data-rating="4.5" data-stars="4">
+          <a class="rcard-img" href="dewDrops_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Dew Drops Resort" src="images/Dewdrops/Cabin View.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-top">⚡ Top Rated</span><span class="rbadge rb-deal">🔥 Best
+                Deal</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Dewdrops/Cabin View.jpg" /></div>
+              <div class="rthumb-more">+6</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="dewDrops_resort.html" style="color:inherit;text-decoration:none;">Dew
+                  Drops Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.5</div>
+                <div class="rating-count">248 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star
+                Resort</span><span class="rcard-dist">📍 Opp. Bus Stop, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Free Cancellation</span><span class="rtag">✓ Breakfast
+                Included</span><span class="rtag">✓ River View</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">📶 WiFi</span><span
+                class="ramenity">🔥 Bonfire</span><span class="ramenity">🍽 Restaurant</span></div>
+            <div class="rcard-incs"><span class="rinc">Breakfast</span><span class="rinc">Lunch</span><span
+                class="rinc">Dinner</span><span class="rinc">Kayaking</span><span class="rinc">Nature Walk</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Save 24%</div>
+                <div class="rprice-cross">₹8,500</div>
+                <div class="rprice">₹6,499 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹650 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="dewDrops_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Dew Drops Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool" data-dur="2n3d" data-price="8999" data-rating="4.4" data-stars="4">
+          <a class="rcard-img" href="Wild Wings.html" style="display:block; text-decoration:none;">
+            <img alt="Wild Wings Resort" src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-top">👨‍👩‍👧‍👦 Family Pick</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" /></div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="Wild Wings.html" style="color:inherit;text-decoration:none;">Wild Wings
+                  Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge" style="background:#1a6e3a;">4.4</div>
+                <div class="rating-count">203 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star
+                Resort</span><span class="rcard-dist">📍 Kali Riverside, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Kid Friendly</span><span class="rtag">✓ Pool &amp; Water
+                Park</span><span class="rtag">✓ Free Cancellation</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🌧 Rain
+                Dance</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span><span
+                class="ramenity">🍽 Restaurant</span></div>
+            <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Pool Access</span><span
+                class="rinc">Crocodile Park</span><span class="rinc">Supa Dam</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Save 22%</div>
+                <div class="rprice-cross">₹11,500</div>
+                <div class="rprice">₹8,999 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹900 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="Wild Wings.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Wings Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rcard" data-amenities="pool" data-dur="2n3d" data-price="8999" data-rating="4.4" data-stars="4">
+          <a class="rcard-img" href="Wild Mist.html" style="display:block; text-decoration:none;">
+            <img alt="Wild Mist Resort" src="images/Wild Mist/1.jpeg" />
+            <div class="rcard-badges"><span class="rbadge rb-top">👨‍👩‍👧‍👦 Family Pick</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Wild Mist/1.jpeg" /></div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="Wild Mist.html" style="color:inherit;text-decoration:none;">Wild Mist
+                  Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge" style="background:#1a6e3a;">4.4</div>
+                <div class="rating-count">203 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span style="font-size:11px;color:#888;">4 Star
+                Resort</span><span class="rcard-dist">📍 Kali Riverside, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Kid Friendly</span><span class="rtag">✓ Pool &amp; Water
+                Park</span><span class="rtag">✓ Free Cancellation</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🏊 Pool</span><span class="ramenity">🌧 Rain
+                Dance</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span><span
+                class="ramenity">🍽 Restaurant</span></div>
+            <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Pool Access</span><span
+                class="rinc">Crocodile Park</span><span class="rinc">Supa Dam</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Save 22%</div>
+                <div class="rprice-cross">₹11,500</div>
+                <div class="rprice">₹8,999 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹900 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="Wild Mist.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Wild Mist Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool river jacuzzi spa bonfire" data-dur="3n4d" data-price="14999"
+          data-rating="4.8" data-stars="5">
+          <a class="rcard-img" href="rainForest_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Rain Forest Dandeli" src="images/RainForest/Swiming Pool_2.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-lux">👑 Luxury</span></div>
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/RainForest/Swiming Pool_2.jpg" /></div>
+              <div class="rthumb-more">+8</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="rainForest_resort.html" style="color:inherit;text-decoration:none;">Rain
+                  Forest Dandeli</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge" style="background:#1a5fa0;">4.8</div>
+                <div class="rating-count">312 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★★</span><span style="font-size:11px;color:#888;">5 Star
+                Luxury</span><span class="rcard-dist">📍 Forest Reserve Edge, Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Honeymoon Special</span><span class="rtag">✓ Premium
+                Cottage</span><span class="rtag">✓ Spa Available</span></div>
+            <div class="rcard-amenities"><span class="ramenity">🏊 Infinity Pool</span><span class="ramenity">💆
+                Spa</span><span class="ramenity">📶 WiFi</span><span class="ramenity">❄️ AC</span><span
+                class="ramenity">🛁 Jacuzzi</span></div>
+            <div class="rcard-incs"><span class="rinc">All Meals</span><span class="rinc">Boat Ride</span><span
+                class="rinc">Jeep Safari</span><span class="rinc">Spa</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Save 21%</div>
+                <div class="rprice-cross">₹19,000</div>
+                <div class="rprice">₹14,999 <span class="rprice-unit">/couple</span></div>
+                <div class="rprice-tax">+₹1,500 taxes · <span>Free cancellation</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="rainForest_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Rain Forest Dandeli couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool river" data-price="2500" data-rating="4.1">
+          <div class="rcard-img">
+            <img alt="Bison River Resort" src="images/Bison/Bison River Resorts (1).jpg" />
+            <div></div>
+            <div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">⭐ Prime Wildlife
+                Pick</span></div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Bison/Bison River Resorts (10).jpg" /></div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </div>
+          <div class="rcard-info">
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name">Bison River Resort</div>
+              <div>
+                <div class="rating-badge">4.1</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Ganeshgudi,
+                Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹2500 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="bison_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Bison River Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rcard" data-amenities="pool wifi" data-price="2800" data-rating="4.4">
+          <div class="rcard-img">
+            <img alt="Palm Meadows Resort" src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg" />
+            <div></div>
+            <div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🍃 Peaceful Retreat</span>
+            </div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Palm meadows/0f00a659-0333-4056-b06f-0e36efb01155.jpg" />
+              </div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </div>
+          <div class="rcard-info">
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name">Palm Meadows Resort</div>
+              <div>
+                <div class="rating-badge">4.4</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli Town
+                Outskirts</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹2800 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="palm_meadows_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Palm Meadows Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="wifi parking" data-price="2000" data-rating="4.0">
+          <div class="rcard-img">
+            <img alt="State Lodge Dandeli" src="images/State Lodge/SL.jpg" />
+            <div></div>
+            <div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🏨 Central Pick</span>
+            </div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/State Lodge/SL.jpg" /></div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </div>
+          <div class="rcard-info">
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name">State Lodge Dandeli</div>
+              <div>
+                <div class="rating-badge">4.0</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli
+                Center</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹2000 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="state_lodge.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about State Lodge Dandeli couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="river wifi parking" data-price="3200" data-rating="4.5">
+          <div class="rcard-img">
+            <img alt="Sunbird Resort" src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg" />
+            <div></div>
+            <div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🦅 Bird Watcher Fav</span>
+            </div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Sunbird resort/15d04e05-32c2-4d2f-99de-03f55db19f21.jpg" />
+              </div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </div>
+          <div class="rcard-info">
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name">Sunbird Resort</div>
+              <div>
+                <div class="rating-badge">4.5</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Kali River
+                Bank</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹3200 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="sunbird_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Sunbird Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="wifi parking" data-price="2200" data-rating="4.6">
+          <div class="rcard-img">
+            <img alt="Tarang Homestay" src="images/Tarang home stay/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" />
+            <div></div>
+            <div class="rcard-badges"><span class="rbadge" style="background:var(--forest);">🏠 Cozy Comfort</span>
+            </div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Tarang home stay/0ff2ddff-a4d8-4c1a-ba5e-676a50fbc7e9.jpg" />
+              </div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </div>
+          <div class="rcard-info">
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name">Tarang Homestay</div>
+              <div>
+                <div class="rating-badge">4.6</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★☆☆</span><span class="rcard-dist">📍 Dandeli
+                Village</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹2200 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="tarang_homestay.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Tarang Homestay couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool parking" data-price="3000" data-rating="4.5" data-stars="4">
+          <a class="rcard-img" href="green_valley_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Green Valley Resort" src="images/Green Valley/WhatsApp Image 2026-03-30 at 12.36.04 AM.jpeg" />
+            <div class="rcard-badges"><span class="rbadge rb-top" style="background:var(--forest);">⭐ Nature
+                Retreat</span></div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Green Valley/WhatsApp Image 2026-03-30 at 12.36.00 AM.jpeg" />
+              </div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="green_valley_resort.html"
+                  style="color:inherit;text-decoration:none;">Green Valley Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.5</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Green Valley,
+                Dandeli</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹3000 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="green_valley_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Green Valley Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="river pool wifi parking" data-price="2800" data-rating="4.3" data-stars="4">
+          <a class="rcard-img" href="white_water_resort.html" style="display:block; text-decoration:none;">
+            <img alt="White Water Resort" src="images/White Waters/WHITE WATER RESORT  pdf-images-34.jpg" />
+            <div class="rcard-badges"><span class="rbadge rb-deal" style="background:var(--forest);">🌊 Premium
+                Property</span></div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/White Waters/WHITE WATER RESORT  pdf-images-19.jpg" /></div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="white_water_resort.html"
+                  style="color:inherit;text-decoration:none;">White Water Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.3</div>
+                <div class="rating-count">110 reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli,
+                Karnataka</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Clean &amp; Safe</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹2800 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="white_water_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about White Water Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool parking" data-price="3800" data-rating="4.4" data-stars="4">
+          <a class="rcard-img" href="ansh_resort.html" style="display:block; text-decoration:none;">
+            <img alt="Ansh Resort" src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.59 PM (2).jpeg" />
+            <div class="rcard-badges"><span class="rbadge rb-lux" style="background:var(--forest);">⭐ Premium</span>
+            </div>
+            <div class="rcard-thumbs">
+              <div class="rthumb"><img alt="" src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.54 PM (1).jpeg" />
+              </div>
+              <div class="rthumb-more">+3</div>
+            </div>
+          </a>
+          <div class="rcard-info">
+            <button class="rcard-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+            <div class="rcard-top">
+              <div class="rcard-name"><a href="ansh_resort.html" style="color:inherit;text-decoration:none;">Ansh
+                  Resort</a></div>
+              <div class="rcard-rating">
+                <div class="rating-badge">4.4</div>
+                <div class="rating-count">100+ reviews</div>
+              </div>
+            </div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli,
+                Karnataka</span></div>
+            <div class="rcard-tags"><span class="rtag">✓ Premium Stay</span></div>
+            <div class="rcard-amenities"><span class="ramenity">✨ Excellent Stay</span></div>
+            <div class="rcard-incs"><span class="rinc">Standard Package</span></div>
+            <div class="rcard-price-row">
+              <div>
+                <div class="rdiscount">💰 Limited Offer</div>
+                <div class="rprice">₹3800 <span class="rprice-unit">/person</span></div>
+              </div>
+              <div class="rcard-ctas">
+                <a class="btn-book" href="ansh_resort.html">Details</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=916363343766&text=Hi! I want to enquiry about Ansh Resort couple Package">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rcard" data-amenities="pool wifi" data-dur="2n3d" data-price="6000" data-rating="4.2"
+          data-stars="15">
+          <a class="rcard-img" href="jungle_edge.html" style="display:block; text-decoration:none;">
+            <img alt="Jungle Edge" src="" />
+            <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">🌿 Nature
+                Resort</span></div>
+          </a>
+          <div class="rcard-info">
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
+            <div class="rcard-top">
+              <a href="jungle_edge.html" style="text-decoration:none;">
+                <div class="rcard-name">Jungle Edge</div>
+              </a>
               <div class="rcard-rating">
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">120+ reviews</div>
               </div>
             </div>
-            <div class="rcard-loc"><span class="rcard-stars">â˜…â˜…â˜…â˜…☆</span><span class="rcard-dist">ðŸ“ Dandeli</span></div>
-            <div class="rcard-tags"><span class="rtag">âœ“ Scenic</span></div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli</span>
+            </div>
+            <div class="rcard-tags"><span class="rtag">✓ Scenic</span></div>
             <div class="rcard-amenities">
-              <span class="ramenity">ðŸŠ Pool</span>
-              <span class="ramenity">ðŸ“¶ Wifi</span>
+              <span class="ramenity">🏊 Pool</span>
+              <span class="ramenity">📶 Wifi</span>
             </div>
             <div class="rcard-price-row">
               <div>
-                <div class="rprice">â‚¹2500 <span class="rprice-unit">/person</span></div>
+                <div class="rprice">₹2500 <span class="rprice-unit">/person</span></div>
               </div>
               <div class="rcard-ctas">
                 <a class="btn-book" href="jungle_edge.html">View Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=+916363343766&text=I%20want%20to%20book%20Jungle Edge">Booking Inquiry</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=+916363343766&text=I%20want%20to%20book%20Jungle Edge">Booking
+                  Inquiry</a>
               </div>
             </div>
           </div>
@@ -640,30 +1639,37 @@
         <div class="rcard" data-amenities="pool wifi parking" data-price="2500" data-rating="4.2" data-stars="4">
           <a class="rcard-img" href="swayam_cottage.html" style="display:block; text-decoration:none;">
             <img alt="Swayam Cottage" src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" />
-            <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">ðŸƒ Nature Resort</span></div>
+            <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">🌿 Nature
+                Resort</span></div>
           </a>
           <div class="rcard-info">
-            <button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â¤ï¸':'ðŸ¤'">ðŸ¤</button>
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
             <div class="rcard-top">
-              <a href="swayam_cottage.html" style="text-decoration:none;"><div class="rcard-name">Swayam Cottage</div></a>
+              <a href="swayam_cottage.html" style="text-decoration:none;">
+                <div class="rcard-name">Swayam Cottage</div>
+              </a>
               <div class="rcard-rating">
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">120+ reviews</div>
               </div>
             </div>
-            <div class="rcard-loc"><span class="rcard-stars">â˜…â˜…â˜…â˜…☆</span><span class="rcard-dist">ðŸ“ Dandeli</span></div>
-            <div class="rcard-tags"><span class="rtag">âœ“ Scenic</span></div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli</span>
+            </div>
+            <div class="rcard-tags"><span class="rtag">✓ Scenic</span></div>
             <div class="rcard-amenities">
-              <span class="ramenity">ðŸŠ Pool</span>
-              <span class="ramenity">ðŸ“¶ Wifi</span>
+              <span class="ramenity">🏊 Pool</span>
+              <span class="ramenity">📶 Wifi</span>
             </div>
             <div class="rcard-price-row">
               <div>
-                <div class="rprice">â‚¹2500 <span class="rprice-unit">/person</span></div>
+                <div class="rprice">₹2500 <span class="rprice-unit">/person</span></div>
               </div>
               <div class="rcard-ctas">
                 <a class="btn-book" href="swayam_cottage.html">View Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=+916363343766&text=I%20want%20to%20book%20Swayam Cottage">Booking Inquiry</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=+916363343766&text=I%20want%20to%20book%20Swayam Cottage">Booking
+                  Inquiry</a>
               </div>
             </div>
           </div>
@@ -671,82 +1677,94 @@
         <div class="rcard" data-amenities="pool wifi parking" data-price="2500" data-rating="4.2" data-stars="4">
           <a class="rcard-img" href="riverpoint_resort.html" style="display:block; text-decoration:none;">
             <img alt="Riverpoint Resort" src="" />
-            <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">ðŸƒ Nature Resort</span></div>
+            <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">🌿 Nature
+                Resort</span></div>
           </a>
           <div class="rcard-info">
-            <button class="rcard-heart" onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'â¤ï¸':'ðŸ¤'">ðŸ¤</button>
+            <button class="rcard-heart"
+              onclick="this.classList.toggle('liked');this.textContent=this.classList.contains('liked')?'❤️':'🤍'">🤍</button>
             <div class="rcard-top">
-              <a href="riverpoint_resort.html" style="text-decoration:none;"><div class="rcard-name">Riverpoint Resort</div></a>
+              <a href="riverpoint_resort.html" style="text-decoration:none;">
+                <div class="rcard-name">Riverpoint Resort</div>
+              </a>
               <div class="rcard-rating">
                 <div class="rating-badge">4.2</div>
                 <div class="rating-count">120+ reviews</div>
               </div>
             </div>
-            <div class="rcard-loc"><span class="rcard-stars">â˜…â˜…â˜…â˜…☆</span><span class="rcard-dist">ðŸ“ Dandeli</span></div>
-            <div class="rcard-tags"><span class="rtag">âœ“ Scenic</span></div>
+            <div class="rcard-loc"><span class="rcard-stars">★★★★☆</span><span class="rcard-dist">📍 Dandeli</span>
+            </div>
+            <div class="rcard-tags"><span class="rtag">✓ Scenic</span></div>
             <div class="rcard-amenities">
-              <span class="ramenity">ðŸŠ Pool</span>
-              <span class="ramenity">ðŸ“¶ Wifi</span>
+              <span class="ramenity">🏊 Pool</span>
+              <span class="ramenity">📶 Wifi</span>
             </div>
             <div class="rcard-price-row">
               <div>
-                <div class="rprice">â‚¹2500 <span class="rprice-unit">/person</span></div>
+                <div class="rprice">₹2500 <span class="rprice-unit">/person</span></div>
               </div>
               <div class="rcard-ctas">
                 <a class="btn-book" href="riverpoint_resort.html">View Details</a>
-                <a class="btn-wa" href="https://api.whatsapp.com/send?phone=+916363343766&text=I%20want%20to%20book%20Riverpoint Resort">Booking Inquiry</a>
+                <a class="btn-wa"
+                  href="https://api.whatsapp.com/send?phone=+916363343766&text=I%20want%20to%20book%20Riverpoint Resort">Booking
+                  Inquiry</a>
               </div>
             </div>
           </div>
         </div>
 
-    <div class="no-results" id="noResults"><div style="font-size:50px;margin-bottom:14px;">ðŸ’‘</div><div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;">No resorts match your filters</div><div style="font-size:14px;color:#888;">Try adjusting the filters to see more options</div></div>
+        <div class="no-results" id="noResults">
+          <div style="font-size:50px;margin-bottom:14px;">💑</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--forest);margin-bottom:8px;">No
+            resorts match your filters</div>
+          <div style="font-size:14px;color:#888;">Try adjusting the filters to see more options</div>
+        </div>
 
 
 
 
 
 
-</div></div>
+      </div>
+    </div>
 
 
-<script>
-function applyFilters(){
-  const maxPrice=+document.getElementById('priceSlider').value;
-  const starVals=Array.from(document.querySelectorAll('.star-filter:checked')).map(i=>+i.value);
-  const amenVals=Array.from(document.querySelectorAll('.amen-filter:checked')).map(i=>i.value);
-  const durVals=Array.from(document.querySelectorAll('.dur-filter:checked')).map(i=>i.value);
-  let vis=0;
-  document.querySelectorAll('.rcard').forEach(c=>{
-    let show=true;
-    if(+c.dataset.price>maxPrice)show=false;
-    if(starVals.length&&!starVals.includes(+c.dataset.stars))show=false;
-    if(amenVals.length&&!amenVals.every(a=>c.dataset.amenities.includes(a)))show=false;
-    if(durVals.length&&!durVals.includes(c.dataset.dur))show=false;
-    c.style.display=show?'grid':'none';
-    if(show)vis++;
-  });
-  document.getElementById('countNum').textContent=vis;
-  document.getElementById('noResults').classList.toggle('show',vis===0);
-}
-function resetFilters(){
-  document.querySelectorAll('.sidebar input[type="checkbox"]').forEach(i=>i.checked=false);
-  document.getElementById('priceSlider').value=20000;
-  document.getElementById('priceVal').textContent='â‚¹20,000';
-  document.querySelectorAll('.rcard').forEach(c=>c.style.display='grid');
-  document.getElementById('countNum').textContent=document.querySelectorAll('.rcard').length;
-  document.getElementById('noResults').classList.remove('show');
-}
-function sortCards(key,btn){
-  document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  const cont=document.getElementById('cardsContainer');
-  const cards=Array.from(cont.querySelectorAll('.rcard'));
-  cards.sort((a,b)=>{if(key==='price-low')return+a.dataset.price-+b.dataset.price;if(key==='price-high')return+b.dataset.price-+a.dataset.price;if(key==='rating')return+b.dataset.rating-+a.dataset.rating;return 0;});
-  cont.style.opacity='0';setTimeout(()=>{cards.forEach(c=>cont.appendChild(c));cont.style.opacity='1';cont.style.transition='opacity .3s';},200);
-}
-function toggleHeart(btn){btn.classList.toggle('liked');btn.textContent=btn.classList.contains('liked')?'â¤ï¸':'ðŸ¤';}
-</script>
+    <script>
+      function applyFilters() {
+        const maxPrice = +document.getElementById('priceSlider').value;
+        const starVals = Array.from(document.querySelectorAll('.star-filter:checked')).map(i => +i.value);
+        const amenVals = Array.from(document.querySelectorAll('.amen-filter:checked')).map(i => i.value);
+        const durVals = Array.from(document.querySelectorAll('.dur-filter:checked')).map(i => i.value);
+        let vis = 0;
+        document.querySelectorAll('.rcard').forEach(c => {
+          let show = true;
+          if (+c.dataset.price > maxPrice) show = false;
+          if (starVals.length && !starVals.includes(+c.dataset.stars)) show = false;
+          if (amenVals.length && !amenVals.every(a => c.dataset.amenities.includes(a))) show = false;
+          if (durVals.length && !durVals.includes(c.dataset.dur)) show = false;
+          c.style.display = show ? 'grid' : 'none';
+          if (show) vis++;
+        });
+        document.getElementById('countNum').textContent = vis;
+        document.getElementById('noResults').classList.toggle('show', vis === 0);
+      }
+      function resetFilters() {
+        document.querySelectorAll('.sidebar input[type="checkbox"]').forEach(i => i.checked = false);
+        document.getElementById('priceSlider').value = 20000;
+        document.getElementById('priceVal').textContent = '₹20,000';
+        document.querySelectorAll('.rcard').forEach(c => c.style.display = 'grid');
+        document.getElementById('countNum').textContent = document.querySelectorAll('.rcard').length;
+        document.getElementById('noResults').classList.remove('show');
+      }
+      function sortCards(key, btn) {
+        document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+        const cont = document.getElementById('cardsContainer');
+        const cards = Array.from(cont.querySelectorAll('.rcard'));
+        cards.sort((a, b) => { if (key === 'price-low') return +a.dataset.price - +b.dataset.price; if (key === 'price-high') return +b.dataset.price - +a.dataset.price; if (key === 'rating') return +b.dataset.rating - +a.dataset.rating; return 0; });
+        cont.style.opacity = '0'; setTimeout(() => { cards.forEach(c => cont.appendChild(c)); cont.style.opacity = '1'; cont.style.transition = 'opacity .3s'; }, 200);
+      }
+      function toggleHeart(btn) { btn.classList.toggle('liked'); btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍'; }
+    </script>
 </body>
+
 </html>
-
-
