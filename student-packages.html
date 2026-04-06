@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -285,7 +285,7 @@
       margin: 0 auto;
       padding: 24px 24px 70px;
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 1fr;
       gap: 22px;
       align-items: start;
     }
@@ -934,58 +934,6 @@
   </div>
 
   <div class="main">
-    <aside class="sidebar">
-      <div class="sb-head" onclick="toggleFilters()"><span class="sb-title">Filters<span class="mobile-only"
-            id="fIcon">▼</span></span><button class="sb-reset" onclick="event.stopPropagation(); resetF()">Reset
-          All</button></div>
-      <div class="sb-body" id="fBody">
-        <div class="sb-group">
-          <div class="sb-lbl">Star Rating</div>
-          <div class="sb-opts">
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="4"><label>⭐⭐⭐⭐ 4
-                Star</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="3"><label>⭐⭐⭐ 3 Star</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="camp"><label>⛺ Camp /
-                Budget</label></label>
-          </div>
-        </div>
-        <div class="sb-group">
-          <div class="sb-lbl">Max Budget (per couple)</div>
-          <div class="price-vals"><span class="price-val">₹0</span><span class="price-val" id="pv">₹6,000</span></div>
-          <input type="range" class="sb-slider" min="0" max="6000" value="6000" step="200"
-            oninput="document.getElementById('pv').textContent='₹'+Number(this.value).toLocaleString('en-IN');applyF()">
-        </div>
-        <div class="sb-group">
-          <div class="sb-lbl">Amenities</div>
-          <div class="sb-opts">
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="pool"><label>🏊 Swimming
-                Pool</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="river"><label>🌊 River
-                View</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="wifi"><label>📶 Free
-                WiFi</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="campfire"><label>🔥
-                Campfire</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="parking"><label>🚗
-                Parking</label></label>
-          </div>
-        </div>
-        <div class="sb-group" style="border-bottom:none;">
-          <div class="sb-lbl">Activities</div>
-          <div class="sb-opts">
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="rafting"><label>🚣
-                Rafting</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="trekking"><label>🥾
-                Trekking</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="safari"><label>🦋 Jeep
-                Safari</label></label>
-            <label class="sb-opt"><input type="checkbox" onchange="applyF()" value="zorbing"><label>🔵
-                Zorbing</label></label>
-          </div>
-        </div>
-      </div>
-    </aside>
-
     <div>
       <div class="cards" id="cards">
         <div class="card" data-price="5999" data-rating="4.8" data-amenities="river pool">

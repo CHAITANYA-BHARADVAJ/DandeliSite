@@ -213,7 +213,7 @@
       margin: 0 auto;
       padding: 30px 24px 60px;
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 1fr;
       gap: 24px;
       align-items: start;
     }
@@ -1039,68 +1039,6 @@
   </div>
   <!-- ── MAIN ── -->
   <div class="rl-main">
-    <!-- ── SIDEBAR FILTERS ── -->
-    <aside class="rl-sidebar">
-      <div class="rl-filter-head" onclick="toggleMobileFilters()">
-        <span class="rl-filter-title">Filters<span class="mobile-only" id="filterToggleIcon">▼</span></span>
-        <button class="rl-filter-reset" onclick="event.stopPropagation(); resetFilters()">Reset All</button>
-      </div>
-      <div class="rl-filter-body" id="filterBody">
-        <div class="rl-filter-group">
-          <div class="rl-filter-label">Star Rating</div>
-          <div class="rl-star-options">
-            <label class="rl-star-opt"><input onchange="applyFilters()" type="checkbox" value="5" /> <label>⭐⭐⭐⭐⭐ 5
-                Star</label></label>
-            <label class="rl-star-opt"><input onchange="applyFilters()" type="checkbox" value="4" /> <label>⭐⭐⭐⭐ 4
-                Star</label></label>
-            <label class="rl-star-opt"><input onchange="applyFilters()" type="checkbox" value="3" /> <label>⭐⭐⭐ 3
-                Star</label></label>
-          </div>
-        </div>
-        <div class="rl-filter-group">
-          <div class="rl-filter-label">Budget <small>(per night)</small></div>
-          <div class="rl-price-range">
-            <span class="rl-price-val">₹0</span>
-            <span class="rl-price-val" id="priceVal">₹25,000</span>
-          </div>
-          <input class="rl-slider" max="25000" min="0"
-            oninput="document.getElementById('priceVal').textContent='₹'+Number(this.value).toLocaleString('en-IN'); applyFilters()"
-            step="500" type="range" value="25000" />
-        </div>
-        <div class="rl-filter-group">
-          <div class="rl-filter-label">Amenities</div>
-          <div class="rl-amenities">
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="pool" /> <label>🏊
-                Swimming Pool</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="wifi" /> <label>📶 Free
-                WiFi</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="river" /> <label>🌊
-                River
-                View</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="ac" /> <label>❄️ AC
-                Rooms</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="parking" /> <label>🚗
-                Free
-                Parking</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="restaurant" /> <label>🍽
-                Restaurant</label></label>
-          </div>
-        </div>
-        <div class="rl-filter-group" style="border-bottom:none;">
-          <div class="rl-filter-label">Property Type</div>
-          <div class="rl-amenities">
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="resort" /> <label>🏨
-                Resort</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="cottage" /> <label>🏡
-                Cottage</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="homestay" /> <label>🏠
-                Homestay</label></label>
-            <label class="rl-check-opt"><input onchange="applyFilters()" type="checkbox" value="camp" /> <label>⛺
-                Camp</label></label>
-          </div>
-        </div>
-      </div>
-    </aside>
     <!-- ── CARDS AREA ── -->
     <div>
       <!-- Sort strip -->

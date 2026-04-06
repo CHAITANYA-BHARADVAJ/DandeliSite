@@ -194,7 +194,7 @@
       margin: 0 auto;
       padding: 32px 40px 70px;
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 1fr;
       gap: 28px;
       align-items: start;
     }
@@ -841,55 +841,6 @@
     </div>
   </div>
   <div class="main">
-    <aside class="sidebar">
-      <div class="sb-head"><span class="sb-title">Filters</span><button class="sb-reset"
-          onclick="resetFilters()">Reset</button></div>
-      <div class="sb-group">
-        <div class="sb-label">Star Rating</div>
-        <div class="sb-checks">
-          <label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox"
-              value="3" /><label>⭐⭐⭐ 3 Star</label></label>
-          <label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox"
-              value="4" /><label>⭐⭐⭐⭐ 4 Star</label></label>
-          <label class="sb-opt"><input class="star-filter" onchange="applyFilters()" type="checkbox"
-              value="5" /><label>⭐⭐⭐⭐⭐ 5 Star</label></label>
-        </div>
-      </div>
-      <div class="sb-group">
-        <div class="sb-label">Max Budget</div>
-        <div class="sb-price-row"><span style="font-size:12px;color:#aaa;">₹0</span><span class="sb-pval"
-            id="priceVal">₹20,000</span></div>
-        <input class="sb-slider" id="priceSlider" max="20000" min="0"
-          oninput="document.getElementById('priceVal').textContent='₹'+Number(this.value).toLocaleString('en-IN');applyFilters()"
-          step="500" type="range" value="20000" />
-      </div>
-      <div class="sb-group">
-        <div class="sb-label">Amenities</div>
-        <div class="sb-checks">
-          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
-              value="river" /><label>🌊 River View</label></label>
-          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
-              value="jacuzzi" /><label>🛁 Jacuzzi</label></label>
-          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
-              value="spa" /><label>💆 Spa</label></label>
-          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
-              value="bonfire" /><label>🔥 Private Bonfire</label></label>
-          <label class="sb-opt"><input class="amen-filter" onchange="applyFilters()" type="checkbox"
-              value="pool" /><label>🏊 Pool</label></label>
-        </div>
-      </div>
-      <div class="sb-group" style="border-bottom:none;">
-        <div class="sb-label">Duration</div>
-        <div class="sb-checks">
-          <label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox"
-              value="1n2d" /><label>1 Night · 2 Days</label></label>
-          <label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox"
-              value="2n3d" /><label>2 Nights · 3 Days</label></label>
-          <label class="sb-opt"><input class="dur-filter" onchange="applyFilters()" type="checkbox"
-              value="3n4d" /><label>3 Nights · 4 Days</label></label>
-        </div>
-      </div>
-    </aside>
     <div>
       <div class="sort-strip">
         <span class="sort-lbl">Sort:</span>
