@@ -1048,12 +1048,13 @@
       display: block;
     }
 
-        /* ── ACCORDION AMENITIES ── */
+    /* ── ACCORDION AMENITIES ── */
     .am-details {
       border: 1px solid var(--border);
       background: #fff;
       margin-top: 16px;
     }
+
     .am-summary {
       display: flex;
       align-items: center;
@@ -1066,44 +1067,55 @@
       transition: background .2s;
       list-style: none;
     }
+
     .am-summary::-webkit-details-marker {
       display: none;
     }
+
     .am-summary:hover {
       background: rgba(201, 168, 76, .05);
     }
+
     .am-summary::after {
       content: '▼';
       font-size: 10px;
       color: var(--gold);
       transition: transform .3s;
     }
+
     .am-details[open] .am-summary::after {
       transform: rotate(180deg);
     }
+
     .am-details[open] .am-summary {
       border-bottom: 1px dashed var(--border);
     }
+
     .am-content {
       display: grid;
       grid-template-columns: 1fr;
     }
+
     .am-content .am-item {
       border: none !important;
       border-bottom: 1px solid var(--border) !important;
     }
+
     @media(min-width:560px) {
       .am-content {
         grid-template-columns: 1fr 1fr;
       }
+
       .am-content .am-item:nth-child(even) {
         border-left: 1px solid var(--border) !important;
       }
+
       .am-content .am-item:nth-last-child(-n+2) {
         border-bottom: none !important;
       }
     }
-@media(min-width:560px) {
+
+    @media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2493,10 +2505,25 @@
   <!-- nav-mobile-fix -->
   <style>
     @media(max-width: 600px) {
-      .nav-right { gap: 6px !important; }
-      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
-      .nav-wa, .rl-nav-wa { display: none !important; }
-      .logo-title { font-size: 18px !important; }
+      .nav-right {
+        gap: 6px !important;
+      }
+
+      .nav-phone,
+      .rl-nav-phone {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        letter-spacing: -0.2px !important;
+      }
+
+      .nav-wa,
+      .rl-nav-wa {
+        display: none !important;
+      }
+
+      .logo-title {
+        font-size: 18px !important;
+      }
     }
   </style>
 </head>
@@ -2720,7 +2747,7 @@
           <a class="book-wa" id="bookWa" href="#" target="_blank">&#128172; &nbsp;Book via WhatsApp</a>
           <div class="book-trust">
             <div class="trust-item">
-              
+
             </div>
             <div class="trust-item">
               <div class="trust-dot"></div>Instant Confirm
@@ -2931,10 +2958,10 @@
       ],
 
       rooms: [
-        { name: "River View Cottage", badge: "Best Pick", image: "", desc: "Beautiful cottage with river views.", features: ["River View", "Attached Bath"], price: "<del>&#8377;3,500</del> &#8377;3,200", unit: "/ person" },
-        { name: "Jungle View Cottage", badge: "Nature Stay", image: "", desc: "Cottage surrounded by lush jungle.", features: ["Jungle View", "Attached Bath"], price: "<del>&#8377;3,500</del> &#8377;3,200", unit: "/ person" },
-        { name: "Bamboo Cottage", badge: "Premium", image: "", desc: "Unique bamboo cottages offering rustic luxury.", features: ["Bamboo Finish", "Premium"], price: "<del>&#8377;4,000</del> &#8377;3,600", unit: "/ person" },
-        { name: "Dormitory", badge: "Budget Stay", image: "", desc: "Affordable shared accommodation.", features: ["Shared Space"], price: "<del>&#8377;2,800</del> &#8377;2,500", unit: "/ person" },
+        { name: "River View Cottage", badge: "Best Pick", image: "images/Laguna/WhatsApp Image 2026-03-28 at 10.14.24 PM (2).jpeg", desc: "Private cottages with attached bathrooms. Perfect for couples or small families offering direct views of the surrounding nature.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;3,500", unit: "/ person" },
+        { name: "Jungle View Cottage", badge: "Family Pick", image: "images/Laguna/WhatsApp Image 2026-03-28 at 10.14.23 PM (3).jpeg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;3,000", unit: "/ person" },
+        { name: "Bamboo Cottage", badge: "Couple Pick", image: "images/Laguna/WhatsApp Image 2026-03-28 at 10.14.21 PM (1).jpeg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;3,000", unit: "/ person" },
+        { name: "Dormatory", badge: "Group Stays", image: "images/Laguna/WhatsApp Image 2026-03-28 at 10.14.17 PM (1).jpeg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;3,000", unit: "/ person" },
       ],
 
       activities: [
@@ -3032,12 +3059,12 @@
       if (R.groupedActivities && R.groupedActivities.length > 0) {
         let gaHtml = '';
         R.groupedActivities.forEach(group => {
-           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
-           group.items.forEach(item => {
-             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
-             gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
-           });
-           gaHtml += `</div></details>`;
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
         });
         document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
       }
@@ -3234,4 +3261,3 @@
 </body>
 
 </html>
-

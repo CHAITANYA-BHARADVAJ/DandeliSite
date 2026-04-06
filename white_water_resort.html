@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1076,12 +1076,13 @@
       display: block;
     }
 
-        /* ── ACCORDION AMENITIES ── */
+    /* ── ACCORDION AMENITIES ── */
     .am-details {
       border: 1px solid var(--border);
       background: #fff;
       margin-top: 16px;
     }
+
     .am-summary {
       display: flex;
       align-items: center;
@@ -1094,44 +1095,55 @@
       transition: background .2s;
       list-style: none;
     }
+
     .am-summary::-webkit-details-marker {
       display: none;
     }
+
     .am-summary:hover {
       background: rgba(201, 168, 76, .05);
     }
+
     .am-summary::after {
       content: '▼';
       font-size: 10px;
       color: var(--gold);
       transition: transform .3s;
     }
+
     .am-details[open] .am-summary::after {
       transform: rotate(180deg);
     }
+
     .am-details[open] .am-summary {
       border-bottom: 1px dashed var(--border);
     }
+
     .am-content {
       display: grid;
       grid-template-columns: 1fr;
     }
+
     .am-content .am-item {
       border: none !important;
       border-bottom: 1px solid var(--border) !important;
     }
+
     @media(min-width:560px) {
       .am-content {
         grid-template-columns: 1fr 1fr;
       }
+
       .am-content .am-item:nth-child(even) {
         border-left: 1px solid var(--border) !important;
       }
+
       .am-content .am-item:nth-last-child(-n+2) {
         border-bottom: none !important;
       }
     }
-@media(min-width:560px) {
+
+    @media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2461,10 +2473,25 @@
   <!-- nav-mobile-fix -->
   <style>
     @media(max-width: 600px) {
-      .nav-right { gap: 6px !important; }
-      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
-      .nav-wa, .rl-nav-wa { display: none !important; }
-      .logo-title { font-size: 18px !important; }
+      .nav-right {
+        gap: 6px !important;
+      }
+
+      .nav-phone,
+      .rl-nav-phone {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        letter-spacing: -0.2px !important;
+      }
+
+      .nav-wa,
+      .rl-nav-wa {
+        display: none !important;
+      }
+
+      .logo-title {
+        font-size: 18px !important;
+      }
     }
   </style>
 </head>
@@ -2688,7 +2715,7 @@
           <a class="book-wa" id="bookWa" href="#" target="_blank">&#128172; &nbsp;Book via WhatsApp</a>
           <div class="book-trust">
             <div class="trust-item">
-              
+
             </div>
             <div class="trust-item">
               <div class="trust-dot"></div>Instant Confirm
@@ -2899,10 +2926,11 @@
       ],
 
       rooms: [
-        { name: "River View Room", badge: "Scenic", image: "", desc: "Rooms with river views.", features: ["River View"], price: "<del>&#8377;2,500</del> &#8377;2,199", unit: "/ person" },
-        { name: "Family Room", badge: "Family", image: "", desc: "Spacious family rooms.", features: ["Spacious", "Family"], price: "<del>&#8377;3,000</del> &#8377;2,499", unit: "/ person" },
-        { name: "Couple Room", badge: "Romantic", image: "", desc: "Private rooms for couples.", features: ["Private", "Cozy"], price: "<del>&#8377;3,500</del> &#8377;2,999", unit: "/ person" },
-        { name: "Dorm Room", badge: "Budget", image: "", desc: "Shared accommodation.", features: ["Shared Space"], price: "<del>&#8377;2,000</del> &#8377;1,800", unit: "/ person" },
+        { name: "River View Rooms", badge: "Best Pick", image: "images/White Waters/WHITE WATER RESORT  pdf-images-25.jpg", desc: "Spacious cottages with attached bathrooms. Perfect for couples or small families offering direct views of the surrounding nature.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;3,300", unit: "/ person" },
+        { name: "Family Rooms", badge: "Famiy Pick", image: "images/White Waters/WHITE WATER RESORT  pdf-images-29.jpg", desc: "A cozy, room with modern comforts and a private sit-out, offering peaceful river or greenery views for a relaxing stay.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,800", unit: "/ person" },
+        { name: "Couple Cottage", badge: "Couple Stay", image: "images/White Waters/WHITE WATER RESORT  pdf-images-21.jpg", desc: "Spacious dormitory suitable for large groups and families looking for a budget-friendly stay without compromising on comfort.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,800", unit: "/ person" },
+        { name: "Dormatory", badge: "Group Stay", image: "images/White Waters/WHITE WATER RESORT  pdf-images-15.jpg", desc: "A spacious cottage-style room with rustic charm and modern amenities, offering a serene stay close to nature with comfortable interiors and scenic surroundings.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,800", unit: "/ person" },
+        { name: "Tent Stay", badge: "Group Stay", image: "images/White Waters/WHITE WATER RESORT  pdf-images-12.jpg", desc: "A cozy camping tent offering a simple, adventurous stay close to nature, with basic comforts and a peaceful outdoor ambiance.", features: ["AC", "Geyser", "TV", "Attached Bath"], price: "&#8377;2,800", unit: "/ person" },
       ],
 
       activities: [
@@ -2997,12 +3025,12 @@
       if (R.groupedActivities && R.groupedActivities.length > 0) {
         let gaHtml = '';
         R.groupedActivities.forEach(group => {
-           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
-           group.items.forEach(item => {
-             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
-             gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
-           });
-           gaHtml += `</div></details>`;
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
         });
         document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
       }
@@ -3199,4 +3227,3 @@
 </body>
 
 </html>
-

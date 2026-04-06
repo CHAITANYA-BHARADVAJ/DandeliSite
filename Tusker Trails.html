@@ -1045,12 +1045,13 @@
       display: block;
     }
 
-        /* ── ACCORDION AMENITIES ── */
+    /* ── ACCORDION AMENITIES ── */
     .am-details {
       border: 1px solid var(--border);
       background: #fff;
       margin-top: 16px;
     }
+
     .am-summary {
       display: flex;
       align-items: center;
@@ -1063,44 +1064,55 @@
       transition: background .2s;
       list-style: none;
     }
+
     .am-summary::-webkit-details-marker {
       display: none;
     }
+
     .am-summary:hover {
       background: rgba(201, 168, 76, .05);
     }
+
     .am-summary::after {
       content: '▼';
       font-size: 10px;
       color: var(--gold);
       transition: transform .3s;
     }
+
     .am-details[open] .am-summary::after {
       transform: rotate(180deg);
     }
+
     .am-details[open] .am-summary {
       border-bottom: 1px dashed var(--border);
     }
+
     .am-content {
       display: grid;
       grid-template-columns: 1fr;
     }
+
     .am-content .am-item {
       border: none !important;
       border-bottom: 1px solid var(--border) !important;
     }
+
     @media(min-width:560px) {
       .am-content {
         grid-template-columns: 1fr 1fr;
       }
+
       .am-content .am-item:nth-child(even) {
         border-left: 1px solid var(--border) !important;
       }
+
       .am-content .am-item:nth-last-child(-n+2) {
         border-bottom: none !important;
       }
     }
-@media(min-width:560px) {
+
+    @media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2400,10 +2412,25 @@
   <!-- nav-mobile-fix -->
   <style>
     @media(max-width: 600px) {
-      .nav-right { gap: 6px !important; }
-      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
-      .nav-wa, .rl-nav-wa { display: none !important; }
-      .logo-title { font-size: 18px !important; }
+      .nav-right {
+        gap: 6px !important;
+      }
+
+      .nav-phone,
+      .rl-nav-phone {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        letter-spacing: -0.2px !important;
+      }
+
+      .nav-wa,
+      .rl-nav-wa {
+        display: none !important;
+      }
+
+      .logo-title {
+        font-size: 18px !important;
+      }
     }
   </style>
 </head>
@@ -2634,7 +2661,7 @@
           <a class="book-wa" id="bookWa" href="#" target="_blank">&#128172; &nbsp;Book via WhatsApp</a>
           <div class="book-trust">
             <div class="trust-item">
-              
+
             </div>
             <div class="trust-item">
               <div class="trust-dot"></div>Instant Confirm
@@ -2799,12 +2826,12 @@
       ],
 
       rooms: [
-        { name: "AC Deluxe Room", badge: "Best Pick", image: "", desc: "Premium AC deluxe room.", features: ["AC", "Deluxe"], price: "&#8377;2,200", unit: "/ person" },
-        { name: "AC Wooden Cottage", badge: "Unique", image: "", desc: "Charming AC wooden cottages.", features: ["AC", "Wooden"], price: "&#8377;2,000", unit: "/ person" },
-        { name: "AC Maharaja Cottage", badge: "Premium", image: "", desc: "Spacious Maharaja AC cottage.", features: ["AC", "Spacious"], price: "&#8377;1,800", unit: "/ person" },
-        { name: "Standard Room", badge: "Comfort", image: "", desc: "Standard room with essentials.", features: ["Attached Bath"], price: "&#8377;1,800", unit: "/ person" },
-        { name: "Dormitory", badge: "Budget", image: "", desc: "Shared accommodation.", features: ["Shared Space"], price: "&#8377;1,800", unit: "/ person" },
-        { name: "Camping Tent", badge: "Adventure", image: "", desc: "Outdoor camping.", features: ["Tent"], price: "&#8377;1,600", unit: "/ person" },
+        { name: "AC Delux", badge: "Most Popular", image: "images/Tusker Trails/Aaa Tusker trails kl -images-6.jpg", desc: "A charming private cottage nestled among teak trees, with a sit-out veranda facing the forest. King bed, AC, ensuite bathroom with rain shower.", features: ["King Bed", "Forest View", "Veranda", "AC", "Rain Shower"], price: "&#8377;5,499", unit: "/ night" },
+        { name: "AC Wooden Cottage", badge: "Best Pick", image: "images/Tusker Trails/Aaa Tusker trails kl -images-10.jpg", desc: "Floor-to-ceiling glass doors open onto a private deck above the Kali River. Oversized bath, Jacuzzi, and a curated in-room minibar.", features: ["River View", "Private Deck", "Jacuzzi", "Minibar", "King Bed"], price: "&#8377;8,999", unit: "/ night" },
+        { name: "AC Maharaja Cottage", badge: "Family Friendly", image: "images/Tusker Trails/Aaa Tusker trails kl -images-13.jpg", desc: "Spacious interconnecting room for 4 guests. Two queen beds, a shared sit-out, and a children\u2019s play corner.", features: ["2 Queen Beds", "Sleeps 4", "AC", "Sit-out", "Play Corner"], price: "&#8377;9,499", unit: "/ night" },
+        { name: "Standard Rooms", badge: "Family Friendly", image: "images/Tusker Trails/Aaa Tusker trails kl -images-24.jpg", desc: "Spacious interconnecting room for 4 guests. Two queen beds, a shared sit-out, and a children\u2019s play corner.", features: ["2 Queen Beds", "Sleeps 4", "AC", "Sit-out", "Play Corner"], price: "&#8377;9,499", unit: "/ night" },
+        { name: "Dormatory", badge: "Family Friendly", image: "images/Tusker Trails/Aaa Tusker trails kl -images-25.jpg", desc: "A spacious cottage-style room with rustic charm and modern amenities, offering a serene stay close to nature with comfortable interiors and scenic surroundings.", features: ["2 Queen Beds", "Sleeps 4", "AC", "Sit-out", "Play Corner"], price: "&#8377;9,499", unit: "/ night" },
+        { name: "Camping Tents", badge: "Family Friendly", image: "images/Tusker Trails/Aaa Tusker trails kl -images-15.jpg", desc: "A cozy camping tent offering a simple, adventurous stay close to nature, with basic comforts and a peaceful outdoor ambiance.", features: ["2 Queen Beds", "Sleeps 4", "AC", "Sit-out", "Play Corner"], price: "&#8377;9,499", unit: "/ night" },
       ],
 
       activities: [
@@ -2898,12 +2925,12 @@
       if (R.groupedActivities && R.groupedActivities.length > 0) {
         let gaHtml = '';
         R.groupedActivities.forEach(group => {
-           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
-           group.items.forEach(item => {
-             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
-             gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
-           });
-           gaHtml += `</div></details>`;
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
         });
         document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
       }
@@ -3130,4 +3157,3 @@
 </body>
 
 </html>
-

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1048,12 +1048,13 @@
       display: block;
     }
 
-        /* ── ACCORDION AMENITIES ── */
+    /* ── ACCORDION AMENITIES ── */
     .am-details {
       border: 1px solid var(--border);
       background: #fff;
       margin-top: 16px;
     }
+
     .am-summary {
       display: flex;
       align-items: center;
@@ -1066,44 +1067,55 @@
       transition: background .2s;
       list-style: none;
     }
+
     .am-summary::-webkit-details-marker {
       display: none;
     }
+
     .am-summary:hover {
       background: rgba(201, 168, 76, .05);
     }
+
     .am-summary::after {
       content: '▼';
       font-size: 10px;
       color: var(--gold);
       transition: transform .3s;
     }
+
     .am-details[open] .am-summary::after {
       transform: rotate(180deg);
     }
+
     .am-details[open] .am-summary {
       border-bottom: 1px dashed var(--border);
     }
+
     .am-content {
       display: grid;
       grid-template-columns: 1fr;
     }
+
     .am-content .am-item {
       border: none !important;
       border-bottom: 1px solid var(--border) !important;
     }
+
     @media(min-width:560px) {
       .am-content {
         grid-template-columns: 1fr 1fr;
       }
+
       .am-content .am-item:nth-child(even) {
         border-left: 1px solid var(--border) !important;
       }
+
       .am-content .am-item:nth-last-child(-n+2) {
         border-bottom: none !important;
       }
     }
-@media(min-width:560px) {
+
+    @media(min-width:560px) {
       .amenities-list {
         grid-template-columns: 1fr 1fr;
       }
@@ -2493,10 +2505,25 @@
   <!-- nav-mobile-fix -->
   <style>
     @media(max-width: 600px) {
-      .nav-right { gap: 6px !important; }
-      .nav-phone, .rl-nav-phone { white-space: nowrap !important; font-size: 13px !important; letter-spacing: -0.2px !important; }
-      .nav-wa, .rl-nav-wa { display: none !important; }
-      .logo-title { font-size: 18px !important; }
+      .nav-right {
+        gap: 6px !important;
+      }
+
+      .nav-phone,
+      .rl-nav-phone {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        letter-spacing: -0.2px !important;
+      }
+
+      .nav-wa,
+      .rl-nav-wa {
+        display: none !important;
+      }
+
+      .logo-title {
+        font-size: 18px !important;
+      }
     }
   </style>
 </head>
@@ -2720,7 +2747,7 @@
           <a class="book-wa" id="bookWa" href="#" target="_blank">&#128172; &nbsp;Book via WhatsApp</a>
           <div class="book-trust">
             <div class="trust-item">
-              
+
             </div>
             <div class="trust-item">
               <div class="trust-dot"></div>Instant Confirm
@@ -2943,11 +2970,11 @@
       ],
 
       rooms: [
-        { name: "AC Deluxe Pool View Room", badge: "Best Pick", image: "", desc: "AC rooms with pool views.", features: ["AC", "Pool View"], price: "&#8377;2,500", unit: "/ person" },
-        { name: "AC Deluxe Forest View Room", badge: "Nature", image: "", desc: "AC rooms with forest views.", features: ["AC", "Forest View"], price: "&#8377;2,500", unit: "/ person" },
-        { name: "AC Premium Room", badge: "Premium", image: "", desc: "Premium AC accommodation.", features: ["AC", "Premium"], price: "&#8377;2,500", unit: "/ person" },
-        { name: "AC Family Room", badge: "Family", image: "", desc: "Spacious AC family rooms.", features: ["AC", "Family"], price: "&#8377;2,200", unit: "/ person" },
-        { name: "Commando Cottage", badge: "Adventure", image: "", desc: "Rustic commando cottages.", features: ["Non-AC"], price: "&#8377;1,800", unit: "/ person" },
+        { name: "AC Deluxe Pool View Room", badge: "Best Pick", image: "images/Dewdrops/Room2_2.jpg", desc: "AC rooms with pool views.", features: ["AC", "Pool View"], price: "&#8377;2,500", unit: "/ person" },
+        { name: "AC Deluxe Forest View Room", badge: "Nature", image: "images/Dewdrops/Room1_1.jpg", desc: "AC rooms with forest views.", features: ["AC", "Forest View"], price: "&#8377;2,500", unit: "/ person" },
+        { name: "AC Premium Room", badge: "Premium", image: "images/Dewdrops/Prem.jpeg", desc: "Premium AC accommodation.", features: ["AC", "Premium"], price: "&#8377;2,500", unit: "/ person" },
+        { name: "AC Family Room", badge: "Family", image: "images/Dewdrops/Dew Drops - Dandeli Resorts (27).jpg", desc: "Spacious AC family rooms.", features: ["AC", "Family"], price: "&#8377;2,200", unit: "/ person" },
+        { name: "Commando Cottage", badge: "Adventure", image: "images/Dewdrops/Dorm1_1.jpg", desc: "Rustic commando cottages.", features: ["Non-AC"], price: "&#8377;1,800", unit: "/ person" },
       ],
 
       activities: [
@@ -3045,12 +3072,12 @@
       if (R.groupedActivities && R.groupedActivities.length > 0) {
         let gaHtml = '';
         R.groupedActivities.forEach(group => {
-           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
-           group.items.forEach(item => {
-             let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
-             gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
-           });
-           gaHtml += `</div></details>`;
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            let isCost = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge") || item.toLowerCase().includes("@");
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
         });
         document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
       }
@@ -3247,4 +3274,3 @@
 </body>
 
 </html>
-
