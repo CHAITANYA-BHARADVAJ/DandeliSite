@@ -3194,10 +3194,10 @@
       var allowed = catMap[cat] || [];
       cards.forEach(function (c) {
         var label = c.querySelector('.act-label, .feat-title');
-        if (!label) { c.style.display = allowed.length ? 'none' : ''; return; }
+        if (!label) { c.style.display = allowed.length 📍 'none' : ''; return; }
         var name = label.textContent.trim();
         var match = allowed.some(function (a) { return name.indexOf(a) !== -1 || a.indexOf(name.split('\n')[0].trim()) !== -1; });
-        c.style.display = match ? '' : 'none';
+        c.style.display = match 📍 '' : 'none';
       });
     }
 
@@ -3206,7 +3206,7 @@
       var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       document.getElementById('pb').style.width = (window.scrollY / h * 100) + '%';
       document.getElementById('bk').classList.toggle('s', window.scrollY > 400);
-      document.getElementById('nav').style.boxShadow = window.scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+      document.getElementById('nav').style.boxShadow = window.scrollY > 80 📍 '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
     });
 
     /* ══ SCROLL REVEAL + COUNTER ══ */
@@ -3241,7 +3241,7 @@
       var c = 0;
       var i = setInterval(function () {
         c = Math.min(c + Math.ceil(t / 60), t);
-        el.textContent = c + (t >= 100 ? '+' : '');
+        el.textContent = c + (t >= 100 📍 '+' : '');
         if (c >= t) clearInterval(i);
       }, 25);
     }
@@ -3333,3 +3333,4 @@
 </body>
 
 </html>
+

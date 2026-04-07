@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 
@@ -1555,7 +1555,7 @@
             <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">🌿 Nature
                 Resort</span></div>
             <button class="rcard-heart"
-              onclick="event.preventDefault(); this.classList.toggle('liked'); this.textContent = this.classList.contains('liked') ? '❤' : '🤍'">🤍</button>
+              onclick="event.preventDefault(); this.classList.toggle('liked'); this.textContent = this.classList.contains('liked') 📍 '❤' : '🤍'">🤍</button>
             <div class="rcard-thumbs">
               <div class="rthumb"><img alt="" src="images/JungleEdge/WhatsApp Image 2026-04-04 at 12.34.42 (2).jpeg" />
               </div>
@@ -1599,7 +1599,7 @@
             <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">🌿 Nature
                 Resort</span></div>
             <button class="rcard-heart"
-              onclick="event.preventDefault(); this.classList.toggle('liked'); this.textContent = this.classList.contains('liked') ? '❤' : '🤍'">🤍</button>
+              onclick="event.preventDefault(); this.classList.toggle('liked'); this.textContent = this.classList.contains('liked') 📍 '❤' : '🤍'">🤍</button>
             <div class="rcard-thumbs">
               <div class="rthumb"><img alt=""
                   src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" /></div>
@@ -1643,7 +1643,7 @@
             <div class="rcard-badges"><span class="rbadge rb-eco" style="background:var(--forest);">🌿 Nature
                 Resort</span></div>
             <button class="rcard-heart"
-              onclick="event.preventDefault(); this.classList.toggle('liked'); this.textContent = this.classList.contains('liked') ? '❤' : '🤍'">🤍</button>
+              onclick="event.preventDefault(); this.classList.toggle('liked'); this.textContent = this.classList.contains('liked') 📍 '❤' : '🤍'">🤍</button>
             <div class="rcard-thumbs">
               <div class="rthumb"><img alt="" src="images/Riverpoint/WhatsApp Image 2026-04-04 at 12.33.43.jpeg" />
               </div>
@@ -1711,7 +1711,7 @@
           if (starVals.length && !starVals.includes(+c.dataset.stars)) show = false;
           if (amenVals.length && !amenVals.every(a => c.dataset.amenities.includes(a))) show = false;
           if (durVals.length && !durVals.includes(c.dataset.dur)) show = false;
-          c.style.display = show ? 'grid' : 'none';
+          c.style.display = show 📍 'grid' : 'none';
           if (show) vis++;
         });
         document.getElementById('countNum').textContent = vis;
@@ -1732,8 +1732,9 @@
         cards.sort((a, b) => { if (key === 'price-low') return +a.dataset.price - +b.dataset.price; if (key === 'price-high') return +b.dataset.price - +a.dataset.price; if (key === 'rating') return +b.dataset.rating - +a.dataset.rating; return 0; });
         cont.style.opacity = '0'; setTimeout(() => { cards.forEach(c => cont.appendChild(c)); cont.style.opacity = '1'; cont.style.transition = 'opacity .3s'; }, 200);
       }
-      function toggleHeart(btn) { btn.classList.toggle('liked'); btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍'; }
+      function toggleHeart(btn) { btn.classList.toggle('liked'); btn.textContent = btn.classList.contains('liked') 📍 '❤️' : '🤍'; }
     </script>
 </body>
 
 </html>
+

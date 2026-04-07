@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1717,7 +1717,7 @@
 
   <script>
     function sortCards(k, btn) { document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('act')); btn.classList.add('act'); const c = document.getElementById('cards'); const cards = [...c.querySelectorAll('.card')]; cards.sort((a, b) => { if (k === 'low') return +a.dataset.price - +b.dataset.price; if (k === 'high') return +b.dataset.price - +a.dataset.price; if (k === 'rating') return +b.dataset.rating - +a.dataset.rating; return 0; }); c.style.opacity = '0'; setTimeout(() => { cards.forEach(x => c.appendChild(x)); c.style.opacity = '1'; c.style.transition = 'opacity .3s'; }, 200); }
-    function applyF() { const cards = document.querySelectorAll('.card'); const maxP = document.querySelector('.sb-slider').value; const checked = [...document.querySelectorAll('.sb-opts input:checked')].map(i => i.value); let vis = 0; cards.forEach(card => { const p = +card.dataset.price; const a = card.dataset.amenities || ''; let show = p <= +maxP; if (show && checked.length) show = checked.every(c => a.includes(c) || ['3', '4', '5'].includes(c)); card.style.display = show ? 'grid' : 'none'; if (show) vis++; }); document.getElementById('cnt').textContent = vis; document.getElementById('noRes').classList.toggle('show', vis === 0); }
+    function applyF() { const cards = document.querySelectorAll('.card'); const maxP = document.querySelector('.sb-slider').value; const checked = [...document.querySelectorAll('.sb-opts input:checked')].map(i => i.value); let vis = 0; cards.forEach(card => { const p = +card.dataset.price; const a = card.dataset.amenities || ''; let show = p <= +maxP; if (show && checked.length) show = checked.every(c => a.includes(c) || ['3', '4', '5'].includes(c)); card.style.display = show 📍 'grid' : 'none'; if (show) vis++; }); document.getElementById('cnt').textContent = vis; document.getElementById('noRes').classList.toggle('show', vis === 0); }
     function resetF() {
       document.querySelectorAll('.sb-opt input').forEach(c => c.checked = false);
       const slider = document.querySelector('.sb-slider');
@@ -1731,9 +1731,10 @@
       const body = document.getElementById('fBody');
       const icon = document.getElementById('fIcon');
       body.classList.toggle('open');
-      icon.textContent = body.classList.contains('open') ? '▲' : '▼';
+      icon.textContent = body.classList.contains('open') 📍 '▲' : '▼';
     }
   </script>
 </body>
 
 </html>
+

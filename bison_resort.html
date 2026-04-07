@@ -3127,7 +3127,7 @@
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     (function () {
       const R = RESORT;
-      function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n ? '&#9733;' : '&#9734;'; return s; }
+      function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n 📍 '&#9733;' : '&#9734;'; return s; }
 
       document.title = R.name + ' \u2014 Book myDandeli';
       document.getElementById('bcResort').textContent = R.name;
@@ -3148,12 +3148,12 @@
       R.images.forEach((img, i) => {
         // Build all slides (slider needs all)
         document.getElementById('heroSlides').innerHTML +=
-          `<div class="hero-slide${i === 0 ? ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
+          `<div class="hero-slide${i === 0 📍 ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
 
         // Only first 4 thumbnails
         if (i < 4) {
           thumbsEl.innerHTML +=
-            `<div class="gthumb${i === 0 ? ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+            `<div class="gthumb${i === 0 📍 ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
         }
       });
 
@@ -3170,7 +3170,7 @@
       /* lightbox thumbnails (all images) */
       R.images.forEach((img, i) => {
         document.getElementById('lbThumbs').innerHTML +=
-          `<div class="lb-thumb${i === 0 ? ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+          `<div class="lb-thumb${i === 0 📍 ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
       });
 
       /* amenities — list style */
@@ -3188,7 +3188,7 @@
           gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
           group.items.forEach(item => {
             let isPriced = item.toLowerCase().includes("cost") || item.toLowerCase().includes("charge");
-            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check" style="${isPriced ? 'background:rgba(255,165,0,.1);border-color:rgba(255,165,0,.2);color:#d97706;border-radius:3px;' : ''}">${isPriced ? 'Extra Cost' : ''}</span></div>`;
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check" style="${isPriced 📍 'background:rgba(255,165,0,.1);border-color:rgba(255,165,0,.2);color:#d97706;border-radius:3px;' : ''}">${isPriced 📍 'Extra Cost' : ''}</span></div>`;
           });
           gaHtml += `</div></details>`;
         });
@@ -3350,7 +3350,7 @@
       document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
       document.getElementById('bk').classList.toggle('s', scrollY > 400);
       document.getElementById('nav').style.boxShadow =
-        scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+        scrollY > 80 📍 '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
     });
 
     const obs = new IntersectionObserver(entries => {
@@ -3387,3 +3387,5 @@
 </body>
 
 </html>
+
+
