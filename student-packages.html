@@ -887,13 +887,6 @@
       }
     }
   </style>
-  <style>
-    /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
-    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
-    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
-      pointer-events: none !important;
-    }
-  </style>
 </head>
 
 <body>
@@ -936,7 +929,7 @@
       <button class="sort-btn" onclick="sortCards('low',this)">Price: Low</button>
       <button class="sort-btn" onclick="sortCards('high',this)">Price: High</button>
       <button class="sort-btn" onclick="sortCards('rating',this)">Top Rated</button>
-      <div class="count"><strong id="cnt">6</strong> Resorts Found</div>
+      <div class="count"><strong id="cnt">19</strong> Resorts Found</div>
     </div>
   </div>
 
