@@ -1984,6 +1984,7 @@
     .cta-strip::before {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 320px;
       height: 320px;
       border: 60px solid rgba(201, 168, 76, .06);
@@ -1995,6 +1996,7 @@
     .cta-strip::after {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 240px;
       height: 240px;
       border: 50px solid rgba(201, 168, 76, .05);
@@ -2981,6 +2983,7 @@
       ],
 
       policies: [
+        { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
         { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 12:00 PM", "Check-out: 11:00 AM"] },
         { icon: "&#128101;", title: "Children & Booking", items: ["5-12 years: 50% charges", "Booking confirmed on advance only"] },
         { icon: "&#128683;", title: "Cancellation", items: ["No cancellation, No refund", "Balance to be paid before check-in"] },

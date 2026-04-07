@@ -1984,6 +1984,7 @@
     .cta-strip::before {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 320px;
       height: 320px;
       border: 60px solid rgba(201, 168, 76, .06);
@@ -1995,6 +1996,7 @@
     .cta-strip::after {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 240px;
       height: 240px;
       border: 50px solid rgba(201, 168, 76, .05);
@@ -2992,6 +2994,7 @@
       ],
 
       policies: [
+        { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
         { icon: "&#128197;", title: "Check-in & Rules", items: ["Check-in: 1:00 PM, Check-out: 11:00 AM", "Valid photo ID mandatory during check-in", "Rooms are non-smoking, equipped with smoke detectors", "No pets permitted on premises", "Room service is not provided"] },
         { icon: "&#128101;", title: "Extra Guests & Children", items: ["Children aged 6 to 11 charged 50% of adult tariff", "Children above 11 considered as adults", "Driver meals at staff cafeteria (Free) or Restaurant (Rs1500+GST)"] },
         { icon: "&#128225;", title: "Connectivity & Entertainment", items: ["Only Airtel network is accessible", "Wi-Fi available exclusively in the reception area", "Riverside, Family Cottages, and Dormitories have no TV"] },

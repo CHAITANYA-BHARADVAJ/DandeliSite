@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1945,6 +1945,7 @@
     .cta-strip::before {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 320px;
       height: 320px;
       border: 60px solid rgba(201, 168, 76, .06);
@@ -1956,6 +1957,7 @@
     .cta-strip::after {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 240px;
       height: 240px;
       border: 50px solid rgba(201, 168, 76, .05);
@@ -2455,6 +2457,61 @@
         gap: 4px;
       }
     }
+    /* ── ACCORDION AMENITIES ── */
+    .am-details {
+      border: 1px solid var(--border);
+      background: #fff;
+      margin-top: 16px;
+    }
+    .am-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      transition: background .2s;
+      list-style: none;
+    }
+    .am-summary::-webkit-details-marker {
+      display: none;
+    }
+    .am-summary:hover {
+      background: rgba(201, 168, 76, .05);
+    }
+    .am-summary::after {
+      content: '▼';
+      font-size: 10px;
+      color: var(--gold);
+      transition: transform .3s;
+    }
+    .am-details[open] .am-summary::after {
+      transform: rotate(180deg);
+    }
+    .am-details[open] .am-summary {
+      border-bottom: 1px dashed var(--border);
+    }
+    .am-content {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .am-content .am-item {
+      border: none !important;
+      border-bottom: 1px solid var(--border) !important;
+    }
+    @media(min-width:560px) {
+      .am-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .am-content .am-item:nth-child(even) {
+        border-left: 1px solid var(--border) !important;
+      }
+      .am-content .am-item:nth-last-child(-n+2) {
+        border-bottom: none !important;
+      }
+    }
   </style>
   <!-- nav-mobile-fix -->
   <style>
@@ -2893,28 +2950,16 @@
         { icon: "&#x2615;", text: "Unlimited Breakfast (9-10 AM)" },
         { icon: "&#127869;", text: "Unlimited Lunch (1:30-3 PM)" },
         { icon: "&#x1F958;", text: "Unlimited Dinner (9:30-10:30 PM)" },
-        { icon: "&#x2615;", text: "Morning & Evening Tea/Coffee" },
-        { icon: "&#127754;", text: "Swimming in River Kali" },
-        { icon: "&#127807;", text: "Jungle Trekking (6:30 AM)" },
-        { icon: "&#128675;", text: "Boating in River Kali" },
-        { icon: "&#x1F6F6;", text: "Kayaking in River Kali" },
-        { icon: "&#x1F3AF;", text: "Archery" },
-        { icon: "&#128293;", text: "Night Campfire with Music" },
-        { icon: "&#127968;", text: "Accommodation Included" },
       ],
       groupedActivities: [
         {
           name: "River Activities",
-          items: ["Swimming in River Kali", "Boating in River Kali", "Kayaking in River Kali"]
+          items: ["Boating", "Zorbing", "Kayaking"]
         },
         {
-          name: "Adventure & Nature",
-          items: ["Jungle Trekking (6:30 AM)", "Archery"]
+          name: "Indoor Activity",
+          items: ["Air Hockey", "Archery", "Table Tennis", "Carrom", "Rain Dance"]
         },
-        {
-          name: "Evening Activities",
-          items: ["Night Campfire with Music"]
-        }
       ],
 
       rooms: [
@@ -2930,6 +2975,7 @@
       ],
 
       policies: [
+        { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
         { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 01:00 PM", "Check-out: 11:00 AM", "Aadhar card compulsory for all guests"] },
         { icon: "&#128101;", title: "Children Policy", items: ["Below 5 years: Free", "5-10 years: 50% charges", "Above 10 years: Full adult charges"] },
         { icon: "&#128683;", title: "Cancellation", items: ["No cancellation, No refund", "Balance to be paid before check-in"] },

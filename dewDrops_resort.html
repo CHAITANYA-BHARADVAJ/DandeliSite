@@ -1984,6 +1984,7 @@
         .cta-strip::before {
             content: '';
             position: absolute;
+      pointer-events: none;
             width: 320px;
             height: 320px;
             border: 60px solid rgba(201, 168, 76, .06);
@@ -1995,6 +1996,7 @@
         .cta-strip::after {
             content: '';
             position: absolute;
+      pointer-events: none;
             width: 240px;
             height: 240px;
             border: 50px solid rgba(201, 168, 76, .05);
@@ -3007,6 +3009,7 @@
             ],
 
             policies: [
+        { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
                 { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 11:00 AM", "Check-out: 10:00 AM"] },
                 { icon: "&#127860;", title: "Package", items: ["3 Unlimited Buffet Meals", "Water: Kayaking, Zorbing, Boating", "Rope: Zig Zag Bridge, Quake Walk, Hanging Log", "In-House: Pool, Campfire, Archery, Trekking, Rain Dance"] },
                 { icon: "&#128683;", title: "Cancellation", items: ["No cancellation, No refund", "Balance to be paid before check-in"] },

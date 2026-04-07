@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1945,6 +1945,7 @@
     .cta-strip::before {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 320px;
       height: 320px;
       border: 60px solid rgba(201, 168, 76, .06);
@@ -1956,6 +1957,7 @@
     .cta-strip::after {
       content: '';
       position: absolute;
+      pointer-events: none;
       width: 240px;
       height: 240px;
       border: 50px solid rgba(201, 168, 76, .05);
@@ -2405,6 +2407,73 @@
         height: 28px;
       }
     }
+
+    /* ACCORDION AMENITIES */
+    .am-details {
+      border: 1px solid var(--border);
+      background: #fff;
+      margin-top: 16px;
+    }
+
+    .am-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      transition: background .2s;
+      list-style: none;
+    }
+
+    .am-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .am-summary:hover {
+      background: rgba(201, 168, 76, .05);
+    }
+
+    .am-summary::after {
+      content: 'â–¼';
+      font-size: 10px;
+      color: var(--gold);
+      transition: transform .3s;
+    }
+
+    .am-details[open] .am-summary::after {
+      transform: rotate(180deg);
+    }
+
+    .am-details[open] .am-summary {
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .am-content {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .am-content .am-item {
+      border: none !important;
+      border-bottom: 1px solid var(--border) !important;
+    }
+
+    @media(min-width:560px) {
+      .am-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .am-content .am-item:nth-child(even) {
+        border-left: 1px solid var(--border) !important;
+      }
+
+      .am-content .am-item:nth-last-child(-n+2) {
+        border-bottom: none !important;
+      }
+    }
   </style>
   <!-- nav-mobile-fix -->
   <style>
@@ -2847,11 +2916,6 @@
         { icon: "&#x1F958;", text: "Buffet Dinner (Veg & Non-Veg) Unlimited" },
         { icon: "&#9749;", text: "Evening Tea/Coffee & Cookies" },
         { icon: "&#128246;", text: "Free WiFi in Rooms" },
-        { icon: "&#127754;", text: "Infinity Swimming Pool" },
-        { icon: "&#128293;", text: "Campfire (weather permitting)" },
-        { icon: "&#127993;", text: "Archery" },
-        { icon: "&#127928;", text: "DJ Music" },
-        { icon: "&#128131;", text: "Rain Dance" },
       ],
 
       groupedActivities: [
@@ -2877,6 +2941,7 @@
       ],
 
       policies: [
+        { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
         { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 01:00 PM", "Check-out: 11:00 AM", "Aadhar card compulsory for all guests including kids & adults"] },
         { icon: "&#128683;", title: "Cancellation", items: ["No cancellation, No refund", "Balance to be paid before check-in"] },
         { icon: "&#128101;", title: "Children Policy", items: ["Children below 5 years: Free of cost", "Children 5\u201310 years: 50% charges", "Children above 10 years: Full adult charges"] },
