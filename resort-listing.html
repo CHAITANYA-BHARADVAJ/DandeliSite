@@ -2152,119 +2152,119 @@
         <div class="rl-no-sub">Try adjusting your filters to see more options</div>
       </div>
     </div>
-    <!-- /rl-main -->
-    <script>
-      /* ── READ URL PARAMS & SET BANNER ── */
-      (function () {
-        const params = new URLSearchParams(window.location.search);
-        const pkg = params.get('pkg') || 'all';
-
-        const pkgData = {
-          'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🎒 Student Pack'], price: '₹2,499', unit: '/person' },
-          'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['⏱ 2N·3D', '🍽 Breakfast', '🎒 Budget Pick'], price: '₹3,499', unit: '/person' },
-          'student-group': { name: 'College <em>Group Tour</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '👥 Min 10 Pax'], price: '₹1,999', unit: '/person (min 10)' },
-          'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🕯 Candlelight'], price: '₹6,499', unit: '/couple' },
-          'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '💆 Spa'], price: '₹9,999', unit: '/couple' },
-          'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '🌹 Honeymoon'], price: '₹14,999', unit: '/couple' },
-          'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '👨‍👩‍👧‍👦 2+2'], price: '₹8,999', unit: '/family' },
-          'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '🦁 Safari'], price: '₹12,999', unit: '/family' },
-          'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '👑 Premium'], price: '₹18,999', unit: '/family' },
-        };
-
-        const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['✅ All Meals', '✅ Activities', '✅ Transfers'], price: '₹2,499', unit: '/person' };
-
-        document.getElementById('bannerTitle').innerHTML = d.name;
-        document.getElementById('bannerPrice').textContent = d.price;
-        document.getElementById('bannerUnit').textContent = d.unit;
-
-        const meta = document.getElementById('bannerMeta');
-        meta.innerHTML = d.pills.map(p => `<span class="rl-pkg-pill">${p}</span>`).join('');
-      })();
-
-      /* ── SORT ── */
-      function sortResorts(key, btn) {
-        document.querySelectorAll('.rl-sort-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const container = document.getElementById('resortsContainer');
-        const cards = Array.from(container.querySelectorAll('.resort-card'));
-
-        cards.sort((a, b) => {
-          if (key === 'price-low') return +a.dataset.price - +b.dataset.price;
-          if (key === 'price-high') return +b.dataset.price - +a.dataset.price;
-          if (key === 'rating') return +b.dataset.rating - +a.dataset.rating;
-          return 0; // recommended
-        });
-
-        container.style.opacity = '0';
-        setTimeout(() => {
-          cards.forEach(c => container.appendChild(c));
-          container.style.opacity = '1';
-          container.style.transition = 'opacity 0.3s ease';
-        }, 200);
-      }
-
-      /* ── FILTERS ── */
-      function toggleMobileFilters() {
-        const body = document.getElementById('filterBody');
-        const icon = document.getElementById('filterToggleIcon');
-        if (body.classList.contains('open')) {
-          body.classList.remove('open');
-          if (icon) icon.textContent = '▼';
-        } else {
-          body.classList.add('open');
-          if (icon) icon.textContent = '▲';
-        }
-      }
-
-      function applyFilters() {
-        const cards = document.querySelectorAll('.resort-card');
-        const maxPrice = document.querySelector('.rl-slider').value;
-
-        const checkedStars = Array.from(document.querySelectorAll('.rl-star-options input:checked')).map(i => +i.value);
-        const checkedAmenities = Array.from(document.querySelectorAll('.rl-amenities input:checked')).map(i => i.value);
-        const checkedTypes = Array.from(document.querySelectorAll('.rl-check-opt input[value="resort"], .rl-check-opt input[value="cottage"], .rl-check-opt input[value="homestay"], .rl-check-opt input[value="camp"]').constructor === NodeList
-          ? document.querySelectorAll('.rl-filter-group:last-child input:checked')
-          : []).map(i => i.value);
-
-        let visible = 0;
-
-        cards.forEach(card => {
-          const price = +card.dataset.price;
-          const stars = +card.dataset.stars;
-          const amenities = card.dataset.amenities || '';
-          const type = card.dataset.type || '';
-
-          let show = true;
-
-          if (price > +maxPrice) show = false;
-          if (checkedStars.length && !checkedStars.includes(stars)) show = false;
-          if (checkedAmenities.length && !checkedAmenities.every(a => amenities.includes(a))) show = false;
-
-          card.style.display = show ? 'grid' : 'none';
-          if (show) visible++;
-        });
-
-        document.getElementById('countDisplay').textContent = visible;
-        document.getElementById('noResults').classList.toggle('show', visible === 0);
-      }
-
-      function resetFilters() {
-        document.querySelectorAll('.rl-sidebar input[type="checkbox"]').forEach(i => i.checked = false);
-        document.querySelector('.rl-slider').value = 25000;
-        document.getElementById('priceVal').textContent = '₹25,000';
-        document.querySelectorAll('.resort-card').forEach(c => c.style.display = 'grid');
-        document.getElementById('countDisplay').textContent = document.querySelectorAll('.resort-card').length;
-        document.getElementById('noResults').classList.remove('show');
-      }
-
-      /* ── HEART ── */
-      function toggleHeart(btn) {
-        btn.classList.toggle('liked');
-        btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
-      }
-    </script>
   </div>
+  <!-- /rl-main -->
+  <script>
+    /* ── READ URL PARAMS & SET BANNER ── */
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const pkg = params.get('pkg') || 'all';
+
+      const pkgData = {
+        'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🎒 Student Pack'], price: '₹2,499', unit: '/person' },
+        'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['⏱ 2N·3D', '🍽 Breakfast', '🎒 Budget Pick'], price: '₹3,499', unit: '/person' },
+        'student-group': { name: 'College <em>Group Tour</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '👥 Min 10 Pax'], price: '₹1,999', unit: '/person (min 10)' },
+        'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🕯 Candlelight'], price: '₹6,499', unit: '/couple' },
+        'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '💆 Spa'], price: '₹9,999', unit: '/couple' },
+        'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '🌹 Honeymoon'], price: '₹14,999', unit: '/couple' },
+        'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '👨‍👩‍👧‍👦 2+2'], price: '₹8,999', unit: '/family' },
+        'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '🦁 Safari'], price: '₹12,999', unit: '/family' },
+        'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '👑 Premium'], price: '₹18,999', unit: '/family' },
+      };
+
+      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['✅ All Meals', '✅ Activities', '✅ Transfers'], price: '₹2,499', unit: '/person' };
+
+      document.getElementById('bannerTitle').innerHTML = d.name;
+      document.getElementById('bannerPrice').textContent = d.price;
+      document.getElementById('bannerUnit').textContent = d.unit;
+
+      const meta = document.getElementById('bannerMeta');
+      meta.innerHTML = d.pills.map(p => `<span class="rl-pkg-pill">${p}</span>`).join('');
+    })();
+
+    /* ── SORT ── */
+    function sortResorts(key, btn) {
+      document.querySelectorAll('.rl-sort-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const container = document.getElementById('resortsContainer');
+      const cards = Array.from(container.querySelectorAll('.resort-card'));
+
+      cards.sort((a, b) => {
+        if (key === 'price-low') return +a.dataset.price - +b.dataset.price;
+        if (key === 'price-high') return +b.dataset.price - +a.dataset.price;
+        if (key === 'rating') return +b.dataset.rating - +a.dataset.rating;
+        return 0; // recommended
+      });
+
+      container.style.opacity = '0';
+      setTimeout(() => {
+        cards.forEach(c => container.appendChild(c));
+        container.style.opacity = '1';
+        container.style.transition = 'opacity 0.3s ease';
+      }, 200);
+    }
+
+    /* ── FILTERS ── */
+    function toggleMobileFilters() {
+      const body = document.getElementById('filterBody');
+      const icon = document.getElementById('filterToggleIcon');
+      if (body.classList.contains('open')) {
+        body.classList.remove('open');
+        if (icon) icon.textContent = '▼';
+      } else {
+        body.classList.add('open');
+        if (icon) icon.textContent = '▲';
+      }
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll('.resort-card');
+      const maxPrice = document.querySelector('.rl-slider').value;
+
+      const checkedStars = Array.from(document.querySelectorAll('.rl-star-options input:checked')).map(i => +i.value);
+      const checkedAmenities = Array.from(document.querySelectorAll('.rl-amenities input:checked')).map(i => i.value);
+      const checkedTypes = Array.from(document.querySelectorAll('.rl-check-opt input[value="resort"], .rl-check-opt input[value="cottage"], .rl-check-opt input[value="homestay"], .rl-check-opt input[value="camp"]').constructor === NodeList
+        ? document.querySelectorAll('.rl-filter-group:last-child input:checked')
+        : []).map(i => i.value);
+
+      let visible = 0;
+
+      cards.forEach(card => {
+        const price = +card.dataset.price;
+        const stars = +card.dataset.stars;
+        const amenities = card.dataset.amenities || '';
+        const type = card.dataset.type || '';
+
+        let show = true;
+
+        if (price > +maxPrice) show = false;
+        if (checkedStars.length && !checkedStars.includes(stars)) show = false;
+        if (checkedAmenities.length && !checkedAmenities.every(a => amenities.includes(a))) show = false;
+
+        card.style.display = show ? 'grid' : 'none';
+        if (show) visible++;
+      });
+
+      document.getElementById('countDisplay').textContent = visible;
+      document.getElementById('noResults').classList.toggle('show', visible === 0);
+    }
+
+    function resetFilters() {
+      document.querySelectorAll('.rl-sidebar input[type="checkbox"]').forEach(i => i.checked = false);
+      document.querySelector('.rl-slider').value = 25000;
+      document.getElementById('priceVal').textContent = '₹25,000';
+      document.querySelectorAll('.resort-card').forEach(c => c.style.display = 'grid');
+      document.getElementById('countDisplay').textContent = document.querySelectorAll('.resort-card').length;
+      document.getElementById('noResults').classList.remove('show');
+    }
+
+    /* ── HEART ── */
+    function toggleHeart(btn) {
+      btn.classList.toggle('liked');
+      btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
+    }
+  </script>
 </body>
 
 </html>
