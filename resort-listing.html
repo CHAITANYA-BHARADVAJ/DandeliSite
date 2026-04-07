@@ -1021,13 +1021,6 @@
       }
     }
   </style>
-  <style>
-    /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
-    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
-    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
-      pointer-events: none !important;
-    }
-  </style>
 </head>
 
 <body>
@@ -1071,7 +1064,7 @@
         <button class="rl-sort-btn" onclick="sortResorts('price-low', this)">Price: Low</button>
         <button class="rl-sort-btn" onclick="sortResorts('price-high', this)">Price: High</button>
         <button class="rl-sort-btn" onclick="sortResorts('rating', this)">Top Rated</button>
-        <div class="rl-result-count"><strong id="countDisplay">12</strong> Properties Found</div>
+        <div class="rl-result-count"><strong id="countDisplay">19</strong> Properties Found</div>
       </div>
       <!-- Resort Cards -->
       <div class="rl-cards" id="resortsContainer">
@@ -2160,7 +2153,7 @@
         'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['? 3N�4D', '?? All Meals', '?? Premium'], price: '?18,999', unit: '/family' },
       };
 
-      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['? All Meals', '? Activities', ], price: '?2,499', unit: '/person' };
+      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['? All Meals', '? Activities',], price: '?2,499', unit: '/person' };
 
       document.getElementById('bannerTitle').innerHTML = d.name;
       document.getElementById('bannerPrice').textContent = d.price;
