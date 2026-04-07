@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <link rel="icon" type="image/png" href="images/logo_transparent.png">
-  <title>Dandeli Resorts — Choose Your Stay</title>
+  <title>Dandeli Resorts � Choose Your Stay</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;family=Jost:wght@300;400;500;600&amp;display=swap"
     rel="stylesheet" />
@@ -41,7 +41,7 @@
       color: var(--text);
     }
 
-    /* ── TOP NAV ── */
+    /* -- TOP NAV -- */
     .rl-nav {
       background: var(--forest);
       padding: 14px 40px;
@@ -97,7 +97,7 @@
       box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
     }
 
-    /* ── PACKAGE BANNER ── */
+    /* -- PACKAGE BANNER -- */
     .rl-banner {
       background: linear-gradient(135deg, var(--forest) 0%, #0d2318 100%);
       padding: 36px 40px;
@@ -207,7 +207,7 @@
       font-family: 'Jost', sans-serif;
     }
 
-    /* ── MAIN LAYOUT ── */
+    /* -- MAIN LAYOUT -- */
     .rl-main {
       max-width: 1280px;
       margin: 0 auto;
@@ -218,7 +218,7 @@
       align-items: start;
     }
 
-    /* ── FILTERS SIDEBAR ── */
+    /* -- FILTERS SIDEBAR -- */
     .rl-sidebar {
       background: var(--white);
       border: 1px solid var(--border);
@@ -405,7 +405,7 @@
       color: var(--forest);
     }
 
-    /* ── RESORT CARDS (MakeMyTrip style) ── */
+    /* -- RESORT CARDS (MakeMyTrip style) -- */
     .rl-cards {
       display: flex;
       flex-direction: column;
@@ -679,7 +679,7 @@
     }
 
     .rc-inc::before {
-      content: '✓';
+      content: '?';
       color: #4caf70;
       font-weight: 700;
     }
@@ -835,7 +835,7 @@
       text-align: center;
     }
 
-    /* ── NO RESULTS ── */
+    /* -- NO RESULTS -- */
     .rl-no-results {
       text-align: center;
       padding: 80px 40px;
@@ -867,7 +867,7 @@
       text-decoration: none;
     }
 
-    /* ── LOAD MORE ── */
+    /* -- LOAD MORE -- */
     .rl-load-more {
       text-align: center;
       margin-top: 28px;
@@ -895,7 +895,7 @@
       color: var(--gold);
     }
 
-    /* ── RESPONSIVE ── */
+    /* -- RESPONSIVE -- */
     .mobile-only {
       display: none;
       margin-left: 8px;
@@ -955,7 +955,7 @@
       }
     }
 
-    /* ── LOGO TEXT STYLE ── */
+    /* -- LOGO TEXT STYLE -- */
     .logo {
       text-decoration: none !important;
     }
@@ -1021,41 +1021,48 @@
       }
     }
   </style>
+  <style>
+    /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
+    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
+    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
+      pointer-events: none !important;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- ── NAV ── -->
+  <!-- -- NAV -- -->
   <nav class="rl-nav">
     <a class="rl-logo" href="index.html"><img alt="Book myDandeli" src="images/logo.png"
         style="height:64px;width:64px;object-fit:contain;vertical-align:middle;margin-right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2)) saturate(1.3) contrast(1.05);" /><span
         class="logo-title">Book <em>myDandeli</em></span></a>
     <div class="rl-nav-right">
-      <a class="rl-nav-phone" href="tel:6363343766">📞 +91 63633 43766</a>
-      <a class="rl-nav-wa" href="https://api.whatsapp.com/send?phone=916363343766">💬 WhatsApp</a>
+      <a class="rl-nav-phone" href="tel:6363343766">?? +91 63633 43766</a>
+      <a class="rl-nav-wa" href="https://api.whatsapp.com/send?phone=916363343766">?? WhatsApp</a>
     </div>
   </nav>
-  <!-- ── PACKAGE BANNER ── -->
+  <!-- -- PACKAGE BANNER -- -->
   <div class="rl-banner">
     <div class="rl-banner-inner">
       <div>
-        <a class="rl-back" href="index.html#packages">← Back to Packages</a>
+        <a class="rl-back" href="index.html#packages">? Back to Packages</a>
         <h1 class="rl-pkg-name" id="bannerTitle">Loading <em>Package</em></h1>
         <div class="rl-pkg-meta" id="bannerMeta">
-          <!-- <span class="rl-pkg-pill">⏱ 2 Nights · 3 Days</span>
-          <span class="rl-pkg-pill">🍽 All Meals</span>
-          <span class="rl-pkg-pill">✅ Instant Confirm</span> -->
+          <!-- <span class="rl-pkg-pill">? 2 Nights � 3 Days</span>
+          <span class="rl-pkg-pill">?? All Meals</span>
+          <span class="rl-pkg-pill">? Instant Confirm</span> -->
         </div>
       </div>
       <div class="rl-pkg-price-box">
         <div class="rl-pkg-from">Starting from</div>
-        <div class="rl-pkg-price-big" id="bannerPrice">₹1,300</div>
+        <div class="rl-pkg-price-big" id="bannerPrice">?1,300</div>
         <div class="rl-pkg-price-unit" id="bannerUnit">/person</div>
       </div>
     </div>
   </div>
-  <!-- ── MAIN ── -->
+  <!-- -- MAIN -- -->
   <div class="rl-main">
-    <!-- ── CARDS AREA ── -->
+    <!-- -- CARDS AREA -- -->
     <div>
       <!-- Sort strip -->
       <div class="rl-sort-strip">
@@ -1076,8 +1083,8 @@
               <img alt="Whistling Woodzs Resort" src="images/Whistling Woods/hq_3.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">⭐ Luxury Resort</span>
-                <span class="rc-badge rc-badge-deal">🌊 Premium Riverfront</span>
+                <span class="rc-badge rc-badge-top">? Luxury Resort</span>
+                <span class="rc-badge rc-badge-deal">?? Premium Riverfront</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Whistling Woods/hq_2.jpg" /></div>
@@ -1087,30 +1094,29 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Whistling Woodz Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.8</div>
-                    <div class="rc-rating-count">850 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★★</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">5 Star Property</span>
-                <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
+                <span class="rc-distance">?? Ganeshgudi, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ River Front</span>
-                <span class="rc-tag">✓ Luxury Suites</span>
-                <span class="rc-tag">✓ Giant Swing</span>
+                <span class="rc-tag">? River Front</span>
+                <span class="rc-tag">? Luxury Suites</span>
+                <span class="rc-tag">? Giant Swing</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River Access</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Buffet</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>River Access</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Buffet</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">Breakfast</span>
@@ -1120,9 +1126,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Early Bird Discount</div>
-                  <div class="rc-price-crossed">₹6,950</div>
-                  <div class="rc-price">₹5,999 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Early Bird Discount</div>
+                  <div class="rc-price-crossed">?6,950</div>
+                  <div class="rc-price">?5,999 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1141,8 +1147,8 @@
               <img alt="Hornbill River Resort" src="images/Hornbill/HRR-Brochure-2024 (1)-images-3.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">⭐ Premium Resort</span>
-                <span class="rc-badge rc-badge-deal">🌳 Nature Vibes</span>
+                <span class="rc-badge rc-badge-top">? Premium Resort</span>
+                <span class="rc-badge rc-badge-deal">?? Nature Vibes</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Hornbill/HRR-Brochure-2024 (1)-images-10.jpg" /></div>
@@ -1151,30 +1157,29 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Hornbill River Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.6</div>
-                    <div class="rc-rating-count">420 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Property</span>
-                <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
+                <span class="rc-distance">?? Ganeshgudi, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Treehouse Stay</span>
-                <span class="rc-tag">✓ River Bank</span>
-                <span class="rc-tag">✓ Safari Options</span>
+                <span class="rc-tag">? Treehouse Stay</span>
+                <span class="rc-tag">? River Bank</span>
+                <span class="rc-tag">? Safari Options</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌳</span>Jungle View</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Jungle View</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Campfire</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">Breakfast</span>
@@ -1184,9 +1189,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Early Bird Discount</div>
-                  <div class="rc-price-crossed">₹3,500</div>
-                  <div class="rc-price">₹3,000 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Early Bird Discount</div>
+                  <div class="rc-price-crossed">?3,500</div>
+                  <div class="rc-price">?3,000 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1205,8 +1210,8 @@
               <img alt="Laguna River Resort" src="images/Laguna/WhatsApp Image 2026-03-28 at 10.14.22 PM (1).jpeg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">⚡ Recommended</span>
-                <span class="rc-badge rc-badge-deal">🌊 River Side</span>
+                <span class="rc-badge rc-badge-top">? Recommended</span>
+                <span class="rc-badge rc-badge-deal">?? River Side</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt=""
@@ -1219,30 +1224,29 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Laguna River Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.4</div>
-                    <div class="rc-rating-count">215 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Property</span>
-                <span class="rc-distance">📍 Ganeshgudi, Ilva near Supa Dam</span>
+                <span class="rc-distance">?? Ganeshgudi, Ilva near Supa Dam</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ All Meals Included</span>
-                <span class="rc-tag">✓ River Swimming</span>
-                <span class="rc-tag">✓ Campfire &amp; Trekking</span>
+                <span class="rc-tag">? All Meals Included</span>
+                <span class="rc-tag">? River Swimming</span>
+                <span class="rc-tag">? Campfire &amp; Trekking</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River Side</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC Cottages</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>River Side</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>AC Cottages</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">Breakfast</span>
@@ -1253,9 +1257,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Group Disounts Available</div>
-                  <div class="rc-price-crossed">₹2,800</div>
-                  <div class="rc-price">₹2,500 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Group Disounts Available</div>
+                  <div class="rc-price-crossed">?2,800</div>
+                  <div class="rc-price">?2,500 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1274,8 +1278,8 @@
               <img alt="Dew Drops" src="images/Dewdrops/Cabin View.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">⚡ Top Rated</span>
-                <span class="rc-badge rc-badge-deal">🔥 Best Deal</span>
+                <span class="rc-badge rc-badge-top">? Top Rated</span>
+                <span class="rc-badge rc-badge-deal">?? Best Deal</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Dewdrops/swimingPool2.jpg" /></div>
@@ -1284,30 +1288,29 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Dew Drops Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.5</div>
-                    <div class="rc-rating-count">248 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
-                <span class="rc-distance">📍 Opp. Bus Stop, Dandeli</span>
+                <span class="rc-distance">?? Opp. Bus Stop, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Breakfast Included</span>
-                <span class="rc-tag">✓ River View</span>
+                <span class="rc-tag">? Breakfast Included</span>
+                <span class="rc-tag">? River View</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Bonfire</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Bonfire</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Restaurant</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">Breakfast</span>
@@ -1318,9 +1321,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Save 24%</div>
-                  <div class="rc-price-crossed">₹2,200</div>
-                  <div class="rc-price">₹1,800 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Save 24%</div>
+                  <div class="rc-price-crossed">?2,200</div>
+                  <div class="rc-price">?1,800 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1339,7 +1342,7 @@
               <img alt="Bison River Resort" src="images/RiverEdge/Aa River Edge Gallery (2)-images-13.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-eco">🌿 Eco Certified</span>
+                <span class="rc-badge rc-badge-eco">?? Eco Certified</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/RiverEdge/Aa River Edge Gallery (2)-images-12.jpg" />
@@ -1349,31 +1352,30 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">River Edge Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge" style="background:#2d7a3d;">4.2</div>
-                    <div class="rc-rating-count">186 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">3 Star Resort</span>
-                <span class="rc-distance">📍 Kali River Bank, Dandeli</span>
+                <span class="rc-distance">?? Kali River Bank, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Great for Students</span>
-                <span class="rc-tag">✓ Adventure Hub</span>
+                <span class="rc-tag">? Great for Students</span>
+                <span class="rc-tag">? Adventure Hub</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌊</span>River View</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🛶</span>Kayaking</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Dining</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🚗</span>Parking</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>River View</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Campfire</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Kayaking</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Dining</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Parking</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
@@ -1383,9 +1385,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Save 22%</div>
-                  <div class="rc-price-crossed">₹1,600</div>
-                  <div class="rc-price">₹1,300 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Save 22%</div>
+                  <div class="rc-price-crossed">?1,600</div>
+                  <div class="rc-price">?1,300 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1404,7 +1406,7 @@
               <img alt="Rain Forest Dandeli" src="images/RainForest/Swiming Pool_2.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge" style="background:#7b3fa0;color:#fff;">👑 Luxury</span>
+                <span class="rc-badge" style="background:#7b3fa0;color:#fff;">?? Luxury</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/RainForest/Cabins.jpg" /></div>
@@ -1413,32 +1415,31 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Rain Forest Dandeli</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge" style="background:#1a5fa0;">4.8</div>
-                    <div class="rc-rating-count">312 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★★</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">5 Star Luxury</span>
-                <span class="rc-distance">📍 Forest Reserve Edge, Dandeli</span>
+                <span class="rc-distance">?? Forest Reserve Edge, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Honeymoon Special</span>
-                <span class="rc-tag">✓ Premium Cottage</span>
-                <span class="rc-tag">✓ Spa Available</span>
+                <span class="rc-tag">? Honeymoon Special</span>
+                <span class="rc-tag">? Premium Cottage</span>
+                <span class="rc-tag">? Spa Available</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Infinity Pool</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">💆</span>Spa</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🛁</span>Jacuzzi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Infinity Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Spa</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>AC</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Jacuzzi</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
@@ -1448,9 +1449,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Save 21%</div>
-                  <div class="rc-price-crossed">₹2,000</div>
-                  <div class="rc-price">₹1,800 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Save 21%</div>
+                  <div class="rc-price-crossed">?2,000</div>
+                  <div class="rc-price">?1,800 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1469,34 +1470,33 @@
               <img alt="Tusker Trails" src="images/Tusker Trails/Aaa Tusker trails kl -images-8.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-deal">🎒 Student Fav</span>
+                <span class="rc-badge rc-badge-deal">?? Student Fav</span>
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Tusker Trails</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge" style="background:#5a8a00;">4.0</div>
-                    <div class="rc-rating-count">144 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★☆☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">Budget Camp</span>
-                <span class="rc-distance">📍 Forest Trail, Dandeli</span>
+                <span class="rc-distance">?? Forest Trail, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Great for Groups</span>
-                <span class="rc-tag">✓ Budget Friendly</span>
+                <span class="rc-tag">? Great for Groups</span>
+                <span class="rc-tag">? Budget Friendly</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">⛺</span>Camping</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌿</span>Nature Walk</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🔥</span>Campfire</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">?</span>Camping</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Nature Walk</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Campfire</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
@@ -1505,9 +1505,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Save 22%</div>
-                  <div class="rc-price-crossed">₹2,200</div>
-                  <div class="rc-price">₹1,600 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Save 22%</div>
+                  <div class="rc-price-crossed">?2,200</div>
+                  <div class="rc-price">?1,600 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1526,36 +1526,35 @@
               <img alt="Wild Wings" src="images/Wild Wings/Aa wild wings Gallery (1)-images-3.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">👨‍👩‍👧‍👦 Family Pick</span>
+                <span class="rc-badge rc-badge-top">??????????? Family Pick</span>
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Wild Wings Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge" style="background:#1a6e3a;">4.4</div>
-                    <div class="rc-rating-count">203 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
-                <span class="rc-distance">📍 Kali Riverside, Dandeli</span>
+                <span class="rc-distance">?? Kali Riverside, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Kid Friendly</span>
-                <span class="rc-tag">✓ Pool &amp; Water Park</span>
+                <span class="rc-tag">? Kid Friendly</span>
+                <span class="rc-tag">? Pool &amp; Water Park</span>
 
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌧</span>Rain Dance</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Rain Dance</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>AC</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Restaurant</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
@@ -1565,9 +1564,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Save 22%</div>
-                  <div class="rc-price-crossed">₹1,800</div>
-                  <div class="rc-price">₹1,600 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Save 22%</div>
+                  <div class="rc-price-crossed">?1,800</div>
+                  <div class="rc-price">?1,600 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1587,35 +1586,34 @@
               <img alt="Wild Mist" src="images/Wild Mist/1.jpeg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">👨‍👩‍👧‍👦 Family Pick</span>
+                <span class="rc-badge rc-badge-top">??????????? Family Pick</span>
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Wild Mist Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge" style="background:#1a6e3a;">4.4</div>
-                    <div class="rc-rating-count">203 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span>
+                <span class="rc-stars">?????</span>
                 <span class="rc-stars" style="color:#888;font-size:11px;">4 Star Resort</span>
-                <span class="rc-distance">📍 Kali Riverside, Dandeli</span>
+                <span class="rc-distance">?? Kali Riverside, Dandeli</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Kid Friendly</span>
-                <span class="rc-tag">✓ Pool &amp; Water Park</span>
+                <span class="rc-tag">? Kid Friendly</span>
+                <span class="rc-tag">? Pool &amp; Water Park</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity"><span class="rc-amenity-icon">🏊</span>Pool</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🌧</span>Rain Dance</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">📶</span>WiFi</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">❄️</span>AC</span>
-                <span class="rc-amenity"><span class="rc-amenity-icon">🍽</span>Restaurant</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Pool</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Rain Dance</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>WiFi</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>AC</span>
+                <span class="rc-amenity"><span class="rc-amenity-icon">??</span>Restaurant</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
@@ -1625,9 +1623,9 @@
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Save 22%</div>
-                  <div class="rc-price-crossed">₹1,400</div>
-                  <div class="rc-price">₹1,300 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Save 22%</div>
+                  <div class="rc-price-crossed">?1,400</div>
+                  <div class="rc-price">?1,300 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1646,7 +1644,7 @@
               <img alt="Bison River Resort" src="images/Bison/Bison River Resorts (1).jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">⭐ Prime Wildlife Pick</span>
+                <span class="rc-badge rc-badge-top">? Prime Wildlife Pick</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Bison/Bison River Resorts (10).jpg" /></div>
@@ -1655,35 +1653,34 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Bison River Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.1</div>
-                    <div class="rc-rating-count">100+ reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★☆☆</span>
-                <span class="rc-distance">📍 Ganeshgudi, Dandeli</span>
+                <span class="rc-stars">?????</span>
+                <span class="rc-distance">?? Ganeshgudi, Dandeli</span>
               </div>
               <div class="rc-tags">
 
-                <span class="rc-tag">✓ Comfortable Rooms</span>
+                <span class="rc-tag">? Comfortable Rooms</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity">✨ Great Service</span>
+                <span class="rc-amenity">? Great Service</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Special Price</div>
-                  <div class="rc-price-crossed">₹2,500</div>
-                  <div class="rc-price">₹2,400 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Special Price</div>
+                  <div class="rc-price-crossed">?2,500</div>
+                  <div class="rc-price">?2,400 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1703,7 +1700,7 @@
               <img alt="Palm Meadows Resort" src="images/Palm meadows/046fe19a-316a-4474-97b3-7901450b52a8.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">🍃 Peaceful Retreat</span>
+                <span class="rc-badge rc-badge-top">?? Peaceful Retreat</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Palm meadows/0f00a659-0333-4056-b06f-0e36efb01155.jpg" />
@@ -1714,35 +1711,34 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Palm Meadows Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.4</div>
-                    <div class="rc-rating-count">100+ reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★☆☆</span>
-                <span class="rc-distance">📍 Dandeli Town Outskirts</span>
+                <span class="rc-stars">?????</span>
+                <span class="rc-distance">?? Dandeli Town Outskirts</span>
               </div>
               <div class="rc-tags">
 
-                <span class="rc-tag">✓ Comfortable Rooms</span>
+                <span class="rc-tag">? Comfortable Rooms</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity">✨ Great Service</span>
+                <span class="rc-amenity">? Great Service</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Special Price</div>
-                  <div class="rc-price-crossed">₹2,500</div>
-                  <div class="rc-price">₹2,000 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Special Price</div>
+                  <div class="rc-price-crossed">?2,500</div>
+                  <div class="rc-price">?2,000 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1762,7 +1758,7 @@
               <img alt="Sunbird Resort" src="images/Sunbird resort/0f2d7b22-71ee-448b-b841-f68def4368c5.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">🦅 Bird Watcher Fav</span>
+                <span class="rc-badge rc-badge-top">?? Bird Watcher Fav</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt=""
@@ -1775,35 +1771,34 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Sunbird Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.5</div>
-                    <div class="rc-rating-count">100+ reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span>
-                <span class="rc-distance">📍 Kali River Bank</span>
+                <span class="rc-stars">?????</span>
+                <span class="rc-distance">?? Kali River Bank</span>
               </div>
               <div class="rc-tags">
 
-                <span class="rc-tag">✓ Comfortable Rooms</span>
+                <span class="rc-tag">? Comfortable Rooms</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity">✨ Great Service</span>
+                <span class="rc-amenity">? Great Service</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Special Price</div>
-                  <div class="rc-price-crossed">₹2,000</div>
-                  <div class="rc-price">₹1,900 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Special Price</div>
+                  <div class="rc-price-crossed">?2,000</div>
+                  <div class="rc-price">?1,900 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1822,7 +1817,7 @@
               <img alt="Tarang Homestay" src="images/Tarang home stay/0921f066-775b-43d3-8a61-45f3a37db1bc.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top">🏠 Cozy Comfort</span>
+                <span class="rc-badge rc-badge-top">?? Cozy Comfort</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt=""
@@ -1833,34 +1828,33 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Tarang Homestay</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.6</div>
-                    <div class="rc-rating-count">100+ reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★☆☆</span>
-                <span class="rc-distance">📍 Dandeli Village</span>
+                <span class="rc-stars">?????</span>
+                <span class="rc-distance">?? Dandeli Village</span>
               </div>
               <div class="rc-tags">
-                <span class="rc-tag">✓ Comfortable Rooms</span>
+                <span class="rc-tag">? Comfortable Rooms</span>
               </div>
               <div class="rc-amenities">
-                <span class="rc-amenity">✨ Great Service</span>
+                <span class="rc-amenity">? Great Service</span>
               </div>
               <div class="rc-inclusions">
                 <span class="rc-inc">All Meals</span>
               </div>
               <div class="rc-price-row">
                 <div class="rc-price-left">
-                  <div class="rc-discount-label">💰 Special Price</div>
-                  <div class="rc-price-crossed">₹2,000</div>
-                  <div class="rc-price">₹1,900 <span class="rc-price-unit">/person·night</span></div>
+                  <div class="rc-discount-label">?? Special Price</div>
+                  <div class="rc-price-crossed">?2,000</div>
+                  <div class="rc-price">?1,900 <span class="rc-price-unit">/person�night</span></div>
                   <div class="rc-taxes"><span>All Meals Included</span></div>
                 </div>
                 <div class="rc-ctas">
@@ -1879,7 +1873,7 @@
               <img alt="Green Valley Resort" src="images/Green Valley/WhatsApp Image 2026-03-30 at 12.35.49 AM.jpeg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top" style="background:var(--forest);">⭐ Nature Retreat</span>
+                <span class="rc-badge rc-badge-top" style="background:var(--forest);">? Nature Retreat</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Green Valley/GV1.jpg" /></div>
@@ -1887,27 +1881,26 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Green Valley Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.5</div>
-                    <div class="rc-rating-count">100+ reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span><span class="rc-distance">📍 Green Valley, Dandeli</span>
+                <span class="rc-stars">?????</span><span class="rc-distance">?? Green Valley, Dandeli</span>
               </div>
-              <div class="rc-tags"><span class="rc-tag">✓ Clean &amp; Safe</span></div>
-              <div class="rc-amenities"><span class="rc-amenity">✨ Excellent Stay</span></div>
+              <div class="rc-tags"><span class="rc-tag">? Clean &amp; Safe</span></div>
+              <div class="rc-amenities"><span class="rc-amenity">? Excellent Stay</span></div>
               <div class="rc-inclusions"><span class="rc-inc">Standard Package</span></div>
               <div class="rc-price-row">
                 <div>
-                  <div class="rc-discount-label">💰 Limited Offer</div>
-                  <div class="rc-price-crossed">₹1,400</div>
-                  <div class="rc-price">₹1,300 <span class="rc-price-unit">/person</span></div>
+                  <div class="rc-discount-label">?? Limited Offer</div>
+                  <div class="rc-price-crossed">?1,400</div>
+                  <div class="rc-price">?1,300 <span class="rc-price-unit">/person</span></div>
                 </div>
                 <div class="rc-ctas">
                   <a class="rc-btn-primary" href="green_valley_resort.html">View Details</a>
@@ -1927,7 +1920,7 @@
               <img alt="White Water Resort" src="images/White Waters/WHITE WATER RESORT  pdf-images-34.jpg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-deal" style="background:var(--forest);">🌊 Premium Property</span>
+                <span class="rc-badge rc-badge-deal" style="background:var(--forest);">?? Premium Property</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/White Waters/WHITE WATER RESORT  pdf-images-1.jpg" />
@@ -1936,27 +1929,26 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">White Water Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.3</div>
-                    <div class="rc-rating-count">110 reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span><span class="rc-distance">📍 Dandeli, Karnataka</span>
+                <span class="rc-stars">?????</span><span class="rc-distance">?? Dandeli, Karnataka</span>
               </div>
-              <div class="rc-tags"><span class="rc-tag">✓ Clean &amp; Safe</span></div>
-              <div class="rc-amenities"><span class="rc-amenity">✨ Excellent Stay</span></div>
+              <div class="rc-tags"><span class="rc-tag">? Clean &amp; Safe</span></div>
+              <div class="rc-amenities"><span class="rc-amenity">? Excellent Stay</span></div>
               <div class="rc-inclusions"><span class="rc-inc">Standard Package</span></div>
               <div class="rc-price-row">
                 <div>
-                  <div class="rc-discount-label">💰 Limited Offer</div>
-                  <div class="rc-price-crossed">₹2,500</div>
-                  <div class="rc-price">₹1,800 <span class="rc-price-unit">/person</span></div>
+                  <div class="rc-discount-label">?? Limited Offer</div>
+                  <div class="rc-price-crossed">?2,500</div>
+                  <div class="rc-price">?1,800 <span class="rc-price-unit">/person</span></div>
                 </div>
                 <div class="rc-ctas">
                   <a class="rc-btn-primary" href="white_water_resort.html">View Details</a>
@@ -1976,7 +1968,7 @@
               <img alt="Ansh Resort" src="images/Ansh/WhatsApp Image 2026-03-30 at 10.24.54 PM (1).jpeg" />
               <div class="rc-img-overlay"></div>
               <div class="rc-badge-row">
-                <span class="rc-badge rc-badge-top" style="background:var(--forest);">⭐ Premium</span>
+                <span class="rc-badge rc-badge-top" style="background:var(--forest);">? Premium</span>
               </div>
               <div class="rc-thumbs">
                 <div class="rc-thumb"><img alt="" src="images/Ansh/WhatsApp Image 2026-03-30 at 10.25.01 PM (2).jpeg" />
@@ -1985,27 +1977,26 @@
               </div>
             </div>
             <div class="rc-info-col">
-              <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+              <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">??</button>
               <div class="rc-top-row">
                 <div class="rc-name">Ansh Resort</div>
                 <div class="rc-rating">
                   <div>
                     <div class="rc-rating-badge">4.4</div>
-                    <div class="rc-rating-count">100+ reviews</div>
                   </div>
                 </div>
               </div>
               <div class="rc-location">
-                <span class="rc-stars">★★★★☆</span><span class="rc-distance">📍 Dandeli, Karnataka</span>
+                <span class="rc-stars">?????</span><span class="rc-distance">?? Dandeli, Karnataka</span>
               </div>
-              <div class="rc-tags"><span class="rc-tag">✓ Premium Stay</span></div>
-              <div class="rc-amenities"><span class="rc-amenity">✨ Excellent Stay</span></div>
+              <div class="rc-tags"><span class="rc-tag">? Premium Stay</span></div>
+              <div class="rc-amenities"><span class="rc-amenity">? Excellent Stay</span></div>
               <div class="rc-inclusions"><span class="rc-inc">Standard Package</span></div>
               <div class="rc-price-row">
                 <div>
-                  <div class="rc-discount-label">💰 Limited Offer</div>
-                  <div class="rc-price-crossed">₹3,500</div>
-                  <div class="rc-price">₹2,400 <span class="rc-price-unit">/person</span></div>
+                  <div class="rc-discount-label">?? Limited Offer</div>
+                  <div class="rc-price-crossed">?3,500</div>
+                  <div class="rc-price">?2,400 <span class="rc-price-unit">/person</span></div>
                 </div>
                 <div class="rc-ctas">
                   <a class="rc-btn-primary" href="ansh_resort.html">View Details</a>
@@ -2023,10 +2014,10 @@
         <a class="rc-img-col" href="jungle_edge.html" style="display:block; text-decoration:none;">
           <img alt="Jungle Edge" src="images/JungleEdge/WhatsApp Image 2026-04-04 at 12.34.47.jpeg" />
           <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row"><span class="rc-badge rc-badge-eco">🌿 Nature Resort</span></div>
+          <div class="rc-badge-row"><span class="rc-badge rc-badge-eco">?? Nature Resort</span></div>
         </a>
         <div class="rc-info-col">
-          <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+          <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">??</button>
           <div class="rc-top-row">
             <a href="jungle_edge.html" style="text-decoration:none;">
               <div class="rc-name">Jungle Edge</div>
@@ -2035,22 +2026,21 @@
               <div class="rc-rating-badge">4.2</div>
               <div>
                 <div class="rc-rating-text">Excellent</div>
-                <div class="rc-rating-count">120+ reviews</div>
               </div>
             </div>
           </div>
           <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-distance">📍 Dandeli</span>
+            <span class="rc-stars">?????</span>
+            <span class="rc-distance">?? Dandeli</span>
           </div>
-          <div class="rc-tags"><span class="rc-tag">✓ Scenic</span></div>
+          <div class="rc-tags"><span class="rc-tag">? Scenic</span></div>
           <div class="rc-amenities">
-            <span class="rc-amenity">🏊 Pool</span>
-            <span class="rc-amenity">📶 Wifi</span>
+            <span class="rc-amenity">?? Pool</span>
+            <span class="rc-amenity">?? Wifi</span>
           </div>
           <div class="rc-price-row">
             <div>
-              <div class="rc-price">₹1,300 <span class="rc-price-unit">/person</span></div>
+              <div class="rc-price">?1,300 <span class="rc-price-unit">/person</span></div>
               <div class="rc-taxes">+ taxes & fees</div>
             </div>
             <div class="rc-ctas">
@@ -2067,10 +2057,10 @@
         <a class="rc-img-col" href="swayam_cottage.html" style="display:block; text-decoration:none;">
           <img alt="Swayam Cottage" src="images/Swayam Cottages/WhatsApp Image 2026-04-02 at 23.18.01 (1).jpeg" />
           <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row"><span class="rc-badge rc-badge-eco">🌿 Nature Resort</span></div>
+          <div class="rc-badge-row"><span class="rc-badge rc-badge-eco">?? Nature Resort</span></div>
         </a>
         <div class="rc-info-col">
-          <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+          <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">??</button>
           <div class="rc-top-row">
             <a href="swayam_cottage.html" style="text-decoration:none;">
               <div class="rc-name">Swayam Cottage</div>
@@ -2079,22 +2069,21 @@
               <div class="rc-rating-badge">4.2</div>
               <div>
                 <div class="rc-rating-text">Excellent</div>
-                <div class="rc-rating-count">120+ reviews</div>
               </div>
             </div>
           </div>
           <div class="rc-location">
-            <span class="rc-stars">★★★★☆</span>
-            <span class="rc-distance">📍 Dandeli</span>
+            <span class="rc-stars">?????</span>
+            <span class="rc-distance">?? Dandeli</span>
           </div>
-          <div class="rc-tags"><span class="rc-tag">✓ Scenic</span></div>
+          <div class="rc-tags"><span class="rc-tag">? Scenic</span></div>
           <div class="rc-amenities">
-            <span class="rc-amenity">🏊 Pool</span>
-            <span class="rc-amenity">📶 Wifi</span>
+            <span class="rc-amenity">?? Pool</span>
+            <span class="rc-amenity">?? Wifi</span>
           </div>
           <div class="rc-price-row">
             <div>
-              <div class="rc-price">₹1,699 <span class="rc-price-unit">/person</span></div>
+              <div class="rc-price">?1,699 <span class="rc-price-unit">/person</span></div>
               <div class="rc-taxes">+ taxes & fees</div>
             </div>
             <div class="rc-ctas">
@@ -2111,10 +2100,10 @@
         <a class="rc-img-col" href="riverpoint_resort.html" style="display:block; text-decoration:none;">
           <img alt="Riverpoint Resort" src="images/Riverpoint/WhatsApp Image 2026-04-04 at 12.33.45.jpeg" />
           <div class="rc-img-overlay"></div>
-          <div class="rc-badge-row"><span class="rc-badge rc-badge-eco">🌿 Nature Resort</span></div>
+          <div class="rc-badge-row"><span class="rc-badge rc-badge-eco">?? Nature Resort</span></div>
         </a>
         <div class="rc-info-col">
-          <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">🤍</button>
+          <button class="rc-heart" onclick="event.preventDefault(); toggleHeart(this)">??</button>
           <div class="rc-top-row">
             <a href="riverpoint_resort.html" style="text-decoration:none;">
               <div class="rc-name">Riverpoint Resort</div>
@@ -2123,7 +2112,6 @@
               <div class="rc-rating-badge">4.2</div>
               <div>
                 <div class="rc-rating-text">Excellent</div>
-                <div class="rc-rating-count">120+ reviews</div>
               </div>
             </div>
           </div>
@@ -2131,7 +2119,7 @@
           </div>
           <div class="rc-price-row">
             <div>
-              <div class="rc-price">₹1,300 <span class="rc-price-unit">/person</span></div>
+              <div class="rc-price">?1,300 <span class="rc-price-unit">/person</span></div>
               <div class="rc-taxes">+ taxes & fees</div>
             </div>
             <div class="rc-ctas">
@@ -2147,7 +2135,7 @@
       <!-- /rl-cards -->
       <!-- No results -->
       <div class="rl-no-results" id="noResults">
-        <div class="rl-no-icon">🏕️</div>
+        <div class="rl-no-icon">???</div>
         <div class="rl-no-title">No resorts match your filters</div>
         <div class="rl-no-sub">Try adjusting your filters to see more options</div>
       </div>
@@ -2155,24 +2143,24 @@
   </div>
   <!-- /rl-main -->
   <script>
-    /* ── READ URL PARAMS & SET BANNER ── */
+    /* -- READ URL PARAMS & SET BANNER -- */
     (function () {
       const params = new URLSearchParams(window.location.search);
       const pkg = params.get('pkg') || 'all';
 
       const pkgData = {
-        'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🎒 Student Pack'], price: '₹2,499', unit: '/person' },
-        'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['⏱ 2N·3D', '🍽 Breakfast', '🎒 Budget Pick'], price: '₹3,499', unit: '/person' },
-        'student-group': { name: 'College <em>Group Tour</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '👥 Min 10 Pax'], price: '₹1,999', unit: '/person (min 10)' },
-        'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '🕯 Candlelight'], price: '₹6,499', unit: '/couple' },
-        'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '💆 Spa'], price: '₹9,999', unit: '/couple' },
-        'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '🌹 Honeymoon'], price: '₹14,999', unit: '/couple' },
-        'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['⏱ 1N·2D', '🍽 All Meals', '👨‍👩‍👧‍👦 2+2'], price: '₹8,999', unit: '/family' },
-        'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['⏱ 2N·3D', '🍽 All Meals', '🦁 Safari'], price: '₹12,999', unit: '/family' },
-        'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['⏱ 3N·4D', '🍽 All Meals', '👑 Premium'], price: '₹18,999', unit: '/family' },
+        'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['? 1N�2D', '?? All Meals', '?? Student Pack'], price: '?2,499', unit: '/person' },
+        'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['? 2N�3D', '?? Breakfast', '?? Budget Pick'], price: '?3,499', unit: '/person' },
+        'student-group': { name: 'College <em>Group Tour</em>', pills: ['? 2N�3D', '?? All Meals', '?? Min 10 Pax'], price: '?1,999', unit: '/person (min 10)' },
+        'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['? 1N�2D', '?? All Meals', '?? Candlelight'], price: '?6,499', unit: '/couple' },
+        'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['? 2N�3D', '?? All Meals', '?? Spa'], price: '?9,999', unit: '/couple' },
+        'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['? 3N�4D', '?? All Meals', '?? Honeymoon'], price: '?14,999', unit: '/couple' },
+        'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['? 1N�2D', '?? All Meals', '??????????? 2+2'], price: '?8,999', unit: '/family' },
+        'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['? 2N�3D', '?? All Meals', '?? Safari'], price: '?12,999', unit: '/family' },
+        'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['? 3N�4D', '?? All Meals', '?? Premium'], price: '?18,999', unit: '/family' },
       };
 
-      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['✅ All Meals', '✅ Activities', '✅ Transfers'], price: '₹2,499', unit: '/person' };
+      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['? All Meals', '? Activities', ], price: '?2,499', unit: '/person' };
 
       document.getElementById('bannerTitle').innerHTML = d.name;
       document.getElementById('bannerPrice').textContent = d.price;
@@ -2182,7 +2170,7 @@
       meta.innerHTML = d.pills.map(p => `<span class="rl-pkg-pill">${p}</span>`).join('');
     })();
 
-    /* ── SORT ── */
+    /* -- SORT -- */
     function sortResorts(key, btn) {
       document.querySelectorAll('.rl-sort-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -2205,16 +2193,16 @@
       }, 200);
     }
 
-    /* ── FILTERS ── */
+    /* -- FILTERS -- */
     function toggleMobileFilters() {
       const body = document.getElementById('filterBody');
       const icon = document.getElementById('filterToggleIcon');
       if (body.classList.contains('open')) {
         body.classList.remove('open');
-        if (icon) icon.textContent = '▼';
+        if (icon) icon.textContent = '?';
       } else {
         body.classList.add('open');
-        if (icon) icon.textContent = '▲';
+        if (icon) icon.textContent = '?';
       }
     }
 
@@ -2253,16 +2241,16 @@
     function resetFilters() {
       document.querySelectorAll('.rl-sidebar input[type="checkbox"]').forEach(i => i.checked = false);
       document.querySelector('.rl-slider').value = 25000;
-      document.getElementById('priceVal').textContent = '₹25,000';
+      document.getElementById('priceVal').textContent = '?25,000';
       document.querySelectorAll('.resort-card').forEach(c => c.style.display = 'grid');
       document.getElementById('countDisplay').textContent = document.querySelectorAll('.resort-card').length;
       document.getElementById('noResults').classList.remove('show');
     }
 
-    /* ── HEART ── */
+    /* -- HEART -- */
     function toggleHeart(btn) {
       btn.classList.toggle('liked');
-      btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
+      btn.textContent = btn.classList.contains('liked') ? '??' : '??';
     }
   </script>
 </body>

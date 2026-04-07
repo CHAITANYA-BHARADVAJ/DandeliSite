@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2535,6 +2535,13 @@
       .logo-title {
         font-size: 18px !important;
       }
+    }
+  </style>
+  <style>
+    /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
+    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
+    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
+      pointer-events: none !important;
     }
   </style>
 </head>
