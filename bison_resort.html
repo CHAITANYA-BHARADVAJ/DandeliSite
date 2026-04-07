@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1062,6 +1062,146 @@
       }
     }
 
+
+    /* -- AMENITIES � list style -- */
+    .amenities-section {
+      margin-bottom: 52px;
+    }
+
+    .amenities-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .am-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+
+    .am-item:last-child {
+      border-bottom: none;
+    }
+
+    .am-item:hover {
+      background: rgba(201, 168, 76, .03);
+    }
+
+    .am-name {
+      font-size: 13.5px;
+      color: #333;
+      letter-spacing: .2px;
+    }
+
+    .am-check {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(45, 90, 61, .08);
+      border: 1px solid rgba(45, 90, 61, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .am-check::after {
+      content: '';
+      width: 6px;
+      height: 4px;
+      border-left: 1.5px solid var(--moss);
+      border-bottom: 1.5px solid var(--moss);
+      transform: rotate(-45deg) translateY(-1px);
+      display: block;
+    }
+
+    /* ── ACCORDION AMENITIES ── */
+    .am-details {
+      border: 1px solid var(--border);
+      background: #fff;
+      margin-top: 16px;
+    }
+
+    .am-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      transition: background .2s;
+      list-style: none;
+    }
+
+    .am-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .am-summary:hover {
+      background: rgba(201, 168, 76, .05);
+    }
+
+    .am-summary::after {
+      content: '▼';
+      font-size: 10px;
+      color: var(--gold);
+      transition: transform .3s;
+    }
+
+    .am-details[open] .am-summary::after {
+      transform: rotate(180deg);
+    }
+
+    .am-details[open] .am-summary {
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .am-content {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .am-content .am-item {
+      border: none !important;
+      border-bottom: 1px solid var(--border) !important;
+    }
+
+    @media(min-width:560px) {
+      .am-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .am-content .am-item:nth-child(even) {
+        border-left: 1px solid var(--border) !important;
+      }
+
+      .am-content .am-item:nth-last-child(-n+2) {
+        border-bottom: none !important;
+      }
+    }
+
+    @media(min-width:560px) {
+      .amenities-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .am-item:nth-child(even) {
+        border-left: 1px solid var(--border);
+      }
+
+      .am-item:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+    }
+
     /* ── ROOMS ── */
     .rooms-section {
       margin-bottom: 52px;
@@ -2004,7 +2144,10 @@
     }
 
     .cta-btn-outline {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
       background: transparent;
       color: rgba(255, 255, 255, .75);
       text-decoration: none;
@@ -2847,9 +2990,11 @@
       images: [
         { src: "images/Bison/Bison River Resorts (1).jpg", caption: "Resort View" },
         { src: "images/Bison/Bison River Resorts (10).jpg", caption: "Room Interior" },
-        { src: "images/Bison/Bison River Resorts (11).jpg", caption: "Dining Area" },
-        { src: "images/Bison/Bison River Resorts (12).jpg", caption: "Activities" },
-        { src: "images/Bison/Bison River Resorts (13).jpg", caption: "Night View" },
+        { src: "images/Bison/Bison River Resorts (11).jpg", caption: "Room Interior" },
+        { src: "images/Bison/Bison River Resorts (12).jpg", caption: "Room Interior" },
+        { src: "images/Bison/Bison River Resorts (13).jpg", caption: "Room Interior" },
+        { src: "images/Bison/Bison River Resorts (9).jpg", caption: "Campfire" },
+        { src: "images/Bison/Premium Room.jpeg", caption: "Room Interior" },
       ],
 
       heroStats: [
@@ -2858,25 +3003,39 @@
         { value: "100%", unit: "Nature Vibes" },
       ],
 
-      amenities: [
-        { icon: "&#x2615;", text: "Unlimited Breakfast (9-10 AM)" },
-        { icon: "&#127869;", text: "Unlimited Lunch (1:30-3 PM)" },
-        { icon: "&#x1F958;", text: "Unlimited Dinner (9:30-10:30 PM)" },
-        { icon: "&#x2615;", text: "Morning & Evening Tea/Coffee" },
-        { icon: "&#127754;", text: "Swimming in River Kali" },
-        { icon: "&#127807;", text: "Jungle Trekking (6:30 AM)" },
-        { icon: "&#128675;", text: "Boating in River Kali" },
-        { icon: "&#x1F6F6;", text: "Kayaking in River Kali" },
-        { icon: "&#x1F3AF;", text: "Archery" },
-        { icon: "&#128293;", text: "Night Campfire with Music" },
-      ],
-
       rooms: [
         { name: "Deluxe Room", badge: "Comfort", image: "images/Bison/Bison River Resorts (15).jpg", desc: "Well-appointed deluxe rooms.", features: ["Attached Bath"], price: "<del>&#8377;2,500</del> &#8377;2,400", unit: "/ person" },
         { name: "Premium Room", badge: "Best Pick", image: "images/Bison/Premium Room.jpeg", desc: "Premium rooms with superior amenities.", features: ["Premium", "Spacious"], price: "<del>&#8377;3,000</del> &#8377;2,900", unit: "/ person" },
       ],
 
-      activities: [
+      amenities: [
+        { icon: "&#x2615;", text: "Breakfast (Buffet)" },
+        { icon: "&#127869;", text: "Lunch (Buffet)" },
+        { icon: "&#x1F958;", text: "Dinner (Buffet)" },
+        { icon: "&#127968;", text: "Accommodation (Cottage / Room)" },
+        { icon: "&#127944;", text: "Swimming Pool Access" },
+        { icon: "&#128293;", text: "Campfire" },
+        { icon: "&#127981;", text: "Archery Shooting" },
+        { icon: "&#129406;", text: "Jungle Trekking" },
+        { icon: "&#127746;", text: "Rain Dance" },
+        { icon: "&#128674;", text: "Kayaking" },
+        { icon: "&#129347;", text: "Water Zorbing" },
+        { icon: "&#127774;", text: "Boating" },
+      ],
+      groupedActivities: [
+        {
+          name: "Water Activities (8:00 AM - 5:00 PM)",
+          items: ["Kayaking", "Water Zorbing", "Boating (25 km from Bus Stand)"]
+        },
+        {
+          name: "Rope Activities",
+          items: ["Zig Zag Bridge", "Quake Walk", "Hanging Log"]
+        },
+        {
+          name: "In House Activities",
+          items: ["Swimming Pool (9:00 AM to 6:00 PM)", "Campfire (Starts after 9:00 PM)", "Archery Shooting", "Jungle Trekking (7:00 AM to 8:00 AM)", "Rain Dance (7:30 PM to 9:00 PM)"]
+        }
+      ], activities: [
         { name: "River Mid Rafting (5km)", cat: "Extra Cost", duration: "Thrilling", meta: "Depends on water level", image: "images/Bison/Bison River Resorts (1).jpg" },
         { name: "Short Rafting (1km)", cat: "Extra Cost", duration: "Fun", meta: "Depends on water level", image: "images/Bison/Bison River Resorts (1).jpg" },
         { name: "River Zip Line", cat: "Extra Cost", duration: "Adventure", meta: "River Kali", image: "images/Bison/Bison River Resorts (1).jpg" },
@@ -2900,10 +3059,10 @@
       ],
 
       nearby: [
-        { icon: "&#128697;&#65039;", text: "Supa Dam" },
-        { icon: "&#127754;", text: "Back water" },
-        { icon: "&#128010;", text: "Crocodile park" },
-        { icon: "&#127807;", text: "Honey park" },
+        // { icon: "&#128697;&#65039;", text: "Supa Dam" },
+        // { icon: "&#127754;", text: "Back water" },
+        // { icon: "&#128010;", text: "Crocodile park" },
+        // { icon: "&#127807;", text: "Honey park" },
       ],
     };
 
@@ -2959,10 +3118,25 @@
       });
 
       /* amenities — list style */
-      R.amenities.forEach(a => {
-        document.getElementById('amenitiesGrid').innerHTML +=
-          `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
-      });
+      if (R.amenities) {
+        R.amenities.forEach(a => {
+          document.getElementById('amenitiesGrid').innerHTML +=
+            `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
+        });
+      }
+
+      /* grouped activities — dropdown accordion style */
+      if (R.groupedActivities && R.groupedActivities.length > 0) {
+        let gaHtml = '';
+        R.groupedActivities.forEach(group => {
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
+        });
+        document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
+      }
 
       /* rooms */
       R.rooms.forEach(room => {

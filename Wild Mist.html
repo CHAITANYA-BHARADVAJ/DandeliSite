@@ -1922,7 +1922,10 @@
     }
 
     .cta-btn-outline {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
       background: transparent;
       color: rgba(255, 255, 255, .75);
       text-decoration: none;
@@ -2757,8 +2760,8 @@
       ],
 
       policies: [
-        { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 1:00 PM", "Check-out: 11:00 AM", "Early/late on request & availability", "ID proof mandatory for all guests"] },
-        { icon: "&#128683;", title: "House Rules", items: ["Outside food & alcohol not permitted", "Pets not allowed", "Noise curfew at 10:00 PM", "Smoking in designated areas only"] },
+        { icon: "&#128197;", title: "Check-in & Check-out", items: ["Check-in: 11:00 AM, Check-out: 10:00 AM", "Early/late on request & availability", "ID proof mandatory for all guests"] },
+        // { icon: "&#128683;", title: "House Rules", items: ["Outside food & alcohol not permitted", "Pets not allowed", "Noise curfew at 10:00 PM", "Smoking in designated areas only"] },
         { icon: "&#128683;", title: "Cancellation", items: ["No cancellation, No refund", "Balance to be paid before check-in"] },
         { icon: "&#128101;", title: "Guest Rules", items: ["Children welcome (all ages)", "Max 2 extra beds per room", "Valid ID required at check-in", "Aadhar/Passport accepted"] },
       ],

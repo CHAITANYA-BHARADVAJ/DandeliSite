@@ -2032,7 +2032,10 @@
     }
 
     .cta-btn-outline {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
       background: transparent;
       color: rgba(255, 255, 255, .75);
       text-decoration: none;
@@ -2896,6 +2899,21 @@
         { icon: "&#x1F6F6;", text: "Kayaking in River Kali" },
         { icon: "&#x1F3AF;", text: "Archery" },
         { icon: "&#128293;", text: "Night Campfire with Music" },
+        { icon: "&#127968;", text: "Accommodation Included" },
+      ],
+      groupedActivities: [
+        {
+          name: "River Activities",
+          items: ["Swimming in River Kali", "Boating in River Kali", "Kayaking in River Kali"]
+        },
+        {
+          name: "Adventure & Nature",
+          items: ["Jungle Trekking (6:30 AM)", "Archery"]
+        },
+        {
+          name: "Evening Activities",
+          items: ["Night Campfire with Music"]
+        }
       ],
 
       rooms: [
@@ -2989,10 +3007,25 @@
       });
 
       /* amenities — list style */
-      R.amenities.forEach(a => {
-        document.getElementById('amenitiesGrid').innerHTML +=
-          `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
-      });
+      if (R.amenities) {
+        R.amenities.forEach(a => {
+          document.getElementById('amenitiesGrid').innerHTML +=
+            `<div class="am-item"><span class="am-name">${a.text}</span><span class="am-check"></span></div>`;
+        });
+      }
+
+      /* grouped activities — dropdown accordion style */
+      if (R.groupedActivities && R.groupedActivities.length > 0) {
+        let gaHtml = '';
+        R.groupedActivities.forEach(group => {
+          gaHtml += `<details class="am-details"><summary class="am-summary">${group.name}</summary><div class="am-content">`;
+          group.items.forEach(item => {
+            gaHtml += `<div class="am-item"><span class="am-name">${item}</span><span class="am-check"></span></div>`;
+          });
+          gaHtml += `</div></details>`;
+        });
+        document.getElementById('amenitiesGrid').insertAdjacentHTML('afterend', gaHtml);
+      }
 
       /* rooms */
       R.rooms.forEach(room => {
