@@ -1038,18 +1038,13 @@
   <div class="rl-banner">
     <div class="rl-banner-inner">
       <div>
-        <a class="rl-back" href="index.html#packages">? Back to Packages</a>
+        <a class="rl-back" href="index.html#packages">&#8592; Back to Packages</a>
         <h1 class="rl-pkg-name" id="bannerTitle">Loading <em>Package</em></h1>
         <div class="rl-pkg-meta" id="bannerMeta">
           <!-- <span class="rl-pkg-pill">? 2 Nights � 3 Days</span>
           <span class="rl-pkg-pill">?? All Meals</span>
           <span class="rl-pkg-pill">? Instant Confirm</span> -->
         </div>
-      </div>
-      <div class="rl-pkg-price-box">
-        <div class="rl-pkg-from">Starting from</div>
-        <div class="rl-pkg-price-big" id="bannerPrice">?1,300</div>
-        <div class="rl-pkg-price-unit" id="bannerUnit">/person</div>
       </div>
     </div>
   </div>
@@ -2142,22 +2137,20 @@
       const pkg = params.get('pkg') || 'all';
 
       const pkgData = {
-        'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['? 1N�2D', '?? All Meals', '?? Student Pack'], price: '?2,499', unit: '/person' },
-        'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['? 2N�3D', '?? Breakfast', '?? Budget Pick'], price: '?3,499', unit: '/person' },
-        'student-group': { name: 'College <em>Group Tour</em>', pills: ['? 2N�3D', '?? All Meals', '?? Min 10 Pax'], price: '?1,999', unit: '/person (min 10)' },
-        'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['? 1N�2D', '?? All Meals', '?? Candlelight'], price: '?6,499', unit: '/couple' },
-        'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['? 2N�3D', '?? All Meals', '?? Spa'], price: '?9,999', unit: '/couple' },
-        'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['? 3N�4D', '?? All Meals', '?? Honeymoon'], price: '?14,999', unit: '/couple' },
-        'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['? 1N�2D', '?? All Meals', '??????????? 2+2'], price: '?8,999', unit: '/family' },
-        'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['? 2N�3D', '?? All Meals', '?? Safari'], price: '?12,999', unit: '/family' },
-        'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['? 3N�4D', '?? All Meals', '?? Premium'], price: '?18,999', unit: '/family' },
+        'student-adventure': { name: 'Jungle Thrill <em>Adventure</em>', pills: ['⏱️ 1N 2D', '🍲 All Meals', '🎒 Student Pack'] },
+        'student-budget': { name: 'Budget Backpacker <em>Camp</em>', pills: ['⏱️ 2N 3D', '🍲 Breakfast', '💰 Budget Pick'] },
+        'student-group': { name: 'College <em>Group Tour</em>', pills: ['⏱️ 2N 3D', '🍲 All Meals', '👥 Min 10 Pax'] },
+        'couple-romantic': { name: 'Riverside <em>Romance</em>', pills: ['⏱️ 1N 2D', '🍲 All Meals', '🕯️ Candlelight'] },
+        'couple-luxury': { name: 'Forest Luxury <em>Retreat</em>', pills: ['⏱️ 2N 3D', '🍲 All Meals', '💆‍♀️ Spa'] },
+        'couple-honeymoon': { name: 'Honeymoon <em>in the Wild</em>', pills: ['⏱️ 3N 4D', '🍲 All Meals', '💖 Honeymoon'] },
+        'family-weekend': { name: 'Family <em>Weekend Getaway</em>', pills: ['⏱️ 1N 2D', '🍲 All Meals', '👨‍👩‍👧‍👦 2+2'] },
+        'family-adventure': { name: 'Wild Family <em>Adventure</em>', pills: ['⏱️ 2N 3D', '🍲 All Meals', '🚙 Safari'] },
+        'family-grand': { name: 'Grand Family <em>Expedition</em>', pills: ['⏱️ 3N 4D', '🍲 All Meals', '🌟 Premium'] }
       };
 
-      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['? All Meals', '? Activities',], price: '?2,499', unit: '/person' };
+      const d = pkgData[pkg] || { name: 'Dandeli <em>Resort Packages</em>', pills: ['🍲 All Meals', '🚣 Activities'] };
 
       document.getElementById('bannerTitle').innerHTML = d.name;
-      document.getElementById('bannerPrice').textContent = d.price;
-      document.getElementById('bannerUnit').textContent = d.unit;
 
       const meta = document.getElementById('bannerMeta');
       meta.innerHTML = d.pills.map(p => `<span class="rl-pkg-pill">${p}</span>`).join('');
@@ -2249,3 +2242,4 @@
 </body>
 
 </html>
+
