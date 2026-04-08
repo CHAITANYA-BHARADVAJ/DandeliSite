@@ -3368,7 +3368,7 @@
         const p = x => 18 + Math.sin((x / 40) * Math.PI + ph) * 20 + Math.sin((x / 22) * Math.PI + ph * 1.2) * 7;
         let d1 = '', d2 = '', d3 = '';
         for (let x = -10; x <= 270; x += 7) {
-          const cmd = x === -10 📍 'M' : 'L';
+          const cmd = x === -10 ? 'M' : 'L';
           d1 += `${cmd}${x},${p(x)} `; d2 += `${cmd}${x},${p(x) + 5} `; d3 += `${cmd}${x},${p(x) - 5} `;
         }
         w1.setAttribute('d', d1); w2.setAttribute('d', d2); w3.setAttribute('d', d3);
@@ -3419,7 +3419,7 @@
       const isScrolled = window.scrollY > heroH - 80;
       nav.classList.toggle('scrolled', isScrolled);
       const tb = document.getElementById('topbar');
-      if (tb) { tb.style.opacity = window.scrollY > 60 📍 '0' : '1'; tb.style.pointerEvents = window.scrollY > 60 📍 'none' : 'auto'; }
+      if (tb) { tb.style.opacity = window.scrollY > 60 ? '0' : '1'; tb.style.pointerEvents = window.scrollY > 60 ? 'none' : 'auto'; }
     });
 
     /* ══ SCROLL REVEAL + COUNTER ══ */
@@ -3437,7 +3437,7 @@
     function cU(el) {
       const t = +el.dataset.count;
       let c = 0;
-      const i = setInterval(() => { c = Math.min(c + Math.ceil(t / 60), t); el.textContent = c + (t >= 100 📍 '+' : ''); if (c >= t) clearInterval(i); }, 25);
+      const i = setInterval(() => { c = Math.min(c + Math.ceil(t / 60), t); el.textContent = c + (t >= 100 ? '+' : ''); if (c >= t) clearInterval(i); }, 25);
     }
 
     /* ══ ACCORDION ══ */
@@ -3571,7 +3571,7 @@
 
       // Build star string
       let starStr = '';
-      for (let i = 0; i < 5; i++) starStr += i < stars 📍 '★' : '☆';
+      for (let i = 0; i < 5; i++) starStr += i < stars ? '★' : '☆';
 
       // WhatsApp message
       const msg = encodeURIComponent(
@@ -3580,10 +3580,10 @@
         `📝 Title: ${title}\n\n` +
         `"${body}"\n\n` +
         `👤 Name: ${name}` +
-        (city 📍 `\n📍 From: ${city}` : '') +
-        (tripType 📍 `\n🧳 Trip Type: ${tripType}` : '') +
-        (month 📍 `\n📅 Visited: ${month}` : '') +
-        (tags 📍 `\n✨ Highlights: ${tags}` : '')
+        (city ? `\n📍 From: ${city}` : '') +
+        (tripType ? `\n🧳 Trip Type: ${tripType}` : '') +
+        (month ? `\n📅 Visited: ${month}` : '') +
+        (tags ? `\n✨ Highlights: ${tags}` : '')
       );
 
       const btn = document.getElementById('revSubmitBtn');
