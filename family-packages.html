@@ -1713,7 +1713,7 @@
         if (starVals.length && !starVals.includes(+c.dataset.stars)) show = false;
         if (amenVals.length && !amenVals.every(a => (c.dataset.amenities || '').includes(a))) show = false;
         if (durVals.length && !durVals.includes(c.dataset.dur)) show = false;
-        c.style.display = show 📍 'grid' : 'none';
+        c.style.display = show ? 'grid' : 'none';
         if (show) vis++;
       });
       document.getElementById('countNum').textContent = vis;
@@ -1751,14 +1751,14 @@
 
     function toggleHeart(btn) {
       btn.classList.toggle('liked');
-      btn.textContent = btn.classList.contains('liked') 📍 '❤️' : '🤍';
+      btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
     }
 
     function toggleFilters() {
       const body = document.getElementById('fBody');
       const icon = document.getElementById('fIcon');
       body.classList.toggle('open');
-      if (icon) icon.textContent = body.classList.contains('open') 📍 '▲' : '▼';
+      if (icon) icon.textContent = body.classList.contains('open') ? '▲' : '▼';
     }
 
     // Set correct count on load
@@ -1769,4 +1769,3 @@
 </body>
 
 </html>
-

@@ -2407,62 +2407,74 @@
                 height: 28px;
             }
         }
+
         /* ACCORDION AMENITIES */
-    .am-details {
-      border: 1px solid var(--border);
-      background: #fff;
-      margin-top: 16px;
-    }
-    .am-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--forest);
-      transition: background .2s;
-      list-style: none;
-    }
-    .am-summary::-webkit-details-marker {
-      display: none;
-    }
-    .am-summary:hover {
-      background: rgba(201, 168, 76, .05);
-    }
-    .am-summary::after {
-      content: 'â–¼';
-      font-size: 10px;
-      color: var(--gold);
-      transition: transform .3s;
-    }
-    .am-details[open] .am-summary::after {
-      transform: rotate(180deg);
-    }
-    .am-details[open] .am-summary {
-      border-bottom: 1px dashed var(--border);
-    }
-    .am-content {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-    .am-content .am-item {
-      border: none !important;
-      border-bottom: 1px solid var(--border) !important;
-    }
-    @media(min-width:560px) {
-      .am-content {
-        grid-template-columns: 1fr 1fr;
-      }
-      .am-content .am-item:nth-child(even) {
-        border-left: 1px solid var(--border) !important;
-      }
-      .am-content .am-item:nth-last-child(-n+2) {
-        border-bottom: none !important;
-      }
-    }
-  </style>
+        .am-details {
+            border: 1px solid var(--border);
+            background: #fff;
+            margin-top: 16px;
+        }
+
+        .am-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--forest);
+            transition: background .2s;
+            list-style: none;
+        }
+
+        .am-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .am-summary:hover {
+            background: rgba(201, 168, 76, .05);
+        }
+
+        .am-summary::after {
+            content: 'â–¼';
+            font-size: 10px;
+            color: var(--gold);
+            transition: transform .3s;
+        }
+
+        .am-details[open] .am-summary::after {
+            transform: rotate(180deg);
+        }
+
+        .am-details[open] .am-summary {
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .am-content {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .am-content .am-item {
+            border: none !important;
+            border-bottom: 1px solid var(--border) !important;
+        }
+
+        @media(min-width:560px) {
+            .am-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .am-content .am-item:nth-child(even) {
+                border-left: 1px solid var(--border) !important;
+            }
+
+            .am-content .am-item:nth-last-child(-n+2) {
+                border-bottom: none !important;
+            }
+        }
+    </style>
     <!-- nav-mobile-fix -->
     <style>
         @media(max-width: 600px) {
@@ -2487,13 +2499,21 @@
             }
         }
     </style>
-  <style>
-    /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
-    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
-    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
-      pointer-events: none !important;
-    }
-  </style>
+    <style>
+        /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
+        .fwa::before,
+        .ctas::before,
+        .ctas::after,
+        .sch::after,
+        .rev-modal-hdr::after,
+        .floating-oneday-btn::before,
+        .bnow::after,
+        .bbt::before,
+        .rev-submit::before,
+        .bf-submit::before {
+            pointer-events: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -2980,7 +3000,7 @@
         ══════════════════════════════════════ */
         (function () {
             const R = RESORT;
-            function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n 📍 '&#9733;' : '&#9734;'; return s; }
+            function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n ? '&#9733;' : '&#9734;'; return s; }
 
             document.title = R.name + ' \u2014 Book myDandeli';
             document.getElementById('bcResort').textContent = R.name;
@@ -3001,12 +3021,12 @@
             R.images.forEach((img, i) => {
                 // Build all slides (slider needs all)
                 document.getElementById('heroSlides').innerHTML +=
-                    `<div class="hero-slide${i === 0 📍 ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
+                    `<div class="hero-slide${i === 0 ? ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
 
                 // Only first 4 thumbnails
                 if (i < 4) {
                     thumbsEl.innerHTML +=
-                        `<div class="gthumb${i === 0 📍 ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+                        `<div class="gthumb${i === 0 ? ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
                 }
             });
 
@@ -3023,7 +3043,7 @@
             /* lightbox thumbnails (all images) */
             R.images.forEach((img, i) => {
                 document.getElementById('lbThumbs').innerHTML +=
-                    `<div class="lb-thumb${i === 0 📍 ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+                    `<div class="lb-thumb${i === 0 ? ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
             });
 
             /* amenities — list style */
@@ -3202,7 +3222,7 @@
             document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
             document.getElementById('bk').classList.toggle('s', scrollY > 400);
             document.getElementById('nav').style.boxShadow =
-                scrollY > 80 📍 '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+                scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
         });
 
         const obs = new IntersectionObserver(entries => {
@@ -3239,4 +3259,3 @@
 </body>
 
 </html>
-

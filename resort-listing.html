@@ -679,7 +679,8 @@
     }
 
     .rc-inc::before {
-      content: '✓'; color: #4caf70;
+      content: '✓';
+      color: #4caf70;
       font-weight: 700;
     }
 
@@ -2184,7 +2185,9 @@
       const icon = document.getElementById('filterToggleIcon');
       if (body.classList.contains('open')) {
         body.classList.remove('open');
-        if (icon) icon.textContent = '+'; } else { body.classList.add('open'); if (icon) icon.textContent = '-';
+        if (icon) icon.textContent = '+';
+      } else {
+        body.classList.add('open'); if (icon) icon.textContent = '-';
       }
     }
 
@@ -2195,7 +2198,7 @@
       const checkedStars = Array.from(document.querySelectorAll('.rl-star-options input:checked')).map(i => +i.value);
       const checkedAmenities = Array.from(document.querySelectorAll('.rl-amenities input:checked')).map(i => i.value);
       const checkedTypes = Array.from(document.querySelectorAll('.rl-check-opt input[value="resort"], .rl-check-opt input[value="cottage"], .rl-check-opt input[value="homestay"], .rl-check-opt input[value="camp"]').constructor === NodeList
-        📍 document.querySelectorAll('.rl-filter-group:last-child input:checked')
+        ? document.querySelectorAll('.rl-filter-group:last-child input:checked')
         : []).map(i => i.value);
 
       let visible = 0;
@@ -2212,7 +2215,7 @@
         if (checkedStars.length && !checkedStars.includes(stars)) show = false;
         if (checkedAmenities.length && !checkedAmenities.every(a => amenities.includes(a))) show = false;
 
-        card.style.display = show 📍 'grid' : 'none';
+        card.style.display = show ? 'grid' : 'none';
         if (show) visible++;
       });
 
@@ -2232,16 +2235,9 @@
     /* -- HEART -- */
     function toggleHeart(btn) {
       btn.classList.toggle('liked');
-      btn.textContent = btn.classList.contains('liked') 📍 '❤️' : '🤍';
+      btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
     }
   </script>
 </body>
 
 </html>
-
-
-
-
-
-
-

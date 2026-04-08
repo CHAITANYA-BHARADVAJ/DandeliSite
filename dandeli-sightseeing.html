@@ -2684,7 +2684,7 @@
       var h = document.documentElement.scrollHeight - window.innerHeight;
       document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
       document.getElementById('bk').classList.toggle('s', scrollY > 400);
-      document.getElementById('nav').style.boxShadow = scrollY > 80 📍 '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+      document.getElementById('nav').style.boxShadow = scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
     });
 
     /* SCROLL REVEAL */
@@ -3053,4 +3053,3 @@
 </body>
 
 </html>
-

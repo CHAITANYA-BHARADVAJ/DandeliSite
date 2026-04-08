@@ -1897,7 +1897,7 @@
         .cta-strip::before {
             content: '';
             position: absolute;
-      pointer-events: none;
+            pointer-events: none;
             width: 320px;
             height: 320px;
             border: 60px solid rgba(201, 168, 76, .06);
@@ -1909,7 +1909,7 @@
         .cta-strip::after {
             content: '';
             position: absolute;
-      pointer-events: none;
+            pointer-events: none;
             width: 240px;
             height: 240px;
             border: 50px solid rgba(201, 168, 76, .05);
@@ -2435,13 +2435,21 @@
             }
         }
     </style>
-  <style>
-    /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
-    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
-    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
-      pointer-events: none !important;
-    }
-  </style>
+    <style>
+        /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
+        .fwa::before,
+        .ctas::before,
+        .ctas::after,
+        .sch::after,
+        .rev-modal-hdr::after,
+        .floating-oneday-btn::before,
+        .bnow::after,
+        .bbt::before,
+        .rev-submit::before,
+        .bf-submit::before {
+            pointer-events: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -2863,7 +2871,7 @@
             ],
 
             policies: [
-        { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
+                { icon: "&#128176;", title: "Booking Confirmation", items: ["25% Advance of total pax charged for confirmation", "Traveling charges not included"] },
                 { icon: "&#9203;", title: "Timings", items: ["Check-in: 11:00 AM, Check-out: 10:00 AM", "Water Sports: 8:00 AM - 5:00 PM", "Morning Trekking: 7:00 AM - 8:00 AM", "Campfire: Starts after 9:00 PM", "Rain Dance: 7:30 PM - 9:00 PM", "Swimming Pool: 9:00 AM - 6:00 PM"] },
                 { icon: "&#128683;", title: "Cancellation", items: ["No cancellation, No refund", "Balance to be paid before check-in"] },
                 { icon: "&#128681;", title: "Rules & Notes", items: ["Water Sports location: 25 km from Dandeli Bus Stand", "Kids below 10 years permitted only for Zorbing", "Rafting subject to water levels", "Nylon clothing mandatory for swimming pool"] },
@@ -2892,7 +2900,7 @@
         -------------------------------------- */
         (function () {
             const R = RESORT;
-            function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n 📍 '&#9733;' : '&#9734;'; return s; }
+            function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n ? '&#9733;' : '&#9734;'; return s; }
 
             document.title = R.name + ' \u2014 Book myDandeli';
             document.getElementById('bcResort').textContent = R.name;
@@ -2912,11 +2920,11 @@
 
             R.images.forEach((img, i) => {
                 document.getElementById('heroSlides').innerHTML +=
-                    `<div class="hero-slide${i === 0 📍 ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
+                    `<div class="hero-slide${i === 0 ? ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
 
                 if (i < 4) {
                     thumbsEl.innerHTML +=
-                        `<div class="gthumb${i === 0 📍 ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+                        `<div class="gthumb${i === 0 ? ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
                 }
             });
 
@@ -2932,7 +2940,7 @@
             /* lightbox thumbnails (all images) */
             R.images.forEach((img, i) => {
                 document.getElementById('lbThumbs').innerHTML +=
-                    `<div class="lb-thumb${i === 0 📍 ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+                    `<div class="lb-thumb${i === 0 ? ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
             });
 
             /* amenities */
@@ -3143,7 +3151,7 @@
             document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
             document.getElementById('bk').classList.toggle('s', scrollY > 400);
             document.getElementById('nav').style.boxShadow =
-                scrollY > 80 📍 '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+                scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
         });
 
         const obs = new IntersectionObserver(entries => {
@@ -3180,5 +3188,3 @@
 </body>
 
 </html>
-
-

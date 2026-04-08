@@ -2501,8 +2501,16 @@
   </style>
   <style>
     /* FIX: Ensure decorative elements and animated pseudo-classes don't block clicks */
-    .fwa::before, .ctas::before, .ctas::after, .sch::after, .rev-modal-hdr::after, 
-    .floating-oneday-btn::before, .bnow::after, .bbt::before, .rev-submit::before, .bf-submit::before {
+    .fwa::before,
+    .ctas::before,
+    .ctas::after,
+    .sch::after,
+    .rev-modal-hdr::after,
+    .floating-oneday-btn::before,
+    .bnow::after,
+    .bbt::before,
+    .rev-submit::before,
+    .bf-submit::before {
       pointer-events: none !important;
     }
   </style>
@@ -2987,7 +2995,7 @@
     ══════════════════════════════════════ */
     (function () {
       const R = RESORT;
-      function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n 📍 '&#9733;' : '&#9734;'; return s; }
+      function starStr(n) { let s = ''; for (let i = 0; i < 5; i++) s += i < n ? '&#9733;' : '&#9734;'; return s; }
 
       document.title = R.name + ' \u2014 Book myDandeli';
       document.getElementById('bcResort').textContent = R.name;
@@ -3008,12 +3016,12 @@
       R.images.forEach((img, i) => {
         // Build all slides (slider needs all)
         document.getElementById('heroSlides').innerHTML +=
-          `<div class="hero-slide${i === 0 📍 ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
+          `<div class="hero-slide${i === 0 ? ' active' : ''}"><img src="${img.src}" alt="${img.caption}"><div class="hero-overlay"></div></div>`;
 
         // Only first 4 thumbnails
         if (i < 4) {
           thumbsEl.innerHTML +=
-            `<div class="gthumb${i === 0 📍 ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+            `<div class="gthumb${i === 0 ? ' active' : ''}" onclick="goSlide(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
         }
       });
 
@@ -3030,7 +3038,7 @@
       /* lightbox thumbnails (all images) */
       R.images.forEach((img, i) => {
         document.getElementById('lbThumbs').innerHTML +=
-          `<div class="lb-thumb${i === 0 📍 ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
+          `<div class="lb-thumb${i === 0 ? ' active' : ''}" onclick="lbGoTo(${i})"><img src="${img.src}" alt="${img.caption}"></div>`;
       });
 
       /* amenities — list style */
@@ -3211,7 +3219,7 @@
       document.getElementById('pb').style.width = (scrollY / h * 100) + '%';
       document.getElementById('bk').classList.toggle('s', scrollY > 400);
       document.getElementById('nav').style.boxShadow =
-        scrollY > 80 📍 '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
+        scrollY > 80 ? '0 4px 30px rgba(0,0,0,.15)' : '0 2px 20px rgba(0,0,0,.08)';
     });
 
     const obs = new IntersectionObserver(entries => {
@@ -3248,4 +3256,3 @@
 </body>
 
 </html>
-
